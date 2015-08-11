@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A244d" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+    </dependencies>
+    <scenes>
+        <!--Application-->
+        <scene sceneID="JPo-4y-FX3">
+            <objects>
+                <application id="hnw-xV-0zn" sceneMemberID="viewController">
+                    <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
+                        <items>
+                            <menuItem title="Beddy Butler" id="6r8-jR-IQU">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Beddy Butler" systemMenu="apple" id="lfj-tC-u7F">
+                                    <items>
+                                        <menuItem title="About Beddy Butler" id="LsZ-vP-hFP">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="C1n-eF-rec"/>
+                                                <segue destination="vVG-17-Gue" kind="modal" id="wrJ-vh-np4"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="fdg-7d-XMJ"/>
+                                        <menuItem title="Preferences…" keyEquivalent="," id="5JI-LV-irr">
+                                            <connections>
+                                                <segue destination="XfG-lQ-9wD" kind="modal" id="OUG-1s-vbT"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="YIf-r7-Yq2"/>
+                                        <menuItem title="Services" id="OS6-7w-18i">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Services" systemMenu="services" id="cp3-mh-HGF"/>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="gmy-Kf-JO2"/>
+                                        <menuItem title="Help" id="qkF-Xv-hBV">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Help" systemMenu="help" id="FxK-a3-n3J"/>
+                                        </menuItem>
+                                        <menuItem title="Hide Beddy Butler" keyEquivalent="h" id="GSX-zk-hqI">
+                                            <connections>
+                                                <action selector="hide:" target="Ady-hI-5gd" id="CmR-KJ-z0E"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Beddy Butler Help" keyEquivalent="?" id="cq8-UM-pNh">
+                                            <connections>
+                                                <action selector="showHelp:" target="Ady-hI-5gd" id="cLq-al-ye8"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="stD-ui-4Ai"/>
+                                        <menuItem title="Quit Beddy Butler" keyEquivalent="q" id="hkF-8S-LEb">
+                                            <connections>
+                                                <action selector="quit:" target="Voe-Tx-rLC" id="0e8-5c-PLb"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
+                    </connections>
+                </application>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Beddy_Butler" customModuleProvider="target">
+                    <connections>
+                        <outlet property="menu" destination="lfj-tC-u7F" id="Ac5-IG-Cle"/>
+                    </connections>
+                </customObject>
+                <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="27" y="-99"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="cTy-rG-yJD">
+            <objects>
+                <viewController title="About" showSeguePresentationStyle="single" id="vVG-17-Gue" sceneMemberID="viewController">
+                    <view key="view" id="0za-ef-iMg">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="m0p-Pb-chs">
+                                <rect key="frame" x="198" y="127" width="54" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="v7g-ZX-rSL"/>
+                                </constraints>
+                                <animations/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="About" id="cGK-Dm-mz5">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="m0p-Pb-chs" firstAttribute="centerX" secondItem="0za-ef-iMg" secondAttribute="centerX" id="0HL-G1-863"/>
+                            <constraint firstItem="m0p-Pb-chs" firstAttribute="centerY" secondItem="0za-ef-iMg" secondAttribute="centerY" constant="-0.5" id="Lsd-MS-qQn"/>
+                        </constraints>
+                        <animations/>
+                    </view>
+                </viewController>
+                <customObject id="wuL-hq-gSW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="291" y="392"/>
+        </scene>
+        <!--Preferences-->
+        <scene sceneID="hIz-AP-VOD">
+            <objects>
+                <viewController title="Preferences" showSeguePresentationStyle="single" id="XfG-lQ-9wD" customClass="PreferencesViewController" customModule="Beddy_Butler" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="m2S-Jp-Qdl">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jAX-7a-Ve5">
+                                <rect key="frame" x="197" y="226" width="87" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="4xa-9n-yfh"/>
+                                    <constraint firstAttribute="width" constant="83" id="dpL-c4-XTJ"/>
+                                </constraints>
+                                <animations/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Preferences" id="0Ea-IV-Ff8">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EIq-An-OaI">
+                                <rect key="frame" x="356" y="193" width="82" height="32"/>
+                                <animations/>
+                                <buttonCell key="cell" type="push" title="Test 0" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MvD-Jb-s36">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AfG-yi-wg4">
+                                <rect key="frame" x="356" y="160" width="82" height="32"/>
+                                <animations/>
+                                <buttonCell key="cell" type="push" title="Test 1" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Cge-kX-JoP">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="test1Pressed:" target="XfG-lQ-9wD" id="xYg-PM-XYL"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cc4-OV-fJh">
+                                <rect key="frame" x="356" y="127" width="82" height="32"/>
+                                <animations/>
+                                <buttonCell key="cell" type="push" title="Test 2" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FxP-QA-wv3">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="plg-gY-2tL" kind="popover" popoverAnchorView="cc4-OV-fJh" popoverBehavior="t" preferredEdge="maxY" id="cPS-oB-xeL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="jAX-7a-Ve5" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" constant="-103" id="9Cc-5k-3fi"/>
+                            <constraint firstItem="jAX-7a-Ve5" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="nwl-T1-oMq"/>
+                        </constraints>
+                        <animations/>
+                    </view>
+                </viewController>
+                <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-245" y="392"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ddS-1e-p6G">
+            <objects>
+                <viewController id="plg-gY-2tL" sceneMemberID="viewController">
+                    <view key="view" id="1TG-TK-yvl">
+                        <rect key="frame" x="0.0" y="0.0" width="281" height="139"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <searchField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vGu-cC-anU">
+                                <rect key="frame" x="20" y="97" width="241" height="22"/>
+                                <animations/>
+                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="sXk-Ph-nn6">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </searchFieldCell>
+                            </searchField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="vGu-cC-anU" firstAttribute="leading" secondItem="1TG-TK-yvl" secondAttribute="leading" constant="20" symbolic="YES" id="cZK-Xg-Hr8"/>
+                            <constraint firstAttribute="trailing" secondItem="vGu-cC-anU" secondAttribute="trailing" constant="20" symbolic="YES" id="gfL-hH-vje"/>
+                            <constraint firstItem="vGu-cC-anU" firstAttribute="top" secondItem="1TG-TK-yvl" secondAttribute="top" constant="20" symbolic="YES" id="uri-XM-vlY"/>
+                        </constraints>
+                        <animations/>
+                    </view>
+                </viewController>
+                <customObject id="M3L-oR-ti5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-216.5" y="768.5"/>
+        </scene>
+    </scenes>
+</document>
