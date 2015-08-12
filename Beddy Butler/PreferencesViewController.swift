@@ -10,6 +10,8 @@ import Cocoa
 
 class PreferencesViewController: NSViewController {
 
+    var selectedStartTime: NSDate?
+    var selectedTimeInterval: NSTimeInterval?
 
     override func viewDidLoad() {
         super.viewDidLoad()
