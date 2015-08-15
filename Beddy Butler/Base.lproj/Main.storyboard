@@ -114,7 +114,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jAX-7a-Ve5">
                                 <rect key="frame" x="16" y="216" width="118" height="24"/>
                                 <animations/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Buttler Behaviour" id="0Ea-IV-Ff8">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Buttler Sound" id="0Ea-IV-Ff8">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -172,12 +172,18 @@
                             <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tz0-rZ-dUP">
                                 <rect key="frame" x="210" y="261" width="234" height="20"/>
                                 <animations/>
-                                <sliderCell key="cell" continuous="YES" alignment="left" maxValue="60" tickMarkPosition="below" allowsTickMarkValuesOnly="YES" sliderType="linear" id="g2Q-XL-lRH"/>
+                                <sliderCell key="cell" continuous="YES" alignment="left" maxValue="86400" doubleValue="72000" tickMarkPosition="below" allowsTickMarkValuesOnly="YES" sliderType="linear" id="g2Q-XL-lRH"/>
+                                <connections>
+                                    <binding destination="45n-s1-uBZ" name="value" keyPath="values.bedTimeValue" id="35h-Rm-mKR"/>
+                                </connections>
                             </slider>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YtT-pT-fk4">
                                 <rect key="frame" x="208" y="305" width="236" height="20"/>
                                 <animations/>
-                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" tickMarkPosition="below" sliderType="linear" id="cXZ-HG-HRj"/>
+                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="86400" doubleValue="72000" tickMarkPosition="below" sliderType="linear" id="cXZ-HG-HRj"/>
+                                <connections>
+                                    <binding destination="45n-s1-uBZ" name="value" keyPath="values.startTimeValue" id="gKV-Ti-dup"/>
+                                </connections>
                             </slider>
                             <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="IKg-h5-2i7">
                                 <rect key="frame" x="18" y="346" width="350" height="5"/>
@@ -199,13 +205,20 @@
                                 <rect key="frame" x="112" y="307" width="132" height="17"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" continuous="YES" sendsActionOnEndEditing="YES" title="0" id="DMc-Eq-Dg3">
-                                    <dateFormatter key="formatter" timeStyle="short" id="rSR-F9-2z7"/>
+                                    <dateFormatter key="formatter" timeStyle="medium" id="rSR-F9-2z7"/>
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="45n-s1-uBZ" name="value" keyPath="values.buttlerStartTime" id="pI6-09-Nri"/>
+                                    <binding destination="45n-s1-uBZ" name="value" keyPath="values.startTimeValue" id="3Xa-zR-2xu">
+                                        <dictionary key="options">
+                                            <string key="NSMultipleValuesPlaceholder">20:00:00</string>
+                                            <string key="NSNoSelectionPlaceholder">20:00:00</string>
+                                            <string key="NSNotApplicablePlaceholder">20:00:00</string>
+                                            <string key="NSNullPlaceholder">20:00:00</string>
+                                        </dictionary>
+                                    </binding>
                                 </connections>
                             </textField>
                             <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nlT-WD-j4a">
@@ -234,6 +247,9 @@
                                         </buttonCell>
                                     </column>
                                 </cells>
+                                <connections>
+                                    <binding destination="45n-s1-uBZ" name="selectedValue" keyPath="values.selectedSound" id="PLJ-L2-QBC"/>
+                                </connections>
                             </matrix>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ipR-ke-7Ku">
                                 <rect key="frame" x="18" y="67" width="118" height="24"/>
@@ -277,6 +293,9 @@
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <binding destination="45n-s1-uBZ" name="value" keyPath="values.bedTimeValue" id="A7Y-iR-ogF"/>
+                                </connections>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mh5-iV-TbX">
                                 <rect key="frame" x="126" y="137" width="32" height="25"/>
