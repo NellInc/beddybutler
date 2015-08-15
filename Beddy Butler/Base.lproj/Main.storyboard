@@ -169,7 +169,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tz0-rZ-dUP">
+                            <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tz0-rZ-dUP" customClass="EndSliderView" customModule="Beddy_Butler" customModuleProvider="target">
                                 <rect key="frame" x="210" y="261" width="234" height="20"/>
                                 <animations/>
                                 <sliderCell key="cell" continuous="YES" alignment="left" maxValue="86400" doubleValue="72000" tickMarkPosition="below" allowsTickMarkValuesOnly="YES" sliderType="linear" id="g2Q-XL-lRH"/>
@@ -177,12 +177,12 @@
                                     <binding destination="45n-s1-uBZ" name="value" keyPath="values.bedTimeValue" id="35h-Rm-mKR"/>
                                 </connections>
                             </slider>
-                            <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YtT-pT-fk4">
+                            <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YtT-pT-fk4" customClass="StartSliderView" customModule="Beddy_Butler" customModuleProvider="target">
                                 <rect key="frame" x="208" y="305" width="236" height="20"/>
                                 <animations/>
-                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="86400" doubleValue="72000" tickMarkPosition="below" sliderType="linear" id="cXZ-HG-HRj"/>
+                                <sliderCell key="cell" continuous="YES" alignment="left" maxValue="86400" doubleValue="68233.08139534884" tickMarkPosition="below" sliderType="linear" id="cXZ-HG-HRj"/>
                                 <connections>
-                                    <binding destination="45n-s1-uBZ" name="value" keyPath="values.startTimeValue" id="gKV-Ti-dup"/>
+                                    <binding destination="45n-s1-uBZ" name="value" keyPath="values.startTimeValue" id="3zm-kq-xph"/>
                                 </connections>
                             </slider>
                             <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="IKg-h5-2i7">
@@ -325,6 +325,10 @@
                         </subviews>
                         <animations/>
                     </view>
+                    <connections>
+                        <outlet property="endSliderView" destination="Tz0-rZ-dUP" id="XTB-Xg-DyL"/>
+                        <outlet property="startSliderView" destination="YtT-pT-fk4" id="32T-RJ-FQ2"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="45n-s1-uBZ"/>
