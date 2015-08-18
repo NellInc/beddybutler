@@ -3,7 +3,7 @@
 //  Beddy Butler
 //
 //  Created by David Garces on 10/08/2015.
-//  Copyright (c) 2015 David Garces. All rights reserved.
+//  Copyright (c) 2015 QuantaCorp. All rights reserved.
 //
 
 import Cocoa
@@ -17,6 +17,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var menu: NSMenu!
     
     var preferencesController: PreferencesViewController?
+    
+    var sharedUserDefaults: NSUserDefaults {
+        return NSUserDefaults.standardUserDefaults()
+    }
 
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
@@ -27,7 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AppDelegate.statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
         
         // Set the text that appears in the menu bar
-        AppDelegate.statusItem!.title = "My Item"
+        AppDelegate.statusItem!.title = "Beddy Butler"
         
         // Set the menu that should appear when the item is clicked
         AppDelegate.statusItem!.menu = self.menu
@@ -43,23 +47,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func quit(sender: AnyObject) {
-        
         NSApplication.sharedApplication().terminate(nil)
-        
-        
     }
-    
-    //    @IBAction func openPreferences(sender: AnyObject) {
-    //        if preferencesController == nil {
-    //            preferencesController = PreferencesWindowController()
-    //            let storyboard = NSStoryboard(name: "Main", bundle: nil)
-    //            preferencesController = PreferencesWindowController(windowNibName: "Preferences Window")
-    //            //preferencesController = storyboard!.instantiateControllerWithIdentifier("Preferences Storyboard") as? PreferencesWindowController
-    //        }
-    //        preferencesController?.showWindow(sender)
-    //    }
-
-
 
 }
 

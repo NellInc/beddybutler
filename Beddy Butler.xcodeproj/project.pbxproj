@@ -10,6 +10,7 @@
 		2D1C55071B7FBBED00EC02FD /* StartSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C55061B7FBBED00EC02FD /* StartSliderView.swift */; };
 		2D1C55091B7FBBF200EC02FD /* EndSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C55081B7FBBF200EC02FD /* EndSliderView.swift */; };
 		2D25EE8F1B7920E8004B88BC /* PanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D25EE8E1B7920E8004B88BC /* PanelViewController.swift */; };
+		2D30884B1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D30884A1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift */; };
 		2D32ADB81B7FBA0500E03480 /* Insistent.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2D32ADB71B7FBA0500E03480 /* Insistent.aiff */; };
 		2D32ADBA1B7FBA0B00E03480 /* Shy.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2D32ADB91B7FBA0B00E03480 /* Shy.aiff */; };
 		2D32ADBC1B7FBA2B00E03480 /* Zombie.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2D32ADBB1B7FBA2B00E03480 /* Zombie.aiff */; };
@@ -41,6 +42,7 @@
 		2D1C55061B7FBBED00EC02FD /* StartSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartSliderView.swift; sourceTree = "<group>"; };
 		2D1C55081B7FBBF200EC02FD /* EndSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndSliderView.swift; sourceTree = "<group>"; };
 		2D25EE8E1B7920E8004B88BC /* PanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelViewController.swift; sourceTree = "<group>"; };
+		2D30884A1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Betty_ButlerUserDefaultsTests.swift; sourceTree = "<group>"; };
 		2D32ADB71B7FBA0500E03480 /* Insistent.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Insistent.aiff; sourceTree = "<group>"; };
 		2D32ADB91B7FBA0B00E03480 /* Shy.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Shy.aiff; sourceTree = "<group>"; };
 		2D32ADBB1B7FBA2B00E03480 /* Zombie.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Zombie.aiff; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 		2DC7670E1B78D25F00866072 /* Beddy ButlerTests */ = {
 			isa = PBXGroup;
 			children = (
+				2D30884A1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift */,
 				2DC767111B78D25F00866072 /* Beddy_ButlerSliderTests.swift */,
 				2D9B85321B83678F002795F8 /* Beddy_ButlerAudioTests.swift */,
 				2DC7670F1B78D25F00866072 /* Supporting Files */,
@@ -291,6 +294,7 @@
 				2DC767121B78D25F00866072 /* Beddy_ButlerSliderTests.swift in Sources */,
 				2D9B85331B83678F002795F8 /* Beddy_ButlerAudioTests.swift in Sources */,
 				2D9B85311B836302002795F8 /* AppDelegate.swift in Sources */,
+				2D30884B1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift in Sources */,
 				2D9B85301B8362AB002795F8 /* PreferencesViewController.swift in Sources */,
 				2D9B85371B836F0B002795F8 /* AudioPlayer.swift in Sources */,
 			);

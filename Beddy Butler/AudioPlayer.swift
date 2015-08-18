@@ -3,13 +3,9 @@
 //  Beddy Butler
 //
 //  Created by David Garces on 18/08/2015.
-//  Copyright (c) 2015 David Garces. All rights reserved.
+//  Copyright (c) 2015 QuantaCorp. All rights reserved.
 //
-
-import Foundation
-import Cocoa
 import AVFoundation
-import AVKit
 
 class AudioPlayer {
     

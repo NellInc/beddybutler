@@ -3,7 +3,7 @@
 //  Beddy Butler
 //
 //  Created by David Garces on 10/08/2015.
-//  Copyright (c) 2015 David Garces. All rights reserved.
+//  Copyright (c) 2015 QuantaCorp. All rights reserved.
 //
 
 import Cocoa
