@@ -160,7 +160,7 @@
                                     <binding destination="45n-s1-uBZ" name="value" keyPath="values.runStartup" id="g68-sb-Aiz"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9YV-6d-duo">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9YV-6d-duo" userLabel="Bed timeframe title">
                                 <rect key="frame" x="16" y="347" width="99" height="24"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Bed timeframe" id="0I3-2x-FeU">
@@ -169,7 +169,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tz0-rZ-dUP" customClass="EndSliderView" customModule="Beddy_Butler" customModuleProvider="target">
+                            <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tz0-rZ-dUP" userLabel="Bed time slider" customClass="EndSliderView" customModule="Beddy_Butler" customModuleProvider="target">
                                 <rect key="frame" x="210" y="261" width="234" height="20"/>
                                 <animations/>
                                 <sliderCell key="cell" continuous="YES" alignment="left" maxValue="86400" doubleValue="72000" tickMarkPosition="below" allowsTickMarkValuesOnly="YES" sliderType="linear" id="g2Q-XL-lRH"/>
@@ -177,7 +177,7 @@
                                     <binding destination="45n-s1-uBZ" name="value" keyPath="values.bedTimeValue" id="35h-Rm-mKR"/>
                                 </connections>
                             </slider>
-                            <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YtT-pT-fk4" customClass="StartSliderView" customModule="Beddy_Butler" customModuleProvider="target">
+                            <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YtT-pT-fk4" userLabel="Start time slider" customClass="StartSliderView" customModule="Beddy_Butler" customModuleProvider="target">
                                 <rect key="frame" x="208" y="305" width="236" height="20"/>
                                 <animations/>
                                 <sliderCell key="cell" continuous="YES" alignment="left" maxValue="86400" doubleValue="68233.08139534884" tickMarkPosition="below" sliderType="linear" id="cXZ-HG-HRj"/>
@@ -192,7 +192,7 @@
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
                             </box>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UIv-9V-JTG">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UIv-9V-JTG" userLabel="Start time label">
                                 <rect key="frame" x="18" y="307" width="84" height="17"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Start time:" id="MAq-E0-8eK">
@@ -201,7 +201,20 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Twh-Ep-Mud">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="txJ-dy-GqU" userLabel="Bed time text value">
+                                <rect key="frame" x="112" y="263" width="132" height="17"/>
+                                <animations/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" continuous="YES" sendsActionOnEndEditing="YES" title="0" id="w7j-fu-Rhk" userLabel="Bed time value">
+                                    <dateFormatter key="formatter" timeStyle="medium" id="mBR-s5-5DQ"/>
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="45n-s1-uBZ" name="value" keyPath="values.bedTimeValue" id="A7Y-iR-ogF"/>
+                                </connections>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Twh-Ep-Mud" userLabel="Start time text value">
                                 <rect key="frame" x="112" y="307" width="132" height="17"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" continuous="YES" sendsActionOnEndEditing="YES" title="0" id="DMc-Eq-Dg3">
@@ -221,7 +234,7 @@
                                     </binding>
                                 </connections>
                             </textField>
-                            <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nlT-WD-j4a">
+                            <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nlT-WD-j4a" userLabel="Sound List">
                                 <rect key="frame" x="20" y="115" width="100" height="70"/>
                                 <animations/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -248,6 +261,7 @@
                                     </column>
                                 </cells>
                                 <connections>
+                                    <action selector="updateStatusTitle:" target="XfG-lQ-9wD" id="hnK-dn-I6d"/>
                                     <binding destination="45n-s1-uBZ" name="selectedValue" keyPath="values.selectedSound" id="PLJ-L2-QBC"/>
                                 </connections>
                             </matrix>
@@ -267,7 +281,7 @@
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
                             </box>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mQS-GF-IkJ">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mQS-GF-IkJ" userLabel="Bed time label">
                                 <rect key="frame" x="18" y="263" width="84" height="17"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Bed time:" id="ev6-Px-hjK">
@@ -276,44 +290,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0jp-k8-qo9">
-                                <rect key="frame" x="126" y="113" width="32" height="25"/>
-                                <animations/>
-                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSSlideshowTemplate" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PDU-68-5YQ">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="txJ-dy-GqU">
-                                <rect key="frame" x="112" y="263" width="132" height="17"/>
-                                <animations/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" continuous="YES" sendsActionOnEndEditing="YES" title="0" id="w7j-fu-Rhk" userLabel="Bed time value">
-                                    <dateFormatter key="formatter" timeStyle="medium" id="mBR-s5-5DQ"/>
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <binding destination="45n-s1-uBZ" name="value" keyPath="values.bedTimeValue" id="A7Y-iR-ogF"/>
-                                </connections>
-                            </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mh5-iV-TbX">
-                                <rect key="frame" x="126" y="137" width="32" height="25"/>
-                                <animations/>
-                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSSlideshowTemplate" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Y7V-0K-9xk">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A4O-ph-Kvi">
-                                <rect key="frame" x="126" y="161" width="32" height="25"/>
-                                <animations/>
-                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSSlideshowTemplate" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BAs-sz-hdj">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PCx-Vz-LgP">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PCx-Vz-LgP" userLabel="Preview title">
                                 <rect key="frame" x="116" y="193" width="52" height="17"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Preview" id="io0-pi-MNw">
@@ -322,6 +299,39 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button identifier="Preview Shy" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A4O-ph-Kvi" userLabel="Shy Button">
+                                <rect key="frame" x="126" y="161" width="32" height="25"/>
+                                <animations/>
+                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSSlideshowTemplate" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BAs-sz-hdj">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="previewAudio:" target="XfG-lQ-9wD" id="Yek-dO-Qxq"/>
+                                </connections>
+                            </button>
+                            <button identifier="Preview Insistent" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mh5-iV-TbX" userLabel="Insistent Button">
+                                <rect key="frame" x="126" y="137" width="32" height="25"/>
+                                <animations/>
+                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSSlideshowTemplate" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Y7V-0K-9xk">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="previewAudio:" target="XfG-lQ-9wD" id="Ssh-OG-2Of"/>
+                                </connections>
+                            </button>
+                            <button identifier="Preview Zombie" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0jp-k8-qo9" userLabel="Zombie Button">
+                                <rect key="frame" x="126" y="113" width="32" height="25"/>
+                                <animations/>
+                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSSlideshowTemplate" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PDU-68-5YQ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="previewAudio:" target="XfG-lQ-9wD" id="UPH-N8-uro"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                     </view>

@@ -33,10 +33,11 @@ class EndSliderView: NSSlider {
         let slider = notification.object as! NSSlider
         // if the current start value is higher than the end value, increasethe end value to the same as start + 30 seconds
         //NSLog("endSlider current: \slider."
-        if slider.doubleValue < self.doubleValue {
+        if slider.doubleValue > self.doubleValue {
             self.doubleValue = slider.doubleValue + 30
             NSLog("observer triggered for endValue, new value: \(self.doubleValue)")
         }
+        
         
     }
     
