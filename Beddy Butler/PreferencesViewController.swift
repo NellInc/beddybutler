@@ -12,12 +12,11 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
     
     //MARK: Properties
 
-    var selectedStartTime: NSDate?
-    var selectedTimeInterval: NSTimeInterval?
-    
     var audioPlayer: AudioPlayer = AudioPlayer()
 
+    @IBOutlet weak var startTimeTextValue: NSTextField!
     
+    @IBOutlet weak var endTimeTextValue: NSTextField!
     @IBOutlet weak var startSliderView: StartSliderView!
     
     @IBOutlet weak var endSliderView: EndSliderView!
@@ -37,6 +36,11 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         NSNotificationCenter.defaultCenter().removeObserver(startSliderView)
         NSNotificationCenter.defaultCenter().removeObserver(endSliderView)
         // NSNotificationCenter.defaultCenter().removeObserver(self, name: "endKey", object: nil)
+    }
+    
+     deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(startSliderView)
+        NSNotificationCenter.defaultCenter().removeObserver(endSliderView)
     }
 
     override var representedObject: AnyObject? {
@@ -79,6 +83,8 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         }
         
     }
+
+    
 
 }
 

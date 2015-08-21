@@ -18,7 +18,7 @@ class Beddy_ButlerSliderTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        let storyboard = NSStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        let storyboard = NSStoryboard(name: "Main", bundle: nil)
        startSlider = StartSliderView()
         endSlider = EndSliderView()
         preferencesViewController = storyboard?.instantiateControllerWithIdentifier("Preferences Storyboard") as? PreferencesViewController

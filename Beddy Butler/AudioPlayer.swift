@@ -16,6 +16,20 @@ class AudioPlayer {
     
     enum AudioFiles {
         case Insistent, Shy, Zombie
+        
+        init (stringValue: String) {
+            switch stringValue {
+                case "Insistent":
+                    self = .Insistent
+                case "Shy":
+                    self = .Shy
+                case "Zombie":
+                    self = .Zombie
+            default:
+                    self = .Shy
+            }
+        }
+        
         func description() -> String {
             switch self  {
             case .Insistent:

@@ -43,12 +43,17 @@ class StartSliderView: NSSlider {
     
     
     @objc func restrictStartValue(notification: NSNotification) {
-        let slider = notification.object as! NSSlider
-        // if the current start value is higher than the end value, reduce it to the same as end - 30 seconds
-        if self.doubleValue < slider.doubleValue  {
-            self.doubleValue = slider.doubleValue - 30
-            NSLog("observer triggered for StartValue, new value: \(self.doubleValue)")
+        if let slider = notification.object as? EndSliderView {
+            // if the current start value is higher than the end value, reduce it to the same as end - 30 seconds
+            if self.doubleValue > slider.doubleValue  {
+                //Update the value we stored in the standard user defaults. This will trigger an update in our view through cocoa bindings
+                NSUserDefaults.standardUserDefaults().setObject(slider.doubleValue - 30, forKey: UserDefaultKeys.startTimeValue.rawValue)
+                // Notify observers so that timer updates too
+                NSNotificationCenter.defaultCenter().postNotificationName(ObserverKeys.startTimeValueChanged.rawValue, object: self)
+                NSLog("observer triggered for StartValue, new value: \(self.doubleValue)")
+            }
         }
+
         
         
     }

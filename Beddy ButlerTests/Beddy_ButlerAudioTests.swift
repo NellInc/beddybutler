@@ -20,6 +20,11 @@ class Beddy_ButlerAudioTests: XCTestCase {
     override func tearDown() {
     }
     
+    func testAudioFileType() {
+        let newAudioFile = AudioPlayer.AudioFiles(stringValue: "Shy")
+        XCTAssertTrue(newAudioFile is AudioPlayer.AudioFiles, "Initialising an AudioFile enum value should return a value of type AudioFiles")
+    }
+    
     func testPlayerInitialises() {
         XCTAssertNotNil(player, "test player initialises")
     }

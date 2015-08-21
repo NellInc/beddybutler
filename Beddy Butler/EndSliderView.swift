@@ -30,15 +30,15 @@ class EndSliderView: NSSlider {
     }
     
     @objc func restrictEndValue(notification: NSNotification) {
-        let slider = notification.object as! NSSlider
-        // if the current start value is higher than the end value, increasethe end value to the same as start + 30 seconds
-        //NSLog("endSlider current: \slider."
-        if slider.doubleValue > self.doubleValue {
-            self.doubleValue = slider.doubleValue + 30
-            NSLog("observer triggered for endValue, new value: \(self.doubleValue)")
+        if let slider = notification.object as? StartSliderView {
+            //if the current end value is lower than the start value, increase the end value to the same as start + 30 seconds
+            if self.doubleValue < slider.doubleValue  {
+                //Update the value we stored in the standard user defaults. This will trigger an update in our view through cocoa bindings
+                NSUserDefaults.standardUserDefaults().setObject(slider.doubleValue + 30, forKey: UserDefaultKeys.bedTimeValue.rawValue)
+                     NSNotificationCenter.defaultCenter().postNotificationName(ObserverKeys.bedTimeValueChanged.rawValue, object: self)
+                NSLog("observer triggered for endValue, new value: \(self.doubleValue)")
+            }
         }
-        
-        
     }
     
     

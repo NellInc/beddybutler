@@ -39,6 +39,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Set if the item should ”
         //change color when clicked
         AppDelegate.statusItem!.highlightMode = true
+        
+        registerUserDefaultValues()
 
     }
 
@@ -48,6 +50,38 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func quit(sender: AnyObject) {
         NSApplication.sharedApplication().terminate(nil)
+    }
+    
+    
+    /// This method ensures that the user default values are set when the user opens the app for the first time
+    /// Subsequent launches of the app will not reset these values
+    func registerUserDefaultValues() {
+        
+        for key in UserDefaultKeys.allValues {
+            
+            let registerValue = ({ self.sharedUserDefaults.setObject($0, forKey: $1) })
+            
+            switch key {
+            case .startTimeValue:
+                   let theKey = sharedUserDefaults.objectForKey(key.rawValue) as? Double
+                   if theKey == nil { registerValue(NSDate(timeIntervalSince1970: 75000), key.rawValue) }
+            case .bedTimeValue:
+                let theKey = sharedUserDefaults.objectForKey(key.rawValue) as? Double
+                if theKey == nil { registerValue(NSDate(timeIntervalSince1970: 85000), key.rawValue) }
+            case .selectedSound:
+                let theKey = sharedUserDefaults.objectForKey(key.rawValue) as? String
+                if theKey == nil { registerValue(AudioPlayer.AudioFiles.Shy.description(), key.rawValue) }
+            case .runStartup:
+                let theKey = sharedUserDefaults.objectForKey(key.rawValue) as? Bool
+                if theKey == nil { registerValue(false, key.rawValue) }
+            default:
+                break
+
+            }
+        
+        
+        }
+        
     }
 
 }
