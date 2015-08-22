@@ -14,6 +14,11 @@ class Beddy_ButlerTimerTests: XCTestCase {
     var startSlider = StartSliderView()
     var endSlider = EndSliderView()
     var butlerTimer = ButlerTimer()
+    
+    let calendar = NSCalendar.currentCalendar()
+    var startOfDay: NSDate {
+        return calendar.startOfDayForDate(NSDate())
+    }
 
     override func setUp() {
         super.setUp()
@@ -25,7 +30,6 @@ class Beddy_ButlerTimerTests: XCTestCase {
         super.tearDown()
     }
     
-    
     func testInterval() {
         let theDate = NSDate()
         NSLog("Interval: \(theDate)")
@@ -34,17 +38,38 @@ class Beddy_ButlerTimerTests: XCTestCase {
     
     
     func testStartDateInitialises() {
-        let currentDate = NSDate()
         let theDate = butlerTimer.startDate
-        NSLog("Now: \(currentDate)")
+        NSLog("Now: \(startOfDay)")
         NSLog("The date: \(theDate)")
-        XCTAssertTrue(theDate.timeIntervalSinceDate(currentDate) < 100, "the start date should be around now")
+        XCTAssertTrue(theDate.timeIntervalSinceDate(startOfDay) > 0, "the start date should be around now")
     }
     
-    func testTimer1InitialisesWithValue(){
-        XCTAssertNotNil(butlerTimer.timer1, "Timer1 should be initialized")
+    func testEndDateInitialises() {
+        let theDate = butlerTimer.bedDate
+        NSLog("Now: \(startOfDay)")
+        NSLog("The date: \(theDate)")
+        XCTAssertTrue(theDate.timeIntervalSinceDate(startOfDay) > 0, "the start date should be around now")
     }
     
+    func testMainIntervalInitialises(){
+        NSLog("The main interval: \(butlerTimer.mainInterval)")
+        XCTAssertTrue(butlerTimer.mainInterval > 0, "Timer1 should be initialized")
+    }
+    
+    
+    func testRandomIntervalGeneratesCorrectValues() {
+        // "randomInterval should generate values between 300 and 1200"
+        for x in 0...20 {
+            let result = butlerTimer.randomInterval
+            NSLog("Randomly generated number \(x): \(result)")
+            XCTAssertTrue((result > 300) && (result < 1200) , "randomInterval should generate values between 300 and 1200")
+        }
+    }
+    
+    func testTimer1Initialises() {
+        NSLog("The timer 1 is: \(butlerTimer.timer)")
+        XCTAssertTrue(butlerTimer.timer?.timeInterval > 0, "Timer1 should be initialized")
+    }
     
 
     func testStartSliderUpdatesTimer() {
