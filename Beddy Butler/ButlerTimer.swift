@@ -58,26 +58,28 @@ class ButlerTimer: NSObject {
     
         
         
-        
-        timer = NSTimer.scheduledTimerWithTimeInterval(self.randomInterval, target: self, selector: "playSound", userInfo: nil, repeats: false)
-        
-        //self.userStartTime = NSDate(timeIntervalSince1970: self.userStartTime!)
-        //self.userBedTime = NSDate(timeIntervalSince1970: self.userBedTime!)
+        // Shcedule timer with the initial value
+        timer = NSTimer.scheduledTimerWithTimeInterval(self.randomInterval, target: self, selector: "playSound:", userInfo: nil, repeats: false)
+        NSLog("Timer created for interval: \(self.randomInterval)")
+
         
         // Register observers to populate user start time and bed time with values when the value changes
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateBedTime", name: ObserverKeys.bedTimeValueChanged.rawValue , object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateStartTime", name: ObserverKeys.startTimeValueChanged.rawValue , object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateBedTime:", name: ObserverKeys.bedTimeValueChanged.rawValue , object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateStartTime:", name: ObserverKeys.startTimeValueChanged.rawValue , object: nil)
        
+    }
+    
+    deinit {
+        timer?.invalidate()
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
 
     /// When the end time slider changes, it should post itself in a notification so that updateBedTime updates the userEndTime
     func updateBedTime(notification: NSNotification) {
         if let theObject = notification.object as? EndSliderView {
-            //if let userDefaultBedTimeValue = self.userDefaultBedTime {
-              //  userBedTime = NSDate(timeIntervalSince1970: userDefaultBedTimeValue)
-           // }
+            // calculateEndDate will return a new value again as it has changed by the user
+            self.bedDate = calculateEndDate
             
         }
     }
@@ -85,9 +87,8 @@ class ButlerTimer: NSObject {
      /// When the start time slider changes, it should post itself in a notification so that updateStartTime updates the userStartTime
     func updateStartTime(notification: NSNotification) {
         if let theObject = notification.object as? StartSliderView {
-           // if let userDefaultStartTimeValue = self.userDefaultStartTime {
-             //   userBedTime = NSDate(timeIntervalSince1970: userDefaultStartTimeValue)
-            //}
+            // calculateStartDate will return a new value again as it has changed by the user
+            self.startDate = calculateStartDate
             
         }
     }
@@ -121,6 +122,19 @@ class ButlerTimer: NSObject {
     /// Play sound should invalidate the current timer and schedule the next timer
     func playSound() {
         audioPlayer.playFile(userSelectedSound)
+        NSLog("Sound played!")
+        calculateNewTimer()
+    }
+    
+    func calculateNewTimer() {
+        //Invalidate curent timer
+        timer?.invalidate()
+        let newInterval = randomInterval
+        // if the time past the new interval is after the userEndTime, create a new interval until the next day at the startTime
+        // ....
+        
+        // ... else use newInterval to create the timer 
+        
     }
     
     /// Create a random number of seconds from the range of 5 to 20 minutes (i.e. 300 to 1200 secs)

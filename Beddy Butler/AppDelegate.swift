@@ -11,6 +11,7 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    var butlerTimer: ButlerTimer?
     
     static  var statusItem: NSStatusItem?
     
@@ -41,11 +42,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AppDelegate.statusItem!.highlightMode = true
         
         registerUserDefaultValues()
+        
+        //create a new ButlerTimer
+        self.butlerTimer = ButlerTimer()
 
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
+        self.butlerTimer = nil
     }
     
     @IBAction func quit(sender: AnyObject) {

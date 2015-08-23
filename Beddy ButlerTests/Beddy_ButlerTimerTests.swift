@@ -66,24 +66,48 @@ class Beddy_ButlerTimerTests: XCTestCase {
         }
     }
     
+    /// Butler timer should update start time after user updates start time
+    func testUpdateStartTime() {
+        // Initially change the user setting so that it's different that what we will use for testing
+        NSUserDefaults.standardUserDefaults().setValue(50000, forKey: UserDefaultKeys.startTimeValue.rawValue)
+        let newButlerTimer = ButlerTimer()
+        // read the current value from ButlerTimer
+        let currentStartDate = newButlerTimer.startDate
+        // emulate a new value set by the user
+        NSUserDefaults.standardUserDefaults().setValue(65000, forKey: UserDefaultKeys.startTimeValue.rawValue)
+        NSNotificationCenter.defaultCenter().postNotificationName(ObserverKeys.startTimeValueChanged.rawValue, object: StartSliderView())
+        NSLog("previous date: \(currentStartDate) new date: \(newButlerTimer.startDate)")
+        // Assert
+        XCTAssertNotEqual(currentStartDate, self.butlerTimer.startDate, "Butler timer should update start time after user updates start time")
+        
+        
+    }
+    
+    /// Butler timer should update end time after user updates end time
+    func testUpdateEndTime() {
+        // Initially change the user setting so that it's different that what we will use for testing
+        NSUserDefaults.standardUserDefaults().setValue(67000, forKey: UserDefaultKeys.bedTimeValue.rawValue)
+        let newButlerTimer = ButlerTimer()
+        // read the current value from ButlerTimer
+        let currentEndDate = newButlerTimer.bedDate
+        // emulate a new value set by the user
+        NSUserDefaults.standardUserDefaults().setValue(72000, forKey: UserDefaultKeys.bedTimeValue.rawValue)
+        NSNotificationCenter.defaultCenter().postNotificationName(ObserverKeys.bedTimeValueChanged.rawValue, object: StartSliderView())
+        NSLog("previous date: \(currentEndDate) new date: \(newButlerTimer.bedDate)")
+        // Assert
+        XCTAssertNotEqual(currentEndDate, self.butlerTimer.bedDate, "Butler timer should update end time after user updates end time")
+        
+        
+    }
+    
+    
+    
     func testTimer1Initialises() {
         NSLog("The timer 1 is: \(butlerTimer.timer)")
         XCTAssertTrue(butlerTimer.timer?.timeInterval > 0, "Timer1 should be initialized")
     }
     
-
-    func testStartSliderUpdatesTimer() {
-//        butlerTimer.timer1 
-//        startSlider.doubleValue = 35000
-//        let userDefaultValue = NSUserDefaults.standardUserDefaults().valueForKey(UserDefaultKeys.startTimeValue.rawValue) as? Double
-//        XCTAssertEqual(butlerTimer.userStartTime!.timeIntervalSince1970, userDefaultValue!, "When start slider is updated, ButlerTimer start time updates (i.e. its value is equal to the value stored in user defaults")
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
+    
+    
 
 }
