@@ -59,7 +59,7 @@ class ButlerTimer: NSObject {
         
         
         // Shcedule timer with the initial value
-        timer = NSTimer.scheduledTimerWithTimeInterval(self.randomInterval, target: self, selector: "playSound:", userInfo: nil, repeats: false)
+        timer = NSTimer.scheduledTimerWithTimeInterval(self.randomInterval, target: self, selector: "playSound", userInfo: nil, repeats: false)
         NSLog("Timer created for interval: \(self.randomInterval)")
 
         
@@ -128,13 +128,29 @@ class ButlerTimer: NSObject {
     
     func calculateNewTimer() {
         //Invalidate curent timer
-        timer?.invalidate()
+        if let theTimer = timer {
+            theTimer.invalidate()
+        }
+        
         let newInterval = randomInterval
-        // if the time past the new interval is after the userEndTime, create a new interval until the next day at the startTime
-        // ....
         
-        // ... else use newInterval to create the timer 
+        //Analyse interval:
+        // 1. If Now + interval or Now alone are before start time (date), create interval from now until after start date + (5-20min)
+        // 2. if Now is after user start time and before user bed time and now + interval is also after start and before end, use the unmodified interval
+        // 3. if now is before end date but now + interval is after end date, create new interval until next day start date + 5-20min)
+        //4. if now is after end date, create new interval until next day start date + 5-20min
         
+        
+    }
+    
+    func isIntvervalAfterUserBedTime(interval: NSTimeInterval) -> Bool {
+        let dateAfterInterval = NSDate(timeIntervalSinceNow: interval)
+        return dateAfterInterval.isGreaterThan(self.bedDate)
+    }
+    
+    func isIntervalAfterUserStartTime(interval: NSTimeInterval) -> Bool {
+        let dateBeforeInterval = NSDate(timeIntervalSinceNow: interval)
+        return dateBeforeInterval.isGreaterThan(self.startDate)
     }
     
     /// Create a random number of seconds from the range of 5 to 20 minutes (i.e. 300 to 1200 secs)
@@ -144,6 +160,10 @@ class ButlerTimer: NSObject {
     var randomInterval: NSTimeInterval {
         let source = arc4random_uniform(901) // should return a random number between 0 and 900
         return NSTimeInterval(source + 300) // adding 300 will ensure that it will always be from 300 to 1200
+    }
+    
+    var testInteval: NSTimeInterval {
+        return NSTimeInterval(arc4random_uniform(100))
     }
 
 }

@@ -66,6 +66,15 @@ class Beddy_ButlerTimerTests: XCTestCase {
         }
     }
     
+    func testRandomTestIntervalGeneratesCorrectValues() {
+        // "randomInterval should generate values between 300 and 1200"
+        for x in 0...20 {
+            let result = butlerTimer.testInteval
+            NSLog("Randomly generated number \(x): \(result)")
+            XCTAssertTrue((result > 0) && (result < 100) , "random testInterval should generate values between 0 and 100")
+        }
+    }
+    
     /// Butler timer should update start time after user updates start time
     func testUpdateStartTime() {
         // Initially change the user setting so that it's different that what we will use for testing

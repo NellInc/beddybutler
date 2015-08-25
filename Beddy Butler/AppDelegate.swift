@@ -32,7 +32,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AppDelegate.statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
         
         // Set the text that appears in the menu bar
-        AppDelegate.statusItem!.title = "Beddy Butler"
+        //AppDelegate.statusItem!.title = "Beddy Butler"
+        AppDelegate.statusItem?.image = NSImage(named: "WhiteMoon")
+        AppDelegate.statusItem?.image?.size = NSSize(width: 18, height: 18)
         
         // Set the menu that should appear when the item is clicked
         AppDelegate.statusItem!.menu = self.menu
@@ -44,7 +46,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         registerUserDefaultValues()
         
         //create a new ButlerTimer
-        self.butlerTimer = ButlerTimer()
+        //self.butlerTimer = ButlerTimer()
 
     }
 
@@ -69,10 +71,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             switch key {
             case .startTimeValue:
                    let theKey = sharedUserDefaults.objectForKey(key.rawValue) as? Double
-                   if theKey == nil { registerValue(NSDate(timeIntervalSince1970: 75000), key.rawValue) }
+                   if theKey == nil { registerValue(75000.00, key.rawValue) }
             case .bedTimeValue:
                 let theKey = sharedUserDefaults.objectForKey(key.rawValue) as? Double
-                if theKey == nil { registerValue(NSDate(timeIntervalSince1970: 85000), key.rawValue) }
+                if theKey == nil { registerValue(85000.00, key.rawValue) }
             case .selectedSound:
                 let theKey = sharedUserDefaults.objectForKey(key.rawValue) as? String
                 if theKey == nil { registerValue(AudioPlayer.AudioFiles.Shy.description(), key.rawValue) }
