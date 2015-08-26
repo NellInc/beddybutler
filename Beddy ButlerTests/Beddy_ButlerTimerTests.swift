@@ -109,6 +109,30 @@ class Beddy_ButlerTimerTests: XCTestCase {
         
     }
     
+    func testTimerCalculates1() {
+        // first set the user values for the test
+        NSUserDefaults.standardUserDefaults().setValue(6000, forKey: UserDefaultKeys.startTimeValue.rawValue)
+        NSUserDefaults.standardUserDefaults().setValue(12000, forKey: UserDefaultKeys.bedTimeValue.rawValue)
+        
+        let theButlerTimer = ButlerTimer()
+        
+        //Make a date before the current start date
+        let calendar = NSCalendar.currentCalendar()
+        let startOfDay = calendar.startOfDayForDate(NSDate())
+        
+        let simulatedCurrentDate = startOfDay.dateByAddingTimeInterval(NSTimeInterval(1000))
+        
+        theButlerTimer.calculateNewTimer(simulatedCurrentDate)
+        
+        var dateAfterInterval = NSDate(timeInterval: theButlerTimer.timer!.timeInterval, sinceDate: simulatedCurrentDate)
+        NSLog("Timer interval: \(theButlerTimer.timer!.timeInterval)")
+        NSLog("Simulated current date: \(simulatedCurrentDate)")
+        NSLog("date after Inverval: \(dateAfterInterval)")
+        NSLog("start date: \(startOfDay.dateByAddingTimeInterval(6000))")
+        XCTAssertTrue(dateAfterInterval.isGreaterThan(startOfDay.dateByAddingTimeInterval(6000)), "When calculating timer before startDate, timer should execute after startDate")
+        
+        XCTAssertTrue(startOfDay.dateByAddingTimeInterval(12000).isGreaterThan(dateAfterInterval), "When calculating timer before startDate, timer should execute before bedDate")
+    }
     
     
     func testTimer1Initialises() {

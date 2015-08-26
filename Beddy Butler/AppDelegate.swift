@@ -33,8 +33,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Set the text that appears in the menu bar
         //AppDelegate.statusItem!.title = "Beddy Butler"
-        AppDelegate.statusItem?.image = NSImage(named: "WhiteMoon")
+        AppDelegate.statusItem?.image = NSImage(named: "Moon")
         AppDelegate.statusItem?.image?.size = NSSize(width: 18, height: 18)
+        // image should be set as tempate so that it changes when the user sets the menu bar to a dark theme
+        AppDelegate.statusItem?.image?.setTemplate(true)
         
         // Set the menu that should appear when the item is clicked
         AppDelegate.statusItem!.menu = self.menu
@@ -46,7 +48,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         registerUserDefaultValues()
         
         //create a new ButlerTimer
-        //self.butlerTimer = ButlerTimer()
+        self.butlerTimer = ButlerTimer()
 
     }
 

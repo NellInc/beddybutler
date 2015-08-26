@@ -15,9 +15,9 @@ class ButlerTimer: NSObject {
     
     var numberOfRepeats = 5
     /// start date will be set to current date + user's default startTime
-    var startDate = NSDate()
+    //var startDate = NSDate()
     /// end date will be set to the end of the interval between startdate and main Interval
-    var bedDate = NSDate()
+    //var bedDate = NSDate()
     /// The main interval will be set based on today's date and between the user default start and bed time
     var mainInterval: NSTimeInterval?
     /// Timers 1 and 2 will alternate to play the sound randomly throughout the parent interval
@@ -26,6 +26,7 @@ class ButlerTimer: NSObject {
     /// the audio player that will be used in the play sound action
     var audioPlayer: AudioPlayer
     // the
+    let butlerImage = NSImage(named: "Butler")
     
     //MARK: Computed properties
     
@@ -52,26 +53,24 @@ class ButlerTimer: NSObject {
         self.audioPlayer = AudioPlayer()
         super.init()
         
-        self.startDate = calculateStartDate
-        self.bedDate = calculateEndDate
+        //self.startDate = calculateStartDate
+        //self.bedDate = calculateEndDate
         self.mainInterval = calculateMainInterval
     
+        butlerImage?.setTemplate(true)
         
-        
-        // Shcedule timer with the initial value
-        timer = NSTimer.scheduledTimerWithTimeInterval(self.randomInterval, target: self, selector: "playSound", userInfo: nil, repeats: false)
-        NSLog("Timer created for interval: \(self.randomInterval)")
-
+        // Not to be called directly...
+        calculateNewTimer(nil)
         
         // Register observers to populate user start time and bed time with values when the value changes
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateBedTime:", name: ObserverKeys.bedTimeValueChanged.rawValue , object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateStartTime:", name: ObserverKeys.startTimeValueChanged.rawValue , object: nil)
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateBedTime:", name: ObserverKeys.bedTimeValueChanged.rawValue , object: nil)
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateStartTime:", name: ObserverKeys.startTimeValueChanged.rawValue , object: nil)
        
     }
     
     deinit {
         timer?.invalidate()
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        //NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
 
@@ -79,7 +78,7 @@ class ButlerTimer: NSObject {
     func updateBedTime(notification: NSNotification) {
         if let theObject = notification.object as? EndSliderView {
             // calculateEndDate will return a new value again as it has changed by the user
-            self.bedDate = calculateEndDate
+            //self.bedDate = calculateEndDate
             
         }
     }
@@ -88,13 +87,13 @@ class ButlerTimer: NSObject {
     func updateStartTime(notification: NSNotification) {
         if let theObject = notification.object as? StartSliderView {
             // calculateStartDate will return a new value again as it has changed by the user
-            self.startDate = calculateStartDate
+            //self.startDate = calculateStartDate
             
         }
     }
     
     /// calculates the start date based on the current user value
-    var calculateStartDate: NSDate {
+    var startDate: NSDate {
         
         let calendar = NSCalendar.currentCalendar()
         let startOfDay = calendar.startOfDayForDate(NSDate())
@@ -106,7 +105,7 @@ class ButlerTimer: NSObject {
     }
     
     /// calculates the end date based on the current user value
-    var calculateEndDate: NSDate {
+    var bedDate: NSDate {
         let calendar = NSCalendar.currentCalendar()
         let startOfDay = calendar.startOfDayForDate(NSDate())
         // Convert seconds to int, we are sure we will not exceed max int value as we only have 86,000 seconds or less
@@ -121,26 +120,58 @@ class ButlerTimer: NSObject {
     
     /// Play sound should invalidate the current timer and schedule the next timer
     func playSound() {
+        let previousImage = AppDelegate.statusItem?.image
+        AppDelegate.statusItem?.image = butlerImage
         audioPlayer.playFile(userSelectedSound)
         NSLog("Sound played!")
-        calculateNewTimer()
+        calculateNewTimer(nil)
+        AppDelegate.statusItem?.image = previousImage
     }
     
-    func calculateNewTimer() {
+    func calculateNewTimer(date: NSDate?) {
         //Invalidate curent timer
         if let theTimer = timer {
             theTimer.invalidate()
         }
         
-        let newInterval = randomInterval
+        var currentDate: NSDate
         
+        if let theDate = date {
+            currentDate = theDate
+        } else {
+            currentDate = NSDate()
+        }
+        var newInterval = randomInterval
+        var dateAfterInterval = NSDate(timeInterval: randomInterval, sinceDate: currentDate)
         //Analyse interval:
         // 1. If Now + interval or Now alone are before start time (date), create interval from now until after start date + (5-20min)
+        if self.startDate.isGreaterThan(dateAfterInterval) {
+            newInterval = self.startDate.timeIntervalSinceDate(currentDate) + newInterval
+            setNewTimer(newInterval)
+        } else if dateAfterInterval.isGreaterThan(self.startDate) && self.bedDate.isGreaterThan(dateAfterInterval) {
+            setNewTimer(newInterval)
+        } else {
+            //the date will be after the interval so we calculate a new interval for tomorrow
+            let calendar = NSCalendar.currentCalendar()
+            let components = NSDateComponents()
+            components.day = 1
+            components.second = Int(newInterval)
+            let theNewDate = calendar.dateByAddingComponents(components, toDate: self.startDate, options: nil)
+            newInterval = theNewDate!.timeIntervalSinceDate(currentDate)
+            setNewTimer(newInterval)
+        }
         // 2. if Now is after user start time and before user bed time and now + interval is also after start and before end, use the unmodified interval
         // 3. if now is before end date but now + interval is after end date, create new interval until next day start date + 5-20min)
         //4. if now is after end date, create new interval until next day start date + 5-20min
         
         
+    }
+    
+    /// Invalidates the current timer and sets a new timer using the specified interval
+    func setNewTimer(timeInterval: NSTimeInterval) {
+        // Shcedule timer with the initial value
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(timeInterval, target: self, selector: "playSound", userInfo: nil, repeats: false)
+        NSLog("Timer created for interval: \(timeInterval)")
     }
     
     func isIntvervalAfterUserBedTime(interval: NSTimeInterval) -> Bool {
@@ -158,8 +189,14 @@ class ButlerTimer: NSObject {
     /// ref: http://stackoverflow.com/questions/3420581/how-to-select-range-of-values-when-using-arc4random
     /// ref: https://en.wikipedia.org/wiki/Fisher–Yates_shuffle#Modulo_bias
     var randomInterval: NSTimeInterval {
+        
+        /*
+        
         let source = arc4random_uniform(901) // should return a random number between 0 and 900
         return NSTimeInterval(source + 300) // adding 300 will ensure that it will always be from 300 to 1200
+
+        */
+        return testInteval
     }
     
     var testInteval: NSTimeInterval {
