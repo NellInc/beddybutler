@@ -83,6 +83,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             case .runStartup:
                 let theKey = sharedUserDefaults.objectForKey(key.rawValue) as? Bool
                 if theKey == nil { registerValue(false, key.rawValue) }
+            case .frequency:
+                let theKey == sharedUserDefaults.objectForKey(key.rawValue) as? Double
+                if the key == nil { registerValue(5.00, key.rawValue) }
             default:
                 break
 

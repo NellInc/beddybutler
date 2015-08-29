@@ -418,10 +418,49 @@ THE SOFTWARE.</mutableString>
                                     <action selector="previewAudio:" target="XfG-lQ-9wD" id="UPH-N8-uro"/>
                                 </connections>
                             </button>
+                            <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B1b-pG-pTk">
+                                <rect key="frame" x="312" y="160" width="28" height="30"/>
+                                <animations/>
+                                <sliderCell key="cell" continuous="YES" alignment="left" maxValue="15" doubleValue="15" tickMarkPosition="above" allowsTickMarkValuesOnly="YES" sliderType="circular" id="aZa-AF-I1A"/>
+                                <connections>
+                                    <binding destination="45n-s1-uBZ" name="value" keyPath="values.frequency" id="26B-iL-GK6">
+                                        <dictionary key="options">
+                                            <bool key="NSValidatesImmediately" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </slider>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vbb-Iz-XKN" userLabel="Preview title">
+                                <rect key="frame" x="312" y="193" width="77" height="17"/>
+                                <animations/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Frequency" id="TBb-iB-Uk8">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="emh-Gg-8BX">
+                                <rect key="frame" x="344" y="163" width="123" height="20"/>
+                                <animations/>
+                                <textFieldCell key="cell" continuous="YES" sendsActionOnEndEditing="YES" placeholderString="0" id="uBE-WV-dCN">
+                                    <customFormatter key="formatter" id="acU-GB-krY" customClass="RandomnessFormatter" customModule="Beddy_Butler" customModuleProvider="target"/>
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="45n-s1-uBZ" name="value" keyPath="values.frequency" id="eP4-av-Q2J">
+                                        <dictionary key="options">
+                                            <bool key="NSValidatesImmediately" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </textField>
                         </subviews>
                         <animations/>
                     </view>
                     <connections>
+                        <outlet property="customRandomnessFormatter" destination="acU-GB-krY" id="Vxy-We-hjp"/>
                         <outlet property="endSliderView" destination="Tz0-rZ-dUP" id="XTB-Xg-DyL"/>
                         <outlet property="endTimeTextValue" destination="txJ-dy-GqU" id="Qdf-C8-fj4"/>
                         <outlet property="startSliderView" destination="YtT-pT-fk4" id="32T-RJ-FQ2"/>

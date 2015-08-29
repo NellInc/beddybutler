@@ -29,14 +29,16 @@ class StartSliderView: NSSlider {
     
     override func mouseDown(theEvent: NSEvent) {
         super.mouseDown(theEvent)
-        NSNotificationCenter.defaultCenter().postNotificationName("startKeyChanged", object: self)
+        NSNotificationCenter.defaultCenter().postNotificationName(ObserverKeys.startSliderChanged.rawValue, object: self)
            // NSLog("int value changed! \(self.doubleValue)")
+        // Notify observers so that timer updates too
+        NSNotificationCenter.defaultCenter().postNotificationName(ObserverKeys.userPreferenceChanged.rawValue, object: self)
         
     }
     
     override var doubleValue: Double {
         didSet{
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "restrictStartValue:", name: "endKeyChanged", object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "restrictStartValue:", name: ObserverKeys.endSliderChanged.rawValue, object: nil)
             NSLog("property call, new value for start: \(self.doubleValue)")
         }
     }
@@ -48,8 +50,6 @@ class StartSliderView: NSSlider {
             if self.doubleValue > slider.doubleValue  {
                 //Update the value we stored in the standard user defaults. This will trigger an update in our view through cocoa bindings
                 NSUserDefaults.standardUserDefaults().setObject(slider.doubleValue - 30, forKey: UserDefaultKeys.startTimeValue.rawValue)
-                // Notify observers so that timer updates too
-                NSNotificationCenter.defaultCenter().postNotificationName(ObserverKeys.startTimeValueChanged.rawValue, object: self)
                 NSLog("observer triggered for StartValue, new value: \(self.doubleValue)")
             }
         }

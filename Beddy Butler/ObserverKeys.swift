@@ -9,9 +9,7 @@
 import Foundation
 
 enum ObserverKeys: String {
-    case bedTimeValueChanged = "bedTimeValueChanged"
-    case startTimeValueChanged = "startTimeValueChanged"
-    case selectedSoundChanged = "selectedSoundChanged"
-    case startSliderChanged = "startSliderChanged"
-    case endSliderChanged = "endSliderChanged"
+    case userPreferenceChanged = "userPreferenceChanged" // Used to notify the ButlerTimer that it should recalculate a timer
+    case startSliderChanged = "startSliderChanged" // Used to notify the end slider that it should change to a valid position
+    case endSliderChanged = "endSliderChanged" // Used to notify the start slider that it should changed to a valid position
 }

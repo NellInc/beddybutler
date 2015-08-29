@@ -11,7 +11,7 @@ import Cocoa
 class PreferencesViewController: NSViewController, NSTextFieldDelegate {
     
     //MARK: Properties
-
+    
     var audioPlayer: AudioPlayer = AudioPlayer()
 
     @IBOutlet weak var startTimeTextValue: NSTextField!
@@ -21,12 +21,17 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
     
     @IBOutlet weak var endSliderView: EndSliderView!
     
+//    var representedTimerRandomness: String {
+//        let endRange = (self.timerRandomness * 0.7) + self.timerRandomness
+//        return "\(self.timerRandomness) to \(endRange) min."
+//    }
+    
     //MARK: View Main Events
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+       
         // Do any additional setup after loading the view.
     }
     

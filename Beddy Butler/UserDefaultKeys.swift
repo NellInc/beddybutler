@@ -16,6 +16,7 @@ enum UserDefaultKeys: String {
     case startTimeValue = "startTimeValue"
     case runStartup = "runStartup"
     case selectedSound = "selectedSound"
+    case frequency = "frequency"
     // keep an array of all the values to iterate through them
-    static let allValues = [bedTimeValue, startTimeValue, runStartup, selectedSound]
+    static let allValues = [bedTimeValue, startTimeValue, runStartup, selectedSound,frequency]
 }

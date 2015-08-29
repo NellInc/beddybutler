@@ -57,14 +57,15 @@ class ButlerTimer: NSObject {
         //self.bedDate = calculateEndDate
         self.mainInterval = calculateMainInterval
     
+        // may be used later to show a butler icon while butling
         butlerImage?.setTemplate(true)
         
         // Not to be called directly...
-        calculateNewTimer(nil)
+        calculateNewTimer()
         
-        // Register observers to populate user start time and bed time with values when the value changes
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateBedTime:", name: ObserverKeys.bedTimeValueChanged.rawValue , object: nil)
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateStartTime:", name: ObserverKeys.startTimeValueChanged.rawValue , object: nil)
+        // Register observers to recalculate the timer
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "calculateNewTimer", name: ObserverKeys.userPreferenceChanged.rawValue , object: nil)
+        
        
     }
     
@@ -124,23 +125,18 @@ class ButlerTimer: NSObject {
         AppDelegate.statusItem?.image = butlerImage
         audioPlayer.playFile(userSelectedSound)
         NSLog("Sound played!")
-        calculateNewTimer(nil)
+        calculateNewTimer()
         AppDelegate.statusItem?.image = previousImage
     }
     
-    func calculateNewTimer(date: NSDate?) {
+    func calculateNewTimer() {
         //Invalidate curent timer
         if let theTimer = timer {
             theTimer.invalidate()
         }
         
-        var currentDate: NSDate
+        let currentDate = NSDate()
         
-        if let theDate = date {
-            currentDate = theDate
-        } else {
-            currentDate = NSDate()
-        }
         var newInterval = randomInterval
         var dateAfterInterval = NSDate(timeInterval: randomInterval, sinceDate: currentDate)
         //Analyse interval:
