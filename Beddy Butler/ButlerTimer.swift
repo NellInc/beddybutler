@@ -167,6 +167,7 @@ class ButlerTimer: NSObject {
     func setNewTimer(timeInterval: NSTimeInterval) {
         // Shcedule timer with the initial value
         self.timer = NSTimer.scheduledTimerWithTimeInterval(timeInterval, target: self, selector: "playSound", userInfo: nil, repeats: false)
+        NSRunLoop.currentRunLoop().addTimer(self.timer!, forMode: NSRunLoopCommonModes)
         NSLog("Timer created for interval: \(timeInterval)")
     }
     
@@ -186,13 +187,20 @@ class ButlerTimer: NSObject {
     /// ref: https://en.wikipedia.org/wiki/Fisher–Yates_shuffle#Modulo_bias
     var randomInterval: NSTimeInterval {
         
-        /*
+        var randomStart: UInt32
+        var randomEnd: UInt32
         
-        let source = arc4random_uniform(901) // should return a random number between 0 and 900
-        return NSTimeInterval(source + 300) // adding 300 will ensure that it will always be from 300 to 1200
+        if let theKey = NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.frequency.rawValue) as? Double {
+            randomStart = UInt32(theKey * 60)
+            randomEnd = UInt32( ( (theKey * 0.7) + theKey) * 60 )
+        } else {
+            randomStart = 300
+            randomEnd = 901
+        }
+        
+        let source = arc4random_uniform(randomEnd) // should return a random number between 0 and 900
+        return NSTimeInterval(source + randomStart) // adding 300 will ensure that it will always be from 300 to 1200
 
-        */
-        return testInteval
     }
     
     var testInteval: NSTimeInterval {

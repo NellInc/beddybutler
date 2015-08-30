@@ -418,7 +418,7 @@ THE SOFTWARE.</mutableString>
                                     <action selector="previewAudio:" target="XfG-lQ-9wD" id="UPH-N8-uro"/>
                                 </connections>
                             </button>
-                            <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B1b-pG-pTk">
+                            <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B1b-pG-pTk" customClass="FrequencySlider" customModule="Beddy_Butler" customModuleProvider="target">
                                 <rect key="frame" x="312" y="160" width="28" height="30"/>
                                 <animations/>
                                 <sliderCell key="cell" continuous="YES" alignment="left" maxValue="15" doubleValue="15" tickMarkPosition="above" allowsTickMarkValuesOnly="YES" sliderType="circular" id="aZa-AF-I1A"/>

@@ -22,7 +22,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var sharedUserDefaults: NSUserDefaults {
         return NSUserDefaults.standardUserDefaults()
     }
-
+    
+    func applicationDidBecomeActive(notification: NSNotification) {
+        if let theButlerTimer = butlerTimer {
+            theButlerTimer.calculateNewTimer()
+        } else {
+            butlerTimer = ButlerTimer()
+        }
+    }
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Make a status bar that has variable length
@@ -49,7 +56,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         //create a new ButlerTimer
         self.butlerTimer = ButlerTimer()
-
+        
+    
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
