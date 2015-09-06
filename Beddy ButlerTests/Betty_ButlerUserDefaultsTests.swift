@@ -8,6 +8,7 @@
 
 import Cocoa
 import XCTest
+@testable import Beddy_Butler
 
 class Betty_ButlerUserDefaultsTests: XCTestCase {
 

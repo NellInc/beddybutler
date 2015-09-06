@@ -17,21 +17,23 @@ class EndSliderView: NSSlider {
     }
     
     override func mouseDown(theEvent: NSEvent) {
+        
         super.mouseDown(theEvent)
-        NSNotificationCenter.defaultCenter().postNotificationName(ObserverKeys.endSliderChanged.rawValue, object: self)
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.endSliderChanged.rawValue, object: self)
         //NSLog("int value changed! \(self.doubleValue)")
         //Notify observers so that timer updates too
-        NSNotificationCenter.defaultCenter().postNotificationName(ObserverKeys.userPreferenceChanged.rawValue, object: self)
+        NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.userPreferenceChanged.rawValue, object: self)
         
     }
     
     override var doubleValue: Double {
         didSet {
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "restrictEndValue:", name: ObserverKeys.startSliderChanged.rawValue, object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "restrictEndValue:", name: NotificationKeys.startSliderChanged.rawValue, object: nil)
         }
     }
     
-    @objc func restrictEndValue(notification: NSNotification) {
+    func restrictEndValue(notification: NSNotification) {
         if let slider = notification.object as? StartSliderView {
             //if the current end value is lower than the start value, increase the end value to the same as start + 30 seconds
             if self.doubleValue < slider.doubleValue  {

@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import Beddy_Butler
 
 class Beddy_ButlerAudioTests: XCTestCase {
     

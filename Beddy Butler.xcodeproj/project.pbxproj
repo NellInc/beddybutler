@@ -7,29 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D1347351B9CBAC30069643B /* SMDoubleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1347321B9CBAC30069643B /* SMDoubleSlider.m */; settings = {ASSET_TAGS = (); }; };
+		2D1347361B9CBAC30069643B /* SMDoubleSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1347341B9CBAC30069643B /* SMDoubleSliderCell.m */; settings = {ASSET_TAGS = (); }; };
 		2D1C55071B7FBBED00EC02FD /* StartSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C55061B7FBBED00EC02FD /* StartSliderView.swift */; };
 		2D1C55091B7FBBF200EC02FD /* EndSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C55081B7FBBF200EC02FD /* EndSliderView.swift */; };
 		2D20F5B81B84CF3F00FE7EFC /* ButlerTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D20F5B71B84CF3F00FE7EFC /* ButlerTimer.swift */; };
 		2D25EE8F1B7920E8004B88BC /* PanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D25EE8E1B7920E8004B88BC /* PanelViewController.swift */; };
+		2D2D56F21B9CD68C00705495 /* NotificationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2D56F11B9CD68C00705495 /* NotificationKeys.swift */; settings = {ASSET_TAGS = (); }; };
 		2D30884B1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D30884A1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift */; };
 		2D32ADB81B7FBA0500E03480 /* Insistent.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2D32ADB71B7FBA0500E03480 /* Insistent.aiff */; };
 		2D32ADBA1B7FBA0B00E03480 /* Shy.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2D32ADB91B7FBA0B00E03480 /* Shy.aiff */; };
 		2D32ADBC1B7FBA2B00E03480 /* Zombie.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2D32ADBB1B7FBA2B00E03480 /* Zombie.aiff */; };
 		2D4B84851B87230F00735187 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B84841B87230F00735187 /* UserDefaultKeys.swift */; };
-		2D4B84861B87256900735187 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B84841B87230F00735187 /* UserDefaultKeys.swift */; };
-		2D4B84881B87362200735187 /* ObserverKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B84871B87362200735187 /* ObserverKeys.swift */; };
-		2D5279AD1B9C73BB007B15CA /* SMDoubleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5279AA1B9C73BB007B15CA /* SMDoubleSlider.m */; };
-		2D5279AE1B9C73BB007B15CA /* SMDoubleSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5279AC1B9C73BB007B15CA /* SMDoubleSliderCell.m */; };
 		2D5AD2191B87597A008953B1 /* Beddy_ButlerTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5AD2181B87597A008953B1 /* Beddy_ButlerTimerTests.swift */; };
-		2D5AD21A1B875BF3008953B1 /* ButlerTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D20F5B71B84CF3F00FE7EFC /* ButlerTimer.swift */; };
-		2D5AD21B1B876C2C008953B1 /* ObserverKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B84871B87362200735187 /* ObserverKeys.swift */; };
-		2D9B85301B8362AB002795F8 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC767001B78D25F00866072 /* PreferencesViewController.swift */; };
-		2D9B85311B836302002795F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC766FE1B78D25F00866072 /* AppDelegate.swift */; };
 		2D9B85331B83678F002795F8 /* Beddy_ButlerAudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9B85321B83678F002795F8 /* Beddy_ButlerAudioTests.swift */; };
 		2D9B85361B836944002795F8 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9B85351B836944002795F8 /* AudioPlayer.swift */; };
-		2D9B85371B836F0B002795F8 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9B85351B836944002795F8 /* AudioPlayer.swift */; };
-		2DBE39741B80F5CE005F2AD8 /* StartSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C55061B7FBBED00EC02FD /* StartSliderView.swift */; };
-		2DBE39751B80F5D0005F2AD8 /* EndSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C55081B7FBBF200EC02FD /* EndSliderView.swift */; };
 		2DC766FF1B78D25F00866072 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC766FE1B78D25F00866072 /* AppDelegate.swift */; };
 		2DC767011B78D25F00866072 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC767001B78D25F00866072 /* PreferencesViewController.swift */; };
 		2DC767031B78D25F00866072 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DC767021B78D25F00866072 /* Images.xcassets */; };
@@ -50,21 +42,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D1347311B9CBAC30069643B /* SMDoubleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDoubleSlider.h; sourceTree = "<group>"; };
+		2D1347321B9CBAC30069643B /* SMDoubleSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDoubleSlider.m; sourceTree = "<group>"; };
+		2D1347331B9CBAC30069643B /* SMDoubleSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDoubleSliderCell.h; sourceTree = "<group>"; };
+		2D1347341B9CBAC30069643B /* SMDoubleSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDoubleSliderCell.m; sourceTree = "<group>"; };
+		2D1347371B9CBE6C0069643B /* Beddy Butler-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Beddy Butler-Bridging-Header.h"; sourceTree = "<group>"; };
 		2D1C55061B7FBBED00EC02FD /* StartSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartSliderView.swift; sourceTree = "<group>"; };
 		2D1C55081B7FBBF200EC02FD /* EndSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndSliderView.swift; sourceTree = "<group>"; };
 		2D20F5B71B84CF3F00FE7EFC /* ButlerTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButlerTimer.swift; sourceTree = "<group>"; };
 		2D25EE8E1B7920E8004B88BC /* PanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelViewController.swift; sourceTree = "<group>"; };
+		2D2D56F11B9CD68C00705495 /* NotificationKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationKeys.swift; sourceTree = "<group>"; };
 		2D30884A1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Betty_ButlerUserDefaultsTests.swift; sourceTree = "<group>"; };
 		2D32ADB71B7FBA0500E03480 /* Insistent.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Insistent.aiff; sourceTree = "<group>"; };
 		2D32ADB91B7FBA0B00E03480 /* Shy.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Shy.aiff; sourceTree = "<group>"; };
 		2D32ADBB1B7FBA2B00E03480 /* Zombie.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Zombie.aiff; sourceTree = "<group>"; };
 		2D4B84841B87230F00735187 /* UserDefaultKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
-		2D4B84871B87362200735187 /* ObserverKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverKeys.swift; sourceTree = "<group>"; };
-		2D5279A81B9C73BA007B15CA /* Beddy Butler-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Beddy Butler-Bridging-Header.h"; sourceTree = "<group>"; };
-		2D5279A91B9C73BB007B15CA /* SMDoubleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDoubleSlider.h; sourceTree = "<group>"; };
-		2D5279AA1B9C73BB007B15CA /* SMDoubleSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDoubleSlider.m; sourceTree = "<group>"; };
-		2D5279AB1B9C73BB007B15CA /* SMDoubleSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDoubleSliderCell.h; sourceTree = "<group>"; };
-		2D5279AC1B9C73BB007B15CA /* SMDoubleSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDoubleSliderCell.m; sourceTree = "<group>"; };
 		2D5AD2181B87597A008953B1 /* Beddy_ButlerTimerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beddy_ButlerTimerTests.swift; sourceTree = "<group>"; };
 		2D9B85321B83678F002795F8 /* Beddy_ButlerAudioTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beddy_ButlerAudioTests.swift; sourceTree = "<group>"; };
 		2D9B85351B836944002795F8 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
@@ -102,11 +94,11 @@
 		2D1E21C31B9C67AD004215EA /* SMDoubleSlider Framework */ = {
 			isa = PBXGroup;
 			children = (
-				2D5279A91B9C73BB007B15CA /* SMDoubleSlider.h */,
-				2D5279AA1B9C73BB007B15CA /* SMDoubleSlider.m */,
-				2D5279AB1B9C73BB007B15CA /* SMDoubleSliderCell.h */,
-				2D5279AC1B9C73BB007B15CA /* SMDoubleSliderCell.m */,
-				2D5279A81B9C73BA007B15CA /* Beddy Butler-Bridging-Header.h */,
+				2D1347311B9CBAC30069643B /* SMDoubleSlider.h */,
+				2D1347321B9CBAC30069643B /* SMDoubleSlider.m */,
+				2D1347331B9CBAC30069643B /* SMDoubleSliderCell.h */,
+				2D1347341B9CBAC30069643B /* SMDoubleSliderCell.m */,
+				2D1347371B9CBE6C0069643B /* Beddy Butler-Bridging-Header.h */,
 			);
 			name = "SMDoubleSlider Framework";
 			sourceTree = "<group>";
@@ -127,7 +119,7 @@
 				2D9B85351B836944002795F8 /* AudioPlayer.swift */,
 				2D20F5B71B84CF3F00FE7EFC /* ButlerTimer.swift */,
 				2D4B84841B87230F00735187 /* UserDefaultKeys.swift */,
-				2D4B84871B87362200735187 /* ObserverKeys.swift */,
+				2D2D56F11B9CD68C00705495 /* NotificationKeys.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -155,10 +147,10 @@
 			children = (
 				2DC766FE1B78D25F00866072 /* AppDelegate.swift */,
 				2DC7671C1B78D38600866072 /* Controllers */,
+				2D9B85341B83691E002795F8 /* Models */,
 				2DC7671B1B78D37A00866072 /* Views */,
 				2DC767021B78D25F00866072 /* Images.xcassets */,
 				2DC767041B78D25F00866072 /* Main.storyboard */,
-				2D9B85341B83691E002795F8 /* Models */,
 				2D32ADB61B7FB9EE00E03480 /* Assets */,
 				2D1E21C31B9C67AD004215EA /* SMDoubleSlider Framework */,
 				2DC766FC1B78D25F00866072 /* Supporting Files */,
@@ -322,14 +314,14 @@
 				2DD2B24C1B91E26B006318E8 /* RandomnessFormatter.swift in Sources */,
 				2D9B85361B836944002795F8 /* AudioPlayer.swift in Sources */,
 				2DC767011B78D25F00866072 /* PreferencesViewController.swift in Sources */,
-				2D5279AD1B9C73BB007B15CA /* SMDoubleSlider.m in Sources */,
+				2D1347351B9CBAC30069643B /* SMDoubleSlider.m in Sources */,
+				2D2D56F21B9CD68C00705495 /* NotificationKeys.swift in Sources */,
 				2D1C55091B7FBBF200EC02FD /* EndSliderView.swift in Sources */,
-				2D4B84881B87362200735187 /* ObserverKeys.swift in Sources */,
 				2D1C55071B7FBBED00EC02FD /* StartSliderView.swift in Sources */,
 				2DC766FF1B78D25F00866072 /* AppDelegate.swift in Sources */,
 				2DD2B24E1B91F6D1006318E8 /* FrequencySlider.swift in Sources */,
 				2D25EE8F1B7920E8004B88BC /* PanelViewController.swift in Sources */,
-				2D5279AE1B9C73BB007B15CA /* SMDoubleSliderCell.m in Sources */,
+				2D1347361B9CBAC30069643B /* SMDoubleSliderCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,18 +329,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D5AD21A1B875BF3008953B1 /* ButlerTimer.swift in Sources */,
 				2D5AD2191B87597A008953B1 /* Beddy_ButlerTimerTests.swift in Sources */,
-				2DBE39741B80F5CE005F2AD8 /* StartSliderView.swift in Sources */,
-				2DBE39751B80F5D0005F2AD8 /* EndSliderView.swift in Sources */,
 				2DC767121B78D25F00866072 /* Beddy_ButlerSliderTests.swift in Sources */,
-				2D5AD21B1B876C2C008953B1 /* ObserverKeys.swift in Sources */,
 				2D9B85331B83678F002795F8 /* Beddy_ButlerAudioTests.swift in Sources */,
-				2D9B85311B836302002795F8 /* AppDelegate.swift in Sources */,
 				2D30884B1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift in Sources */,
-				2D9B85301B8362AB002795F8 /* PreferencesViewController.swift in Sources */,
-				2D9B85371B836F0B002795F8 /* AudioPlayer.swift in Sources */,
-				2D4B84861B87256900735187 /* UserDefaultKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +379,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -440,6 +425,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

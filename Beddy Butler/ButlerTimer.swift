@@ -73,7 +73,7 @@ class ButlerTimer: NSObject {
         calculateNewTimer()
         
         // Register observers to recalculate the timer
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "calculateNewTimer", name: ObserverKeys.userPreferenceChanged.rawValue , object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "calculateNewTimer", name: NotificationKeys.userPreferenceChanged.rawValue , object: nil)
         
        
     }

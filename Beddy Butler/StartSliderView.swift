@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import NotificationCenter
 
 class StartSliderView: NSSlider {
 
@@ -18,33 +19,27 @@ class StartSliderView: NSSlider {
         //self.doubleValue = 200
     }
     
-    
-//    override var doubleValue: Double {
-//        didSet{
-//            super.doubleValue = self.doubleValue
-//           
-//        }
-//    }
-    
-    
     override func mouseDown(theEvent: NSEvent) {
         super.mouseDown(theEvent)
-        NSNotificationCenter.defaultCenter().postNotificationName(ObserverKeys.startSliderChanged.rawValue, object: self)
+  
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.startSliderChanged.rawValue, object: self)
            // NSLog("int value changed! \(self.doubleValue)")
         // Notify observers so that timer updates too
-        NSNotificationCenter.defaultCenter().postNotificationName(ObserverKeys.userPreferenceChanged.rawValue, object: self)
+        NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.userPreferenceChanged.rawValue, object: self)
         
     }
     
     override var doubleValue: Double {
         didSet{
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "restrictStartValue:", name: ObserverKeys.endSliderChanged.rawValue, object: nil)
+            
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "restrictStartValue:", name: NotificationKeys.endSliderChanged.rawValue, object: nil)
             NSLog("property call, new value for start: \(self.doubleValue)")
         }
     }
     
     
-    @objc func restrictStartValue(notification: NSNotification) {
+    func restrictStartValue(notification: NSNotification) {
         if let slider = notification.object as? EndSliderView {
             // if the current start value is higher than the end value, reduce it to the same as end - 30 seconds
             if self.doubleValue > slider.doubleValue  {
@@ -53,9 +48,6 @@ class StartSliderView: NSSlider {
                 NSLog("observer triggered for StartValue, new value: \(self.doubleValue)")
             }
         }
-
-        
-        
     }
 
     

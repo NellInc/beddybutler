@@ -19,7 +19,7 @@ class FrequencySlider: NSSlider {
     override func mouseDown(theEvent: NSEvent) {
         super.mouseDown(theEvent)
         // Notify the timer to recalculate
-        NSNotificationCenter.defaultCenter().postNotificationName(ObserverKeys.userPreferenceChanged.rawValue, object: self)
+        NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.userPreferenceChanged.rawValue, object: self)
     }
     
 }
