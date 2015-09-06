@@ -18,6 +18,8 @@
 		2D4B84851B87230F00735187 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B84841B87230F00735187 /* UserDefaultKeys.swift */; };
 		2D4B84861B87256900735187 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B84841B87230F00735187 /* UserDefaultKeys.swift */; };
 		2D4B84881B87362200735187 /* ObserverKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B84871B87362200735187 /* ObserverKeys.swift */; };
+		2D5279AD1B9C73BB007B15CA /* SMDoubleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5279AA1B9C73BB007B15CA /* SMDoubleSlider.m */; };
+		2D5279AE1B9C73BB007B15CA /* SMDoubleSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5279AC1B9C73BB007B15CA /* SMDoubleSliderCell.m */; };
 		2D5AD2191B87597A008953B1 /* Beddy_ButlerTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5AD2181B87597A008953B1 /* Beddy_ButlerTimerTests.swift */; };
 		2D5AD21A1B875BF3008953B1 /* ButlerTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D20F5B71B84CF3F00FE7EFC /* ButlerTimer.swift */; };
 		2D5AD21B1B876C2C008953B1 /* ObserverKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B84871B87362200735187 /* ObserverKeys.swift */; };
@@ -58,6 +60,11 @@
 		2D32ADBB1B7FBA2B00E03480 /* Zombie.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Zombie.aiff; sourceTree = "<group>"; };
 		2D4B84841B87230F00735187 /* UserDefaultKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		2D4B84871B87362200735187 /* ObserverKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverKeys.swift; sourceTree = "<group>"; };
+		2D5279A81B9C73BA007B15CA /* Beddy Butler-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Beddy Butler-Bridging-Header.h"; sourceTree = "<group>"; };
+		2D5279A91B9C73BB007B15CA /* SMDoubleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDoubleSlider.h; sourceTree = "<group>"; };
+		2D5279AA1B9C73BB007B15CA /* SMDoubleSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDoubleSlider.m; sourceTree = "<group>"; };
+		2D5279AB1B9C73BB007B15CA /* SMDoubleSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDoubleSliderCell.h; sourceTree = "<group>"; };
+		2D5279AC1B9C73BB007B15CA /* SMDoubleSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDoubleSliderCell.m; sourceTree = "<group>"; };
 		2D5AD2181B87597A008953B1 /* Beddy_ButlerTimerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beddy_ButlerTimerTests.swift; sourceTree = "<group>"; };
 		2D9B85321B83678F002795F8 /* Beddy_ButlerAudioTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beddy_ButlerAudioTests.swift; sourceTree = "<group>"; };
 		2D9B85351B836944002795F8 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
@@ -95,6 +102,11 @@
 		2D1E21C31B9C67AD004215EA /* SMDoubleSlider Framework */ = {
 			isa = PBXGroup;
 			children = (
+				2D5279A91B9C73BB007B15CA /* SMDoubleSlider.h */,
+				2D5279AA1B9C73BB007B15CA /* SMDoubleSlider.m */,
+				2D5279AB1B9C73BB007B15CA /* SMDoubleSliderCell.h */,
+				2D5279AC1B9C73BB007B15CA /* SMDoubleSliderCell.m */,
+				2D5279A81B9C73BA007B15CA /* Beddy Butler-Bridging-Header.h */,
 			);
 			name = "SMDoubleSlider Framework";
 			sourceTree = "<group>";
@@ -310,12 +322,14 @@
 				2DD2B24C1B91E26B006318E8 /* RandomnessFormatter.swift in Sources */,
 				2D9B85361B836944002795F8 /* AudioPlayer.swift in Sources */,
 				2DC767011B78D25F00866072 /* PreferencesViewController.swift in Sources */,
+				2D5279AD1B9C73BB007B15CA /* SMDoubleSlider.m in Sources */,
 				2D1C55091B7FBBF200EC02FD /* EndSliderView.swift in Sources */,
 				2D4B84881B87362200735187 /* ObserverKeys.swift in Sources */,
 				2D1C55071B7FBBED00EC02FD /* StartSliderView.swift in Sources */,
 				2DC766FF1B78D25F00866072 /* AppDelegate.swift in Sources */,
 				2DD2B24E1B91F6D1006318E8 /* FrequencySlider.swift in Sources */,
 				2D25EE8F1B7920E8004B88BC /* PanelViewController.swift in Sources */,
+				2D5279AE1B9C73BB007B15CA /* SMDoubleSliderCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,11 +458,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Beddy Butler/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Beddy Butler/Beddy Butler-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -456,11 +473,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Beddy Butler/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Beddy Butler/Beddy Butler-Bridging-Header.h";
 			};
 			name = Release;
 		};
