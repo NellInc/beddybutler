@@ -78,16 +78,16 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
     }
     
     /// Updates the status title to the title of the selected cell (i.e. Shy, Insistent, or Zombie.
-    @IBAction func updateStatusTitle(sender: AnyObject) {
-        
-        if let selectedItem = sender as? NSMatrix {
-            if let selectedCell: NSButtonCell = selectedItem.selectedCell() as? NSButtonCell {
-                //AppDelegate.statusItem!.title = selectedCell.title
-            }
-            
-        }
-        
-    }
+//    @IBAction func updateStatusTitle(sender: AnyObject) {
+//        
+//        if let selectedItem = sender as? NSMatrix {
+//            if let _: NSButtonCell = selectedItem.selectedCell() as? NSButtonCell {
+//                //AppDelegate.statusItem!.title = selectedCell.title
+//            }
+//            
+//        }
+//        
+//    }
 
     
 

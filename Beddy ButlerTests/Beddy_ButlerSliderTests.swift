@@ -21,7 +21,7 @@ class Beddy_ButlerSliderTests: XCTestCase {
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
        startSlider = StartSliderView()
         endSlider = EndSliderView()
-        preferencesViewController = storyboard?.instantiateControllerWithIdentifier("Preferences Storyboard") as? PreferencesViewController
+        preferencesViewController = storyboard.instantiateControllerWithIdentifier("Preferences Storyboard") as? PreferencesViewController
         let _ = preferencesViewController?.view
     }
     

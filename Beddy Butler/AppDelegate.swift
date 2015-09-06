@@ -98,9 +98,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             case .isMuted:
                 let theKey = sharedUserDefaults.objectForKey(key.rawValue) as? Double
                 if theKey == nil { registerValue(false, key.rawValue) }
-            default:
-                break
-
             }
         
         

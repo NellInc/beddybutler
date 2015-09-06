@@ -120,13 +120,13 @@ class Beddy_ButlerTimerTests: XCTestCase {
         
         //Make a date before the current start date
         let calendar = NSCalendar.currentCalendar()
-        let startOfDay = calendar.startOfDayForDate(NSDate())
+        _ = calendar.startOfDayForDate(NSDate())
         
         let currentDate = NSDate()
         
         theButlerTimer.calculateNewTimer()
         
-        var dateAfterInterval = theButlerTimer.timer?.fireDate
+        let dateAfterInterval = theButlerTimer.timer?.fireDate
         NSLog("Timer interval: \(theButlerTimer.timer!.fireDate.timeIntervalSinceDate(currentDate))")
         NSLog("Simulated current date: \(currentDate)")
         NSLog("date after Inverval: \(dateAfterInterval)")
@@ -140,8 +140,8 @@ class Beddy_ButlerTimerTests: XCTestCase {
              XCTAssertTrue(dateAfterInterval!.isGreaterThan(theButlerTimer.bedDate), "When calculating timer after startDate, timer should execute after today's bedDate")
             let components = NSDateComponents()
             components.day = 1
-            let tomorrowsStartDate = calendar.dateByAddingComponents(components, toDate: theButlerTimer.startDate, options: nil)
-             let tomorrowsEndDate = calendar.dateByAddingComponents(components, toDate: theButlerTimer.bedDate, options: nil)
+            let tomorrowsStartDate = calendar.dateByAddingComponents(components, toDate: theButlerTimer.startDate, options: NSCalendarOptions.MatchFirst)
+             let tomorrowsEndDate = calendar.dateByAddingComponents(components, toDate: theButlerTimer.bedDate, options: NSCalendarOptions.MatchFirst)
              XCTAssertTrue(dateAfterInterval!.isGreaterThan(tomorrowsStartDate), "When calculating timer after startDate, timer should execute after startDate of next day and before enddate of next day")
              XCTAssertTrue(tomorrowsEndDate!.isGreaterThan(dateAfterInterval), "When calculating timer after startDate, timer should execute after startDate of next day and before enddate of next day")
 

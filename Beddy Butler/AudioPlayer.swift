@@ -49,9 +49,12 @@ class AudioPlayer {
             withExtension: "aiff")
 
         // play the file
-        var error: NSError?
-        audioPlayer = AVAudioPlayer(contentsOfURL: soundFileURL, error: &error)
-        audioPlayer?.play()
+        do {
+            try audioPlayer = AVAudioPlayer(contentsOfURL: soundFileURL!)
+            audioPlayer?.play()
+        } catch {
+            NSLog("File could not be played")
+        }
         
     }
     

@@ -15,13 +15,17 @@ class RandomnessFormatter: NSFormatter {
         let number = obj as! Double
         let secondNumber = (number * 0.7) + number
         
-        var numberEndIndex = number < 10 ? 3 : 4
-        var secondNumberEndIndex = secondNumber < 10 ? 3 : 4
+        //var numberEndIndex = number < 10 ? 3 : 4
+        //var secondNumberEndIndex = secondNumber < 10 ? 3 : 4
         
-        var stringForm = number.description.substringToIndex(advance(number.description.startIndex, numberEndIndex))
-            
+        
+        let firstStringNumber = String(format:"%.2f", number)
+        let secondStringNumber = String(format:"%.2f", secondNumber)
+        
+        var stringForm: String = firstStringNumber
+        
         stringForm = stringForm + " - "
-        stringForm = stringForm + secondNumber.description.substringToIndex(advance(secondNumber.description.startIndex, secondNumberEndIndex)) + " min."
+        stringForm = stringForm + secondStringNumber + " min."
         
         return stringForm
         
@@ -31,13 +35,13 @@ class RandomnessFormatter: NSFormatter {
     override func getObjectValue(obj: AutoreleasingUnsafeMutablePointer<AnyObject?>, forString string: String, errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>) -> Bool {
         
         
-        var intResult: Int
-        var scanner: NSScanner
-        var returnValue: Bool
+        //var intResult: Int
+        //var scanner: NSScanner
+        //var returnValue: Bool
         
         var returnString = String()
         
-        for char in string.generate() {
+        for char in string.characters {
             if char != "-" {
                 returnString = returnString + String(char)
             } else
@@ -47,7 +51,7 @@ class RandomnessFormatter: NSFormatter {
         }
         
         
-        if let theInt =  returnString.toInt() {
+        if let _ = Int(returnString) {
             return true
         } else
         {

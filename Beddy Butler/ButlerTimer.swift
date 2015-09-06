@@ -67,7 +67,7 @@ class ButlerTimer: NSObject {
         self.mainInterval = calculateMainInterval
     
         // may be used later to show a butler icon while butling
-        butlerImage?.setTemplate(true)
+        //butlerImage?.setTemplate(true)
         
         // Not to be called directly...
         calculateNewTimer()
@@ -86,7 +86,7 @@ class ButlerTimer: NSObject {
 
     /// When the end time slider changes, it should post itself in a notification so that updateBedTime updates the userEndTime
     func updateBedTime(notification: NSNotification) {
-        if let theObject = notification.object as? EndSliderView {
+        if let _ = notification.object as? EndSliderView {
             // calculateEndDate will return a new value again as it has changed by the user
             //self.bedDate = calculateEndDate
             
@@ -95,7 +95,7 @@ class ButlerTimer: NSObject {
     
      /// When the start time slider changes, it should post itself in a notification so that updateStartTime updates the userStartTime
     func updateStartTime(notification: NSNotification) {
-        if let theObject = notification.object as? StartSliderView {
+        if let _ = notification.object as? StartSliderView {
             // calculateStartDate will return a new value again as it has changed by the user
             //self.startDate = calculateStartDate
             
@@ -109,7 +109,7 @@ class ButlerTimer: NSObject {
         let startOfDay = calendar.startOfDayForDate(NSDate())
         // Convert seconds to int, we are sure we will not exceed max int value as we only have 86,000 seconds or less
         let seconds = Int(self.userStartTime!)
-        return calendar.dateByAddingUnit(NSCalendarUnit.CalendarUnitSecond, value: seconds, toDate: startOfDay, options: nil)!
+        return calendar.dateByAddingUnit(NSCalendarUnit.Second, value: seconds, toDate: startOfDay, options: NSCalendarOptions.MatchFirst)!
         
         //return NSDate(timeIntervalSinceNow: self.userStartTime!)
     }
@@ -120,7 +120,7 @@ class ButlerTimer: NSObject {
         let startOfDay = calendar.startOfDayForDate(NSDate())
         // Convert seconds to int, we are sure we will not exceed max int value as we only have 86,000 seconds or less
         let seconds = Int(self.userBedTime!)
-        return calendar.dateByAddingUnit(NSCalendarUnit.CalendarUnitSecond, value: seconds, toDate: startOfDay, options: nil)!
+        return calendar.dateByAddingUnit(NSCalendarUnit.Second, value: seconds, toDate: startOfDay, options: NSCalendarOptions.MatchFirst)!
     }
     
     /// Calculates the main interval used for the timers, should only be used when both start and bed date have been calculated
@@ -152,7 +152,7 @@ class ButlerTimer: NSObject {
         let currentDate = NSDate()
         
         var newInterval = randomInterval
-        var dateAfterInterval = NSDate(timeInterval: randomInterval, sinceDate: currentDate)
+        let dateAfterInterval = NSDate(timeInterval: randomInterval, sinceDate: currentDate)
         //Analyse interval:
         // 1. If Now + interval or Now alone are before start time (date), create interval from now until after start date + (5-20min)
         if self.startDate.isGreaterThan(dateAfterInterval) {
@@ -166,7 +166,7 @@ class ButlerTimer: NSObject {
             let components = NSDateComponents()
             components.day = 1
             components.second = Int(newInterval)
-            let theNewDate = calendar.dateByAddingComponents(components, toDate: self.startDate, options: nil)
+            let theNewDate = calendar.dateByAddingComponents(components, toDate: self.startDate, options: NSCalendarOptions.MatchFirst)
             newInterval = theNewDate!.timeIntervalSinceDate(currentDate)
             setNewTimer(newInterval)
             // finally we make sure that the sound is not muted anymore
