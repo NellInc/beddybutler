@@ -82,7 +82,7 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         
         if let selectedItem = sender as? NSMatrix {
             if let selectedCell: NSButtonCell = selectedItem.selectedCell() as? NSButtonCell {
-                AppDelegate.statusItem!.title = selectedCell.title
+                //AppDelegate.statusItem!.title = selectedCell.title
             }
             
         }

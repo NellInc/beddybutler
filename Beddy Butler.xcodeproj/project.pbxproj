@@ -92,6 +92,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D1E21C31B9C67AD004215EA /* SMDoubleSlider Framework */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "SMDoubleSlider Framework";
+			sourceTree = "<group>";
+		};
 		2D32ADB61B7FB9EE00E03480 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +148,7 @@
 				2DC767041B78D25F00866072 /* Main.storyboard */,
 				2D9B85341B83691E002795F8 /* Models */,
 				2D32ADB61B7FB9EE00E03480 /* Assets */,
+				2D1E21C31B9C67AD004215EA /* SMDoubleSlider Framework */,
 				2DC766FC1B78D25F00866072 /* Supporting Files */,
 			);
 			path = "Beddy Butler";

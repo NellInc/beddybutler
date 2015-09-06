@@ -38,6 +38,15 @@ class ButlerTimer: NSObject {
         return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.bedTimeValue.rawValue) as? Double
     }
     
+    var userMuteSound: Bool? {
+        set {
+            NSUserDefaults.standardUserDefaults().setValue(newValue, forKey: UserDefaultKeys.isMuted.rawValue)
+        }
+        get {
+            return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.isMuted.rawValue) as? Bool
+        }
+    }
+    
     var userSelectedSound: AudioPlayer.AudioFiles {
         if let audioFile = NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.selectedSound.rawValue) as? String {
             return AudioPlayer.AudioFiles(stringValue: audioFile)
@@ -121,12 +130,17 @@ class ButlerTimer: NSObject {
     
     /// Play sound should invalidate the current timer and schedule the next timer
     func playSound() {
-        let previousImage = AppDelegate.statusItem?.image
-        AppDelegate.statusItem?.image = butlerImage
-        audioPlayer.playFile(userSelectedSound)
-        NSLog("Sound played!")
+        //let previousImage = AppDelegate.statusItem?.image
+        //AppDelegate.statusItem?.image = butlerImage
+        if !userMuteSound! {
+            audioPlayer.playFile(userSelectedSound)
+            NSLog("Sound played!")
+        } else {
+            NSLog("Muted by user!")
+        }
+        
         calculateNewTimer()
-        AppDelegate.statusItem?.image = previousImage
+        //AppDelegate.statusItem?.image = previousImage
     }
     
     func calculateNewTimer() {
@@ -155,12 +169,9 @@ class ButlerTimer: NSObject {
             let theNewDate = calendar.dateByAddingComponents(components, toDate: self.startDate, options: nil)
             newInterval = theNewDate!.timeIntervalSinceDate(currentDate)
             setNewTimer(newInterval)
+            // finally we make sure that the sound is not muted anymore
+            userMuteSound = false
         }
-        // 2. if Now is after user start time and before user bed time and now + interval is also after start and before end, use the unmodified interval
-        // 3. if now is before end date but now + interval is after end date, create new interval until next day start date + 5-20min)
-        //4. if now is after end date, create new interval until next day start date + 5-20min
-        
-        
     }
     
     /// Invalidates the current timer and sets a new timer using the specified interval

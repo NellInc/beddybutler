@@ -43,7 +43,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AppDelegate.statusItem?.image = NSImage(named: "Moon")
         AppDelegate.statusItem?.image?.size = NSSize(width: 18, height: 18)
         // image should be set as tempate so that it changes when the user sets the menu bar to a dark theme
-        AppDelegate.statusItem?.image?.setTemplate(true)
+        // TODO: feature disabled for now, this may possibly be the issue to why it is not showing in Nell's mac
+        //AppDelegate.statusItem?.image?.setTemplate(true)
         
         // Set the menu that should appear when the item is clicked
         AppDelegate.statusItem!.menu = self.menu
@@ -94,6 +95,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             case .frequency:
                 let theKey = sharedUserDefaults.objectForKey(key.rawValue) as? Double
                 if theKey == nil { registerValue(5.00, key.rawValue) }
+            case .isMuted:
+                let theKey = sharedUserDefaults.objectForKey(key.rawValue) as? Double
+                if theKey == nil { registerValue(false, key.rawValue) }
             default:
                 break
 

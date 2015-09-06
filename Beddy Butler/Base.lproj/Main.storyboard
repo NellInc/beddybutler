@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A263e" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A279b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
@@ -14,6 +14,13 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Beddy Butler" systemMenu="apple" id="lfj-tC-u7F">
                                     <items>
+                                        <menuItem title="Not Now Old Chap" toolTip="Enable quiet mode for the rest of the night" id="uZv-iI-bVS" userLabel="Mute">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <binding destination="lQB-tK-Eio" name="value" keyPath="values.isMuted" id="K2P-hP-89g"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="DcW-2q-hc9"/>
                                         <menuItem title="About Beddy Butler" id="LsZ-vP-hFP">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
@@ -28,11 +35,6 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="YIf-r7-Yq2"/>
-                                        <menuItem title="Services" id="OS6-7w-18i">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <menu key="submenu" title="Services" systemMenu="services" id="cp3-mh-HGF"/>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="gmy-Kf-JO2"/>
                                         <menuItem title="Help" id="qkF-Xv-hBV">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <menu key="submenu" title="Help" systemMenu="help" id="FxK-a3-n3J"/>
@@ -68,6 +70,7 @@
                     </connections>
                 </customObject>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="lQB-tK-Eio"/>
             </objects>
             <point key="canvasLocation" x="27" y="-99"/>
         </scene>
@@ -103,9 +106,9 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VdI-JY-gCE">
-                                <rect key="frame" x="174" y="25" width="262" height="71"/>
+                                <rect key="frame" x="174" y="70" width="262" height="26"/>
                                 <animations/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Copyright (c) 2015 QuantaCorp." id="fbE-MI-sFy">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Copyright (c) 2015, Nell Watson Inc." id="fbE-MI-sFy">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -122,6 +125,15 @@
                                     <segue destination="4iy-qM-fVN" kind="popover" popoverAnchorView="7af-6i-GQq" popoverBehavior="t" preferredEdge="maxY" id="gYI-yu-Prc"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E6C-9P-qVe">
+                                <rect key="frame" x="174" y="49" width="262" height="26"/>
+                                <animations/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="All rights reserved." id="HSH-92-ifH">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <animations/>
                     </view>
@@ -135,43 +147,44 @@
             <objects>
                 <viewController title="License Agreement" id="4iy-qM-fVN" userLabel="License View Controller" sceneMemberID="viewController">
                     <view key="view" id="ft9-vC-Mfy">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="593" height="358"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4S-wQ-pp4">
-                                <rect key="frame" x="20" y="20" width="410" height="260"/>
-                                <clipView key="contentView" id="fLW-RS-vH5">
+                                <rect key="frame" x="16" y="15" width="561" height="328"/>
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="fLW-RS-vH5">
                                     <rect key="frame" x="1" y="1" width="223" height="133"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView editable="NO" importsGraphics="NO" baseWritingDirection="leftToRight" findStyle="panel" continuousSpellChecking="YES" verticallyResizable="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="2fU-H6-Xsl">
-                                            <rect key="frame" x="0.0" y="0.0" width="223" height="258"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="223" height="326"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <animations/>
-                                            <color key="textColor" red="0.22352941176470589" green="0.22352941176470589" blue="0.22352941176470589" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.20784313725490197" green="0.20784313725490197" blue="0.20784313725490197" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="408" height="258"/>
-                                            <size key="maxSize" width="463" height="10000000"/>
+                                            <size key="minSize" width="559" height="326"/>
+                                            <size key="maxSize" width="565" height="10000000"/>
                                             <attributedString key="textStorage">
                                                 <fragment>
-                                                    <mutableString key="content">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+                                                    <mutableString key="content">Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.</mutableString>
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</mutableString>
                                                     <attributes>
-                                                        <color key="NSColor" red="0.22352941176470589" green="0.22352941176470589" blue="0.22352941176470589" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="12" name="Verdana"/>
-                                                        <real key="NSKern" value="0.0"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36"/>
-                                                        <color key="NSStrokeColor" red="0.22352941176470589" green="0.22352941176470589" blue="0.22352941176470589" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="NSColor" red="0.20784313725490197" green="0.20784313725490197" blue="0.20784313725490197" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="13" name="Helvetica-Light"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0">
+                                                            <tabStops/>
+                                                        </paragraphStyle>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="408" height="258"/>
-                                            <size key="maxSize" width="463" height="10000000"/>
+                                            <size key="minSize" width="559" height="326"/>
+                                            <size key="maxSize" width="565" height="10000000"/>
                                         </textView>
                                     </subviews>
                                     <animations/>
@@ -191,17 +204,17 @@ THE SOFTWARE.</mutableString>
                             </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="P4S-wQ-pp4" secondAttribute="trailing" constant="20" symbolic="YES" id="MZq-Ht-RRY"/>
-                            <constraint firstAttribute="bottom" secondItem="P4S-wQ-pp4" secondAttribute="bottom" constant="20" symbolic="YES" id="PLD-K8-1s9"/>
-                            <constraint firstItem="P4S-wQ-pp4" firstAttribute="leading" secondItem="ft9-vC-Mfy" secondAttribute="leading" constant="20" symbolic="YES" id="PVH-Rd-ZFe"/>
-                            <constraint firstItem="P4S-wQ-pp4" firstAttribute="top" secondItem="ft9-vC-Mfy" secondAttribute="top" constant="20" symbolic="YES" id="SZ9-NS-mtH"/>
+                            <constraint firstAttribute="trailing" secondItem="P4S-wQ-pp4" secondAttribute="trailing" constant="16" id="MZq-Ht-RRY"/>
+                            <constraint firstAttribute="bottom" secondItem="P4S-wQ-pp4" secondAttribute="bottom" constant="15" id="PLD-K8-1s9"/>
+                            <constraint firstItem="P4S-wQ-pp4" firstAttribute="leading" secondItem="ft9-vC-Mfy" secondAttribute="leading" constant="16" id="PVH-Rd-ZFe"/>
+                            <constraint firstItem="P4S-wQ-pp4" firstAttribute="top" secondItem="ft9-vC-Mfy" secondAttribute="top" constant="15" id="SZ9-NS-mtH"/>
                         </constraints>
                         <animations/>
                     </view>
                 </viewController>
                 <customObject id="XFa-6x-myT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="437" y="795"/>
+            <point key="canvasLocation" x="508.5" y="824"/>
         </scene>
         <!--Preferences-->
         <scene sceneID="hIz-AP-VOD">
@@ -230,7 +243,7 @@ THE SOFTWARE.</mutableString>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jAX-7a-Ve5">
                                 <rect key="frame" x="16" y="216" width="118" height="24"/>
                                 <animations/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Buttler Sound" id="0Ea-IV-Ff8">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Butler Sound" id="0Ea-IV-Ff8">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
