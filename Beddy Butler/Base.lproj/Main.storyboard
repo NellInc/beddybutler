@@ -122,7 +122,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <segue destination="4iy-qM-fVN" kind="popover" popoverAnchorView="7af-6i-GQq" popoverBehavior="t" preferredEdge="maxY" id="gYI-yu-Prc"/>
+                                    <segue destination="4iy-qM-fVN" kind="sheet" id="gYI-yu-Prc"/>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E6C-9P-qVe">
@@ -147,44 +147,49 @@
             <objects>
                 <viewController title="License Agreement" id="4iy-qM-fVN" userLabel="License View Controller" sceneMemberID="viewController">
                     <view key="view" id="ft9-vC-Mfy">
-                        <rect key="frame" x="0.0" y="0.0" width="593" height="358"/>
+                        <rect key="frame" x="0.0" y="0.0" width="593" height="381"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4S-wQ-pp4">
-                                <rect key="frame" x="16" y="15" width="561" height="328"/>
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4S-wQ-pp4">
+                                <rect key="frame" x="20" y="52" width="553" height="309"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="fLW-RS-vH5">
-                                    <rect key="frame" x="1" y="1" width="223" height="133"/>
+                                    <rect key="frame" x="1" y="1" width="551" height="307"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView editable="NO" importsGraphics="NO" baseWritingDirection="leftToRight" findStyle="panel" continuousSpellChecking="YES" verticallyResizable="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="2fU-H6-Xsl">
-                                            <rect key="frame" x="0.0" y="0.0" width="223" height="326"/>
+                                        <textView editable="NO" importsGraphics="NO" horizontallyResizable="YES" baseWritingDirection="leftToRight" selectionGranularity="word" findStyle="panel" verticallyResizable="YES" quoteSubstitution="YES" dashSubstitution="YES" id="2fU-H6-Xsl">
+                                            <rect key="frame" x="0.0" y="0.0" width="500" height="509"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <animations/>
                                             <color key="textColor" red="0.20784313725490197" green="0.20784313725490197" blue="0.20784313725490197" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="559" height="326"/>
-                                            <size key="maxSize" width="565" height="10000000"/>
+                                            <size key="minSize" width="500" height="307"/>
+                                            <size key="maxSize" width="500.22620980612567" height="800"/>
                                             <attributedString key="textStorage">
                                                 <fragment>
-                                                    <mutableString key="content">Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+                                                    <mutableString key="content">Beddy Butler Copyright (c) 2015, Nell Watson Inc.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 
 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 
+3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</mutableString>
                                                     <attributes>
                                                         <color key="NSColor" red="0.20784313725490197" green="0.20784313725490197" blue="0.20784313725490197" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="13" name="Helvetica-Light"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0">
+                                                        <font key="NSFont" metaFont="message"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                             <tabStops/>
                                                         </paragraphStyle>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="559" height="326"/>
-                                            <size key="maxSize" width="565" height="10000000"/>
+                                            <size key="minSize" width="500" height="307"/>
+                                            <size key="maxSize" width="500.22620980612567" height="800"/>
                                         </textView>
                                     </subviews>
                                     <animations/>
@@ -196,25 +201,38 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                 </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="zDJ-DX-6vU">
-                                    <rect key="frame" x="544" y="1" width="16" height="326"/>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="zDJ-DX-6vU">
+                                    <rect key="frame" x="536" y="1" width="16" height="307"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                 </scroller>
                             </scrollView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sC7-yL-sGl">
+                                <rect key="frame" x="504" y="13" width="75" height="32"/>
+                                <animations/>
+                                <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0y6-i4-2G7">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="dismissController:" target="XFa-6x-myT" id="Sw2-B1-SG7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="P4S-wQ-pp4" secondAttribute="trailing" constant="16" id="MZq-Ht-RRY"/>
-                            <constraint firstAttribute="bottom" secondItem="P4S-wQ-pp4" secondAttribute="bottom" constant="15" id="PLD-K8-1s9"/>
-                            <constraint firstItem="P4S-wQ-pp4" firstAttribute="leading" secondItem="ft9-vC-Mfy" secondAttribute="leading" constant="16" id="PVH-Rd-ZFe"/>
-                            <constraint firstItem="P4S-wQ-pp4" firstAttribute="top" secondItem="ft9-vC-Mfy" secondAttribute="top" constant="15" id="SZ9-NS-mtH"/>
+                            <constraint firstItem="P4S-wQ-pp4" firstAttribute="trailing" secondItem="sC7-yL-sGl" secondAttribute="trailing" id="0zS-MY-Y44"/>
+                            <constraint firstItem="P4S-wQ-pp4" firstAttribute="top" secondItem="ft9-vC-Mfy" secondAttribute="top" constant="20" symbolic="YES" id="Fyd-W1-RFf"/>
+                            <constraint firstItem="P4S-wQ-pp4" firstAttribute="leading" secondItem="ft9-vC-Mfy" secondAttribute="leading" constant="20" symbolic="YES" id="JFS-em-XWa"/>
+                            <constraint firstItem="sC7-yL-sGl" firstAttribute="top" secondItem="P4S-wQ-pp4" secondAttribute="bottom" constant="11" id="JLL-MS-xFL"/>
+                            <constraint firstAttribute="trailing" secondItem="P4S-wQ-pp4" secondAttribute="trailing" constant="20" symbolic="YES" id="LBa-pw-Z2N"/>
+                            <constraint firstAttribute="bottom" secondItem="sC7-yL-sGl" secondAttribute="bottom" constant="20" symbolic="YES" id="key-pf-KVJ"/>
                         </constraints>
                         <animations/>
                     </view>
                 </viewController>
                 <customObject id="XFa-6x-myT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="508.5" y="824"/>
+            <point key="canvasLocation" x="508.5" y="835.5"/>
         </scene>
         <!--Preferences-->
         <scene sceneID="hIz-AP-VOD">
