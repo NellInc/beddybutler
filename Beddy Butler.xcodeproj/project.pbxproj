@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D1347351B9CBAC30069643B /* SMDoubleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1347321B9CBAC30069643B /* SMDoubleSlider.m */; settings = {ASSET_TAGS = (); }; };
-		2D1347361B9CBAC30069643B /* SMDoubleSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1347341B9CBAC30069643B /* SMDoubleSliderCell.m */; settings = {ASSET_TAGS = (); }; };
+		2D1347351B9CBAC30069643B /* SMDoubleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1347321B9CBAC30069643B /* SMDoubleSlider.m */; };
+		2D1347361B9CBAC30069643B /* SMDoubleSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1347341B9CBAC30069643B /* SMDoubleSliderCell.m */; };
 		2D1C55071B7FBBED00EC02FD /* StartSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C55061B7FBBED00EC02FD /* StartSliderView.swift */; };
 		2D1C55091B7FBBF200EC02FD /* EndSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C55081B7FBBF200EC02FD /* EndSliderView.swift */; };
 		2D20F5B81B84CF3F00FE7EFC /* ButlerTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D20F5B71B84CF3F00FE7EFC /* ButlerTimer.swift */; };
 		2D25EE8F1B7920E8004B88BC /* PanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D25EE8E1B7920E8004B88BC /* PanelViewController.swift */; };
-		2D2D56F21B9CD68C00705495 /* NotificationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2D56F11B9CD68C00705495 /* NotificationKeys.swift */; settings = {ASSET_TAGS = (); }; };
+		2D2D56F21B9CD68C00705495 /* NotificationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2D56F11B9CD68C00705495 /* NotificationKeys.swift */; };
 		2D30884B1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D30884A1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift */; };
 		2D32ADB81B7FBA0500E03480 /* Insistent.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2D32ADB71B7FBA0500E03480 /* Insistent.aiff */; };
 		2D32ADBA1B7FBA0B00E03480 /* Shy.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2D32ADB91B7FBA0B00E03480 /* Shy.aiff */; };
@@ -22,6 +22,8 @@
 		2D5AD2191B87597A008953B1 /* Beddy_ButlerTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5AD2181B87597A008953B1 /* Beddy_ButlerTimerTests.swift */; };
 		2D9B85331B83678F002795F8 /* Beddy_ButlerAudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9B85321B83678F002795F8 /* Beddy_ButlerAudioTests.swift */; };
 		2D9B85361B836944002795F8 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9B85351B836944002795F8 /* AudioPlayer.swift */; };
+		2DC1BE7C1BA0C86C0041A18C /* DoubleSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1BE7B1BA0C86C0041A18C /* DoubleSlider.swift */; };
+		2DC1BE7E1BA0C9E60041A18C /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1BE7D1BA0C9E60041A18C /* TestController.swift */; };
 		2DC766FF1B78D25F00866072 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC766FE1B78D25F00866072 /* AppDelegate.swift */; };
 		2DC767011B78D25F00866072 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC767001B78D25F00866072 /* PreferencesViewController.swift */; };
 		2DC767031B78D25F00866072 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DC767021B78D25F00866072 /* Images.xcassets */; };
@@ -60,6 +62,8 @@
 		2D5AD2181B87597A008953B1 /* Beddy_ButlerTimerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beddy_ButlerTimerTests.swift; sourceTree = "<group>"; };
 		2D9B85321B83678F002795F8 /* Beddy_ButlerAudioTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beddy_ButlerAudioTests.swift; sourceTree = "<group>"; };
 		2D9B85351B836944002795F8 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		2DC1BE7B1BA0C86C0041A18C /* DoubleSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleSlider.swift; sourceTree = "<group>"; };
+		2DC1BE7D1BA0C9E60041A18C /* TestController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
 		2DC766F91B78D25F00866072 /* Beddy Butler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Beddy Butler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DC766FD1B78D25F00866072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DC766FE1B78D25F00866072 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -193,6 +197,7 @@
 				2D1C55061B7FBBED00EC02FD /* StartSliderView.swift */,
 				2D1C55081B7FBBF200EC02FD /* EndSliderView.swift */,
 				2DD2B24B1B91E26B006318E8 /* RandomnessFormatter.swift */,
+				2DC1BE7B1BA0C86C0041A18C /* DoubleSlider.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -202,6 +207,7 @@
 			children = (
 				2D25EE8E1B7920E8004B88BC /* PanelViewController.swift */,
 				2DC767001B78D25F00866072 /* PreferencesViewController.swift */,
+				2DC1BE7D1BA0C9E60041A18C /* TestController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -251,7 +257,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "David Garces";
 				TargetAttributes = {
 					2DC766F81B78D25F00866072 = {
@@ -309,6 +315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DC1BE7E1BA0C9E60041A18C /* TestController.swift in Sources */,
 				2D4B84851B87230F00735187 /* UserDefaultKeys.swift in Sources */,
 				2D20F5B81B84CF3F00FE7EFC /* ButlerTimer.swift in Sources */,
 				2DD2B24C1B91E26B006318E8 /* RandomnessFormatter.swift in Sources */,
@@ -318,6 +325,7 @@
 				2D2D56F21B9CD68C00705495 /* NotificationKeys.swift in Sources */,
 				2D1C55091B7FBBF200EC02FD /* EndSliderView.swift in Sources */,
 				2D1C55071B7FBBED00EC02FD /* StartSliderView.swift in Sources */,
+				2DC1BE7C1BA0C86C0041A18C /* DoubleSlider.swift in Sources */,
 				2DC766FF1B78D25F00866072 /* AppDelegate.swift in Sources */,
 				2DD2B24E1B91F6D1006318E8 /* FrequencySlider.swift in Sources */,
 				2D25EE8F1B7920E8004B88BC /* PanelViewController.swift in Sources */,
@@ -449,6 +457,7 @@
 				INFOPLIST_FILE = "Beddy Butler/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nellwatson.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Beddy Butler/Beddy Butler-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -464,6 +473,7 @@
 				INFOPLIST_FILE = "Beddy Butler/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nellwatson.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Beddy Butler/Beddy Butler-Bridging-Header.h";
 			};
@@ -484,6 +494,7 @@
 				);
 				INFOPLIST_FILE = "Beddy ButlerTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "be.quantacorp.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Beddy Butler.app/Contents/MacOS/Beddy Butler";
 			};
@@ -500,6 +511,7 @@
 				);
 				INFOPLIST_FILE = "Beddy ButlerTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "be.quantacorp.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Beddy Butler.app/Contents/MacOS/Beddy Butler";
 			};

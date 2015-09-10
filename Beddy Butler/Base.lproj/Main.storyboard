@@ -157,13 +157,13 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView editable="NO" importsGraphics="NO" horizontallyResizable="YES" baseWritingDirection="leftToRight" selectionGranularity="word" findStyle="panel" verticallyResizable="YES" quoteSubstitution="YES" dashSubstitution="YES" id="2fU-H6-Xsl">
-                                            <rect key="frame" x="0.0" y="0.0" width="500" height="509"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="551" height="475"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <animations/>
                                             <color key="textColor" red="0.20784313725490197" green="0.20784313725490197" blue="0.20784313725490197" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="500" height="307"/>
-                                            <size key="maxSize" width="500.22620980612567" height="800"/>
+                                            <size key="minSize" width="551" height="307"/>
+                                            <size key="maxSize" width="553" height="800"/>
                                             <attributedString key="textStorage">
                                                 <fragment>
                                                     <mutableString key="content">Beddy Butler Copyright (c) 2015, Nell Watson Inc.
@@ -188,8 +188,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                                                 </fragment>
                                             </attributedString>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="500" height="307"/>
-                                            <size key="maxSize" width="500.22620980612567" height="800"/>
+                                            <size key="minSize" width="551" height="307"/>
+                                            <size key="maxSize" width="553" height="800"/>
                                         </textView>
                                     </subviews>
                                     <animations/>
@@ -201,7 +201,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                 </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="zDJ-DX-6vU">
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="zDJ-DX-6vU">
                                     <rect key="frame" x="536" y="1" width="16" height="307"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
@@ -487,6 +487,17 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                                     </binding>
                                 </connections>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5QA-8d-7ml">
+                                <rect key="frame" x="306" y="109" width="64" height="32"/>
+                                <animations/>
+                                <buttonCell key="cell" type="push" title="test" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yPE-g0-gyY">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="yDC-mn-WVK" kind="popover" popoverAnchorView="5QA-8d-7ml" popoverBehavior="t" preferredEdge="maxY" id="9xx-Un-72u"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                     </view>
@@ -502,6 +513,30 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                 <userDefaultsController representsSharedInstance="YES" id="45n-s1-uBZ"/>
             </objects>
             <point key="canvasLocation" x="-245" y="452.5"/>
+        </scene>
+        <!--Test Controller-->
+        <scene sceneID="qhB-pU-aoR">
+            <objects>
+                <viewController id="yDC-mn-WVK" customClass="TestController" customModule="Beddy_Butler" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="Ry6-Yg-Vf0">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GR9-NI-Hbw" customClass="DoubleSlider" customModule="Beddy_Butler" customModuleProvider="target">
+                                <rect key="frame" x="49" y="140" width="353" height="20"/>
+                                <animations/>
+                                <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="h7a-zL-Fxd" customClass="SMDoubleSliderCell"/>
+                            </slider>
+                        </subviews>
+                        <animations/>
+                    </view>
+                    <connections>
+                        <outlet property="doubleSlider" destination="GR9-NI-Hbw" id="qYj-LO-x6Q"/>
+                    </connections>
+                </viewController>
+                <customObject id="Pez-bg-kU6" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-115" y="972"/>
         </scene>
     </scenes>
     <resources>
