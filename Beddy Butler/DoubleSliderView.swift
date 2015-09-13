@@ -16,13 +16,20 @@ class DoubleSliderView: SMDoubleSlider {
         // Drawing code here.
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        //self.bind("objectLoValue", toObject: NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.startTimeValue.rawValue)!, withKeyPath: "objectLoValue", options: nil)
-        
-       // NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.startTimeValue.rawValue)?.bind(<#T##binding: String##String#>, toObject: <#T##AnyObject#>, withKeyPath: <#T##String#>, options: <#T##[String : AnyObject]?#>)
+    override func mouseDown(theEvent: NSEvent) {
+        //NSLog("Mouse down in slider! current values are lo: \(self.doubleLoValue()) and hi: \(self.doubleHiValue())")
+        super.mouseDown(theEvent)
     }
     
+    override func mouseUp(theEvent: NSEvent) {
+        // every time the user changes any knob, the system should recalculate the timer
+        NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.userPreferenceChanged.rawValue, object: self)
+        
+        super.mouseUp(theEvent)
+        
+    }
+    
+
     
     
 }

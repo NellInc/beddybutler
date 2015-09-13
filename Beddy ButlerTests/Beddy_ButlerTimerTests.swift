@@ -11,9 +11,7 @@ import XCTest
 @testable import Beddy_Butler
 
 class Beddy_ButlerTimerTests: XCTestCase {
-    
-    var startSlider = StartSliderView()
-    var endSlider = EndSliderView()
+   
     var butlerTimer = ButlerTimer()
     
     let calendar = NSCalendar.currentCalendar()
@@ -85,7 +83,8 @@ class Beddy_ButlerTimerTests: XCTestCase {
         let currentStartDate = newButlerTimer.startDate
         // emulate a new value set by the user
         NSUserDefaults.standardUserDefaults().setValue(65000, forKey: UserDefaultKeys.startTimeValue.rawValue)
-        NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.startSliderChanged.rawValue, object: StartSliderView())
+        //TO DO: do we need to send a notification for start slider changed?
+        //NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.startSliderChanged.rawValue, object: StartSliderView())
         NSLog("previous date: \(currentStartDate) new date: \(newButlerTimer.startDate)")
         // Assert
         XCTAssertNotEqual(currentStartDate, self.butlerTimer.startDate, "Butler timer should update start time after user updates start time")
@@ -102,7 +101,8 @@ class Beddy_ButlerTimerTests: XCTestCase {
         let currentEndDate = newButlerTimer.bedDate
         // emulate a new value set by the user
         NSUserDefaults.standardUserDefaults().setValue(72000, forKey: UserDefaultKeys.bedTimeValue.rawValue)
-        NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.endSliderChanged.rawValue, object: StartSliderView())
+        //TO DO: do we need to send a notification for end slider changed?
+        //NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.endSliderChanged.rawValue, object: StartSliderView())
         NSLog("previous date: \(currentEndDate) new date: \(newButlerTimer.bedDate)")
         // Assert
         XCTAssertNotEqual(currentEndDate, self.butlerTimer.bedDate, "Butler timer should update end time after user updates end time")

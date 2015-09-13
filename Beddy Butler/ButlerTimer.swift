@@ -86,20 +86,20 @@ class ButlerTimer: NSObject {
 
     /// When the end time slider changes, it should post itself in a notification so that updateBedTime updates the userEndTime
     func updateBedTime(notification: NSNotification) {
-        if let _ = notification.object as? EndSliderView {
+        //if let _ = notification.object as? EndSliderView {
             // calculateEndDate will return a new value again as it has changed by the user
             //self.bedDate = calculateEndDate
             
-        }
+        //}
     }
     
      /// When the start time slider changes, it should post itself in a notification so that updateStartTime updates the userStartTime
     func updateStartTime(notification: NSNotification) {
-        if let _ = notification.object as? StartSliderView {
+        //if let _ = notification.object as? StartSliderView {
             // calculateStartDate will return a new value again as it has changed by the user
             //self.startDate = calculateStartDate
             
-        }
+        //}
     }
     
     /// calculates the start date based on the current user value

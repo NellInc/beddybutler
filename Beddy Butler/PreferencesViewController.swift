@@ -21,16 +21,6 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
   
     @IBOutlet weak var doubleSlider: DoubleSliderView!
     
-    
-    var userStartTime: Double? {
-        return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.startTimeValue.rawValue) as? Double
-    }
-    
-    var userBedTime: Double? {
-        return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.bedTimeValue.rawValue) as? Double
-    }
-
-    
 //    var representedTimerRandomness: String {
 //        let endRange = (self.timerRandomness * 0.7) + self.timerRandomness
 //        return "\(self.timerRandomness) to \(endRange) min."
@@ -62,7 +52,6 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
             
         }
     }
-    var de: Double = 0.0
     
     func loadDoubleSliderValues() {
 
@@ -101,6 +90,28 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
                     break
                 }
             }
+        }
+    }
+    
+    
+    @IBAction func changedPreference(sender: AnyObject) {
+         NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.userPreferenceChanged.rawValue, object: self)
+    }
+    
+    
+    @IBAction func changeRunStartup(sender: AnyObject) {
+        
+        if let theButton = sender as? NSButton {
+            let runStartup = Bool(theButton.integerValue)
+                if runStartup {
+                // creat plist
+                    
+                    //let plist = Dictionary()
+                    
+                } else {
+                // disable plist
+            }
+           
         }
     }
     
