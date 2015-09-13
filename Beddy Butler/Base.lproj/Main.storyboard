@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="15A279b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A282b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8187.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -252,7 +252,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                                 </textFieldCell>
                             </textField>
                             <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="IKg-h5-2i7">
-                                <rect key="frame" x="18" y="346" width="424" height="5"/>
+                                <rect key="frame" x="18" y="346" width="424" height="4"/>
                                 <animations/>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -285,43 +285,24 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                                     <binding destination="45n-s1-uBZ" name="value" keyPath="values.runStartup" id="g68-sb-Aiz"/>
                                 </connections>
                             </button>
-                            <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tz0-rZ-dUP" userLabel="Bed time slider" customClass="EndSliderView" customModule="Beddy_Butler" customModuleProvider="target">
-                                <rect key="frame" x="210" y="261" width="234" height="20"/>
+                            <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YtT-pT-fk4" customClass="DoubleSliderView" customModule="Beddy_Butler" customModuleProvider="target">
+                                <rect key="frame" x="98" y="292" width="265" height="20"/>
                                 <animations/>
-                                <sliderCell key="cell" continuous="YES" alignment="left" maxValue="86400" doubleValue="72000" tickMarkPosition="below" allowsTickMarkValuesOnly="YES" sliderType="linear" id="g2Q-XL-lRH"/>
-                                <connections>
-                                    <binding destination="45n-s1-uBZ" name="value" keyPath="values.bedTimeValue" id="P3w-lF-ZCx">
-                                        <dictionary key="options">
-                                            <bool key="NSValidatesImmediately" value="YES"/>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
-                            </slider>
-                            <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YtT-pT-fk4" userLabel="Start time slider" customClass="StartSliderView" customModule="Beddy_Butler" customModuleProvider="target">
-                                <rect key="frame" x="208" y="305" width="236" height="20"/>
-                                <animations/>
-                                <sliderCell key="cell" continuous="YES" alignment="left" maxValue="86400" doubleValue="68233.08139534884" tickMarkPosition="below" sliderType="linear" id="cXZ-HG-HRj"/>
-                                <connections>
-                                    <binding destination="45n-s1-uBZ" name="value" keyPath="values.startTimeValue" id="wED-b2-NsM">
-                                        <dictionary key="options">
-                                            <bool key="NSValidatesImmediately" value="YES"/>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
+                                <sliderCell key="cell" alignment="left" maxValue="86400" doubleValue="68233.08139534884" tickMarkPosition="below" sliderType="linear" id="cXZ-HG-HRj" customClass="SMDoubleSliderCell"/>
                             </slider>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UIv-9V-JTG" userLabel="Start time label">
-                                <rect key="frame" x="18" y="307" width="84" height="17"/>
+                                <rect key="frame" x="14" y="269" width="84" height="17"/>
                                 <animations/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Start time:" id="MAq-E0-8eK">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Start time" id="MAq-E0-8eK">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="txJ-dy-GqU" userLabel="Bed time text value">
-                                <rect key="frame" x="112" y="263" width="132" height="17"/>
+                                <rect key="frame" x="372" y="294" width="97" height="17"/>
                                 <animations/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" continuous="YES" sendsActionOnEndEditing="YES" title="0" id="w7j-fu-Rhk" userLabel="Bed time value">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="0" id="w7j-fu-Rhk" userLabel="Bed time value">
                                     <dateFormatter key="formatter" timeStyle="medium" id="mBR-s5-5DQ"/>
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -332,9 +313,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Twh-Ep-Mud" userLabel="Start time text value">
-                                <rect key="frame" x="112" y="307" width="132" height="17"/>
+                                <rect key="frame" x="33" y="294" width="65" height="17"/>
                                 <animations/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" continuous="YES" sendsActionOnEndEditing="YES" title="0" id="DMc-Eq-Dg3">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="0" id="DMc-Eq-Dg3">
                                     <dateFormatter key="formatter" timeStyle="medium" id="rSR-F9-2z7"/>
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -378,7 +359,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                                     </column>
                                 </cells>
                                 <connections>
-                                    <action selector="updateStatusTitle:" target="XfG-lQ-9wD" id="hnK-dn-I6d"/>
                                     <binding destination="45n-s1-uBZ" name="selectedValue" keyPath="values.selectedSound" id="PLJ-L2-QBC"/>
                                 </connections>
                             </matrix>
@@ -398,15 +378,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
                             </box>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mQS-GF-IkJ" userLabel="Bed time label">
-                                <rect key="frame" x="18" y="263" width="84" height="17"/>
-                                <animations/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Bed time:" id="ev6-Px-hjK">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PCx-Vz-LgP" userLabel="Preview title">
                                 <rect key="frame" x="116" y="193" width="52" height="17"/>
                                 <animations/>
@@ -498,15 +469,23 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                                     <segue destination="yDC-mn-WVK" kind="popover" popoverAnchorView="5QA-8d-7ml" popoverBehavior="t" preferredEdge="maxY" id="9xx-Un-72u"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mQS-GF-IkJ" userLabel="Bed time label">
+                                <rect key="frame" x="363" y="269" width="84" height="17"/>
+                                <animations/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Bed time" id="ev6-Px-hjK">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <animations/>
                     </view>
                     <connections>
-                        <outlet property="customRandomnessFormatter" destination="acU-GB-krY" id="Vxy-We-hjp"/>
-                        <outlet property="endSliderView" destination="Tz0-rZ-dUP" id="XTB-Xg-DyL"/>
+                        <outlet property="doubleSlider" destination="YtT-pT-fk4" id="HKx-I6-T37"/>
                         <outlet property="endTimeTextValue" destination="txJ-dy-GqU" id="Qdf-C8-fj4"/>
-                        <outlet property="startSliderView" destination="YtT-pT-fk4" id="32T-RJ-FQ2"/>
                         <outlet property="startTimeTextValue" destination="Twh-Ep-Mud" id="RAw-Mo-wew"/>
+                        <outlet property="userDefaults" destination="45n-s1-uBZ" id="toQ-9g-rdm"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -522,11 +501,33 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GR9-NI-Hbw" customClass="DoubleSlider" customModule="Beddy_Butler" customModuleProvider="target">
+                            <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GR9-NI-Hbw" customClass="SMDoubleSlider">
                                 <rect key="frame" x="49" y="140" width="353" height="20"/>
                                 <animations/>
                                 <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="h7a-zL-Fxd" customClass="SMDoubleSliderCell"/>
                             </slider>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zr6-8k-1Hz">
+                                <rect key="frame" x="58" y="70" width="55" height="32"/>
+                                <animations/>
+                                <buttonCell key="cell" type="push" title="Lo" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bVG-Gw-xwt">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="changeLo:" target="yDC-mn-WVK" id="PCX-ep-EX9"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9RU-JG-Ewe">
+                                <rect key="frame" x="162" y="70" width="53" height="32"/>
+                                <animations/>
+                                <buttonCell key="cell" type="push" title="Hi" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9cT-wL-irl">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="changeHi:" target="yDC-mn-WVK" id="CUN-rv-oOr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                     </view>

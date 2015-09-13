@@ -22,7 +22,7 @@
 		2D5AD2191B87597A008953B1 /* Beddy_ButlerTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5AD2181B87597A008953B1 /* Beddy_ButlerTimerTests.swift */; };
 		2D9B85331B83678F002795F8 /* Beddy_ButlerAudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9B85321B83678F002795F8 /* Beddy_ButlerAudioTests.swift */; };
 		2D9B85361B836944002795F8 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9B85351B836944002795F8 /* AudioPlayer.swift */; };
-		2DC1BE7C1BA0C86C0041A18C /* DoubleSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1BE7B1BA0C86C0041A18C /* DoubleSlider.swift */; };
+		2DC1BE7C1BA0C86C0041A18C /* DoubleSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1BE7B1BA0C86C0041A18C /* DoubleSliderView.swift */; };
 		2DC1BE7E1BA0C9E60041A18C /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1BE7D1BA0C9E60041A18C /* TestController.swift */; };
 		2DC766FF1B78D25F00866072 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC766FE1B78D25F00866072 /* AppDelegate.swift */; };
 		2DC767011B78D25F00866072 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC767001B78D25F00866072 /* PreferencesViewController.swift */; };
@@ -62,7 +62,7 @@
 		2D5AD2181B87597A008953B1 /* Beddy_ButlerTimerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beddy_ButlerTimerTests.swift; sourceTree = "<group>"; };
 		2D9B85321B83678F002795F8 /* Beddy_ButlerAudioTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beddy_ButlerAudioTests.swift; sourceTree = "<group>"; };
 		2D9B85351B836944002795F8 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
-		2DC1BE7B1BA0C86C0041A18C /* DoubleSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleSlider.swift; sourceTree = "<group>"; };
+		2DC1BE7B1BA0C86C0041A18C /* DoubleSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleSliderView.swift; sourceTree = "<group>"; };
 		2DC1BE7D1BA0C9E60041A18C /* TestController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
 		2DC766F91B78D25F00866072 /* Beddy Butler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Beddy Butler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DC766FD1B78D25F00866072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -197,7 +197,7 @@
 				2D1C55061B7FBBED00EC02FD /* StartSliderView.swift */,
 				2D1C55081B7FBBF200EC02FD /* EndSliderView.swift */,
 				2DD2B24B1B91E26B006318E8 /* RandomnessFormatter.swift */,
-				2DC1BE7B1BA0C86C0041A18C /* DoubleSlider.swift */,
+				2DC1BE7B1BA0C86C0041A18C /* DoubleSliderView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -325,7 +325,7 @@
 				2D2D56F21B9CD68C00705495 /* NotificationKeys.swift in Sources */,
 				2D1C55091B7FBBF200EC02FD /* EndSliderView.swift in Sources */,
 				2D1C55071B7FBBED00EC02FD /* StartSliderView.swift in Sources */,
-				2DC1BE7C1BA0C86C0041A18C /* DoubleSlider.swift in Sources */,
+				2DC1BE7C1BA0C86C0041A18C /* DoubleSliderView.swift in Sources */,
 				2DC766FF1B78D25F00866072 /* AppDelegate.swift in Sources */,
 				2DD2B24E1B91F6D1006318E8 /* FrequencySlider.swift in Sources */,
 				2D25EE8F1B7920E8004B88BC /* PanelViewController.swift in Sources */,

@@ -11,15 +11,25 @@ import Cocoa
 class PreferencesViewController: NSViewController, NSTextFieldDelegate {
     
     //MARK: Properties
+    @IBOutlet var userDefaults: NSUserDefaultsController!
     
     var audioPlayer: AudioPlayer = AudioPlayer()
 
     @IBOutlet weak var startTimeTextValue: NSTextField!
     
     @IBOutlet weak var endTimeTextValue: NSTextField!
-    @IBOutlet weak var startSliderView: StartSliderView!
+  
+    @IBOutlet weak var doubleSlider: DoubleSliderView!
     
-    @IBOutlet weak var endSliderView: EndSliderView!
+    
+    var userStartTime: Double? {
+        return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.startTimeValue.rawValue) as? Double
+    }
+    
+    var userBedTime: Double? {
+        return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.bedTimeValue.rawValue) as? Double
+    }
+
     
 //    var representedTimerRandomness: String {
 //        let endRange = (self.timerRandomness * 0.7) + self.timerRandomness
@@ -32,19 +42,18 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        loadDoubleSliderValues()
     }
     
     override func viewWillDisappear() {
         super.viewDidDisappear()
         // Removes self from all notifications that are observing
-        NSNotificationCenter.defaultCenter().removeObserver(startSliderView)
-        NSNotificationCenter.defaultCenter().removeObserver(endSliderView)
+        NSNotificationCenter.defaultCenter().removeObserver(doubleSlider)
         // NSNotificationCenter.defaultCenter().removeObserver(self, name: "endKey", object: nil)
     }
     
      deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(startSliderView)
-        NSNotificationCenter.defaultCenter().removeObserver(endSliderView)
+        NSNotificationCenter.defaultCenter().removeObserver(doubleSlider)
     }
 
     override var representedObject: AnyObject? {
@@ -52,6 +61,25 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         // Update the view, if already loaded.
             
         }
+    }
+    var de: Double = 0.0
+    
+    func loadDoubleSliderValues() {
+
+        self.doubleSlider.maxValue = 86400
+        
+         self.doubleSlider.bind("objectLoValue", toObject: self.userDefaults, withKeyPath: "values.startTimeValue", options: nil)
+        
+         self.doubleSlider.bind("objectHiValue", toObject: self.userDefaults, withKeyPath: "values.bedTimeValue", options: nil)
+        
+        self.doubleSlider.continuous = true
+        
+        self.doubleSlider.numberOfTickMarks = 24
+        
+        self.doubleSlider.tickMarkPosition = NSTickMarkPosition.Below
+        
+        self.doubleSlider.allowsTickMarkValuesOnly = false
+
     }
     
     //MARK: View Controller Actions

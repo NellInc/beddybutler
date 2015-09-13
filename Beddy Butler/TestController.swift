@@ -15,7 +15,7 @@ class TestController: NSViewController {
         // Do view setup here.
         
         
-        self.doubleSlider.maxValue = 100
+        self.doubleSlider.maxValue = 86400
         
         self.doubleSlider.setDoubleHiValue(70.0)
         self.doubleSlider.setDoubleLoValue(30.0)
@@ -32,6 +32,24 @@ class TestController: NSViewController {
         
         self.doubleSlider.needsDisplay = true
     }
-    @IBOutlet weak var doubleSlider: DoubleSlider!
+    @IBOutlet weak var doubleSlider: DoubleSliderView!
+    
+    
+    @IBAction func changeLo(sender: AnyObject) {
+        
+         let random = arc4random_uniform(50000)
+         self.doubleSlider.setDoubleLoValue(Double(random))
+        NSLog("New Lo: \(random)")
+        self.doubleSlider.needsDisplay = true
+        
+    }
+    
+    
+    @IBAction func changeHi(sender: AnyObject) {
+        let random = arc4random_uniform(86400)
+        self.doubleSlider.setDoubleHiValue(Double(random))
+        NSLog("New Hi: \(random)")
+        self.doubleSlider.needsDisplay = true
+    }
     
 }
