@@ -8,7 +8,33 @@
 
 import Cocoa
 
-class DoubleSliderView: SMDoubleSlider {
+class DoubleSliderView: NSSlider, NSCopying {
+    
+    // MARK: Properties
+    
+    var stringStartValue: String = ""
+    //@NSCopying var attributedStringStartValue: NSAttributedString
+    //@NSCopying var objectStartValue: AnyObject? /* id<NSCopying> */
+    var intStartValue: Int32 = 0
+    var integerStartValue: Int = 0
+    var floatStartValue: Float = 0.0
+    var doubleStartValue: Double = 0.0
+    
+    var stringBedValue: String = ""
+    //@NSCopying var attributedStringBedValue: NSAttributedString
+    //@NSCopying var objectBedValue: AnyObject? /* id<NSCopying> */
+    var intBedValue: Int32 = 0
+    var integerBedValue: Int = 0
+    var floatBedValue: Float = 0.0
+    var doubleBedValue: Double = 0.0
+
+    override func keyDown(theEvent: NSEvent) {
+        self.interpretKeyEvents([theEvent])
+    }
+
+    func copyWithZone(zone: NSZone) -> AnyObject {
+        return self
+    }
 
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
