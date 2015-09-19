@@ -41,21 +41,171 @@ class DoubleSliderCellView: NSSliderCell {
     var sliderCellFlags: __sliderCellFlags
     
     //MARK: Carried from DoubleSliderView properties
-    var stringStartValue: String = ""
+    var stringStartValue: String {
+        set {
+            self.doubleStartValue = NSString(string: newValue).doubleValue
+        }
+        get {
+            return String(format: "%g", arguments: [self.doubleStartValue])
+        }
+    }
     //@NSCopying var attributedStringStartValue: NSAttributedString
-    //@NSCopying var objectStartValue: AnyObject? /* id<NSCopying> */
-    var intStartValue: Int32 = 0
-    var integerStartValue: Int = 0
-    var floatStartValue: Float = 0.0
-    var doubleStartValue: Double = 0.0
+    var objectStartValue: AnyObject? /* id<NSCopying> */
+        {
+        set {
+            switch newValue {
+            case is Double:
+                self.doubleStartValue = newValue as! Double
+            case is Float:
+                self.floatStartValue = newValue as! Float
+            case is Int32:
+                self.intStartValue = newValue as! Int32
+            case is Int:
+                self.integerStartValue = newValue as! Int
+            case is String:
+                self.stringStartValue = newValue as! String
+            default:
+                self.doubleStartValue = 0.0
+            }
+
+        }
+        get {
+            return NSNumber(double: self.doubleStartValue)
+        }
+    }
+    var intStartValue: Int32 {
+        set {
+            self.doubleStartValue = Double(newValue)
+        }
+        get {
+            return Int32(self.doubleStartValue)
+        }
+    }
+    var integerStartValue: Int {
+        set {
+            self.doubleStartValue = Double(newValue)
+        }
+        get {
+            return Int(self.doubleStartValue)
+        }
+    }
+    var floatStartValue: Float {
+        set {
+            self.doubleStartValue = Double(newValue)
+        }
+        get {
+            return Float(self.doubleStartValue)
+        }
+    }
+    var doubleStartValue: Double {
+        set {
+            // limit to be at least minimum of start value
+            var theNewValue: Double = newValue
+            if newValue > self.doubleBedValue {
+                theNewValue = self.doubleBedValue
+            }
+            if newValue < self.minValue {
+                theNewValue = self.minValue
+            }
+            
+            if self.sliderCellFlags.mouseTrackingSwapped {
+               super.doubleValue = theNewValue
+            } else {
+                self.storeValue = theNewValue
+                (self.controlView as! NSControl).updateCell(self)
+            }
+        }
+        get {
+            if self.sliderCellFlags.mouseTrackingSwapped {
+                return self.doubleValue
+            } else {
+                return self.startValue
+            }
+        }
+    }
     
-    var stringBedValue: String = ""
+    var stringBedValue: String {
+        set {
+            self.doubleBedValue = NSString(string: newValue).doubleValue
+        }
+        get {
+            return String(format: "%g", arguments: [self.doubleBedValue])
+        }
+    }
     //@NSCopying var attributedStringBedValue: NSAttributedString
-    //@NSCopying var objectBedValue: AnyObject? /* id<NSCopying> */
-    var intBedValue: Int32 = 0
-    var integerBedValue: Int = 0
-    var floatBedValue: Float = 0.0
-    var doubleBedValue: Double = 0.0
+    var objectBedValue: AnyObject? { /* id<NSCopying> */
+        set {
+            switch newValue {
+            case is Double:
+                self.doubleBedValue = newValue as! Double
+            case is Float:
+                self.floatBedValue = newValue as! Float
+            case is Int32:
+                self.intBedValue = newValue as! Int32
+            case is Int:
+                self.integerBedValue = newValue as! Int
+            case is String:
+                self.stringBedValue = newValue as! String
+            default:
+                self.doubleBedValue = 0.0
+            }
+        }
+        get {
+            return NSNumber(double: self.doubleBedValue)
+        }
+    }
+    var intBedValue: Int32 {
+        set {
+                self.doubleBedValue = Double(newValue)
+        }
+        get {
+            return Int32(self.doubleBedValue)
+        }
+    }
+    var integerBedValue: Int {
+        set {
+            self.doubleBedValue = Double(newValue)
+        }
+        get {
+            return Int(self.doubleBedValue)
+        }
+    }
+    var floatBedValue: Float {
+        set {
+            self.doubleBedValue = Double(newValue)
+        }
+        get {
+            return Float(self.doubleBedValue)
+        }
+    }
+    var doubleBedValue: Double {
+        set {
+            // limit to be at least minimum of start value
+            var theNewValue: Double = newValue
+            if newValue < self.doubleStartValue {
+                theNewValue = self.doubleBedValue
+            }
+            if newValue > self.maxValue {
+                theNewValue = self.maxValue
+            }
+            
+            if self.sliderCellFlags.mouseTrackingSwapped {
+                self.storeValue = theNewValue
+                (self.controlView as! NSControl).updateCell(self)
+            } else {
+                super.doubleValue = theNewValue
+            }
+            
+        }
+        get {
+            if self.sliderCellFlags.mouseTrackingSwapped {
+                return self.storeValue
+            } else {
+                return super.doubleValue
+            }
+        }
+        
+    }
     
     // MARK: Knob properties
     
@@ -104,6 +254,114 @@ class DoubleSliderCellView: NSSliderCell {
             return super.maxValue
         }
     }
+    
+    override var stringValue: String {
+        set {
+            if self.trackingStartKnob {
+                self.stringStartValue = newValue
+            } else {
+                self.stringBedValue = newValue
+            }
+        }
+        get {
+            if self.trackingStartKnob {
+                return self.stringStartValue
+            } else {
+                return self.stringBedValue
+            }
+        }
+    }
+    
+    override var objectValue: AnyObject? {
+        set {
+            if self.trackingStartKnob {
+                self.objectStartValue = newValue
+            } else {
+                self.objectBedValue = newValue
+            }
+        }
+        get {
+            if self.trackingStartKnob {
+                return self.objectStartValue
+            } else {
+                return self.objectBedValue
+            }
+        }
+    }
+    
+    override var intValue: Int32 {
+        set {
+            if self.trackingStartKnob {
+                self.intStartValue = newValue
+            } else {
+                self.intBedValue = newValue
+            }
+        }
+        get {
+            if self.trackingStartKnob {
+                return self.intStartValue
+            } else {
+                return self.intBedValue
+            }
+        }
+    }
+    
+    override var integerValue: Int {
+        set {
+            if self.trackingStartKnob {
+                self.integerStartValue = newValue
+            } else {
+                self.integerBedValue = newValue
+            }
+        }
+        get {
+            if self.trackingStartKnob {
+                return self.integerStartValue
+            } else {
+                return self.integerBedValue
+            }
+        }
+    }
+    
+    override var floatValue: Float {
+        set {
+            if self.trackingStartKnob {
+                self.floatStartValue = newValue
+            } else {
+                self.floatBedValue = newValue
+            }
+        }
+        get {
+            if self.trackingStartKnob {
+                return self.floatStartValue
+            } else {
+                return self.floatBedValue
+            }
+        }
+    }
+    
+    override var doubleValue: Double {
+        set {
+            if self.trackingStartKnob {
+                self.doubleStartValue = newValue
+            } else {
+                self.doubleBedValue = newValue
+            }
+
+        }
+        get {
+            if self.trackingStartKnob {
+                return self.doubleStartValue
+            } else {
+                return self.doubleBedValue
+            }
+        }
+    }
+    
+    
+    
+
+
     //var doubleValue
     
     //MARK: Flags

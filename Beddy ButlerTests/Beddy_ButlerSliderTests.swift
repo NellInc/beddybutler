@@ -47,9 +47,9 @@ class Beddy_ButlerSliderTests: XCTestCase {
     func testStartSliderChanges1() {
         
        //preferencesViewController?.startSliderView = StartSliderView()
-        preferencesViewController?.doubleSlider.setDoubleLoValue(30000)
-        XCTAssertTrue(doubleSlider?.doubleLoValue() == 30000, "start time remains unchanged before setting end time > start time")
-         doubleSlider?.setDoubleLoValue(20000)
+        //preferencesViewController?.doubleSlider.setDoubleLoValue(30000)
+        //XCTAssertTrue(doubleSlider?.doubleLoValue() == 30000, "start time remains unchanged before setting end time > start time")
+         //doubleSlider?.setDoubleLoValue(20000)
         //XCTAssertTrue(startSlider?.doubleValue == 10, "start time remains unchanged after setting end time > start time")
     }
     
