@@ -408,7 +408,7 @@ class DoubleSliderCellView: NSSliderCell {
     override func drawKnob() {
         var startKnob: NSRect
         let toStoreValue = super.doubleValue
-        var savePressed = false //????
+        let savePressed = false //????
         
         // Draw the start knob
         
