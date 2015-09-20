@@ -29,6 +29,8 @@
 		2DC767121B78D25F00866072 /* Beddy_ButlerSliderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC767111B78D25F00866072 /* Beddy_ButlerSliderTests.swift */; };
 		2DD2B24C1B91E26B006318E8 /* RandomnessFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD2B24B1B91E26B006318E8 /* RandomnessFormatter.swift */; };
 		2DD2B24E1B91F6D1006318E8 /* FrequencySlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD2B24D1B91F6D1006318E8 /* FrequencySlider.swift */; };
+		2DD348F01BAEA9B80097D9E5 /* NSSliderFlags.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD348EF1BAEA9B80097D9E5 /* NSSliderFlags.m */; };
+		2DD348F81BAEB2300097D9E5 /* NSSliderCellFlags.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD348F71BAEB2300097D9E5 /* NSSliderCellFlags.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,10 @@
 		2DC767111B78D25F00866072 /* Beddy_ButlerSliderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beddy_ButlerSliderTests.swift; sourceTree = "<group>"; };
 		2DD2B24B1B91E26B006318E8 /* RandomnessFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomnessFormatter.swift; sourceTree = "<group>"; };
 		2DD2B24D1B91F6D1006318E8 /* FrequencySlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrequencySlider.swift; sourceTree = "<group>"; };
+		2DD348EE1BAEA8EB0097D9E5 /* NSSliderFlags.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSSliderFlags.h; sourceTree = "<group>"; };
+		2DD348EF1BAEA9B80097D9E5 /* NSSliderFlags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSSliderFlags.m; sourceTree = "<group>"; };
+		2DD348F61BAEB2280097D9E5 /* NSSliderCellFlags.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSSliderCellFlags.h; sourceTree = "<group>"; };
+		2DD348F71BAEB2300097D9E5 /* NSSliderCellFlags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSSliderCellFlags.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,16 +97,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2D1E21C31B9C67AD004215EA /* SMDoubleSlider Framework */ = {
+		2D1E21C31B9C67AD004215EA /* Objective-C Slider Framework */ = {
 			isa = PBXGroup;
 			children = (
+				2DD348EE1BAEA8EB0097D9E5 /* NSSliderFlags.h */,
+				2DD348EF1BAEA9B80097D9E5 /* NSSliderFlags.m */,
+				2DD348F61BAEB2280097D9E5 /* NSSliderCellFlags.h */,
+				2DD348F71BAEB2300097D9E5 /* NSSliderCellFlags.m */,
 				2D1347311B9CBAC30069643B /* SMDoubleSlider.h */,
 				2D1347321B9CBAC30069643B /* SMDoubleSlider.m */,
 				2D1347331B9CBAC30069643B /* SMDoubleSliderCell.h */,
 				2D1347341B9CBAC30069643B /* SMDoubleSliderCell.m */,
 				2D1347371B9CBE6C0069643B /* Beddy Butler-Bridging-Header.h */,
 			);
-			name = "SMDoubleSlider Framework";
+			name = "Objective-C Slider Framework";
 			sourceTree = "<group>";
 		};
 		2D32ADB61B7FB9EE00E03480 /* Assets */ = {
@@ -152,7 +162,7 @@
 				2DC767021B78D25F00866072 /* Images.xcassets */,
 				2DC767041B78D25F00866072 /* Main.storyboard */,
 				2D32ADB61B7FB9EE00E03480 /* Assets */,
-				2D1E21C31B9C67AD004215EA /* SMDoubleSlider Framework */,
+				2D1E21C31B9C67AD004215EA /* Objective-C Slider Framework */,
 				2DC766FC1B78D25F00866072 /* Supporting Files */,
 			);
 			path = "Beddy Butler";
@@ -190,9 +200,9 @@
 			isa = PBXGroup;
 			children = (
 				2D076B6E1BA57F5B0052047C /* DoubleSliderView.swift */,
+				2D28669D1BA994CB00E2B35F /* DoubleSliderCellView.swift */,
 				2DD2B24D1B91F6D1006318E8 /* FrequencySlider.swift */,
 				2DD2B24B1B91E26B006318E8 /* RandomnessFormatter.swift */,
-				2D28669D1BA994CB00E2B35F /* DoubleSliderCellView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -316,6 +326,8 @@
 				2D9B85361B836944002795F8 /* AudioPlayer.swift in Sources */,
 				2DC767011B78D25F00866072 /* PreferencesViewController.swift in Sources */,
 				2D1347351B9CBAC30069643B /* SMDoubleSlider.m in Sources */,
+				2DD348F01BAEA9B80097D9E5 /* NSSliderFlags.m in Sources */,
+				2DD348F81BAEB2300097D9E5 /* NSSliderCellFlags.m in Sources */,
 				2D076B6F1BA57F5B0052047C /* DoubleSliderView.swift in Sources */,
 				2D2D56F21B9CD68C00705495 /* NotificationKeys.swift in Sources */,
 				2DC766FF1B78D25F00866072 /* AppDelegate.swift in Sources */,

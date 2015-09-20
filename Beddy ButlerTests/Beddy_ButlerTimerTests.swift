@@ -159,6 +159,47 @@ class Beddy_ButlerTimerTests: XCTestCase {
         XCTAssertTrue(butlerTimer.timer?.timeInterval > 0, "Timer1 should be initialized")
     }
     
+    func testButlerPlist() {
+        
+        //Create file manager instance
+        let fileManager = NSFileManager()
+        
+        let URLs = fileManager.URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask)
+        
+        
+        let documentURL = URLs[0]
+        let fileURL = documentURL.URLByAppendingPathComponent("com.nellwatson.Beddy-Butler.plist")
+        
+       // NSApplication.ur
+        
+        var plistDictionary: Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+        
+        // Create Key values
+        let label = "com.nellwatson.Beddy-Butler"
+        let programArguments = ["/Applications/EverydayTasks.app/Contents/MacOS/EverydayTasks"]
+        let processType = "Interactive"
+        let runAtLoad = true
+        let keepAlive = true
+        
+        // Assign Key values to keys
+        plistDictionary["Label"] = label
+        plistDictionary["ProgramArguments"] = programArguments
+        plistDictionary["ProcessType"] = processType
+        plistDictionary["RunAtLoad"] = runAtLoad
+        plistDictionary["KeepAlive"] = keepAlive
+        
+        do {
+            let data = try NSPropertyListSerialization.dataWithPropertyList(plistDictionary, format: NSPropertyListFormat.XMLFormat_v1_0, options: NSPropertyListWriteOptions.init())
+            XCTAssert(data.length > 0)
+            fileManager.createFileAtPath(fileURL.path!, contents: data, attributes: nil)
+            
+        } catch {
+            NSLog("Error while creating agent file")
+        }
+        
+        
+       
+    }
     
     
 

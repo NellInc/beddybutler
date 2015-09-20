@@ -418,12 +418,9 @@ class DoubleSliderCellView: NSSliderCell {
         }
         
         // focus ring style and pressed state of start knob
-        self.sliderCellFlags.removeFocusRingStyle =  self.showsFirstResponder && !self.trackingStartKnob
+        self.sliderCellFlags.removeFocusRingStyle = self.showsFirstResponder && !self.trackingStartKnob
+        self.isPressed =  savePressed && self.trackingStartKnob
         
-        // TODO: flags code still pending for start knob
-        // Figure out the focus ring style and pressed state of the start knob.
-        //_sm_flags.removeFocusRingStyle = ( _cFlags.showsFirstResponder && ![ self trackingLoKnob ] );
-        //_scFlags.isPressed = ( savePressed && [ self trackingLoKnob ] );
         startKnob = self.knobRectFlipped((self.controlView?.flipped)!)
         self.drawKnob(startKnob)
         
@@ -438,10 +435,7 @@ class DoubleSliderCellView: NSSliderCell {
         
         // focus ring style
         self.sliderCellFlags.removeFocusRingStyle = self.showsFirstResponder && self.trackingStartKnob
-    
-        
-        //TO DO : flags code still pending for bed knob
-         //_scFlags.isPressed = ( savePressed && ![ self trackingLoKnob ] );
+        self.isPressed = savePressed && !self.trackingStartKnob
         
         super.drawKnob()
         

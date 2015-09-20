@@ -106,7 +106,81 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
                 if runStartup {
                 // creat plist
                     
-                    //let plist = Dictionary()
+                    /*
+                    let plist = ["Label": "com.nellwatson.Beddy-Butler",
+                        "ProgramArguments: "
+                    
+                    
+                    
+                    ]
+                    
+                    
+                    <key>Label</key>
+                    <string>my.everydaytasks</string>
+                    <key>ProgramArguments</key>
+                    <array>
+                    <string>/Applications/EverydayTasks.app/Contents/MacOS/EverydayTasks</string>
+                    </array>
+                    <key>ProcessType</key>
+                    <string>Interactive</string>
+                    <key>RunAtLoad</key>
+                    <true/>
+                    <key>KeepAlive</key>
+                    <false/>
+                    
+                    */
+                    
+                    var plistDictionary: Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+  
+                    // Create Key values
+                    let label = "com.nellwatson.Beddy-Butler"
+                    let programArguments = ["/Applications/EverydayTasks.app/Contents/MacOS/EverydayTasks"]
+                    let processType = "Interactive"
+                    let runAtLoad = true
+                    let keepAlive = true
+                    
+                    // Assign Key values to keys
+                    plistDictionary["Label"] = label
+                    plistDictionary["ProgramArguments"] = programArguments
+                    plistDictionary["ProcessType"] = processType
+                    plistDictionary["RunAtLoad"] = runAtLoad
+                    plistDictionary["KeepAlive"] = keepAlive
+                    
+                    do {
+                       try  _ = NSPropertyListSerialization.dataWithPropertyList(plistDictionary, format: NSPropertyListFormat.XMLFormat_v1_0, options: NSPropertyListWriteOptions.init())
+                    } catch {
+                        NSLog("Error while creating agent file")
+                    }
+                   
+                                       /*
+                    NSMutableDictionary *rootObj = [NSMutableDictionary dictionaryWithCapacity:2];
+                    NSDictionary *innerDict;
+                    NSString *name;
+                    NSDate *dob;
+                    NSArray *scores;
+                    
+                    scores = [NSArray arrayWithObjects:[NSNumber numberWithInt:6],
+                        [NSNumber numberWithFloat:4.6], [NSNumber numberWithLong:6.0000034], nil];
+                    name = @"George Washington";
+                    dob = [NSDate dateWithString:@"1732-02-17 04:32:00 +0300"];
+                    innerDict = [NSDictionary dictionaryWithObjects:
+                    [NSArray arrayWithObjects: name, dob, scores, nil]
+                    forKeys:[NSArray arrayWithObjects:@"Name", @"DOB", @"Scores"]];
+                    [rootObj setObject:innerDict forKey:@"Washington"];
+                    
+                    scores = [NSArray arrayWithObjects:[NSNumber numberWithInt:8],
+                    [NSNumber numberWithFloat:4.9],
+                    [NSNumber numberWithLong:9.003433], nil];
+                    name = @"Abraham Lincoln";
+                    dob = [NSDate dateWithString:@"1809-02-12 13:18:00 +0400"];
+                    innerDict = [NSDictionary dictionaryWithObjects:
+                    [NSArray arrayWithObjects: name, dob, scores, nil]
+                    forKeys:[NSArray arrayWithObjects:@"Name", @"DOB", @"Scores"]];
+                    [rootObj setObject:innerDict forKey:@"Lincoln"];
+                    
+                    id plist = [NSPropertyListSerialization dataFromPropertyList:(id)rootObj
+                    format:NSPropertyListXMLFormat_v1_0 errorDescription:&error];
+                    */
                     
                 } else {
                 // disable plist

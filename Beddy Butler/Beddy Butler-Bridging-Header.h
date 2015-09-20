@@ -11,5 +11,7 @@
 
 #import "SMDoubleSlider.h"
 #import "SMDoubleSliderCell.h"
+#import "NSSliderFlags.h"
+#import "NSSliderCellFlags.h"
 
 #endif /* Beddy_Buttler_Bridging_Header_h */

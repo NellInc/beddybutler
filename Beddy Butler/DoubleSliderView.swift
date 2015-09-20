@@ -35,6 +35,10 @@ class DoubleSliderView: NSSlider, NSCopying {
     func copyWithZone(zone: NSZone) -> AnyObject {
         return self
     }
+    
+    override func insertTab(sender: AnyObject?) {
+        //self.cell.trackingStartKnob
+    }
 
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
