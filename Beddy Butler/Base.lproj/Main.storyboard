@@ -39,11 +39,6 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <menu key="submenu" title="Help" systemMenu="help" id="FxK-a3-n3J"/>
                                         </menuItem>
-                                        <menuItem title="Hide Beddy Butler" keyEquivalent="h" id="GSX-zk-hqI">
-                                            <connections>
-                                                <action selector="hide:" target="Ady-hI-5gd" id="CmR-KJ-z0E"/>
-                                            </connections>
-                                        </menuItem>
                                         <menuItem title="Beddy Butler Help" keyEquivalent="?" id="cq8-UM-pNh">
                                             <connections>
                                                 <action selector="showHelp:" target="Ady-hI-5gd" id="cLq-al-ye8"/>
@@ -376,7 +371,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                                 </textFieldCell>
                             </textField>
                             <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="wwf-ui-lXH">
-                                <rect key="frame" x="20" y="65" width="422" height="5"/>
+                                <rect key="frame" x="20" y="65" width="422" height="4"/>
                                 <animations/>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

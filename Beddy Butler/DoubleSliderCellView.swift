@@ -441,8 +441,8 @@ class DoubleSliderCellView: NSSliderCell {
         
         // reset values
         self.doubleValue = toStoreValue
-        // TO DO: flags again!
-        //  _scFlags.isPressed = savePressed;
+        
+        self.isPressed = savePressed
         self.sliderCellFlags.removeFocusRingStyle = false
         
     }
@@ -524,8 +524,8 @@ class DoubleSliderCellView: NSSliderCell {
             }
             
             if self.continuous {
-                // TO DO: complete this call after DoubleSliderView implements updateBoundControllerStartValue
                 //(controlView as! DoubleSliderView).updateBoundControllerStartValue(self.doubleValue)
+                (self.controlView as! DoubleSliderView).doubleStartValue = self.doubleValue
             }
         } else {
             
@@ -535,8 +535,8 @@ class DoubleSliderCellView: NSSliderCell {
             }
             
             if self.continuous {
-                // TO DO: complete this call after DoubleSliderView implements updateBoundControllerBedValue
                 //(controlView as! DoubleSliderView).updateBoundControllerBedValue(self.doubleValue)
+                (self.controlView as! DoubleSliderView).doubleBedValue = self.doubleValue
             }
             
         }
@@ -554,12 +554,12 @@ class DoubleSliderCellView: NSSliderCell {
             controlView.setNeedsDisplayInRect(self.startKnobRect)
             
             // always update controller
-             // TO DO: complete this call after DoubleSliderView implements updateBoundControllerStartValue
             //(controlView as! DoubleSliderView).updateBoundControllerStartValue(self.startValue)
+            (self.controlView as! DoubleSliderView).doubleStartValue = self.startValue
             
         } else {
-            // TO DO: complete this call after DoubleSliderView implements updateBoundControllerBedValue
             //(controlView as! DoubleSliderView).updateBoundControllerBedValue(self.doubleValue)
+            (self.controlView as! DoubleSliderView).doubleBedValue = self.doubleValue
             
         }
         

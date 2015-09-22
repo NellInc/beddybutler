@@ -209,6 +209,8 @@ class DoubleSliderView: NSSlider, NSCopying {
         
     }
     
+    
+    
 
     
     

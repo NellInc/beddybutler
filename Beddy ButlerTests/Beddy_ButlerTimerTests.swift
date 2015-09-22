@@ -201,6 +201,47 @@ class Beddy_ButlerTimerTests: XCTestCase {
        
     }
     
+    func testButlerText() {
+        
+        //Create file manager instance
+        let fileManager = NSFileManager()
+        
+        let URLs = fileManager.URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask)
+        
+        
+        let documentURL = URLs[0]
+        let fileURL = documentURL.URLByAppendingPathComponent("textFile.txt")
+        
+        // NSApplication.ur
+        
+        do {
+            
+            let data = "hola 2".dataUsingEncoding(NSUTF8StringEncoding)
+            
+            //let data = try NSPropertyListSerialization.dataWithPropertyList(plistDictionary, format: NSPropertyListFormat.XMLFormat_v1_0, options: NSPropertyListWriteOptions.init())
+            XCTAssert(data!.length > 0)
+            fileManager.createFileAtPath(fileURL.path!, contents: data, attributes: nil)
+            
+        } catch {
+            NSLog("Error while creating agent file")
+        }
+        
+        
+        
+    }
+    
+    func testBundlerPaht() {
+        let path = NSString(string: NSBundle.mainBundle().bundlePath).stringByDeletingLastPathComponent
+        let reviewedPath = NSString(string: path).stringByDeletingLastPathComponent
+        let reviewedPath2 = NSString(string: reviewedPath).stringByDeletingLastPathComponent
+        let reviewedPath3 = NSString(string: reviewedPath2).stringByDeletingLastPathComponent
+        let reviewedPath4 = NSString(string: reviewedPath3).stringByAppendingPathComponent("MacOs")
+        let reviewedPath5 = NSString(string: reviewedPath4).stringByAppendingPathComponent("Beddy Butler")
+        NSLog(reviewedPath5)
+        NSWorkspace.sharedWorkspace().launchApplication(reviewedPath3)
+        
+    }
+    
     
 
 }

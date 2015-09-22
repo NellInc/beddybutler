@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import ServiceManagement
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -58,7 +59,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //create a new ButlerTimer
         self.butlerTimer = ButlerTimer()
         
-    
+        //register start at login for first time
+        if let runStartup =  sharedUserDefaults.objectForKey(UserDefaultKeys.runStartup.rawValue) as? Bool {
+            SMLoginItemSetEnabled("com.nellwatson.BeddyButlerHelperApp" as CFString, runStartup)
+        }
+        
+        
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
@@ -103,7 +109,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         }
         
+        
+        
     }
-
+    
+    
 }
 

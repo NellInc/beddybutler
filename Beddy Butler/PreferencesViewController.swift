@@ -104,31 +104,9 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         
         if let theButton = sender as? NSButton {
             let runStartup = Bool(theButton.integerValue)
-                if runStartup {
-                    
                     // Turn on launch at login
-                    if !SMLoginItemSetEnabled("com.nellwatson.BeddyButlerHelperApp" as CFString, true) {
-                        let alert = NSAlert()
-                        alert.messageText = "Error occurred enabling login"
-                        alert.informativeText = "Couldn't add Helper App to launch at login item list."
-                        alert.runModal()
-                    }
-                                                          /*
-                   at:NSPropertyListXMLFormat_v1_0 errorDescription:&error];
-                    */
+                    SMLoginItemSetEnabled("com.nellwatson.BeddyButlerHelperApp" as CFString, runStartup)
                     
-                } else {
-                // disable plist
-                    
-                    // Turn off launch at login
-                    if !SMLoginItemSetEnabled("com.nellwatson.BeddyButlerHelperApp" as CFString, false) {
-                        let alert = NSAlert()
-                        alert.messageText = "Error occurred enabling login"
-                        alert.informativeText = "Couldn't remove Helper App from launch at login item list."
-                        alert.runModal()
-                    }
-                }
-           
         }
     }
     

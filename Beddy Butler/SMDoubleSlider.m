@@ -280,6 +280,13 @@ typedef			intptr_t		BindingIndex;
     return self;
 }
 
+- (id)initWithFrame:(NSRect)frameRect
+{
+    self = [super initWithFrame:frameRect];
+    
+    return self;
+}
+
 #pragma mark -
 
 + (Class)cellClass

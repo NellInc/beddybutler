@@ -47,6 +47,11 @@ class ButlerTimer: NSObject {
         }
     }
     
+    /// Temporary frequency variable
+    var userSelectedFrequency: Double? {
+        return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.frequency.rawValue) as? Double
+    }
+    
     var userSelectedSound: AudioPlayer.AudioFiles {
         if let audioFile = NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.selectedSound.rawValue) as? String {
             return AudioPlayer.AudioFiles(stringValue: audioFile)
@@ -131,13 +136,20 @@ class ButlerTimer: NSObject {
     /// Play sound should invalidate the current timer and schedule the next timer
     func playSound() {
         //let previousImage = AppDelegate.statusItem?.image
+        var result: String
+        
         //AppDelegate.statusItem?.image = butlerImage
         if !userMuteSound! {
             audioPlayer.playFile(userSelectedSound)
-            NSLog("Sound played!")
+            
+            result = "Sound played: \(userSelectedSound), Current time is: \(NSDate()), Set Start Date: \(startDate), Set Bed Date: \(bedDate), Time between plays (frequency): \(userSelectedFrequency!) \n"
+           
         } else {
-            NSLog("Muted by user!")
+            result = "Muted by user: \(userSelectedSound), Current time is: \(NSDate()), Set Start Date: \(startDate), Set Bed Date: \(bedDate), Time between plays (frequency): \(userSelectedFrequency!) \n"
+           
         }
+        writeToLogFile(result)
+        NSLog(result)
         
         calculateNewTimer()
         //AppDelegate.statusItem?.image = previousImage
@@ -201,7 +213,7 @@ class ButlerTimer: NSObject {
         var randomStart: UInt32
         var randomEnd: UInt32
         
-        if let theKey = NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.frequency.rawValue) as? Double {
+        if let theKey = userSelectedFrequency {
             randomStart = UInt32(theKey * 60)
             randomEnd = UInt32( ( (theKey * 0.7) + theKey) * 60 )
         } else {
@@ -217,8 +229,47 @@ class ButlerTimer: NSObject {
     var testInteval: NSTimeInterval {
         return NSTimeInterval(arc4random_uniform(100))
     }
+    
+    func writeToLogFile(message: String){
+        //Create file manager instance
+        let fileManager = NSFileManager()
+        
+        let URLs = fileManager.URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask)
+        
+        
+        let documentURL = URLs[0]
+        let fileURL = documentURL.URLByAppendingPathComponent("BeddyButlerLog.txt")
+        
+        let data = message.dataUsingEncoding(NSUTF8StringEncoding)
 
-}
+        //if !fileManager.fileExistsAtPath(fileURL) {
+        do {
+            if !fileManager.fileExistsAtPath(fileURL.path!) {
+                
+                if !fileManager.createFileAtPath(fileURL.path!, contents: data , attributes: nil) {
+                    NSLog("File not created: \(fileURL.absoluteString)")
+                }
+            }
+            
+            let handle: NSFileHandle = try NSFileHandle(forWritingToURL: fileURL)
+            handle.truncateFileAtOffset(handle.seekToEndOfFile())
+            handle.writeData(data!)
+            handle.closeFile()
+            
+        }
+        catch {
+            NSLog("Error writing to file: \(error)")
+        }
+        
+            
+            //fileManager.createFileAtPath(file, contents: NSData, attributes: nil)
+    }
+    
+        
+    }
+
+
+
 
 extension NSDate {
     class func randomTimeBetweenDates(lhs: NSDate, _ rhs: NSDate) -> NSDate {

@@ -17,26 +17,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to initialize your application
         
         // Check if main app is already running; if yes, do nothing and terminate helper app
-        var isAlreadyRunning = false
-        var isActive = false
+       // var isAlreadyRunning = false
+        //var isActive = false
+        /*
         let running = NSWorkspace.sharedWorkspace().runningApplications
         
         for app in running {
             if app.bundleIdentifier == "com.nellwatson.Beddy-Butler" {
                 isAlreadyRunning = true
-                isActive = NSApp.active
+                //isActive = NSApp.active
             }
             
         }
         
-        if !isAlreadyRunning || !isActive {
+
+        if !isAlreadyRunning {//|| !isActive {
+
+*/
             let path = NSString(string: NSBundle.mainBundle().bundlePath).stringByDeletingLastPathComponent
             let reviewedPath = NSString(string: path).stringByDeletingLastPathComponent
             let reviewedPath2 = NSString(string: reviewedPath).stringByDeletingLastPathComponent
             let reviewedPath3 = NSString(string: reviewedPath2).stringByDeletingLastPathComponent
-            NSWorkspace.sharedWorkspace().launchApplication(reviewedPath3)
+            let reviewedPath4 = NSString(string: reviewedPath3).stringByAppendingPathComponent("MacOS")
+            let reviewedPath5 = NSString(string: reviewedPath4).stringByAppendingPathComponent("Beddy Butler")
+            NSWorkspace.sharedWorkspace().launchApplication(reviewedPath5)
+        
+            NSLog("Run at startup executed")
             
-        }
+       // }
         
         NSApp.terminate(nil)
         
