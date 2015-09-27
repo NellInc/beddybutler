@@ -21,6 +21,7 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
     @IBOutlet weak var endTimeTextValue: NSTextField!
   
     @IBOutlet weak var doubleSlider: DoubleSliderView!
+    @IBOutlet weak var doubleSliderHandler: DoubleSliderHandler!
     
 //    var representedTimerRandomness: String {
 //        let endRange = (self.timerRandomness * 0.7) + self.timerRandomness
@@ -34,6 +35,7 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
 
         // Do any additional setup after loading the view.
         loadDoubleSliderValues()
+        loadDoubleSliderHandler()
     }
     
     override func viewWillDisappear() {
@@ -70,6 +72,29 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         
         self.doubleSlider.allowsTickMarkValuesOnly = false
 
+    }
+    
+    func loadDoubleSliderHandler() {
+        
+        
+        let value = { (valueIn: CGFloat) -> CGFloat in return valueIn }
+        let invertedValue = { (valueIn: CGFloat) -> CGFloat in return valueIn }
+        
+        let startSlider = NSImage(named: "StartSlider")
+        let bedSlider = NSImage(named: "BedSlider")
+        bedSlider
+        
+        // Do any additional setup after loading the view.
+        doubleSliderHandler.addHandle("BedHandler", image: bedSlider!, initRatio: 1.0, sliderValue: value,sliderValueChanged: invertedValue)
+        
+        doubleSliderHandler.addHandle("StartHandler", image: startSlider!, initRatio: 0.0, sliderValue: value,sliderValueChanged: invertedValue)
+    
+
+        // Add Bindings
+        //self.doubleSliderHandler.bind("values.startValue", toObject: self.userDefaults, withKeyPath: "values.startTimeValue", options: nil)
+        
+        //self.doubleSliderHandler.bind("values.bedValue", toObject: self.userDefaults, withKeyPath: "values.bedTimeValue", options: nil)
+        
     }
     
     //MARK: View Controller Actions
