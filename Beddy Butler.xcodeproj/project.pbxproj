@@ -63,7 +63,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2D076B6E1BA57F5B0052047C /* DoubleSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleSliderView.swift; sourceTree = "<group>"; };
+		2D076B6E1BA57F5B0052047C /* DoubleSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DoubleSliderView.swift; path = "Beddy Butler/DoubleSliderView.swift"; sourceTree = "<group>"; };
 		2D1347311B9CBAC30069643B /* SMDoubleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDoubleSlider.h; sourceTree = "<group>"; };
 		2D1347321B9CBAC30069643B /* SMDoubleSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDoubleSlider.m; sourceTree = "<group>"; };
 		2D1347331B9CBAC30069643B /* SMDoubleSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDoubleSliderCell.h; sourceTree = "<group>"; };
@@ -71,7 +71,7 @@
 		2D1347371B9CBE6C0069643B /* Beddy Butler-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Beddy Butler-Bridging-Header.h"; sourceTree = "<group>"; };
 		2D20F5B71B84CF3F00FE7EFC /* ButlerTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButlerTimer.swift; sourceTree = "<group>"; };
 		2D25EE8E1B7920E8004B88BC /* PanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelViewController.swift; sourceTree = "<group>"; };
-		2D28669D1BA994CB00E2B35F /* DoubleSliderCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleSliderCellView.swift; sourceTree = "<group>"; };
+		2D28669D1BA994CB00E2B35F /* DoubleSliderCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DoubleSliderCellView.swift; path = "Beddy Butler/DoubleSliderCellView.swift"; sourceTree = "<group>"; };
 		2D2D56F11B9CD68C00705495 /* NotificationKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationKeys.swift; sourceTree = "<group>"; };
 		2D30884A1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Betty_ButlerUserDefaultsTests.swift; sourceTree = "<group>"; };
 		2D32ADB71B7FBA0500E03480 /* Insistent.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Insistent.aiff; sourceTree = "<group>"; };
@@ -157,6 +157,16 @@
 			name = Assets;
 			sourceTree = "<group>";
 		};
+		2D45EB7F1BB7F5AA00FCEAC2 /* Archive Classes */ = {
+			isa = PBXGroup;
+			children = (
+				2D076B6E1BA57F5B0052047C /* DoubleSliderView.swift */,
+				2D28669D1BA994CB00E2B35F /* DoubleSliderCellView.swift */,
+			);
+			name = "Archive Classes";
+			path = ..;
+			sourceTree = "<group>";
+		};
 		2D9B85341B83691E002795F8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +208,7 @@
 				2DC7671B1B78D37A00866072 /* Views */,
 				2DC767021B78D25F00866072 /* Images.xcassets */,
 				2DC767041B78D25F00866072 /* Main.storyboard */,
+				2D45EB7F1BB7F5AA00FCEAC2 /* Archive Classes */,
 				2D32ADB61B7FB9EE00E03480 /* Assets */,
 				2D1E21C31B9C67AD004215EA /* Objective-C Slider Framework */,
 				2DC766FC1B78D25F00866072 /* Supporting Files */,
@@ -236,8 +247,6 @@
 		2DC7671B1B78D37A00866072 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2D076B6E1BA57F5B0052047C /* DoubleSliderView.swift */,
-				2D28669D1BA994CB00E2B35F /* DoubleSliderCellView.swift */,
 				2DD2B24D1B91F6D1006318E8 /* FrequencySlider.swift */,
 				2DD2B24B1B91E26B006318E8 /* RandomnessFormatter.swift */,
 			);

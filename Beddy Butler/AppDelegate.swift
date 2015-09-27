@@ -64,12 +64,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             SMLoginItemSetEnabled("com.nellwatson.BeddyButlerHelperApp" as CFString, runStartup)
         }
         
+        //register for Notifications
+        registerForNotitications()
+        
         
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
         self.butlerTimer = nil
+        deRegisterFromNotifications()
     }
     
     @IBAction func quit(sender: AnyObject) {
@@ -111,6 +115,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         
         
+    }
+    
+    /// Beddy Butler should get notifified when it goes to sleep to handle the current timer
+    func receiveSleepNotification(notification: NSNotification) {
+        NSLog("Sleep nottification received: \(notification.name)")
+        self.butlerTimer?.timer?.invalidate()
+    }
+    
+    /// Beddy Butler should get notified when the PC wakes up from sleep so it can restart its timer
+    func receiveWakeNotification(notification: NSNotification) {
+        NSLog("Wake nottification received: \(notification.name)")
+        self.butlerTimer?.calculateNewTimer()
+    }
+    
+    func registerForNotitications() {
+        //These notifications are filed on NSWorkspace's notification center, not the default
+        // notification center. You will not receive sleep/wake notifications if you file
+        //with the default notification center.
+        NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self, selector: "receiveSleepNotification:", name: NSWorkspaceWillSleepNotification, object: nil)
+        NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self, selector: "receiveWakeNotification:", name: NSWorkspaceWillSleepNotification, object: nil)
+    }
+    
+    func deRegisterFromNotifications() {
+        NSWorkspace.sharedWorkspace().notificationCenter.removeObserver(self)
     }
     
     
