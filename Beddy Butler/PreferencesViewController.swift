@@ -84,10 +84,21 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         let bedSlider = NSImage(named: "BedSlider")
         bedSlider
         
-        // Do any additional setup after loading the view.
-        doubleSliderHandler.addHandle("BedHandler", image: bedSlider!, initRatio: 1.0, sliderValue: value,sliderValueChanged: invertedValue)
+        var userStartTime: Double? {
+            return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.startTimeValue.rawValue) as? Double
+        }
         
-        doubleSliderHandler.addHandle("StartHandler", image: startSlider!, initRatio: 0.0, sliderValue: value,sliderValueChanged: invertedValue)
+        var userBedTime: Double? {
+            return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.bedTimeValue.rawValue) as? Double
+        }
+        
+        let initialBedRatio = userBedTime!/86400
+        let initialStartRadio = userStartTime!/86400
+        
+        // Do any additional setup after loading the view.
+        doubleSliderHandler.addHandle("BedHandler", image: bedSlider!, initRatio: CGFloat(initialBedRatio), sliderValue: value,sliderValueChanged: invertedValue)
+        
+        doubleSliderHandler.addHandle("StartHandler", image: startSlider!, initRatio: CGFloat(initialStartRadio), sliderValue: value,sliderValueChanged: invertedValue)
     
 
         // Add Bindings

@@ -281,10 +281,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                                     <binding destination="45n-s1-uBZ" name="value" keyPath="values.runStartup" id="g68-sb-Aiz"/>
                                 </connections>
                             </button>
-                            <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YtT-pT-fk4" customClass="SMDoubleSlider">
-                                <rect key="frame" x="98" y="292" width="265" height="20"/>
+                            <slider hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YtT-pT-fk4" customClass="SMDoubleSlider">
+                                <rect key="frame" x="179" y="223" width="265" height="20"/>
                                 <animations/>
-                                <sliderCell key="cell" alignment="left" maxValue="86400" doubleValue="68233.08139534884" tickMarkPosition="below" sliderType="linear" id="cXZ-HG-HRj" customClass="SMDoubleSliderCell"/>
+                                <sliderCell key="cell" enabled="NO" alignment="left" maxValue="86400" doubleValue="68233.08139534884" tickMarkPosition="below" sliderType="linear" id="cXZ-HG-HRj" customClass="SMDoubleSliderCell"/>
                                 <connections>
                                     <action selector="changedPreference:" target="XfG-lQ-9wD" id="Cyu-4b-ooJ"/>
                                 </connections>
@@ -467,7 +467,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                                 </textFieldCell>
                             </textField>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H7B-36-gSj" customClass="DoubleSliderHandler" customModule="Beddy_Butler" customModuleProvider="target">
-                                <rect key="frame" x="96" y="266" width="265" height="20"/>
+                                <rect key="frame" x="89" y="292" width="265" height="20"/>
                                 <animations/>
                             </customView>
                         </subviews>

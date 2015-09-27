@@ -51,26 +51,26 @@ class DoubleSliderHandler: NSView {
     }
     
     //MARK: Observer Properties
-    private var doubleSliderContext = 0
-    dynamic var startValue: Double {
-        get {
-            return Double(self.values["Low"]!)
-        }
-        set {
-            //TO DO: retrieve the correct value rather than hard-coding "Low"
-            self.values["Low"] = CGFloat(startValue)
-        }
-    }
-    
-    dynamic var bedValue: Double {
-        get {
-            return Double(self.values["High"]!)
-        }
-        set {
-            //TO DO: retrieve the correct value rather than hard-coding "High"
-            self.values["High"] = CGFloat(startValue)
-        }
-    }
+//    private var doubleSliderContext = 0
+//    dynamic var startValue: Double {
+//        get {
+//            return Double(self.values["Low"]!)
+//        }
+//        set {
+//            //TO DO: retrieve the correct value rather than hard-coding "Low"
+//            self.values["Low"] = CGFloat(startValue)
+//        }
+//    }
+//    
+//    dynamic var bedValue: Double {
+//        get {
+//            return Double(self.values["High"]!)
+//        }
+//        set {
+//            //TO DO: retrieve the correct value rather than hard-coding "High"
+//            self.values["High"] = CGFloat(startValue)
+//        }
+//    }
     
     //MARK: Initialisers
     
@@ -272,97 +272,53 @@ class DoubleSliderHandler: NSView {
     //MARK: KVO
     
     //class MyObserver: NSObject {
+//    
+//        override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+//            
+//            if context == &self.doubleSliderContext {
+//                
+//                if let newValue = change?[NSKeyValueChangeNewKey] {
+//                    Swift.print("Date changed: \(newValue)")
+//                    
+//                    if keyPath!.hasPrefix("values."){
+//                        let key = keyPath?.componentsSeparatedByString(".")[1]
+//                        let handle = self.handles[key!]
+//                        
+//                        var ratio = handle?.ratioForValue(CGFloat(newValue as! NSNumber))
+//                        let slidableWidth = self.bounds.size.width - sliderHandleWidth;
+//                        let boundary = self.boundaryForView(handle!.handleView)
+//                        let halfWidth = sliderHandleWidth * 0.5
+//                        let left = boundary[0]
+//                        let right = boundary[1]
+//                        let minRatio = (left + halfWidth) / slidableWidth
+//                        let maxRatio = (right - halfWidth) / slidableWidth
+//
+//                        ratio = max(ratio!, minRatio)
+//                        ratio = min(ratio!, maxRatio)
+//                        
+//                        if Float(abs(ratio! - (handle?.curValue)!)) > FLT_EPSILON {
+//                            handle!.curValue = ratio!
+//                            let newX = slidableWidth * ratio!
+//                            handle!.handleView.frame = NSMakeRect(newX - handle!.handleView.frame.size.width * 0.5, handle!.handleView.frame.origin.y, handle!.handleView.frame.size.width, handle!.handleView.frame.size.height)
+//                            
+//                            self.willChangeValueForKey(keyPath!)
+//                            self.values[key!] = handle?.curValue
+//                            self.didChangeValueForKey(keyPath!)
+//                            
+//                        }
+//                        
+//                    }
+//                    
+//                }
+//            } else {
+//                super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+//            }
+//
+//    }
+//    
+//      //  }
     
-        override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-            
-            if context == &self.doubleSliderContext {
-                
-                if let newValue = change?[NSKeyValueChangeNewKey] {
-                    Swift.print("Date changed: \(newValue)")
-                    
-                    if keyPath!.hasPrefix("values."){
-                        let key = keyPath?.componentsSeparatedByString(".")[1]
-                        let handle = self.handles[key!]
-                        
-                        var ratio = handle?.ratioForValue(CGFloat(newValue as! NSNumber))
-                        let slidableWidth = self.bounds.size.width - sliderHandleWidth;
-                        let boundary = self.boundaryForView(handle!.handleView)
-                        let halfWidth = sliderHandleWidth * 0.5
-                        let left = boundary[0]
-                        let right = boundary[1]
-                        let minRatio = (left + halfWidth) / slidableWidth
-                        let maxRatio = (right - halfWidth) / slidableWidth
-
-                        ratio = max(ratio!, minRatio)
-                        ratio = min(ratio!, maxRatio)
-                        
-                        if Float(abs(ratio! - (handle?.curValue)!)) > FLT_EPSILON {
-                            handle!.curValue = ratio!
-                            let newX = slidableWidth * ratio!
-                            handle!.handleView.frame = NSMakeRect(newX - handle!.handleView.frame.size.width * 0.5, handle!.handleView.frame.origin.y, handle!.handleView.frame.size.width, handle!.handleView.frame.size.height)
-                            
-                            self.willChangeValueForKey(keyPath!)
-                            self.values[key!] = handle?.curValue
-                            self.didChangeValueForKey(keyPath!)
-                            
-                        }
-                        
-                    }
-                    
-                }
-            } else {
-                super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
-            }
-
-    }
-    
-      //  }
-    
-    /*
-    - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-    {
-    if (context != &VMMultiHandleSliderContext) {
-    return [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-    }
-    
-    if ([keyPath hasPrefix:@"values."]) {
-    NSString *key = [[keyPath componentsSeparatedByString:@"."] objectAtIndex:1];
-    VMSliderHandle *handle = [self.handles objectForKey:key];
-    id obj = [change objectForKey:NSKeyValueChangeNewKey];
-    
-    if ([obj class] == [NSNull class]) {
-    return;
-    }
-    
-    float newValue = [[change objectForKey:NSKeyValueChangeNewKey] floatValue];
-    float ratio = [handle ratioForValue:newValue];
-    float slidableWidth = self.bounds.size.width - kSliderHandleWidth;
-    NSArray *boundary = [self boundaryForView:handle.handleView];
-    float halfWidth = kSliderHandleWidth * 0.5;
-    float left = [[boundary objectAtIndex:0] floatValue];
-    float right = [[boundary objectAtIndex:1] floatValue];
-    float minRatio = (left + halfWidth) / slidableWidth;
-    float maxRatio = (right - halfWidth) / slidableWidth;
-    
-    ratio = MAX(ratio, minRatio);
-    ratio = MIN(ratio, maxRatio);
-    
-    if (ABS(ratio - handle.curRatio) > FLT_EPSILON) {
-    handle.curRatio = ratio;
-    float newX = slidableWidth * ratio;
-    handle.handleView.frame = NSMakeRect(newX - handle.handleView.frame.size.width * 0.5, handle.handleView.frame.origin.y, handle.handleView.frame.size.width, handle.handleView.frame.size.height);
-    
-    [self willChangeValueForKey:keyPath];
-    [self.values setObject:[NSNumber numberWithFloat:[handle curValue]] forKey:key];
-    [self didChangeValueForKey:keyPath];
-    
-    if (_valueChangedBlock) {
-    _valueChangedBlock([self.values copy]);
-    }
-    }
-    }
-    }
-    */
+   
     
     //MARK: notification update
     func updateValues(notification: NSNotification) {

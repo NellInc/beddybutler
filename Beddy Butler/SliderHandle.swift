@@ -28,6 +28,7 @@ class SliderHandle: NSObject {
                 NSUserDefaults.standardUserDefaults().setDouble(Double(_curRatio*86400), forKey: UserDefaultKeys.bedTimeValue.rawValue)
             }
             NSUserDefaults.standardUserDefaults().synchronize()
+            NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.userPreferenceChanged.rawValue, object: self)
         }
     }
     var curValue: CGFloat {
