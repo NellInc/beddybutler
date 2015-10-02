@@ -3,7 +3,7 @@
 //  Beddy Butler
 //
 //  Created by David Garces on 10/08/2015.
-//  Copyright (c) 2015 QuantaCorp. All rights reserved.
+//  Copyright (c) 2015 Nell Watson Inc. All rights reserved.
 //
 
 import Cocoa
@@ -20,7 +20,7 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
     
     @IBOutlet weak var endTimeTextValue: NSTextField!
   
-    @IBOutlet weak var doubleSlider: DoubleSliderView!
+    
     @IBOutlet weak var doubleSliderHandler: DoubleSliderHandler!
     
 //    var representedTimerRandomness: String {
@@ -34,19 +34,19 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        loadDoubleSliderValues()
+     //   loadDoubleSliderValues()
         loadDoubleSliderHandler()
     }
     
     override func viewWillDisappear() {
         super.viewDidDisappear()
         // Removes self from all notifications that are observing
-        NSNotificationCenter.defaultCenter().removeObserver(doubleSlider)
+        //NSNotificationCenter.defaultCenter().removeObserver(doubleSlider)
         // NSNotificationCenter.defaultCenter().removeObserver(self, name: "endKey", object: nil)
     }
     
      deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(doubleSlider)
+        //NSNotificationCenter.defaultCenter().removeObserver(doubleSlider)
     }
 
     override var representedObject: AnyObject? {
@@ -56,23 +56,23 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         }
     }
     
-    func loadDoubleSliderValues() {
-
-        self.doubleSlider.maxValue = 86400
-        
-         self.doubleSlider.bind("objectLoValue", toObject: self.userDefaults, withKeyPath: "values.startTimeValue", options: nil)
-        
-         self.doubleSlider.bind("objectHiValue", toObject: self.userDefaults, withKeyPath: "values.bedTimeValue", options: nil)
-        
-        self.doubleSlider.continuous = true
-        
-        self.doubleSlider.numberOfTickMarks = 24
-        
-        self.doubleSlider.tickMarkPosition = NSTickMarkPosition.Below
-        
-        self.doubleSlider.allowsTickMarkValuesOnly = false
-
-    }
+//    func loadDoubleSliderValues() {
+//
+//        self.doubleSlider.maxValue = 86400
+//        
+//         self.doubleSlider.bind("objectLoValue", toObject: self.userDefaults, withKeyPath: "values.startTimeValue", options: nil)
+//        
+//         self.doubleSlider.bind("objectHiValue", toObject: self.userDefaults, withKeyPath: "values.bedTimeValue", options: nil)
+//        
+//        self.doubleSlider.continuous = true
+//        
+//        self.doubleSlider.numberOfTickMarks = 24
+//        
+//        self.doubleSlider.tickMarkPosition = NSTickMarkPosition.Below
+//        
+//        self.doubleSlider.allowsTickMarkValuesOnly = false
+//
+//    }
     
     func loadDoubleSliderHandler() {
         
@@ -80,8 +80,8 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         let value = { (valueIn: CGFloat) -> CGFloat in return valueIn }
         let invertedValue = { (valueIn: CGFloat) -> CGFloat in return valueIn }
         
-        let startSlider = NSImage(named: "StartSlider")
-        let bedSlider = NSImage(named: "BedSlider")
+        let startSlider = NSImage(named: SliderKeys.StartSlider.rawValue)
+        let bedSlider = NSImage(named: SliderKeys.BedSlider.rawValue)
         bedSlider
         
         var userStartTime: Double? {
@@ -96,16 +96,9 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         let initialStartRadio = userStartTime!/86400
         
         // Do any additional setup after loading the view.
-        doubleSliderHandler.addHandle("BedHandler", image: bedSlider!, initRatio: CGFloat(initialBedRatio), sliderValue: value,sliderValueChanged: invertedValue)
+        doubleSliderHandler.addHandle(SliderKeys.BedHandler.rawValue, image: bedSlider!, initRatio: CGFloat(initialBedRatio), sliderValue: value,sliderValueChanged: invertedValue)
         
-        doubleSliderHandler.addHandle("StartHandler", image: startSlider!, initRatio: CGFloat(initialStartRadio), sliderValue: value,sliderValueChanged: invertedValue)
-    
-
-        // Add Bindings
-        //self.doubleSliderHandler.bind("values.startValue", toObject: self.userDefaults, withKeyPath: "values.startTimeValue", options: nil)
-        
-        //self.doubleSliderHandler.bind("values.bedValue", toObject: self.userDefaults, withKeyPath: "values.bedTimeValue", options: nil)
-        
+        doubleSliderHandler.addHandle(SliderKeys.StartHandler.rawValue, image: startSlider!, initRatio: CGFloat(initialStartRadio), sliderValue: value,sliderValueChanged: invertedValue)
     }
     
     //MARK: View Controller Actions

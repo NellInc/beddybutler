@@ -3,7 +3,7 @@
 //  Beddy Butler
 //
 //  Created by David Garces on 19/08/2015.
-//  Copyright (c) 2015 QuantaCorp. All rights reserved.
+//  Copyright (c) 2015 Nell Watson Inc. All rights reserved.
 //
 
 import Foundation
@@ -14,18 +14,10 @@ class ButlerTimer: NSObject {
     //MARK: Properties
     
     var numberOfRepeats = 5
-    /// start date will be set to current date + user's default startTime
-    //var startDate = NSDate()
-    /// end date will be set to the end of the interval between startdate and main Interval
-    //var bedDate = NSDate()
-    /// The main interval will be set based on today's date and between the user default start and bed time
     var mainInterval: NSTimeInterval?
-    /// Timers 1 and 2 will alternate to play the sound randomly throughout the parent interval
     var timer: NSTimer?
-    //var timer2: NSTimer?
     /// the audio player that will be used in the play sound action
     var audioPlayer: AudioPlayer
-    // the
     let butlerImage = NSImage(named: "Butler")
     
     //MARK: Computed properties
@@ -61,7 +53,7 @@ class ButlerTimer: NSObject {
         }
     }
     
-    
+    //MARK: Initialisers and deinitialisers
     
     override init() {
         self.audioPlayer = AudioPlayer()
@@ -85,29 +77,11 @@ class ButlerTimer: NSObject {
     
     deinit {
         timer?.invalidate()
-        //NSNotificationCenter.defaultCenter().removeObserver(self)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
 
-    /// When the end time slider changes, it should post itself in a notification so that updateBedTime updates the userEndTime
-    func updateBedTime(notification: NSNotification) {
-        //if let _ = notification.object as? EndSliderView {
-            // calculateEndDate will return a new value again as it has changed by the user
-            //self.bedDate = calculateEndDate
-            
-        //}
-    }
-    
-     /// When the start time slider changes, it should post itself in a notification so that updateStartTime updates the userStartTime
-    func updateStartTime(notification: NSNotification) {
-        //if let _ = notification.object as? StartSliderView {
-            // calculateStartDate will return a new value again as it has changed by the user
-            //self.startDate = calculateStartDate
-            
-        //}
-    }
-    
-    /// calculates the start date based on the current user value
+    /// Calculates the start date based on the current user value
     var startDate: NSDate {
         
         let calendar = NSCalendar.currentCalendar()
@@ -115,11 +89,9 @@ class ButlerTimer: NSObject {
         // Convert seconds to int, we are sure we will not exceed max int value as we only have 86,000 seconds or less
         let seconds = Int(self.userStartTime!)
         return calendar.dateByAddingUnit(NSCalendarUnit.Second, value: seconds, toDate: startOfDay, options: NSCalendarOptions.MatchFirst)!
-        
-        //return NSDate(timeIntervalSinceNow: self.userStartTime!)
     }
     
-    /// calculates the end date based on the current user value
+    /// Calculates the end date based on the current user value
     var bedDate: NSDate {
         let calendar = NSCalendar.currentCalendar()
         let startOfDay = calendar.startOfDayForDate(NSDate())
@@ -141,10 +113,11 @@ class ButlerTimer: NSObject {
         //AppDelegate.statusItem?.image = butlerImage
         if !userMuteSound! {
             audioPlayer.playFile(userSelectedSound)
-            
+            // TO DO: Remove temporary log
             result = "Sound played: \(userSelectedSound), Current time is: \(NSDate()), Set Start Date: \(startDate), Set Bed Date: \(bedDate), Time between plays (frequency): \(userSelectedFrequency!) \n"
            
         } else {
+            // TO DO: Remove temporary log
             result = "Muted by user: \(userSelectedSound), Current time is: \(NSDate()), Set Start Date: \(startDate), Set Bed Date: \(bedDate), Time between plays (frequency): \(userSelectedFrequency!) \n"
            
         }
@@ -226,10 +199,12 @@ class ButlerTimer: NSObject {
 
     }
     
+    // TO DO: Remove test interval
     var testInteval: NSTimeInterval {
         return NSTimeInterval(arc4random_uniform(100))
     }
     
+    //TO DO: Remove log file and logging functionality
     func writeToLogFile(message: String){
         //Create file manager instance
         let fileManager = NSFileManager()
@@ -260,16 +235,11 @@ class ButlerTimer: NSObject {
         catch {
             NSLog("Error writing to file: \(error)")
         }
-        
-            
-            //fileManager.createFileAtPath(file, contents: NSData, attributes: nil)
+
     }
     
         
-    }
-
-
-
+}
 
 extension NSDate {
     class func randomTimeBetweenDates(lhs: NSDate, _ rhs: NSDate) -> NSDate {

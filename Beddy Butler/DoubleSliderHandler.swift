@@ -3,7 +3,7 @@
 //  Double Slider Test
 //
 //  Created by David Garces on 21/09/2015.
-//  Copyright © 2015 David Garces. All rights reserved.
+//  Copyright (c) 2015 Nell Watson Inc. All rights reserved.
 //
 
 import Cocoa
@@ -94,11 +94,10 @@ class DoubleSliderHandler: NSView {
     ///Initialises the view from code
     override init(frame frameRect: NSRect) {
         
-         super.init(frame: frameRect)
+        super.init(frame: frameRect)
         
         let sliderBarImage = self.sliderBarImage
         
-       
         let startX = (frame.size.width - sliderBarImage.size.width) * 0.5
         let starY = (frame.size.height - sliderBarImage.size.height) * 0.5
         let imageView = NSImageView(frame: NSMakeRect(startX, starY, sliderBarImage.size.width, sliderBarImage.size.height))
@@ -106,8 +105,6 @@ class DoubleSliderHandler: NSView {
         imageView.tag = 0
         self.addSubview(imageView)
         
-       
-    
     }
     
     //MARK: Handle methods
@@ -116,26 +113,17 @@ class DoubleSliderHandler: NSView {
         
         let sliderHandle: SliderHandle = SliderHandle(name: name, image: image, curRatio: initRatio, sliderValue: sliderValue, sliderValueChanged: sliderValueChanged)
         
-        //if var theHandles = self.handles {
-            self.handles[name] = sliderHandle
-        //} else {
-          //  self.handles = [name:sliderHandle]
-        //}
-        
-        //if var theValues = self.values {
-          self.values[name] = sliderHandle.curValue
-        //} else {
-          //  values = [name:sliderHandle.curRatio]
-        //}
+        self.handles[name] = sliderHandle
+        self.values[name] = sliderHandle.curValue
         
         //TO DO: Add observer for key values.name?
         //self.addObserver(self, forKeyPath: "values."+name, options: .New, context: &doubleSliderContext)
         
-        let slidableWidth = self.bounds.size.width - sliderHandleHeight
+        let slidableWidth = self.bounds.size.width - sliderHandleWidth
         
         let midY = NSMidY(self.bounds)
         
-        let handleRect = NSMakeRect(slidableWidth * CGFloat(sliderHandle.curValue), midY - sliderHandleHeight * 0.5, sliderHandleWidth, sliderHandleHeight)
+        let handleRect = NSMakeRect(slidableWidth * CGFloat(sliderHandle._curRatio), midY - sliderHandleHeight * 0.5, sliderHandleWidth, sliderHandleHeight)
         
         let imageView = NSImageView(frame: NSMakeRect(0, 0, sliderHandleWidth, sliderHandleHeight))
         
@@ -195,9 +183,11 @@ class DoubleSliderHandler: NSView {
         
         if newX - halfWidth < left {
             newX = left + halfWidth
+            Swift.print("half width used: \(newX)")
         }
         if newX + halfWidth > right {
             newX = right - halfWidth
+            Swift.print("half width used: \(newX)")
         }
         
         self.activeHandleView?.frame = NSMakeRect(newX - self.activeHandleView!.frame.size.width * 0.5, self.activeHandleView!.frame.origin.y, self.activeHandleView!.frame.size.width, self.activeHandleView!.frame.size.height)

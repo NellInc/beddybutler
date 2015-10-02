@@ -1,9 +1,9 @@
 //
 //  SliderHandle.swift
-//  Double Slider Test
+//  Beddy Butler
 //
 //  Created by David Garces on 21/09/2015.
-//  Copyright © 2015 David Garces. All rights reserved.
+//  Copyright (c) 2015 Nell Watson Inc. All rights reserved.
 //
 
 import Cocoa
@@ -22,7 +22,7 @@ class SliderHandle: NSObject {
     var _curRatio: CGFloat {
         didSet {
             
-            if self.name == "StartHandler" {
+            if self.name == SliderKeys.StartHandler.rawValue {
                 NSUserDefaults.standardUserDefaults().setDouble(Double(_curRatio*86400), forKey: UserDefaultKeys.startTimeValue.rawValue)
             } else {
                 NSUserDefaults.standardUserDefaults().setDouble(Double(_curRatio*86400), forKey: UserDefaultKeys.bedTimeValue.rawValue)
