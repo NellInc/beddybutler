@@ -109,9 +109,9 @@ class DoubleSliderHandler: NSView {
     
     //MARK: Handle methods
     
-    func addHandle(name: String, image: NSImage, initRatio: CGFloat, sliderValue: SliderValue, sliderValueChanged: SliderValue) {
+    func addHandle(name: String, image: NSImage, iniTime: Double, sliderValue: SliderValue, sliderValueChanged: SliderValue) {
         
-        let sliderHandle: SliderHandle = SliderHandle(name: name, image: image, curRatio: initRatio, sliderValue: sliderValue, sliderValueChanged: sliderValueChanged)
+        let sliderHandle: SliderHandle = SliderHandle(name: name, image: image, timeValue: iniTime, sliderValue: sliderValue, sliderValueChanged: sliderValueChanged)
         
         self.handles[name] = sliderHandle
         self.values[name] = sliderHandle.curValue
@@ -197,7 +197,6 @@ class DoubleSliderHandler: NSView {
         let ratio = (newX - halfWidth) / slidableWidth
         self.activeHandle?.curValue = ratio
         let difference = abs((self.activeHandle?.curValue)! - self.lastValue!)
-        
         //TO DO: slidervaluechanged check
         if Float(difference) > FLT_EPSILON && self.sliderValueChanged != nil {
             self.lastValue = self.activeHandle?.curValue
@@ -205,11 +204,10 @@ class DoubleSliderHandler: NSView {
             for key in self.handles {
                 let handle = key
                 let oldValue = self.values[key.0]
-                //TO DO: curRatio or CurValue?
                 let curValue = handle.1.curValue
                 
                 if Float(abs(curValue - oldValue!)) > FLT_EPSILON {
-                    //TO DO: curRatio or curValue
+                    // VALUE CHANGED
                     self.values[handle.0] = handle.1.curValue
                 }
             }
@@ -259,57 +257,6 @@ class DoubleSliderHandler: NSView {
     
     }
     
-    //MARK: KVO
-    
-    //class MyObserver: NSObject {
-//    
-//        override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-//            
-//            if context == &self.doubleSliderContext {
-//                
-//                if let newValue = change?[NSKeyValueChangeNewKey] {
-//                    Swift.print("Date changed: \(newValue)")
-//                    
-//                    if keyPath!.hasPrefix("values."){
-//                        let key = keyPath?.componentsSeparatedByString(".")[1]
-//                        let handle = self.handles[key!]
-//                        
-//                        var ratio = handle?.ratioForValue(CGFloat(newValue as! NSNumber))
-//                        let slidableWidth = self.bounds.size.width - sliderHandleWidth;
-//                        let boundary = self.boundaryForView(handle!.handleView)
-//                        let halfWidth = sliderHandleWidth * 0.5
-//                        let left = boundary[0]
-//                        let right = boundary[1]
-//                        let minRatio = (left + halfWidth) / slidableWidth
-//                        let maxRatio = (right - halfWidth) / slidableWidth
-//
-//                        ratio = max(ratio!, minRatio)
-//                        ratio = min(ratio!, maxRatio)
-//                        
-//                        if Float(abs(ratio! - (handle?.curValue)!)) > FLT_EPSILON {
-//                            handle!.curValue = ratio!
-//                            let newX = slidableWidth * ratio!
-//                            handle!.handleView.frame = NSMakeRect(newX - handle!.handleView.frame.size.width * 0.5, handle!.handleView.frame.origin.y, handle!.handleView.frame.size.width, handle!.handleView.frame.size.height)
-//                            
-//                            self.willChangeValueForKey(keyPath!)
-//                            self.values[key!] = handle?.curValue
-//                            self.didChangeValueForKey(keyPath!)
-//                            
-//                        }
-//                        
-//                    }
-//                    
-//                }
-//            } else {
-//                super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
-//            }
-//
-//    }
-//    
-//      //  }
-    
-   
-    
     //MARK: notification update
     func updateValues(notification: NSNotification) {
         if let updateObject = notification.object as? (String, CGFloat) {
@@ -345,10 +292,57 @@ class DoubleSliderHandler: NSView {
                 //}
                 
             }
-            
-            
         }
     }
     
-    
 }
+
+
+//MARK: KVO
+
+//class MyObserver: NSObject {
+//
+//        override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+//
+//            if context == &self.doubleSliderContext {
+//
+//                if let newValue = change?[NSKeyValueChangeNewKey] {
+//                    Swift.print("Date changed: \(newValue)")
+//
+//                    if keyPath!.hasPrefix("values."){
+//                        let key = keyPath?.componentsSeparatedByString(".")[1]
+//                        let handle = self.handles[key!]
+//
+//                        var ratio = handle?.ratioForValue(CGFloat(newValue as! NSNumber))
+//                        let slidableWidth = self.bounds.size.width - sliderHandleWidth;
+//                        let boundary = self.boundaryForView(handle!.handleView)
+//                        let halfWidth = sliderHandleWidth * 0.5
+//                        let left = boundary[0]
+//                        let right = boundary[1]
+//                        let minRatio = (left + halfWidth) / slidableWidth
+//                        let maxRatio = (right - halfWidth) / slidableWidth
+//
+//                        ratio = max(ratio!, minRatio)
+//                        ratio = min(ratio!, maxRatio)
+//
+//                        if Float(abs(ratio! - (handle?.curValue)!)) > FLT_EPSILON {
+//                            handle!.curValue = ratio!
+//                            let newX = slidableWidth * ratio!
+//                            handle!.handleView.frame = NSMakeRect(newX - handle!.handleView.frame.size.width * 0.5, handle!.handleView.frame.origin.y, handle!.handleView.frame.size.width, handle!.handleView.frame.size.height)
+//
+//                            self.willChangeValueForKey(keyPath!)
+//                            self.values[key!] = handle?.curValue
+//                            self.didChangeValueForKey(keyPath!)
+//
+//                        }
+//
+//                    }
+//
+//                }
+//            } else {
+//                super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+//            }
+//
+//    }
+//
+//      //  }

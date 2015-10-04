@@ -18,14 +18,26 @@ class SliderHandle: NSObject {
     var sliderValueChanged: SliderValue?
     var name: String
     var handleImage: NSImage
+    var offset:CGFloat {
+        let offsetValue: CGFloat = 0.0
+        return self.name == SliderKeys.StartHandler.rawValue ? offsetValue : -offsetValue
+    }
+    var userTimeValue: Double {
+        get {
+            return Double(self._curRatio + offset) * 86400
+        }
+        set {
+                self._curRatio = CGFloat (newValue / 86400) + offset
+        }
+    }
     // TO DO: need to fix curRatio vs slidervalue
     var _curRatio: CGFloat {
         didSet {
             
             if self.name == SliderKeys.StartHandler.rawValue {
-                NSUserDefaults.standardUserDefaults().setDouble(Double(_curRatio*86400), forKey: UserDefaultKeys.startTimeValue.rawValue)
+                NSUserDefaults.standardUserDefaults().setDouble(userTimeValue, forKey: UserDefaultKeys.startTimeValue.rawValue)
             } else {
-                NSUserDefaults.standardUserDefaults().setDouble(Double(_curRatio*86400), forKey: UserDefaultKeys.bedTimeValue.rawValue)
+                NSUserDefaults.standardUserDefaults().setDouble(userTimeValue, forKey: UserDefaultKeys.bedTimeValue.rawValue)
             }
             NSUserDefaults.standardUserDefaults().synchronize()
             NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.userPreferenceChanged.rawValue, object: self)
@@ -47,15 +59,40 @@ class SliderHandle: NSObject {
 
     var handleView: NSView
         
-    required init(name: String, image: NSImage, curRatio: CGFloat, sliderValue: SliderValue, sliderValueChanged: SliderValue) {
+    required init(name: String, image: NSImage, timeValue: Double, sliderValue: SliderValue, sliderValueChanged: SliderValue) {
             self.name = name
             self.handleImage = image
             self.sliderValue = sliderValue
             self.sliderValueChanged = sliderValueChanged
             self.handleView = NSView()
-            self._curRatio = curRatio
-        
+            //let offset: CGFloat = name == SliderKeys.StartHandler.rawValue ? 0.01 : -0.01
+            self._curRatio = CGFloat ( timeValue / 86400) 
+ 
         }
+    
+    
+    func ratioForDoubleValue(value: Double) -> CGFloat {
+        
+        let offset: CGFloat = 0.02
+        let isStartSlider = name == SliderKeys.StartHandler.rawValue
+        
+        //First calculate plain value
+        let theValue = CGFloat ( value / 86400)
+        
+        if isStartSlider {
+            let theNewValue = theValue  + offset
+            if theNewValue <= offset || theNewValue >= (1 - offset) { return theValue } else {
+                return theNewValue
+            }
+            
+        } else {
+            let theNewValue = theValue  - offset
+            if theNewValue <= offset || theNewValue >= (1 - offset) { return theValue } else {
+                return theNewValue
+            }
+        }
+        
+    }
     
     func ratioForValue(value: CGFloat) -> CGFloat {
         var ratio = value
