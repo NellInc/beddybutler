@@ -2,10 +2,9 @@
 
 *** Applet Description ***
 
-Beddy buttler is a small applet utlity for OSX. It is designed to help you go to bed at a specified time. 
+Beddy buttler is a small applet utlity for OSX. It is designed to help nudge you to go to bed during a time frame. 
 
-The applet will nudge you to go to bed during a time frame. 
-
+From David Garces and Nell Watson, inspired by a talk by Abe Gong.
 
 *** Applet Stories ****
 
@@ -19,6 +18,6 @@ You can change the following settings:
 - 
 
 
-*** Potential footnote ***
+*** License ***
 
 This applet is freely available under the MIT license. Please feel free to contribute to enhance it and modify it.
