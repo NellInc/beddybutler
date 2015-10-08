@@ -89,6 +89,8 @@ class ButlerTimer: NSObject {
         // Convert seconds to int, we are sure we will not exceed max int value as we only have 86,000 seconds or less
         let seconds = Int(self.userStartTime!)
         return calendar.dateByAddingUnit(NSCalendarUnit.Second, value: seconds, toDate: startOfDay, options: NSCalendarOptions.MatchFirst)!
+        
+        
     }
     
     /// Calculates the end date based on the current user value
@@ -98,6 +100,7 @@ class ButlerTimer: NSObject {
         // Convert seconds to int, we are sure we will not exceed max int value as we only have 86,000 seconds or less
         let seconds = Int(self.userBedTime!)
         return calendar.dateByAddingUnit(NSCalendarUnit.Second, value: seconds, toDate: startOfDay, options: NSCalendarOptions.MatchFirst)!
+        
     }
     
     /// Calculates the main interval used for the timers, should only be used when both start and bed date have been calculated

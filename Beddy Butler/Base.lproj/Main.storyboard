@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9058" systemVersion="15A284" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9058"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -72,7 +72,7 @@
         <!--About-->
         <scene sceneID="cTy-rG-yJD">
             <objects>
-                <viewController title="About" showSeguePresentationStyle="single" id="vVG-17-Gue" sceneMemberID="viewController">
+                <viewController title="About" showSeguePresentationStyle="single" id="vVG-17-Gue" customClass="AboutViewController" customModule="Beddy_Butler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="0za-ef-iMg">
                         <rect key="frame" x="0.0" y="0.0" width="460" height="178"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -92,7 +92,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZEv-iq-Lre">
-                                <rect key="frame" x="174" y="104" width="92" height="17"/>
+                                <rect key="frame" x="174" y="104" width="229" height="17"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version 1.0" id="VKR-t0-XUq">
                                     <font key="font" metaFont="user"/>
@@ -132,6 +132,9 @@
                         </subviews>
                         <animations/>
                     </view>
+                    <connections>
+                        <outlet property="versionTextField" destination="ZEv-iq-Lre" id="saO-vC-miZ"/>
+                    </connections>
                 </viewController>
                 <customObject id="wuL-hq-gSW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
