@@ -29,6 +29,40 @@ class Beddy_ButlerTimerTests: XCTestCase {
         super.tearDown()
     }
     
+    func testTimeZone(){
+        let currentLocalTime = NSDate()
+        
+        let sourceTimeZone = NSTimeZone(abbreviation: "UTC")
+        let triggerTimeZone = NSTimeZone.systemTimeZone()
+        
+        let sourceGTMOffset = sourceTimeZone?.secondsFromGMTForDate(currentLocalTime)
+        let triggerGTMOffset = triggerTimeZone.secondsFromGMTForDate(currentLocalTime)
+        
+        let interval = triggerGTMOffset - sourceGTMOffset!
+        
+        let finalDate = NSDate(timeInterval: NSTimeInterval.init(interval), sinceDate: currentLocalTime)
+        
+        Swift.print("Current local time: \(currentLocalTime)")
+        Swift.print("Source Time Zone (GTM): \(sourceTimeZone)")
+        Swift.print("Trigger Time Zone (System Time Zone): \(triggerTimeZone)")
+        Swift.print("Source GTM Offset: \(sourceGTMOffset)")
+        Swift.print("Trigger GTM Offset: \(triggerGTMOffset)")
+        Swift.print("Interval (Source - Trigger Offsets): \(interval)")
+        Swift.print("Final Date (Current + interval): \(finalDate)")
+        
+        
+    }
+    
+    func testDate() {
+        
+        let localTimeZone = NSTimeZone.systemTimeZone()
+        let secondsFromGTM = NSTimeInterval.init(localTimeZone.secondsFromGMT)
+        let resultDate = NSDate(timeInterval: secondsFromGTM, sinceDate: NSDate())
+
+        Swift.print("Original: \(NSDate()), New: \(resultDate)")
+        
+    }
+    
     func testInterval() {
         let theDate = NSDate()
         NSLog("Interval: \(theDate)")
@@ -48,11 +82,6 @@ class Beddy_ButlerTimerTests: XCTestCase {
         NSLog("Now: \(startOfDay)")
         NSLog("The date: \(theDate)")
         XCTAssertTrue(theDate.timeIntervalSinceDate(startOfDay) > 0, "the start date should be around now")
-    }
-    
-    func testMainIntervalInitialises(){
-        NSLog("The main interval: \(butlerTimer.mainInterval)")
-        XCTAssertTrue(butlerTimer.mainInterval > 0, "Timer1 should be initialized")
     }
     
     
