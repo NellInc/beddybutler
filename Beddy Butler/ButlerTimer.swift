@@ -21,12 +21,27 @@ class ButlerTimer: NSObject {
     
     //MARK: Computed properties
     
+    //MARK: User Properties
     var userStartTime: Double? {
-        return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.startTimeValue.rawValue) as? Double
+        get {
+            return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.startTimeValue.rawValue) as? Double
+        }
+        set {
+            NSUserDefaults.standardUserDefaults().setDouble(newValue!, forKey: UserDefaultKeys.startTimeValue.rawValue)
+            NSUserDefaults.standardUserDefaults().synchronize()
+            NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.userPreferenceChanged.rawValue, object: self)
+        }
     }
     
     var userBedTime: Double? {
-        return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.bedTimeValue.rawValue) as? Double
+        get {
+            return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.bedTimeValue.rawValue) as? Double
+        }
+        set {
+            NSUserDefaults.standardUserDefaults().setDouble(newValue!, forKey: UserDefaultKeys.bedTimeValue.rawValue)
+            NSUserDefaults.standardUserDefaults().synchronize()
+            NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.userPreferenceChanged.rawValue, object: self)
+        }
     }
     
     var userMuteSound: Bool? {
@@ -94,6 +109,11 @@ class ButlerTimer: NSObject {
         
         // Register observers to recalculate the timer
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "calculateNewTimer", name: NotificationKeys.userPreferenceChanged.rawValue , object: nil)
+        
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: "validateUserTimeValue", name: NSUserDefaultsDidChangeNotification , object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUserTimeValue:", name: NotificationKeys.startSliderChanged.rawValue , object: nil)
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUserTimeValue:", name: NotificationKeys.endSliderChanged.rawValue , object: nil)
         
        
     }
@@ -191,6 +211,41 @@ class ButlerTimer: NSObject {
         return NSTimeInterval(source + randomStart) // adding 300 will ensure that it will always be from 300 to 1200
 
     }
+    
+    //MARK: Ratio handling
+    func updateUserTimeValue(notification: NSNotification) {
+        if let newValue = notification.object as? Double {
+        switch notification.name {
+        case NotificationKeys.startSliderChanged.rawValue:
+            self.userStartTime = newValue * 86400
+        case NotificationKeys.endSliderChanged.rawValue:
+            self.userBedTime = newValue * 86400
+        default:
+            break;
+            }
+        }
+    }
+    
+    func validateUserTimeValue() {
+        let timeGap = 7200.00
+        let maxTime = 86400.00
+        if userBedTime < userStartTime {
+            if userStartTime! + timeGap > maxTime {
+                userStartTime = userBedTime! - timeGap
+            } else {
+                userBedTime! = userStartTime! + timeGap
+            }
+        }
+    }
+//
+//    var userTimeValue: Double {
+//        get {
+//            return Double(self._curRatio ) * self.sliderRange //+ 64791
+//        }
+//        set {
+//            self._curRatio = CGFloat (newValue / self.sliderRange )//+ 64791)
+//        }
+//    }
     
     // TODO: Remove test interval -
     var testInteval: NSTimeInterval {

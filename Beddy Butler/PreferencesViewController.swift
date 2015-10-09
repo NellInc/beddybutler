@@ -74,13 +74,13 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
             return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.bedTimeValue.rawValue) as? Double
         }
         
-        //let initialBedRatio = userBedTime!/86400
-        //let initialStartRadio = userStartTime!/86400
+        let initialBedRatio = CGFloat(userBedTime!/86400)
+        let initialStartRadio = CGFloat(userStartTime!/86400)
         
         // Do any additional setup after loading the view.
-        doubleSliderHandler.addHandle(SliderKeys.BedHandler.rawValue, image: bedSlider!, iniTime: userBedTime!, sliderValue: value,sliderValueChanged: invertedValue)
+        doubleSliderHandler.addHandle(SliderKeys.BedHandler.rawValue, image: bedSlider!, iniRatio: initialBedRatio, sliderValue: value,sliderValueChanged: invertedValue)
         
-        doubleSliderHandler.addHandle(SliderKeys.StartHandler.rawValue, image: startSlider!, iniTime: userStartTime!, sliderValue: value,sliderValueChanged: invertedValue)
+        doubleSliderHandler.addHandle(SliderKeys.StartHandler.rawValue, image: startSlider!, iniRatio: initialStartRadio, sliderValue: value,sliderValueChanged: invertedValue)
     }
     
     //MARK: View Controller Actions

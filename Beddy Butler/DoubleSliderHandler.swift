@@ -80,7 +80,6 @@ class DoubleSliderHandler: NSView {
         
         let sliderBarImage = self.sliderBarImage
         
-        
         let startX = (frame.size.width - sliderBarImage.size.width) * 0.5
         let starY = (frame.size.height - sliderBarImage.size.height) * 0.5
         let imageView = NSImageView(frame: NSMakeRect(startX, starY, sliderBarImage.size.width, sliderBarImage.size.height))
@@ -109,9 +108,9 @@ class DoubleSliderHandler: NSView {
     
     //MARK: Handle methods
     
-    func addHandle(name: String, image: NSImage, iniTime: Double, sliderValue: SliderValue, sliderValueChanged: SliderValue) {
+    func addHandle(name: String, image: NSImage, iniRatio: CGFloat, sliderValue: SliderValue, sliderValueChanged: SliderValue) {
         
-        let sliderHandle: SliderHandle = SliderHandle(name: name, image: image, timeValue: iniTime, sliderValue: sliderValue, sliderValueChanged: sliderValueChanged)
+        let sliderHandle: SliderHandle = SliderHandle(name: name, image: image, ratio: iniRatio, sliderValue: sliderValue, sliderValueChanged: sliderValueChanged)
         
         self.handles[name] = sliderHandle
         self.values[name] = sliderHandle.curValue

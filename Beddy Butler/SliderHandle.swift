@@ -13,34 +13,26 @@ class SliderHandle: NSObject {
     //MARK: Types
     typealias SliderValue = (value: CGFloat) -> CGFloat
     typealias SliderValueChanged  = [String: CGFloat]
+    
+    //MARK: Properties
+    var multipliedValue: Double {
+        return 0
+    }
 
     var sliderValue: SliderValue?
     var sliderValueChanged: SliderValue?
     var name: String
     var handleImage: NSImage
-    var offset:CGFloat {
-        let offsetValue: CGFloat = 0.0
-        return self.name == SliderKeys.StartHandler.rawValue ? offsetValue : -offsetValue
-    }
-    var userTimeValue: Double {
-        get {
-            return Double(self._curRatio + offset) * 86400
-        }
-        set {
-                self._curRatio = CGFloat (newValue / 86400) + offset
-        }
-    }
-    // TO DO: need to fix curRatio vs slidervalue
+    
+    // TODO: need to fix curRatio vs slidervalue -
     var _curRatio: CGFloat {
         didSet {
-            
             if self.name == SliderKeys.StartHandler.rawValue {
-                NSUserDefaults.standardUserDefaults().setDouble(userTimeValue, forKey: UserDefaultKeys.startTimeValue.rawValue)
+                //TODO: Move variables
+                NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.startSliderChanged.rawValue, object: self._curRatio)
             } else {
-                NSUserDefaults.standardUserDefaults().setDouble(userTimeValue, forKey: UserDefaultKeys.bedTimeValue.rawValue)
+                NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.endSliderChanged.rawValue, object: self._curRatio)
             }
-            NSUserDefaults.standardUserDefaults().synchronize()
-            NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.userPreferenceChanged.rawValue, object: self)
         }
     }
     var curValue: CGFloat {
@@ -59,40 +51,40 @@ class SliderHandle: NSObject {
 
     var handleView: NSView
         
-    required init(name: String, image: NSImage, timeValue: Double, sliderValue: SliderValue, sliderValueChanged: SliderValue) {
+    required init(name: String, image: NSImage, ratio: CGFloat, sliderValue: SliderValue, sliderValueChanged: SliderValue) {
             self.name = name
             self.handleImage = image
             self.sliderValue = sliderValue
             self.sliderValueChanged = sliderValueChanged
             self.handleView = NSView()
             //let offset: CGFloat = name == SliderKeys.StartHandler.rawValue ? 0.01 : -0.01
-            self._curRatio = CGFloat ( timeValue / 86400) 
+            self._curRatio = ratio
  
         }
     
     
-    func ratioForDoubleValue(value: Double) -> CGFloat {
-        
-        let offset: CGFloat = 0.02
-        let isStartSlider = name == SliderKeys.StartHandler.rawValue
-        
-        //First calculate plain value
-        let theValue = CGFloat ( value / 86400)
-        
-        if isStartSlider {
-            let theNewValue = theValue  + offset
-            if theNewValue <= offset || theNewValue >= (1 - offset) { return theValue } else {
-                return theNewValue
-            }
-            
-        } else {
-            let theNewValue = theValue  - offset
-            if theNewValue <= offset || theNewValue >= (1 - offset) { return theValue } else {
-                return theNewValue
-            }
-        }
-        
-    }
+//    func ratioForDoubleValue(value: Double) -> CGFloat {
+//        
+//        let offset: CGFloat = 0.02
+//        let isStartSlider = name == SliderKeys.StartHandler.rawValue
+//        
+//        //First calculate plain value
+//        let theValue = CGFloat ( value / sliderRange)
+//        
+//        if isStartSlider {
+//            let theNewValue = theValue  + offset
+//            if theNewValue <= offset || theNewValue >= (1 - offset) { return theValue } else {
+//                return theNewValue
+//            }
+//            
+//        } else {
+//            let theNewValue = theValue  - offset
+//            if theNewValue <= offset || theNewValue >= (1 - offset) { return theValue } else {
+//                return theNewValue
+//            }
+//        }
+//        
+//    }
     
     func ratioForValue(value: CGFloat) -> CGFloat {
         var ratio = value
