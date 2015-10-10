@@ -23,11 +23,6 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
     
     @IBOutlet weak var doubleSliderHandler: DoubleSliderHandler!
     
-//    var representedTimerRandomness: String {
-//        let endRange = (self.timerRandomness * 0.7) + self.timerRandomness
-//        return "\(self.timerRandomness) to \(endRange) min."
-//    }
-    
     //MARK: View Main Events
     
     override func viewDidLoad() {
@@ -41,12 +36,6 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
     override func viewWillDisappear() {
         super.viewDidDisappear()
         // Removes self from all notifications that are observing
-        //NSNotificationCenter.defaultCenter().removeObserver(doubleSlider)
-        // NSNotificationCenter.defaultCenter().removeObserver(self, name: "endKey", object: nil)
-    }
-    
-     deinit {
-        //NSNotificationCenter.defaultCenter().removeObserver(doubleSlider)
     }
 
     override var representedObject: AnyObject? {
@@ -74,13 +63,22 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
             return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.bedTimeValue.rawValue) as? Double
         }
         
+        //let startconvertedValue = newValue < 0.5 ? newValue * 86400 : (newValue + 0.080) * 86400
+
+        //let bedconvertedValue = newValue > 0.5 ? newValue * 86400 : (newValue - 0.080) * 86400
+       
+        
         let initialBedRatio = CGFloat(userBedTime!/86400)
         let initialStartRadio = CGFloat(userStartTime!/86400)
         
-        // Do any additional setup after loading the view.
-        doubleSliderHandler.addHandle(SliderKeys.BedHandler.rawValue, image: bedSlider!, iniRatio: initialBedRatio, sliderValue: value,sliderValueChanged: invertedValue)
+        let convertedStartValue = initialStartRadio < 0.5 ? initialStartRadio : (initialStartRadio - 0.080)
+        let convertedBedValue = initialBedRatio > 0.5 ? initialBedRatio : (initialBedRatio + 0.080)
+
         
-        doubleSliderHandler.addHandle(SliderKeys.StartHandler.rawValue, image: startSlider!, iniRatio: initialStartRadio, sliderValue: value,sliderValueChanged: invertedValue)
+        // Do any additional setup after loading the view.
+        doubleSliderHandler.addHandle(SliderKeys.BedHandler.rawValue, image: bedSlider!, iniRatio: convertedBedValue, sliderValue: value,sliderValueChanged: invertedValue)
+        
+        doubleSliderHandler.addHandle(SliderKeys.StartHandler.rawValue, image: startSlider!, iniRatio: convertedStartValue, sliderValue: value,sliderValueChanged: invertedValue)
     }
     
     //MARK: View Controller Actions
@@ -110,7 +108,6 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
          NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.userPreferenceChanged.rawValue, object: self)
     }
     
-    
     @IBAction func changeRunStartup(sender: AnyObject) {
         
         if let theButton = sender as? NSButton {
@@ -121,19 +118,5 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         }
     }
     
-    /// Updates the status title to the title of the selected cell (i.e. Shy, Insistent, or Zombie.
-//    @IBAction func updateStatusTitle(sender: AnyObject) {
-//        
-//        if let selectedItem = sender as? NSMatrix {
-//            if let _: NSButtonCell = selectedItem.selectedCell() as? NSButtonCell {
-//                //AppDelegate.statusItem!.title = selectedCell.title
-//            }
-//            
-//        }
-//        
-//    }
-
-    
-
 }
 

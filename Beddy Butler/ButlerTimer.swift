@@ -214,7 +214,7 @@ class ButlerTimer: NSObject {
     
     //MARK: Ratio handling
     func updateUserTimeValue(notification: NSNotification) {
-        if let newValue = notification.object as? Double {  
+        if let newValue = notification.object as? Double {
         switch notification.name {
         case NotificationKeys.startSliderChanged.rawValue:
             let convertedValue = newValue < 0.5 ? newValue * 86400 : (newValue + 0.080) * 86400
