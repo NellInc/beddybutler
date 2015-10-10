@@ -214,12 +214,14 @@ class ButlerTimer: NSObject {
     
     //MARK: Ratio handling
     func updateUserTimeValue(notification: NSNotification) {
-        if let newValue = notification.object as? Double {
+        if let newValue = notification.object as? Double {  
         switch notification.name {
         case NotificationKeys.startSliderChanged.rawValue:
-            self.userStartTime = newValue * 86400
+            let convertedValue = newValue < 0.5 ? newValue * 86400 : (newValue + 0.080) * 86400
+            self.userStartTime = convertedValue
         case NotificationKeys.endSliderChanged.rawValue:
-            self.userBedTime = newValue * 86400
+            let convertedValue = newValue > 0.5 ? newValue * 86400 : (newValue - 0.080) * 86400
+            self.userBedTime = convertedValue
         default:
             break;
             }
@@ -237,15 +239,6 @@ class ButlerTimer: NSObject {
             }
         }
     }
-//
-//    var userTimeValue: Double {
-//        get {
-//            return Double(self._curRatio ) * self.sliderRange //+ 64791
-//        }
-//        set {
-//            self._curRatio = CGFloat (newValue / self.sliderRange )//+ 64791)
-//        }
-//    }
     
     // TODO: Remove test interval -
     var testInteval: NSTimeInterval {
