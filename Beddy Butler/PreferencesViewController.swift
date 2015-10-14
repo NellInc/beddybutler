@@ -68,11 +68,14 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         //let bedconvertedValue = newValue > 0.5 ? newValue * 86400 : (newValue - 0.080) * 86400
        
         
-        let initialBedRatio = CGFloat(userBedTime!/86400)
-        let initialStartRadio = CGFloat(userStartTime!/86400)
+        let initialBedRatio = CGFloat(userBedTime!*0.92/86400)
+        let initialStartRadio = CGFloat(userStartTime!*0.92/86400)
         
-        let convertedStartValue = initialStartRadio < 0.5 ? initialStartRadio : (initialStartRadio - 0.080)
-        let convertedBedValue = initialBedRatio > 0.5 ? initialBedRatio : (initialBedRatio + 0.080)
+        //let convertedStartValue = initialStartRadio < 0.5 ? initialStartRadio : (initialStartRadio - 0.080)
+        //let convertedBedValue = initialBedRatio > 0.5 ? initialBedRatio : (initialBedRatio + 0.080)
+
+        let convertedStartValue = initialStartRadio
+        let convertedBedValue = initialBedRatio + 0.080
 
         
         // Do any additional setup after loading the view.

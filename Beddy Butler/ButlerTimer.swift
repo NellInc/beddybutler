@@ -217,10 +217,12 @@ class ButlerTimer: NSObject {
         if let newValue = notification.object as? Double {
         switch notification.name {
         case NotificationKeys.startSliderChanged.rawValue:
-            let convertedValue = newValue < 0.5 ? newValue * 86400 : (newValue + 0.080) * 86400
+            //let convertedValue = newValue < 0.5 ? newValue * 86400 : (newValue + 0.080) * 86400
+            let convertedValue = newValue * 86400 / 0.92
             self.userStartTime = convertedValue
         case NotificationKeys.endSliderChanged.rawValue:
-            let convertedValue = newValue > 0.5 ? newValue * 86400 : (newValue - 0.080) * 86400
+            //let convertedValue = newValue > 0.5 ? newValue * 86400 : (newValue - 0.080) * 86400
+            let convertedValue = (newValue - 0.080) * 86400 / 0.92
             self.userBedTime = convertedValue
         default:
             break;
