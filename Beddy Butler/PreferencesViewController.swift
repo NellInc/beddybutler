@@ -106,7 +106,6 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         }
     }
     
-    
     @IBAction func changedPreference(sender: AnyObject) {
          NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.userPreferenceChanged.rawValue, object: self)
     }

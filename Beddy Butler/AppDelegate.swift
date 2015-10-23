@@ -67,6 +67,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //register for Notifications
         registerForNotitications()
         
+        //determine if helper app is running
+        var startedAtLogin = false
+        let apps = NSWorkspace.sharedWorkspace().runningApplications
+        for app in apps {
+            if app.bundleIdentifier == "com.nellwatson.BeddyButlerHelperApp" {
+                startedAtLogin = true
+            }
+        }
+        
+        if startedAtLogin {
+            NSDistributedNotificationCenter.defaultCenter().postNotificationName("terminateApp", object: NSBundle.mainBundle().bundleIdentifier)
+        }
+        
         
     }
 

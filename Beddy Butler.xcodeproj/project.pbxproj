@@ -28,10 +28,10 @@
 		2DC767031B78D25F00866072 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DC767021B78D25F00866072 /* Images.xcassets */; };
 		2DC767061B78D25F00866072 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DC767041B78D25F00866072 /* Main.storyboard */; };
 		2DC767121B78D25F00866072 /* Beddy_ButlerSliderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC767111B78D25F00866072 /* Beddy_ButlerSliderTests.swift */; };
+		2DCCAA221BD76EED00F96405 /* Beddy_ButlerLoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCCAA211BD76EED00F96405 /* Beddy_ButlerLoginTests.swift */; };
 		2DD2B24C1B91E26B006318E8 /* RandomnessFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD2B24B1B91E26B006318E8 /* RandomnessFormatter.swift */; };
 		2DD2B24E1B91F6D1006318E8 /* FrequencySlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD2B24D1B91F6D1006318E8 /* FrequencySlider.swift */; };
 		2DD349001BAEBF9F0097D9E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD348FF1BAEBF9F0097D9E5 /* AppDelegate.swift */; };
-		2DD349021BAEBF9F0097D9E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD349011BAEBF9F0097D9E5 /* ViewController.swift */; };
 		2DD349041BAEBF9F0097D9E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DD349031BAEBF9F0097D9E5 /* Assets.xcassets */; };
 		2DD349071BAEBF9F0097D9E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DD349051BAEBF9F0097D9E5 /* Main.storyboard */; };
 		2DD3490D1BAEC16E0097D9E5 /* BeddyButlerHelperApp.app in Copy BeddyButlerHelperApp */ = {isa = PBXBuildFile; fileRef = 2DD348FD1BAEBF9F0097D9E5 /* BeddyButlerHelperApp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -87,11 +87,11 @@
 		2DC7670B1B78D25F00866072 /* Beddy ButlerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Beddy ButlerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DC767101B78D25F00866072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DC767111B78D25F00866072 /* Beddy_ButlerSliderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beddy_ButlerSliderTests.swift; sourceTree = "<group>"; };
+		2DCCAA211BD76EED00F96405 /* Beddy_ButlerLoginTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beddy_ButlerLoginTests.swift; sourceTree = "<group>"; };
 		2DD2B24B1B91E26B006318E8 /* RandomnessFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomnessFormatter.swift; sourceTree = "<group>"; };
 		2DD2B24D1B91F6D1006318E8 /* FrequencySlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrequencySlider.swift; sourceTree = "<group>"; };
 		2DD348FD1BAEBF9F0097D9E5 /* BeddyButlerHelperApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeddyButlerHelperApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DD348FF1BAEBF9F0097D9E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2DD349011BAEBF9F0097D9E5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2DD349031BAEBF9F0097D9E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DD349061BAEBF9F0097D9E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2DD349081BAEBF9F0097D9E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -209,6 +209,7 @@
 				2D30884A1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift */,
 				2DC767111B78D25F00866072 /* Beddy_ButlerSliderTests.swift */,
 				2D9B85321B83678F002795F8 /* Beddy_ButlerAudioTests.swift */,
+				2DCCAA211BD76EED00F96405 /* Beddy_ButlerLoginTests.swift */,
 				2DC7670F1B78D25F00866072 /* Supporting Files */,
 			);
 			path = "Beddy ButlerTests";
@@ -246,7 +247,6 @@
 			children = (
 				2DD349131BAEC8880097D9E5 /* BeddyButlerHelperApp.entitlements */,
 				2DD348FF1BAEBF9F0097D9E5 /* AppDelegate.swift */,
-				2DD349011BAEBF9F0097D9E5 /* ViewController.swift */,
 				2DD349031BAEBF9F0097D9E5 /* Assets.xcassets */,
 				2DD349051BAEBF9F0097D9E5 /* Main.storyboard */,
 				2DD349081BAEBF9F0097D9E5 /* Info.plist */,
@@ -442,6 +442,7 @@
 				2D5AD2191B87597A008953B1 /* Beddy_ButlerTimerTests.swift in Sources */,
 				2DC767121B78D25F00866072 /* Beddy_ButlerSliderTests.swift in Sources */,
 				2D9B85331B83678F002795F8 /* Beddy_ButlerAudioTests.swift in Sources */,
+				2DCCAA221BD76EED00F96405 /* Beddy_ButlerLoginTests.swift in Sources */,
 				2D30884B1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,7 +451,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DD349021BAEBF9F0097D9E5 /* ViewController.swift in Sources */,
 				2DD349001BAEBF9F0097D9E5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
