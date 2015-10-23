@@ -48,6 +48,19 @@ class Beddy_ButlerLoginTests: XCTestCase {
         
     }
     
+    func testBundlePath3() {
+        
+        // NSApplication.ur
+        let bundlePath = NSBundle.mainBundle().bundleURL
+        let appName = NSString(string: bundlePath.lastPathComponent!).stringByDeletingPathExtension
+     
+      
+        //let programArguments = ["/Applications/LaunchAtLoginExample.app/Contents/MacOS/LaunchAtLoginExample"]
+        let programArguments = bundlePath.path! + "/Contents/MacOS/" + appName
+        
+        NSLog("arguments: \(programArguments)")
+    }
+    
     func testBundlePath2() {
         let path = NSString(string: NSBundle.mainBundle().bundlePath).stringByDeletingLastPathComponent
         let reviewedPath = NSString(string: path).stringByDeletingLastPathComponent
@@ -100,6 +113,15 @@ class Beddy_ButlerLoginTests: XCTestCase {
         
         
         
+    }
+    
+    func testLSharedList() {
+        let x = kCFAllocatorDefault
+        let y = kLSSharedFileListSessionLoginItems
+        let z = y.takeUnretainedValue()
+        
+        let loginReference = LSSharedFileListCreate(x, z, nil)
+        XCTAssert(loginReference != nil)
     }
 
 

@@ -203,20 +203,12 @@ class Beddy_ButlerTimerTests: XCTestCase {
         let fileURL = documentURL.URLByAppendingPathComponent("textFile.txt")
         
         // NSApplication.ur
-        
-        do {
-            
+    
             let data = "hola 2".dataUsingEncoding(NSUTF8StringEncoding)
             
             //let data = try NSPropertyListSerialization.dataWithPropertyList(plistDictionary, format: NSPropertyListFormat.XMLFormat_v1_0, options: NSPropertyListWriteOptions.init())
             XCTAssert(data!.length > 0)
             fileManager.createFileAtPath(fileURL.path!, contents: data, attributes: nil)
-            
-        } catch {
-            NSLog("Error while creating agent file")
-        }
-        
-        
         
     }
 
