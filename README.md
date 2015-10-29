@@ -34,7 +34,7 @@ The app can auto-open on startup/login if the user activates this option.
 
 This app was developed using the latest version of Swift 2.1 and Xcode 7.1. You may need to update your IDE to the latest version before you are able to open the solution. To run Beddy Butler you will need OS X 10.10 or later.
 
-### Additional Development notes.
+## Programmatically.
 
 This app was created using Storyboards for Cocoa. The project is structured as follows:
 
@@ -62,17 +62,17 @@ This group contains the sound files that are played to the user (pending updates
 
 This group has a set of classes to test features for beddy butler individually. 
 
-#### Other development notes.
+### Other development notes.
 
 - Build numbering: The project was set up with an additional build phase (Run Versioning Script), so that it always increases the build count in the info.plist file.
 
 - Additional Test files: If you need to add new test cases, you can simply add a new XCTest class to /Beddy ButlerTests but make sure you import the following
-import XCTest
-@testable import Beddy_Butler
+	import XCTest
+	@testable import Beddy_Butler
 
 - Run at startup uses access to LSSharedFileListItems to add or remove the app from the list. If you need to look at this functionality you can access it in /Models/LoginItems.swift. We tried other run at startup alternatives like using a Helper App that ran Beddy Butler at the beginning, or using the SMLoginItemSetEnabled method, but none of these methods worked in OSX 10.11.
 
-### Footnote
+## Footnote
 
 This app is freely available under the BSD license. Please feel free to contribute to enhance it and modify it.
 
