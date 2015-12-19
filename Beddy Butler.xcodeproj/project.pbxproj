@@ -12,13 +12,101 @@
 		2D28669E1BA994CB00E2B35F /* DoubleSliderCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D28669D1BA994CB00E2B35F /* DoubleSliderCellView.swift */; };
 		2D2D56F21B9CD68C00705495 /* NotificationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2D56F11B9CD68C00705495 /* NotificationKeys.swift */; };
 		2D30884B1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D30884A1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift */; };
-		2D32ADB81B7FBA0500E03480 /* Insistent.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2D32ADB71B7FBA0500E03480 /* Insistent.aiff */; };
-		2D32ADBA1B7FBA0B00E03480 /* Shy.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2D32ADB91B7FBA0B00E03480 /* Shy.aiff */; };
-		2D32ADBC1B7FBA2B00E03480 /* Zombie.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2D32ADBB1B7FBA2B00E03480 /* Zombie.aiff */; };
 		2D45EB821BB7F61F00FCEAC2 /* DoubleSliderHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D45EB801BB7F61F00FCEAC2 /* DoubleSliderHandler.swift */; };
 		2D45EB831BB7F61F00FCEAC2 /* SliderHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D45EB811BB7F61F00FCEAC2 /* SliderHandle.swift */; };
 		2D4B84851B87230F00735187 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B84841B87230F00735187 /* UserDefaultKeys.swift */; };
 		2D5AD2191B87597A008953B1 /* Beddy_ButlerTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5AD2181B87597A008953B1 /* Beddy_ButlerTimerTests.swift */; };
+		2D5EC96D1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9121C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.01.mp3 */; };
+		2D5EC96E1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9131C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.02.mp3 */; };
+		2D5EC96F1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9141C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.03.mp3 */; };
+		2D5EC9701C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9151C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.04.mp3 */; };
+		2D5EC9711C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.05.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9161C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.05.mp3 */; };
+		2D5EC9721C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.06.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9171C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.06.mp3 */; };
+		2D5EC9731C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.07.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9181C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.07.mp3 */; };
+		2D5EC9741C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.08.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9191C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.08.mp3 */; };
+		2D5EC9751C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.09.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC91A1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.09.mp3 */; };
+		2D5EC9761C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.10.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC91B1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.10.mp3 */; };
+		2D5EC9771C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.11.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC91C1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.11.mp3 */; };
+		2D5EC9781C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.12.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC91D1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.12.mp3 */; };
+		2D5EC9791C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.13.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC91E1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.13.mp3 */; };
+		2D5EC97A1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.14.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC91F1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.14.mp3 */; };
+		2D5EC97B1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.15.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9201C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.15.mp3 */; };
+		2D5EC97C1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.16b.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9211C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.16b.mp3 */; };
+		2D5EC97D1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.17.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9221C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.17.mp3 */; };
+		2D5EC97E1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.18.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9231C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.18.mp3 */; };
+		2D5EC97F1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.18tuned.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9241C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.18tuned.mp3 */; };
+		2D5EC9801C26178C005C9E1A /* 20151210 - Nell Watson - Shy.01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9251C26178C005C9E1A /* 20151210 - Nell Watson - Shy.01.mp3 */; };
+		2D5EC9811C26178C005C9E1A /* 20151210 - Nell Watson - Shy.02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9261C26178C005C9E1A /* 20151210 - Nell Watson - Shy.02.mp3 */; };
+		2D5EC9821C26178C005C9E1A /* 20151210 - Nell Watson - Shy.04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9271C26178C005C9E1A /* 20151210 - Nell Watson - Shy.04.mp3 */; };
+		2D5EC9831C26178C005C9E1A /* 20151210 - Nell Watson - Shy.05.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9281C26178C005C9E1A /* 20151210 - Nell Watson - Shy.05.mp3 */; };
+		2D5EC9841C26178C005C9E1A /* 20151210 - Nell Watson - Shy.06.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9291C26178C005C9E1A /* 20151210 - Nell Watson - Shy.06.mp3 */; };
+		2D5EC9851C26178C005C9E1A /* 20151210 - Nell Watson - Shy.07.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC92A1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.07.mp3 */; };
+		2D5EC9861C26178C005C9E1A /* 20151210 - Nell Watson - Shy.08.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC92B1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.08.mp3 */; };
+		2D5EC9871C26178C005C9E1A /* 20151210 - Nell Watson - Shy.09.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC92C1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.09.mp3 */; };
+		2D5EC9881C26178C005C9E1A /* 20151210 - Nell Watson - Shy.10.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC92D1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.10.mp3 */; };
+		2D5EC9891C26178C005C9E1A /* 20151210 - Nell Watson - Shy.11.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC92E1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.11.mp3 */; };
+		2D5EC98A1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.12.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC92F1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.12.mp3 */; };
+		2D5EC98B1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.13.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9301C26178C005C9E1A /* 20151210 - Nell Watson - Shy.13.mp3 */; };
+		2D5EC98C1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.14.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9311C26178C005C9E1A /* 20151210 - Nell Watson - Shy.14.mp3 */; };
+		2D5EC98D1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.15.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9321C26178C005C9E1A /* 20151210 - Nell Watson - Shy.15.mp3 */; };
+		2D5EC98E1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.16.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9331C26178C005C9E1A /* 20151210 - Nell Watson - Shy.16.mp3 */; };
+		2D5EC98F1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.17.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9341C26178C005C9E1A /* 20151210 - Nell Watson - Shy.17.mp3 */; };
+		2D5EC9901C26178C005C9E1A /* 20151210 - Nell Watson - Shy.18.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9351C26178C005C9E1A /* 20151210 - Nell Watson - Shy.18.mp3 */; };
+		2D5EC9911C26178C005C9E1A /* 20151210 - Nell Watson - Shy.19.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9361C26178C005C9E1A /* 20151210 - Nell Watson - Shy.19.mp3 */; };
+		2D5EC9921C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9371C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.01.mp3 */; };
+		2D5EC9931C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9381C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.02.mp3 */; };
+		2D5EC9941C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9391C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.03.mp3 */; };
+		2D5EC9951C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC93A1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.04.mp3 */; };
+		2D5EC9961C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.05.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC93B1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.05.mp3 */; };
+		2D5EC9971C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.06.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC93C1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.06.mp3 */; };
+		2D5EC9981C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.07.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC93D1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.07.mp3 */; };
+		2D5EC9991C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.08.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC93E1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.08.mp3 */; };
+		2D5EC99A1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.09.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC93F1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.09.mp3 */; };
+		2D5EC99B1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.10.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9401C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.10.mp3 */; };
+		2D5EC99C1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.11.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9411C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.11.mp3 */; };
+		2D5EC99D1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.12.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9421C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.12.mp3 */; };
+		2D5EC99E1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.13.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9431C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.13.mp3 */; };
+		2D5EC99F1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.14.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9441C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.14.mp3 */; };
+		2D5EC9A01C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.15.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9451C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.15.mp3 */; };
+		2D5EC9A11C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.16.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9461C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.16.mp3 */; };
+		2D5EC9A21C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.17.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9471C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.17.mp3 */; };
+		2D5EC9A31C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.18.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9481C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.18.mp3 */; };
+		2D5EC9A41C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.19.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9491C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.19.mp3 */; };
+		2D5EC9A51C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.20.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC94A1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.20.mp3 */; };
+		2D5EC9A61C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.21.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC94B1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.21.mp3 */; };
+		2D5EC9A71C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.22.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC94C1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.22.mp3 */; };
+		2D5EC9A81C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.23.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC94D1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.23.mp3 */; };
+		2D5EC9A91C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.24.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC94E1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.24.mp3 */; };
+		2D5EC9AA1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.25.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC94F1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.25.mp3 */; };
+		2D5EC9AB1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.26.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9501C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.26.mp3 */; };
+		2D5EC9AC1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.27.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9511C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.27.mp3 */; };
+		2D5EC9AD1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.28.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9521C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.28.mp3 */; };
+		2D5EC9AE1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.29.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9531C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.29.mp3 */; };
+		2D5EC9AF1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.30.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9541C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.30.mp3 */; };
+		2D5EC9B01C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.31.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9551C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.31.mp3 */; };
+		2D5EC9B11C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.32.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9561C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.32.mp3 */; };
+		2D5EC9B21C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.33.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9571C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.33.mp3 */; };
+		2D5EC9B31C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.34.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9581C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.34.mp3 */; };
+		2D5EC9B41C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.35.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9591C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.35.mp3 */; };
+		2D5EC9B51C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.36.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC95A1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.36.mp3 */; };
+		2D5EC9B61C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.37.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC95B1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.37.mp3 */; };
+		2D5EC9B71C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.38.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC95C1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.38.mp3 */; };
+		2D5EC9B81C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.39.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC95D1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.39.mp3 */; };
+		2D5EC9B91C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.40.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC95E1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.40.mp3 */; };
+		2D5EC9BA1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.41.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC95F1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.41.mp3 */; };
+		2D5EC9BB1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.42.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9601C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.42.mp3 */; };
+		2D5EC9BC1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.43.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9611C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.43.mp3 */; };
+		2D5EC9BD1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.44.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9621C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.44.mp3 */; };
+		2D5EC9BE1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.45.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9631C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.45.mp3 */; };
+		2D5EC9BF1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.46.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9641C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.46.mp3 */; };
+		2D5EC9C01C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.47.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9651C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.47.mp3 */; };
+		2D5EC9C11C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.48.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9661C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.48.mp3 */; };
+		2D5EC9C21C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.49.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9671C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.49.mp3 */; };
+		2D5EC9C31C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.50.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9681C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.50.mp3 */; };
+		2D5EC9C41C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.51.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC9691C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.51.mp3 */; };
+		2D5EC9C51C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.52.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC96A1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.52.mp3 */; };
+		2D5EC9C61C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.53.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC96B1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.53.mp3 */; };
+		2D5EC9C71C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.54.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EC96C1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.54.mp3 */; };
 		2D6082C11BC669EB00FFF44C /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6082C01BC669EB00FFF44C /* AboutViewController.swift */; };
 		2D9B85331B83678F002795F8 /* Beddy_ButlerAudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9B85321B83678F002795F8 /* Beddy_ButlerAudioTests.swift */; };
 		2D9B85361B836944002795F8 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9B85351B836944002795F8 /* AudioPlayer.swift */; };
@@ -50,13 +138,101 @@
 		2D28669D1BA994CB00E2B35F /* DoubleSliderCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DoubleSliderCellView.swift; path = "Beddy Butler/DoubleSliderCellView.swift"; sourceTree = "<group>"; };
 		2D2D56F11B9CD68C00705495 /* NotificationKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationKeys.swift; sourceTree = "<group>"; };
 		2D30884A1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Betty_ButlerUserDefaultsTests.swift; sourceTree = "<group>"; };
-		2D32ADB71B7FBA0500E03480 /* Insistent.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Insistent.aiff; sourceTree = "<group>"; };
-		2D32ADB91B7FBA0B00E03480 /* Shy.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Shy.aiff; sourceTree = "<group>"; };
-		2D32ADBB1B7FBA2B00E03480 /* Zombie.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Zombie.aiff; sourceTree = "<group>"; };
 		2D45EB801BB7F61F00FCEAC2 /* DoubleSliderHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleSliderHandler.swift; sourceTree = "<group>"; };
 		2D45EB811BB7F61F00FCEAC2 /* SliderHandle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderHandle.swift; sourceTree = "<group>"; };
 		2D4B84841B87230F00735187 /* UserDefaultKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		2D5AD2181B87597A008953B1 /* Beddy_ButlerTimerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beddy_ButlerTimerTests.swift; sourceTree = "<group>"; };
+		2D5EC9121C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Insistent.01.mp3"; sourceTree = "<group>"; };
+		2D5EC9131C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Insistent.02.mp3"; sourceTree = "<group>"; };
+		2D5EC9141C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Insistent.03.mp3"; sourceTree = "<group>"; };
+		2D5EC9151C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Insistent.04.mp3"; sourceTree = "<group>"; };
+		2D5EC9161C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.05.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Insistent.05.mp3"; sourceTree = "<group>"; };
+		2D5EC9171C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.06.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Insistent.06.mp3"; sourceTree = "<group>"; };
+		2D5EC9181C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.07.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Insistent.07.mp3"; sourceTree = "<group>"; };
+		2D5EC9191C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.08.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Insistent.08.mp3"; sourceTree = "<group>"; };
+		2D5EC91A1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.09.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Insistent.09.mp3"; sourceTree = "<group>"; };
+		2D5EC91B1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.10.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Insistent.10.mp3"; sourceTree = "<group>"; };
+		2D5EC91C1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.11.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Insistent.11.mp3"; sourceTree = "<group>"; };
+		2D5EC91D1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.12.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Insistent.12.mp3"; sourceTree = "<group>"; };
+		2D5EC91E1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.13.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Insistent.13.mp3"; sourceTree = "<group>"; };
+		2D5EC91F1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.14.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Insistent.14.mp3"; sourceTree = "<group>"; };
+		2D5EC9201C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.15.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Insistent.15.mp3"; sourceTree = "<group>"; };
+		2D5EC9211C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.16b.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Insistent.16b.mp3"; sourceTree = "<group>"; };
+		2D5EC9221C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.17.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Insistent.17.mp3"; sourceTree = "<group>"; };
+		2D5EC9231C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.18.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Insistent.18.mp3"; sourceTree = "<group>"; };
+		2D5EC9241C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.18tuned.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Insistent.18tuned.mp3"; sourceTree = "<group>"; };
+		2D5EC9251C26178C005C9E1A /* 20151210 - Nell Watson - Shy.01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Shy.01.mp3"; sourceTree = "<group>"; };
+		2D5EC9261C26178C005C9E1A /* 20151210 - Nell Watson - Shy.02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Shy.02.mp3"; sourceTree = "<group>"; };
+		2D5EC9271C26178C005C9E1A /* 20151210 - Nell Watson - Shy.04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Shy.04.mp3"; sourceTree = "<group>"; };
+		2D5EC9281C26178C005C9E1A /* 20151210 - Nell Watson - Shy.05.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Shy.05.mp3"; sourceTree = "<group>"; };
+		2D5EC9291C26178C005C9E1A /* 20151210 - Nell Watson - Shy.06.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Shy.06.mp3"; sourceTree = "<group>"; };
+		2D5EC92A1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.07.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Shy.07.mp3"; sourceTree = "<group>"; };
+		2D5EC92B1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.08.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Shy.08.mp3"; sourceTree = "<group>"; };
+		2D5EC92C1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.09.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Shy.09.mp3"; sourceTree = "<group>"; };
+		2D5EC92D1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.10.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Shy.10.mp3"; sourceTree = "<group>"; };
+		2D5EC92E1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.11.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Shy.11.mp3"; sourceTree = "<group>"; };
+		2D5EC92F1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.12.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Shy.12.mp3"; sourceTree = "<group>"; };
+		2D5EC9301C26178C005C9E1A /* 20151210 - Nell Watson - Shy.13.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Shy.13.mp3"; sourceTree = "<group>"; };
+		2D5EC9311C26178C005C9E1A /* 20151210 - Nell Watson - Shy.14.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Shy.14.mp3"; sourceTree = "<group>"; };
+		2D5EC9321C26178C005C9E1A /* 20151210 - Nell Watson - Shy.15.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Shy.15.mp3"; sourceTree = "<group>"; };
+		2D5EC9331C26178C005C9E1A /* 20151210 - Nell Watson - Shy.16.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Shy.16.mp3"; sourceTree = "<group>"; };
+		2D5EC9341C26178C005C9E1A /* 20151210 - Nell Watson - Shy.17.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Shy.17.mp3"; sourceTree = "<group>"; };
+		2D5EC9351C26178C005C9E1A /* 20151210 - Nell Watson - Shy.18.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Shy.18.mp3"; sourceTree = "<group>"; };
+		2D5EC9361C26178C005C9E1A /* 20151210 - Nell Watson - Shy.19.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Shy.19.mp3"; sourceTree = "<group>"; };
+		2D5EC9371C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.01.mp3"; sourceTree = "<group>"; };
+		2D5EC9381C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.02.mp3"; sourceTree = "<group>"; };
+		2D5EC9391C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.03.mp3"; sourceTree = "<group>"; };
+		2D5EC93A1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.04.mp3"; sourceTree = "<group>"; };
+		2D5EC93B1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.05.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.05.mp3"; sourceTree = "<group>"; };
+		2D5EC93C1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.06.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.06.mp3"; sourceTree = "<group>"; };
+		2D5EC93D1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.07.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.07.mp3"; sourceTree = "<group>"; };
+		2D5EC93E1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.08.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.08.mp3"; sourceTree = "<group>"; };
+		2D5EC93F1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.09.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.09.mp3"; sourceTree = "<group>"; };
+		2D5EC9401C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.10.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.10.mp3"; sourceTree = "<group>"; };
+		2D5EC9411C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.11.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.11.mp3"; sourceTree = "<group>"; };
+		2D5EC9421C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.12.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.12.mp3"; sourceTree = "<group>"; };
+		2D5EC9431C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.13.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.13.mp3"; sourceTree = "<group>"; };
+		2D5EC9441C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.14.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.14.mp3"; sourceTree = "<group>"; };
+		2D5EC9451C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.15.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.15.mp3"; sourceTree = "<group>"; };
+		2D5EC9461C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.16.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.16.mp3"; sourceTree = "<group>"; };
+		2D5EC9471C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.17.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.17.mp3"; sourceTree = "<group>"; };
+		2D5EC9481C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.18.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.18.mp3"; sourceTree = "<group>"; };
+		2D5EC9491C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.19.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.19.mp3"; sourceTree = "<group>"; };
+		2D5EC94A1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.20.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.20.mp3"; sourceTree = "<group>"; };
+		2D5EC94B1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.21.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.21.mp3"; sourceTree = "<group>"; };
+		2D5EC94C1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.22.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.22.mp3"; sourceTree = "<group>"; };
+		2D5EC94D1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.23.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.23.mp3"; sourceTree = "<group>"; };
+		2D5EC94E1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.24.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.24.mp3"; sourceTree = "<group>"; };
+		2D5EC94F1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.25.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.25.mp3"; sourceTree = "<group>"; };
+		2D5EC9501C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.26.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.26.mp3"; sourceTree = "<group>"; };
+		2D5EC9511C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.27.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.27.mp3"; sourceTree = "<group>"; };
+		2D5EC9521C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.28.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.28.mp3"; sourceTree = "<group>"; };
+		2D5EC9531C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.29.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.29.mp3"; sourceTree = "<group>"; };
+		2D5EC9541C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.30.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.30.mp3"; sourceTree = "<group>"; };
+		2D5EC9551C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.31.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.31.mp3"; sourceTree = "<group>"; };
+		2D5EC9561C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.32.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.32.mp3"; sourceTree = "<group>"; };
+		2D5EC9571C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.33.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.33.mp3"; sourceTree = "<group>"; };
+		2D5EC9581C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.34.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.34.mp3"; sourceTree = "<group>"; };
+		2D5EC9591C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.35.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.35.mp3"; sourceTree = "<group>"; };
+		2D5EC95A1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.36.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.36.mp3"; sourceTree = "<group>"; };
+		2D5EC95B1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.37.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.37.mp3"; sourceTree = "<group>"; };
+		2D5EC95C1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.38.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.38.mp3"; sourceTree = "<group>"; };
+		2D5EC95D1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.39.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.39.mp3"; sourceTree = "<group>"; };
+		2D5EC95E1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.40.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.40.mp3"; sourceTree = "<group>"; };
+		2D5EC95F1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.41.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.41.mp3"; sourceTree = "<group>"; };
+		2D5EC9601C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.42.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.42.mp3"; sourceTree = "<group>"; };
+		2D5EC9611C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.43.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.43.mp3"; sourceTree = "<group>"; };
+		2D5EC9621C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.44.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.44.mp3"; sourceTree = "<group>"; };
+		2D5EC9631C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.45.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.45.mp3"; sourceTree = "<group>"; };
+		2D5EC9641C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.46.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.46.mp3"; sourceTree = "<group>"; };
+		2D5EC9651C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.47.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.47.mp3"; sourceTree = "<group>"; };
+		2D5EC9661C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.48.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.48.mp3"; sourceTree = "<group>"; };
+		2D5EC9671C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.49.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.49.mp3"; sourceTree = "<group>"; };
+		2D5EC9681C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.50.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.50.mp3"; sourceTree = "<group>"; };
+		2D5EC9691C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.51.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.51.mp3"; sourceTree = "<group>"; };
+		2D5EC96A1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.52.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.52.mp3"; sourceTree = "<group>"; };
+		2D5EC96B1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.53.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.53.mp3"; sourceTree = "<group>"; };
+		2D5EC96C1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.54.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "20151210 - Nell Watson - Zombie.54.mp3"; sourceTree = "<group>"; };
 		2D6082C01BC669EB00FFF44C /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		2D9B85321B83678F002795F8 /* Beddy_ButlerAudioTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beddy_ButlerAudioTests.swift; sourceTree = "<group>"; };
 		2D9B85351B836944002795F8 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
@@ -98,9 +274,97 @@
 		2D32ADB61B7FB9EE00E03480 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				2D32ADB71B7FBA0500E03480 /* Insistent.aiff */,
-				2D32ADB91B7FBA0B00E03480 /* Shy.aiff */,
-				2D32ADBB1B7FBA2B00E03480 /* Zombie.aiff */,
+				2D5EC9121C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.01.mp3 */,
+				2D5EC9131C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.02.mp3 */,
+				2D5EC9141C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.03.mp3 */,
+				2D5EC9151C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.04.mp3 */,
+				2D5EC9161C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.05.mp3 */,
+				2D5EC9171C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.06.mp3 */,
+				2D5EC9181C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.07.mp3 */,
+				2D5EC9191C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.08.mp3 */,
+				2D5EC91A1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.09.mp3 */,
+				2D5EC91B1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.10.mp3 */,
+				2D5EC91C1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.11.mp3 */,
+				2D5EC91D1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.12.mp3 */,
+				2D5EC91E1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.13.mp3 */,
+				2D5EC91F1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.14.mp3 */,
+				2D5EC9201C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.15.mp3 */,
+				2D5EC9211C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.16b.mp3 */,
+				2D5EC9221C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.17.mp3 */,
+				2D5EC9231C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.18.mp3 */,
+				2D5EC9241C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.18tuned.mp3 */,
+				2D5EC9251C26178C005C9E1A /* 20151210 - Nell Watson - Shy.01.mp3 */,
+				2D5EC9261C26178C005C9E1A /* 20151210 - Nell Watson - Shy.02.mp3 */,
+				2D5EC9271C26178C005C9E1A /* 20151210 - Nell Watson - Shy.04.mp3 */,
+				2D5EC9281C26178C005C9E1A /* 20151210 - Nell Watson - Shy.05.mp3 */,
+				2D5EC9291C26178C005C9E1A /* 20151210 - Nell Watson - Shy.06.mp3 */,
+				2D5EC92A1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.07.mp3 */,
+				2D5EC92B1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.08.mp3 */,
+				2D5EC92C1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.09.mp3 */,
+				2D5EC92D1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.10.mp3 */,
+				2D5EC92E1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.11.mp3 */,
+				2D5EC92F1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.12.mp3 */,
+				2D5EC9301C26178C005C9E1A /* 20151210 - Nell Watson - Shy.13.mp3 */,
+				2D5EC9311C26178C005C9E1A /* 20151210 - Nell Watson - Shy.14.mp3 */,
+				2D5EC9321C26178C005C9E1A /* 20151210 - Nell Watson - Shy.15.mp3 */,
+				2D5EC9331C26178C005C9E1A /* 20151210 - Nell Watson - Shy.16.mp3 */,
+				2D5EC9341C26178C005C9E1A /* 20151210 - Nell Watson - Shy.17.mp3 */,
+				2D5EC9351C26178C005C9E1A /* 20151210 - Nell Watson - Shy.18.mp3 */,
+				2D5EC9361C26178C005C9E1A /* 20151210 - Nell Watson - Shy.19.mp3 */,
+				2D5EC9371C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.01.mp3 */,
+				2D5EC9381C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.02.mp3 */,
+				2D5EC9391C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.03.mp3 */,
+				2D5EC93A1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.04.mp3 */,
+				2D5EC93B1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.05.mp3 */,
+				2D5EC93C1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.06.mp3 */,
+				2D5EC93D1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.07.mp3 */,
+				2D5EC93E1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.08.mp3 */,
+				2D5EC93F1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.09.mp3 */,
+				2D5EC9401C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.10.mp3 */,
+				2D5EC9411C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.11.mp3 */,
+				2D5EC9421C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.12.mp3 */,
+				2D5EC9431C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.13.mp3 */,
+				2D5EC9441C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.14.mp3 */,
+				2D5EC9451C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.15.mp3 */,
+				2D5EC9461C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.16.mp3 */,
+				2D5EC9471C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.17.mp3 */,
+				2D5EC9481C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.18.mp3 */,
+				2D5EC9491C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.19.mp3 */,
+				2D5EC94A1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.20.mp3 */,
+				2D5EC94B1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.21.mp3 */,
+				2D5EC94C1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.22.mp3 */,
+				2D5EC94D1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.23.mp3 */,
+				2D5EC94E1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.24.mp3 */,
+				2D5EC94F1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.25.mp3 */,
+				2D5EC9501C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.26.mp3 */,
+				2D5EC9511C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.27.mp3 */,
+				2D5EC9521C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.28.mp3 */,
+				2D5EC9531C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.29.mp3 */,
+				2D5EC9541C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.30.mp3 */,
+				2D5EC9551C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.31.mp3 */,
+				2D5EC9561C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.32.mp3 */,
+				2D5EC9571C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.33.mp3 */,
+				2D5EC9581C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.34.mp3 */,
+				2D5EC9591C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.35.mp3 */,
+				2D5EC95A1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.36.mp3 */,
+				2D5EC95B1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.37.mp3 */,
+				2D5EC95C1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.38.mp3 */,
+				2D5EC95D1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.39.mp3 */,
+				2D5EC95E1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.40.mp3 */,
+				2D5EC95F1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.41.mp3 */,
+				2D5EC9601C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.42.mp3 */,
+				2D5EC9611C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.43.mp3 */,
+				2D5EC9621C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.44.mp3 */,
+				2D5EC9631C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.45.mp3 */,
+				2D5EC9641C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.46.mp3 */,
+				2D5EC9651C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.47.mp3 */,
+				2D5EC9661C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.48.mp3 */,
+				2D5EC9671C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.49.mp3 */,
+				2D5EC9681C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.50.mp3 */,
+				2D5EC9691C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.51.mp3 */,
+				2D5EC96A1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.52.mp3 */,
+				2D5EC96B1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.53.mp3 */,
+				2D5EC96C1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.54.mp3 */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -300,11 +564,99 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D32ADBC1B7FBA2B00E03480 /* Zombie.aiff in Resources */,
-				2D32ADB81B7FBA0500E03480 /* Insistent.aiff in Resources */,
+				2D5EC97E1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.18.mp3 in Resources */,
+				2D5EC9BD1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.44.mp3 in Resources */,
+				2D5EC9C11C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.48.mp3 in Resources */,
+				2D5EC9BE1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.45.mp3 in Resources */,
+				2D5EC9851C26178C005C9E1A /* 20151210 - Nell Watson - Shy.07.mp3 in Resources */,
+				2D5EC99D1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.12.mp3 in Resources */,
+				2D5EC9711C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.05.mp3 in Resources */,
+				2D5EC97F1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.18tuned.mp3 in Resources */,
+				2D5EC9981C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.07.mp3 in Resources */,
+				2D5EC9861C26178C005C9E1A /* 20151210 - Nell Watson - Shy.08.mp3 in Resources */,
+				2D5EC9C21C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.49.mp3 in Resources */,
+				2D5EC9AB1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.26.mp3 in Resources */,
+				2D5EC9A51C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.20.mp3 in Resources */,
+				2D5EC9A71C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.22.mp3 in Resources */,
+				2D5EC99F1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.14.mp3 in Resources */,
+				2D5EC9951C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.04.mp3 in Resources */,
+				2D5EC9AE1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.29.mp3 in Resources */,
+				2D5EC9B11C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.32.mp3 in Resources */,
+				2D5EC9BB1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.42.mp3 in Resources */,
+				2D5EC9721C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.06.mp3 in Resources */,
+				2D5EC9821C26178C005C9E1A /* 20151210 - Nell Watson - Shy.04.mp3 in Resources */,
+				2D5EC9A41C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.19.mp3 in Resources */,
+				2D5EC96F1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.03.mp3 in Resources */,
+				2D5EC9841C26178C005C9E1A /* 20151210 - Nell Watson - Shy.06.mp3 in Resources */,
+				2D5EC9A21C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.17.mp3 in Resources */,
+				2D5EC9751C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.09.mp3 in Resources */,
+				2D5EC9761C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.10.mp3 in Resources */,
+				2D5EC9971C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.06.mp3 in Resources */,
+				2D5EC9C01C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.47.mp3 in Resources */,
+				2D5EC98A1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.12.mp3 in Resources */,
+				2D5EC9941C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.03.mp3 in Resources */,
+				2D5EC9771C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.11.mp3 in Resources */,
+				2D5EC9701C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.04.mp3 in Resources */,
+				2D5EC9B21C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.33.mp3 in Resources */,
+				2D5EC9991C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.08.mp3 in Resources */,
+				2D5EC9BF1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.46.mp3 in Resources */,
+				2D5EC9731C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.07.mp3 in Resources */,
+				2D5EC9C41C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.51.mp3 in Resources */,
+				2D5EC9A11C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.16.mp3 in Resources */,
+				2D5EC9901C26178C005C9E1A /* 20151210 - Nell Watson - Shy.18.mp3 in Resources */,
+				2D5EC97A1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.14.mp3 in Resources */,
+				2D5EC9B81C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.39.mp3 in Resources */,
+				2D5EC97C1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.16b.mp3 in Resources */,
+				2D5EC9741C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.08.mp3 in Resources */,
+				2D5EC9B41C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.35.mp3 in Resources */,
+				2D5EC9B71C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.38.mp3 in Resources */,
+				2D5EC9911C26178C005C9E1A /* 20151210 - Nell Watson - Shy.19.mp3 in Resources */,
 				2DC767031B78D25F00866072 /* Images.xcassets in Resources */,
+				2D5EC9B91C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.40.mp3 in Resources */,
+				2D5EC98E1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.16.mp3 in Resources */,
+				2D5EC9BA1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.41.mp3 in Resources */,
+				2D5EC9BC1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.43.mp3 in Resources */,
+				2D5EC9AF1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.30.mp3 in Resources */,
+				2D5EC9921C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.01.mp3 in Resources */,
+				2D5EC98D1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.15.mp3 in Resources */,
+				2D5EC9961C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.05.mp3 in Resources */,
+				2D5EC99A1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.09.mp3 in Resources */,
+				2D5EC9791C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.13.mp3 in Resources */,
+				2D5EC9AC1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.27.mp3 in Resources */,
+				2D5EC9C51C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.52.mp3 in Resources */,
+				2D5EC99E1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.13.mp3 in Resources */,
+				2D5EC9881C26178C005C9E1A /* 20151210 - Nell Watson - Shy.10.mp3 in Resources */,
+				2D5EC98F1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.17.mp3 in Resources */,
+				2D5EC9A81C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.23.mp3 in Resources */,
+				2D5EC9831C26178C005C9E1A /* 20151210 - Nell Watson - Shy.05.mp3 in Resources */,
+				2D5EC9C61C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.53.mp3 in Resources */,
+				2D5EC9AA1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.25.mp3 in Resources */,
+				2D5EC9781C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.12.mp3 in Resources */,
+				2D5EC9B31C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.34.mp3 in Resources */,
+				2D5EC9AD1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.28.mp3 in Resources */,
+				2D5EC9931C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.02.mp3 in Resources */,
+				2D5EC96E1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.02.mp3 in Resources */,
+				2D5EC9C31C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.50.mp3 in Resources */,
+				2D5EC9B51C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.36.mp3 in Resources */,
+				2D5EC9811C26178C005C9E1A /* 20151210 - Nell Watson - Shy.02.mp3 in Resources */,
+				2D5EC9A31C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.18.mp3 in Resources */,
+				2D5EC9A91C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.24.mp3 in Resources */,
+				2D5EC98B1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.13.mp3 in Resources */,
+				2D5EC9B01C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.31.mp3 in Resources */,
+				2D5EC9C71C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.54.mp3 in Resources */,
+				2D5EC9B61C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.37.mp3 in Resources */,
+				2D5EC9801C26178C005C9E1A /* 20151210 - Nell Watson - Shy.01.mp3 in Resources */,
+				2D5EC96D1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.01.mp3 in Resources */,
+				2D5EC97D1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.17.mp3 in Resources */,
 				2DC767061B78D25F00866072 /* Main.storyboard in Resources */,
-				2D32ADBA1B7FBA0B00E03480 /* Shy.aiff in Resources */,
+				2D5EC9A61C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.21.mp3 in Resources */,
+				2D5EC9871C26178C005C9E1A /* 20151210 - Nell Watson - Shy.09.mp3 in Resources */,
+				2D5EC98C1C26178C005C9E1A /* 20151210 - Nell Watson - Shy.14.mp3 in Resources */,
+				2D5EC9891C26178C005C9E1A /* 20151210 - Nell Watson - Shy.11.mp3 in Resources */,
+				2D5EC99C1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.11.mp3 in Resources */,
+				2D5EC97B1C26178C005C9E1A /* 20151210 - Nell Watson - Insistent.15.mp3 in Resources */,
+				2D5EC99B1C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.10.mp3 in Resources */,
+				2D5EC9A01C26178C005C9E1A /* 20151210 - Nell Watson - Zombie.15.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
