@@ -334,6 +334,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                                     </column>
                                 </cells>
                                 <connections>
+                                    <action selector="changedRadioSelection:" target="XfG-lQ-9wD" id="MfS-V0-uM1"/>
                                     <binding destination="45n-s1-uBZ" name="selectedValue" keyPath="values.selectedSound" id="PLJ-L2-QBC"/>
                                 </connections>
                             </matrix>
@@ -456,6 +457,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LWM-5h-azi" userLabel="Icon View">
+                                <rect key="frame" x="175" y="76" width="113" height="111"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="2q5-ZT-Koe"/>
+                            </imageView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Rnn-5H-bzb" firstAttribute="top" secondItem="wwf-ui-lXH" secondAttribute="bottom" constant="8" symbolic="YES" id="0dt-96-dO3"/>
@@ -512,6 +517,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                     <connections>
                         <outlet property="doubleSliderHandler" destination="H7B-36-gSj" id="byq-oc-049"/>
                         <outlet property="endTimeTextValue" destination="txJ-dy-GqU" id="Qdf-C8-fj4"/>
+                        <outlet property="iconImageView" destination="LWM-5h-azi" id="LYk-iQ-6rj"/>
                         <outlet property="startTimeTextValue" destination="Twh-Ep-Mud" id="RAw-Mo-wew"/>
                         <outlet property="userDefaults" destination="45n-s1-uBZ" id="toQ-9g-rdm"/>
                     </connections>
