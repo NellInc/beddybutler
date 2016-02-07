@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -67,10 +67,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="460" height="178"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="230-hj-ROE">
-                                <rect key="frame" x="20" y="25" width="128" height="128"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="NSApplicationIcon" id="22b-bO-gJM"/>
-                            </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mQz-PZ-Xg6">
                                 <rect key="frame" x="174" y="129" width="160" height="24"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Beddy Butler" id="MlE-eQ-fZQ">
@@ -113,9 +109,14 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="230-hj-ROE">
+                                <rect key="frame" x="20" y="25" width="128" height="128"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="IconBlack" id="22b-bO-gJM"/>
+                            </imageView>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="aboutImageView" destination="230-hj-ROE" id="aCM-EE-amk"/>
                         <outlet property="versionTextField" destination="ZEv-iq-Lre" id="saO-vC-miZ"/>
                     </connections>
                 </viewController>
@@ -266,7 +267,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="txJ-dy-GqU" userLabel="Bed time text value">
                                 <rect key="frame" x="370" y="293" width="61" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="99:99:99" id="w7j-fu-Rhk" userLabel="Bed time value">
-                                    <dateFormatter key="formatter" timeStyle="medium" id="mBR-s5-5DQ"/>
+                                    <dateFormatter key="formatter" timeStyle="medium" id="XGz-KF-dff"/>
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -443,7 +444,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         </scene>
     </scenes>
     <resources>
-        <image name="NSApplicationIcon" width="128" height="128"/>
+        <image name="IconBlack" width="256" height="256"/>
         <image name="NSSlideshowTemplate" width="17" height="14"/>
     </resources>
 </document>

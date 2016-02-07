@@ -70,19 +70,24 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
             return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.bedTimeValue.rawValue) as? Double
         }
         
+        // Format with no offset:
         //let startconvertedValue = newValue < 0.5 ? newValue * 86400 : (newValue + 0.080) * 86400
-
         //let bedconvertedValue = newValue > 0.5 ? newValue * 86400 : (newValue - 0.080) * 86400
-       
-        
-        let initialBedRatio = CGFloat(userBedTime!*0.92/86400)
-        let initialStartRadio = CGFloat(userStartTime!*0.92/86400)
-        
         //let convertedStartValue = initialStartRadio < 0.5 ? initialStartRadio : (initialStartRadio - 0.080)
         //let convertedBedValue = initialBedRatio > 0.5 ? initialBedRatio : (initialBedRatio + 0.080)
-
-        let convertedStartValue = initialStartRadio
-        let convertedBedValue = initialBedRatio + 0.080
+        
+        // Format with offset of 0.92 but a plain range between 00:00 and 0:00
+        //let initialBedRatio = CGFloat(userBedTime!*0.92/86400)
+        //let initialStartRadio = CGFloat(userStartTime!*0.92/86400)
+        //let convertedStartValue = initialStartRadio + 0.5
+        //let convertedBedValue = initialBedRatio + 0.080 - 0.5
+        
+        // Format with offset of 0.92 but a range having 00:00 in the middle
+        let initialBedRatio = convertToRatio(userBedTime!)
+        let initialStartRadio = convertToRatio(userStartTime!)
+        let convertedStartValue = CGFloat(initialStartRadio)
+        let convertedBedValue = CGFloat(initialBedRatio)
+        
 
         
         // Do any additional setup after loading the view.
@@ -90,6 +95,16 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         
         doubleSliderHandler.addHandle(SliderKeys.StartHandler.rawValue, image: startSlider!, iniRatio: convertedStartValue, sliderValue: value,sliderValueChanged: invertedValue)
     }
+    
+    func convertToRatio(seconds: Double) -> Double {
+        let lowerRange = 0.0...43200.0
+        if lowerRange.contains(seconds) {
+            return ( ( seconds * 0.5 / 43200.0 ) + 0.5 ).roundToPlaces(3)
+        } else {
+            return ( ( seconds * 0.5 / 43200.0 ) - 0.5 ).roundToPlaces(3)
+        }
+    }
+    
     
     //MARK: View Controller Actions
     

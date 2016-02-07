@@ -12,6 +12,8 @@
 		2D28669E1BA994CB00E2B35F /* DoubleSliderCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D28669D1BA994CB00E2B35F /* DoubleSliderCellView.swift */; };
 		2D2D56F21B9CD68C00705495 /* NotificationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2D56F11B9CD68C00705495 /* NotificationKeys.swift */; };
 		2D30884B1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D30884A1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift */; };
+		2D4183E21C67823A005E2FE3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4183E11C67823A005E2FE3 /* Extensions.swift */; };
+		2D4183E31C6782B5005E2FE3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4183E11C67823A005E2FE3 /* Extensions.swift */; };
 		2D45EB821BB7F61F00FCEAC2 /* DoubleSliderHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D45EB801BB7F61F00FCEAC2 /* DoubleSliderHandler.swift */; };
 		2D45EB831BB7F61F00FCEAC2 /* SliderHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D45EB811BB7F61F00FCEAC2 /* SliderHandle.swift */; };
 		2D4B84851B87230F00735187 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B84841B87230F00735187 /* UserDefaultKeys.swift */; };
@@ -138,6 +140,7 @@
 		2D28669D1BA994CB00E2B35F /* DoubleSliderCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DoubleSliderCellView.swift; path = "Beddy Butler/DoubleSliderCellView.swift"; sourceTree = "<group>"; };
 		2D2D56F11B9CD68C00705495 /* NotificationKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationKeys.swift; sourceTree = "<group>"; };
 		2D30884A1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Betty_ButlerUserDefaultsTests.swift; sourceTree = "<group>"; };
+		2D4183E11C67823A005E2FE3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2D45EB801BB7F61F00FCEAC2 /* DoubleSliderHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleSliderHandler.swift; sourceTree = "<group>"; };
 		2D45EB811BB7F61F00FCEAC2 /* SliderHandle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderHandle.swift; sourceTree = "<group>"; };
 		2D4B84841B87230F00735187 /* UserDefaultKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
@@ -389,6 +392,7 @@
 				2D2D56F11B9CD68C00705495 /* NotificationKeys.swift */,
 				2DAF9DE81BBD57B20021FD0D /* SliderKeys.swift */,
 				2DA6062B1BDA2ADD0042F859 /* LoginItems.swift */,
+				2D4183E11C67823A005E2FE3 /* Extensions.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -702,6 +706,7 @@
 				2D076B6F1BA57F5B0052047C /* DoubleSliderView.swift in Sources */,
 				2D2D56F21B9CD68C00705495 /* NotificationKeys.swift in Sources */,
 				2D6082C11BC669EB00FFF44C /* AboutViewController.swift in Sources */,
+				2D4183E21C67823A005E2FE3 /* Extensions.swift in Sources */,
 				2D45EB831BB7F61F00FCEAC2 /* SliderHandle.swift in Sources */,
 				2DA6062C1BDA2ADD0042F859 /* LoginItems.swift in Sources */,
 				2DC766FF1B78D25F00866072 /* AppDelegate.swift in Sources */,
@@ -714,6 +719,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D5AD2191B87597A008953B1 /* Beddy_ButlerTimerTests.swift in Sources */,
+				2D4183E31C6782B5005E2FE3 /* Extensions.swift in Sources */,
 				2DC767121B78D25F00866072 /* Beddy_ButlerSliderTests.swift in Sources */,
 				2D9B85331B83678F002795F8 /* Beddy_ButlerAudioTests.swift in Sources */,
 				2DCCAA221BD76EED00F96405 /* Beddy_ButlerLoginTests.swift in Sources */,
@@ -828,7 +834,7 @@
 		2DC767161B78D25F00866072 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconWhite;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -845,7 +851,7 @@
 		2DC767171B78D25F00866072 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconWhite;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;

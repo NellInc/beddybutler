@@ -38,9 +38,10 @@ class ButlerTimer: NSObject {
             return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.bedTimeValue.rawValue) as? Double
         }
         set {
+            print("userBedTime was set... oldValue = \(self.userBedTime), and newValue = \(newValue!)")
             NSUserDefaults.standardUserDefaults().setDouble(newValue!, forKey: UserDefaultKeys.bedTimeValue.rawValue)
             NSUserDefaults.standardUserDefaults().synchronize()
-            NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.userPreferenceChanged.rawValue, object: self)
+            //NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.userPreferenceChanged.rawValue, object: self)
         }
     }
     
@@ -217,29 +218,55 @@ class ButlerTimer: NSObject {
         if let newValue = notification.object as? Double {
         switch notification.name {
         case NotificationKeys.startSliderChanged.rawValue:
+            // Format 1: no offset
             //let convertedValue = newValue < 0.5 ? newValue * 86400 : (newValue + 0.080) * 86400
-            let convertedValue = newValue * 86400 / 0.92
+            
+            // Format 2: offset but plain range
+            //let convertedValue = newValue * 86400 / 0.92
+            
+            // Format 3: offset but range with 00:00 in the middle
+            let convertedValue = convertToSeconds(newValue)
             self.userStartTime = convertedValue
+            print("Ratio is: \(newValue), New user start time is: \(convertedValue)")
         case NotificationKeys.endSliderChanged.rawValue:
+            // Format 1: no offset
             //let convertedValue = newValue > 0.5 ? newValue * 86400 : (newValue - 0.080) * 86400
-            let convertedValue = (newValue - 0.080) * 86400 / 0.92
+            
+            // Format 2: offset but plain range
+            // let convertedValue = (newValue - 0.080) * 86400 / 0.92
+            
+            // Format 3: offset but range with 0:00 in the middle
+            let convertedValue = convertToSeconds(newValue)
+            
             self.userBedTime = convertedValue
+            print("Ratio is: \(newValue), New user bed time is: \(convertedValue)")
         default:
             break;
             }
         }
     }
     
-    func validateUserTimeValue() {
-        let timeGap = 7200.00
-        let maxTime = 86400.00
-        if userBedTime < userStartTime {
-            if userStartTime! + timeGap > maxTime {
-                userStartTime = userBedTime! - timeGap
-            } else {
-                userBedTime! = userStartTime! + timeGap
-            }
+    /// Converts the given value to seconds. The method will apply a different formula if the value falls in the range 0...0.5 or 0.5...1.0
+    func convertToSeconds(value: Double) -> Double {
+        let lowerRange = 0...0.5
+        if lowerRange.contains(value) {
+            return ( ( value * 43200.0 / 0.5 ) + 43200 ).roundToPlaces(3)
+        } else {
+            return ( ( value * 43200.0 / 0.5 ) - 43200 ).roundToPlaces(3)
         }
+    }
+    
+    
+    func validateUserTimeValue() {
+//        let timeGap = 7200.00
+//        let maxTime = 86400.00
+//        if userBedTime < userStartTime {
+//            if userStartTime! + timeGap > maxTime {
+//                userStartTime = userBedTime! - timeGap
+//            } else {
+//                userBedTime! = userStartTime! + timeGap
+//            }
+//        }
     }
     
     // TODO: Remove test interval -
@@ -281,17 +308,6 @@ class ButlerTimer: NSObject {
 
     }
     
-        
 }
 
-extension NSDate {
-    class func randomTimeBetweenDates(lhs: NSDate, _ rhs: NSDate) -> NSDate {
-        let lhsInterval = lhs.timeIntervalSince1970
-        let rhsInterval = rhs.timeIntervalSince1970
-        let difference = fabs(rhsInterval - lhsInterval)
-        let randomOffset = arc4random_uniform(UInt32(difference))
-        let minimum = min(lhsInterval, rhsInterval)
-        let randomInterval = minimum + NSTimeInterval(randomOffset)
-        return NSDate(timeIntervalSince1970: randomInterval)
-    }
-}
+

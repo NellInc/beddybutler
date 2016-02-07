@@ -41,7 +41,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Set the text that appears in the menu bar
         //AppDelegate.statusItem!.title = "Beddy Butler"
-        AppDelegate.statusItem?.image = NSImage(named: "AppIcon")
+        AppDelegate.statusItem?.image = NSImage(named: "IconBlack")
         AppDelegate.statusItem?.image?.size = NSSize(width: 18, height: 18)
         // image should be set as tempate so that it changes when the user sets the menu bar to a dark theme
         // TODO: feature disabled for now, this may possibly be the issue to why it is not showing in Nell's mac
