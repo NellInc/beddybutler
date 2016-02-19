@@ -41,6 +41,15 @@ class AudioPlayer {
                 return "Zombie"
             }
         }
+        
+        func progressiveDescription() -> AudioFiles {
+            switch self {
+            case .Shy:
+                return .Insistent
+            default:
+                return .Zombie
+            }
+        }
     }
     
     /// Plays the audio file for the given file name: AudioFiles.Shy, AudioFiles.Insistent or AudioFiles.Zombie

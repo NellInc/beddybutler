@@ -272,6 +272,26 @@ class Beddy_ButlerTimerTests: XCTestCase {
         }
         
     }
+    
+    func testRandomProgressInterval() {
+        
+        var randomProgressiveInterval: Int {
+            let source = arc4random_uniform(2)
+            return Int(source + 2)
+        }
+        
+        var occurrences2 = 0
+        var occurrences3 = 0
+        
+        for _ in 0...100 {
+            print(randomProgressiveInterval)
+            randomProgressiveInterval == 2 ? occurrences2++ : occurrences3++
+            XCTAssert(randomProgressiveInterval >= 2 && randomProgressiveInterval <= 3)
+        }
+        
+        print("Occurrences of 2: \(occurrences2), Occurrences of 3: \(occurrences3)")
+        
+    }
 
 
 

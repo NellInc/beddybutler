@@ -35,6 +35,8 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        // Disable popover initially
+        
      //   loadDoubleSliderValues()
         loadDoubleSliderHandler()
         loadSelectedImage(self.userSelectedSound!)
@@ -126,6 +128,20 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
                 }
             }
         }
+    }
+    
+    var canPerformSegue = false
+    
+    @IBAction func performProgressiveToolTipSegue(sender: AnyObject) {
+        self.canPerformSegue = true
+        performSegueWithIdentifier("progressiveSegue", sender: sender)
+        self.canPerformSegue = false
+    }
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        if identifier == "progressiveSegue" {
+            return canPerformSegue
+        }
+        return true
     }
     
     

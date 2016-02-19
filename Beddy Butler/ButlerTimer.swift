@@ -18,6 +18,23 @@ class ButlerTimer: NSObject {
     /// the audio player that will be used in the play sound action
     var audioPlayer: AudioPlayer
     let butlerImage = NSImage(named: "Butler")
+    // butler count reset limit will read the random limit to know when to reset butlerCount to 1
+    var butlerReset = 3
+    // butler count is a  number used to count the current number of utteraces in the same session, values should be 1, 2, or 3
+    var butlerCount = 0 {
+        didSet {
+            // If it reaches the maximum then we should set the annoyance to a higher value, then we set the butlerCount back to 0 and we create a new value for butler reset (2-3)
+            if butlerCount == butlerReset && self.userProgressiveButler == true {
+                print("Butler count is ready to set a new sound to \(self.userSelectedSound.progressiveDescription()) because butlerCount is \(butlerCount) and butlerReset is \(butlerReset)")
+                self.progressiveSound = self.progressiveSound.progressiveDescription()
+                butlerCount = 0
+                butlerReset = randomProgressiveInterval
+            }
+        }
+    }
+    
+    // TO DO: use this variable to remember the value before the progressive feature changes the value so that we can put it back to what it was
+    var progressiveSound: AudioPlayer.AudioFiles = AudioPlayer.AudioFiles.Shy
     
     //MARK: Computed properties
     
@@ -54,17 +71,23 @@ class ButlerTimer: NSObject {
         }
     }
     
+    var userProgressiveButler: Bool? {
+        return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.progressive.rawValue) as? Bool
+    }
+    
     ///TODO: Delete Temporary frequency variable
     var userSelectedFrequency: Double? {
         return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.frequency.rawValue) as? Double
     }
     
     var userSelectedSound: AudioPlayer.AudioFiles {
-        if let audioFile = NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.selectedSound.rawValue) as? String {
-            return AudioPlayer.AudioFiles(stringValue: audioFile)
+        get {
+            if let audioFile = NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.selectedSound.rawValue) as? String {
+                return AudioPlayer.AudioFiles(stringValue: audioFile)
         
-        } else {
-            return AudioPlayer.AudioFiles(stringValue: String())
+            } else {
+                return AudioPlayer.AudioFiles(stringValue: String())
+            }
         }
     }
     
@@ -74,6 +97,7 @@ class ButlerTimer: NSObject {
         let calendar = NSCalendar.currentCalendar()
         let startOfDay = calendar.startOfDayForDate(self.currentDate)
         // Convert seconds to int, we are sure we will not exceed max int value as we only have 86,000 seconds or less
+        // TO DO: check if seconds FROM GTM is the right way to handle calculations for multizone Apps
         let seconds = Int(self.userStartTime!) + NSTimeZone.systemTimeZone().secondsFromGMT
         return calendar.dateByAddingUnit(NSCalendarUnit.Second, value: seconds, toDate: startOfDay, options: NSCalendarOptions.MatchFirst)!
     }
@@ -107,7 +131,8 @@ class ButlerTimer: NSObject {
         
         // Not to be called directly...
         calculateNewTimer()
-        
+        // set the correct sound for the progressive feature
+        self.progressiveSound = self.userSelectedSound
         // Register observers to recalculate the timer
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "calculateNewTimer", name: NotificationKeys.userPreferenceChanged.rawValue , object: nil)
         
@@ -133,9 +158,16 @@ class ButlerTimer: NSObject {
         
         //AppDelegate.statusItem?.image = butlerImage
         if !userMuteSound! {
-            audioPlayer.playFile(userSelectedSound)
+            if userProgressiveButler == true {
+                self.butlerCount++
+                self.audioPlayer.playFile(self.progressiveSound)
+                result = "[PROGRESSIVE] Sound played: \(progressiveSound), Current time is: \(currentDate), Set Start Date: \(startDate), Set Bed Date: \(bedDate), Time between plays (frequency): \(userSelectedFrequency!) \n"
+            } else {
+               self.audioPlayer.playFile(userSelectedSound)
+                result = "Sound played: \(userSelectedSound), Current time is: \(currentDate), Set Start Date: \(startDate), Set Bed Date: \(bedDate), Time between plays (frequency): \(userSelectedFrequency!) \n"
+            }
             // TO DO: Remove temporary log
-            result = "Sound played: \(userSelectedSound), Current time is: \(currentDate), Set Start Date: \(startDate), Set Bed Date: \(bedDate), Time between plays (frequency): \(userSelectedFrequency!) \n"
+            
            
         } else {
             // TO DO: Remove temporary log
@@ -175,6 +207,8 @@ class ButlerTimer: NSObject {
             setNewTimer(newInterval)
             // finally we make sure that the sound is not muted anymore
             self.userMuteSound = false
+            // because we are now set for tomorrow, we also reset the progressiveSound to what the user originally has selected, so we do the progressive cycle once again.
+            self.progressiveSound = self.userSelectedSound
         }
     }
     
@@ -211,6 +245,11 @@ class ButlerTimer: NSObject {
         let source = arc4random_uniform(randomEnd) // should return a random number between 0 and 900
         return NSTimeInterval(source + randomStart) // adding 300 will ensure that it will always be from 300 to 1200
 
+    }
+    
+    var randomProgressiveInterval: Int {
+        let source = arc4random_uniform(2)
+        return Int(source + 2)
     }
     
     //MARK: Ratio handling

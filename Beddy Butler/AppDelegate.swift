@@ -116,8 +116,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             case .isMuted:
                 let theKey = sharedUserDefaults.objectForKey(key.rawValue) as? Double
                 if theKey == nil { registerValue(false, key.rawValue) }
+            case .progressive:
+                let theKey = sharedUserDefaults.objectForKey(key.rawValue) as? Bool
+                if theKey == nil { registerValue(false, key.rawValue) }
             }
-        
         
         }
         
