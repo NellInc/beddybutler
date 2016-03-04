@@ -419,6 +419,14 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                                 <rect key="frame" x="395" y="19" width="316" height="363"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="2q5-ZT-Koe"/>
                             </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UIv-9V-JTG" userLabel="Start time label">
+                                <rect key="frame" x="26" y="268" width="64" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Start time" id="MAq-E0-8eK">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1DP-7L-Jfh">
                                 <rect key="frame" x="312" y="108" width="109" height="31"/>
                                 <gestureRecognizers>
@@ -428,9 +436,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                                             <action selector="performProgressiveToolTipSegue:" target="XfG-lQ-9wD" id="w6h-GF-ICT"/>
                                         </connections>
                                     </clickGestureRecognizer>
-                                    <pressGestureRecognizer delaysPrimaryMouseButtonEvents="YES" delaysSecondaryMouseButtonEvents="YES" minimumPressDuration="0.69999999999999996" id="WTT-bK-Q2t">
-                                        <buttonMask key="buttonMask" primary="YES" secondary="YES"/>
-                                    </pressGestureRecognizer>
                                 </gestureRecognizers>
                                 <buttonCell key="cell" type="check" title="Progressive" bezelStyle="regularSquare" imagePosition="left" inset="2" id="eOO-cD-UHV">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -441,20 +446,13 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                                     <segue destination="Vap-fd-Gj4" kind="popover" identifier="progressiveSegue" popoverAnchorView="1DP-7L-Jfh" popoverBehavior="t" preferredEdge="maxY" id="FiZ-dr-R6C"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UIv-9V-JTG" userLabel="Start time label">
-                                <rect key="frame" x="26" y="268" width="64" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Start time" id="MAq-E0-8eK">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="doubleSliderHandler" destination="H7B-36-gSj" id="byq-oc-049"/>
                         <outlet property="endTimeTextValue" destination="txJ-dy-GqU" id="Qdf-C8-fj4"/>
                         <outlet property="iconImageView" destination="LWM-5h-azi" id="LYk-iQ-6rj"/>
+                        <outlet property="progressiveButton" destination="1DP-7L-Jfh" id="cx9-te-4Jv"/>
                         <outlet property="startTimeTextValue" destination="Twh-Ep-Mud" id="RAw-Mo-wew"/>
                         <outlet property="userDefaults" destination="45n-s1-uBZ" id="toQ-9g-rdm"/>
                     </connections>

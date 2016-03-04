@@ -25,6 +25,8 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
     
     @IBOutlet weak var iconImageView: NSImageView!
     
+    @IBOutlet weak var progressiveButton: NSButton!
+    
     var userSelectedSound: String? {
         return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.selectedSound.rawValue) as? String
     }
@@ -40,6 +42,11 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
      //   loadDoubleSliderValues()
         loadDoubleSliderHandler()
         loadSelectedImage(self.userSelectedSound!)
+        
+        // load tracking area for progressive tooltip
+        let progressiveButtonTrackingArea = NSTrackingArea(rect: progressiveButton.bounds, options: [NSTrackingAreaOptions.ActiveInKeyWindow, NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
+        progressiveButton.addTrackingArea(progressiveButtonTrackingArea)
+
     }
     
     override func viewWillDisappear() {
@@ -142,6 +149,17 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
             return canPerformSegue
         }
         return true
+    }
+    
+    
+    override func mouseEntered(theEvent:NSEvent){
+        if CGRectContainsPoint(self.progressiveButton.frame, theEvent.locationInWindow) {
+            performProgressiveToolTipSegue(self)
+        }
+    }
+    
+    override func mouseExited(theEvent:NSEvent){
+        self.presentedViewControllers?.forEach { self.dismissViewController($0) }
     }
     
     
