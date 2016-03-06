@@ -95,7 +95,7 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         let initialBedRatio = convertToRatio(userBedTime!)
         let initialStartRadio = convertToRatio(userStartTime!)
         let convertedStartValue = CGFloat(initialStartRadio)
-        let convertedBedValue = CGFloat(initialBedRatio)
+        let convertedBedValue = CGFloat(initialBedRatio+0.08)
         
 
         
@@ -105,12 +105,13 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         doubleSliderHandler.addHandle(SliderKeys.StartHandler.rawValue, image: startSlider!, iniRatio: convertedStartValue, sliderValue: value,sliderValueChanged: invertedValue)
     }
     
+    //// Because offset is 0.08, we need to use a scale of 0...0.92. if we split this in two parts, each will have 0.46 for its calculations
     func convertToRatio(seconds: Double) -> Double {
-        let lowerRange = 0.0...43200.0
-        if lowerRange.contains(seconds) {
-            return ( ( seconds * 0.5 / 43200.0 ) + 0.5 ).roundToPlaces(3)
+        let rangeOnRight = 0.0...43200.0
+        if rangeOnRight.contains(seconds) {
+            return ( ( seconds * 0.46 / 43200.0 ) + 0.46 ).roundToPlaces(3)
         } else {
-            return ( ( seconds * 0.5 / 43200.0 ) - 0.5 ).roundToPlaces(3)
+            return ( ( seconds * 0.46 / 43200.0 ) - 0.46 ).roundToPlaces(3)
         }
     }
     
@@ -151,13 +152,14 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         return true
     }
     
-    
+    /// Used to verify if the mouse enters the tracking area of the progressive button. If it does, the seague to the tooltip will be triggered
     override func mouseEntered(theEvent:NSEvent){
         if CGRectContainsPoint(self.progressiveButton.frame, theEvent.locationInWindow) {
             performProgressiveToolTipSegue(self)
         }
     }
     
+    /// Once the mouse exits the tracking area of the progressive button, the view controller dismisses any presented children.
     override func mouseExited(theEvent:NSEvent){
         self.presentedViewControllers?.forEach { self.dismissViewController($0) }
     }

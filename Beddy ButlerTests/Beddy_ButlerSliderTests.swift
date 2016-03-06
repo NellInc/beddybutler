@@ -196,6 +196,7 @@ class Beddy_ButlerSliderTests: XCTestCase {
         
         
     }
+
     
     
     func testPerformanceExample() {

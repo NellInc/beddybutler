@@ -123,6 +123,14 @@ class ButlerTimer: NSObject {
         
     }
     
+    func startOfDayForSlider(seconds: Double) -> NSDate {
+        let calendar = NSCalendar.currentCalendar()
+        let upperRange = 0.0...43200.0
+        if upperRange.contains(seconds) {
+            return calendar.dateByAddingUnit(NSCalendarUnit., value: <#T##Int#>, toDate: <#T##NSDate#>, options: <#T##NSCalendarOptions#>)
+        }
+    }
+    
     //MARK: Initialisers and deinitialisers
     
     override init() {
@@ -264,7 +272,7 @@ class ButlerTimer: NSObject {
             //let convertedValue = newValue * 86400 / 0.92
             
             // Format 3: offset but range with 00:00 in the middle
-            let convertedValue = convertToSeconds(newValue)
+            let convertedValue = convertToSeconds(ratio: newValue)
             self.userStartTime = convertedValue
             print("Ratio is: \(newValue), New user start time is: \(convertedValue)")
         case NotificationKeys.endSliderChanged.rawValue:
@@ -275,7 +283,8 @@ class ButlerTimer: NSObject {
             // let convertedValue = (newValue - 0.080) * 86400 / 0.92
             
             // Format 3: offset but range with 0:00 in the middle
-            let convertedValue = convertToSeconds(newValue)
+            
+            let convertedValue = convertToSeconds(ratio: newValue - 0.08)
             
             self.userBedTime = convertedValue
             print("Ratio is: \(newValue), New user bed time is: \(convertedValue)")
@@ -286,12 +295,15 @@ class ButlerTimer: NSObject {
     }
     
     /// Converts the given value to seconds. The method will apply a different formula if the value falls in the range 0...0.5 or 0.5...1.0
-    func convertToSeconds(value: Double) -> Double {
-        let lowerRange = 0...0.5
-        if lowerRange.contains(value) {
-            return ( ( value * 43200.0 / 0.5 ) + 43200 ).roundToPlaces(3)
+    func convertToSeconds(ratio newValue: Double) -> Double {
+        
+        //let newValue = compensateRatioGap(ratio)
+        
+        let lowerRange = 0...0.46
+        if lowerRange.contains(newValue) {
+            return ( ( newValue * 43200.0 / 0.46 ) + 43200 ).roundToPlaces(3)
         } else {
-            return ( ( value * 43200.0 / 0.5 ) - 43200 ).roundToPlaces(3)
+            return ( ( newValue * 43200.0 / 0.46 ) - 43200 ).roundToPlaces(3)
         }
     }
     

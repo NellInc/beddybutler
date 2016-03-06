@@ -100,10 +100,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             switch key {
             case .startTimeValue:
                    let theKey = sharedUserDefaults.objectForKey(key.rawValue) as? Double
-                   if theKey == nil { registerValue(75000.00, key.rawValue) }
+                   if theKey == nil || theKey < 0.0 || theKey > 86400.0 { registerValue(75000.00, key.rawValue) }
             case .bedTimeValue:
                 let theKey = sharedUserDefaults.objectForKey(key.rawValue) as? Double
-                if theKey == nil { registerValue(85000.00, key.rawValue) }
+                if theKey == nil || theKey > 84600.00 || theKey < 0.0 { registerValue(84600.00, key.rawValue) }
             case .selectedSound:
                 let theKey = sharedUserDefaults.objectForKey(key.rawValue) as? String
                 if theKey == nil { registerValue(AudioPlayer.AudioFiles.Shy.description(), key.rawValue) }
