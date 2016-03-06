@@ -58,7 +58,7 @@ class ButlerTimer: NSObject {
             print("userBedTime was set... oldValue = \(self.userBedTime), and newValue = \(newValue!)")
             NSUserDefaults.standardUserDefaults().setDouble(newValue!, forKey: UserDefaultKeys.bedTimeValue.rawValue)
             NSUserDefaults.standardUserDefaults().synchronize()
-            //NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.userPreferenceChanged.rawValue, object: self)
+            NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.userPreferenceChanged.rawValue, object: self)
         }
     }
     
@@ -95,7 +95,7 @@ class ButlerTimer: NSObject {
     var startDate: NSDate {
         
         let calendar = NSCalendar.currentCalendar()
-        let startOfDay = calendar.startOfDayForDate(self.currentDate)
+        let startOfDay = startOfDayForSlider(self.userStartTime!)
         // Convert seconds to int, we are sure we will not exceed max int value as we only have 86,000 seconds or less
         // TO DO: check if seconds FROM GTM is the right way to handle calculations for multizone Apps
         let seconds = Int(self.userStartTime!) + NSTimeZone.systemTimeZone().secondsFromGMT
@@ -105,7 +105,6 @@ class ButlerTimer: NSObject {
     /// Gets today's date
     var currentDate: NSDate {
         let currentLocalTime = NSDate()
-        
         let localTimeZone = NSTimeZone.systemTimeZone()
         let secondsFromGTM = NSTimeInterval.init(localTimeZone.secondsFromGMT)
         let resultDate = NSDate(timeInterval: secondsFromGTM, sinceDate: currentLocalTime)
@@ -116,7 +115,7 @@ class ButlerTimer: NSObject {
     /// Calculates the end date based on the current user value
     var bedDate: NSDate {
         let calendar = NSCalendar.currentCalendar()
-        let startOfDay = calendar.startOfDayForDate(self.currentDate)
+        let startOfDay = startOfDayForSlider(self.userBedTime!)
         // Convert seconds to int, we are sure we will not exceed max int value as we only have 86,000 seconds or less
         let seconds = Int(self.userBedTime!) + NSTimeZone.systemTimeZone().secondsFromGMT
         return calendar.dateByAddingUnit(NSCalendarUnit.Second, value: seconds, toDate: startOfDay, options: NSCalendarOptions.MatchFirst)!
@@ -125,9 +124,21 @@ class ButlerTimer: NSObject {
     
     func startOfDayForSlider(seconds: Double) -> NSDate {
         let calendar = NSCalendar.currentCalendar()
-        let upperRange = 0.0...43200.0
-        if upperRange.contains(seconds) {
-            return calendar.dateByAddingUnit(NSCalendarUnit., value: <#T##Int#>, toDate: <#T##NSDate#>, options: <#T##NSCalendarOptions#>)
+        
+        // 1. Calculate midnight of today and tomorrow
+        let startOfToday = calendar.startOfDayForDate(self.currentDate)
+        let startOfTomorrow = calendar.startOfDayForDate(calendar.dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: self.currentDate, options: NSCalendarOptions.MatchFirst)!)
+        let startOfYesterday = calendar.startOfDayForDate(calendar.dateByAddingUnit(NSCalendarUnit.Day, value: -1, toDate: self.currentDate, options: NSCalendarOptions.MatchFirst)!)
+        
+        // 2. Determine if current date is position to the left or right of the sliders to
+        // Rule 1: If current time is position at the left side (43200.00...86400.00) then we should use startOfToday for any slider value on the range 43200.00...86400.00 AND startOfTomorrow for any slider value between 0.00...43200.00
+        // Rule 2: Else: current time position is to the right side (0.00...43200.00) then we should use startOfYesterday for any slider value on the range 43200.00...86400.00 AND startOfToday for any slider value between 0.00...43200.00
+        
+        let secondsOfToday = self.currentDate.timeIntervalSinceDate(startOfToday)
+        if secondsOfToday > 43200.0 { // Rule 1 Apply (use startOfToday and startOfTomorrow)
+            return seconds > 43200.0 ? startOfToday : startOfTomorrow
+        } else { // Rule 2 Apply (use startOfYesterday and StartOfToday)
+            return seconds > 43200.00 ? startOfYesterday : startOfToday
         }
     }
     
