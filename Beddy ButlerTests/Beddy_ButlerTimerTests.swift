@@ -292,6 +292,11 @@ class Beddy_ButlerTimerTests: XCTestCase {
         print("Occurrences of 2: \(occurrences2), Occurrences of 3: \(occurrences3)")
         
     }
+    
+    func testShowLocalTimes () {
+        print("Local date: \(NSDate().localDate)")
+        print("Local start of day: \(NSDate().localStartOfDay)")
+    }
 
 
 

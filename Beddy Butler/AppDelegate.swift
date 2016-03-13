@@ -56,6 +56,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         registerUserDefaultValues()
         
+        //set the default time zone for the application
+        NSTimeZone.resetSystemTimeZone()
+        //let testTimeZone =  NSTimeZone(name: testTimeZoneName)!
+        //NSTimeZone.setDefaultTimeZone(testTimeZone)
+        NSTimeZone.setDefaultTimeZone(NSTimeZone.systemTimeZone())
+        print("time zone at start is \(NSTimeZone.localTimeZone()), local time is \(NSDate().localDate)")
+        
         //create a new ButlerTimer
         self.butlerTimer = ButlerTimer()
         
@@ -75,6 +82,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             NSDistributedNotificationCenter.defaultCenter().postNotificationName("terminateApp", object: NSBundle.mainBundle().bundleIdentifier)
         }
         
+        
+        
+    }
+    
+    
+    var testTimeZoneName: String {
+        let knowTimeZones = NSTimeZone.knownTimeZoneNames()
+        
+        return knowTimeZones.filter{ $0.containsString("Krasnoyarsk") }.first!
         
     }
 
@@ -136,6 +152,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     /// Beddy Butler should get notified when the PC wakes up from sleep so it can restart its timer
     func receiveWakeNotification(notification: NSNotification) {
         NSLog("Wake nottification received: \(notification.name)")
+        NSTimeZone.resetSystemTimeZone()
         self.butlerTimer?.calculateNewTimer()
     }
     

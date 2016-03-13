@@ -25,7 +25,7 @@ class ButlerTimer: NSObject {
         didSet {
             // If it reaches the maximum then we should set the annoyance to a higher value, then we set the butlerCount back to 0 and we create a new value for butler reset (2-3)
             if butlerCount == butlerReset && self.userProgressiveButler == true {
-                print("Butler count is ready to set a new sound to \(self.userSelectedSound.progressiveDescription()) because butlerCount is \(butlerCount) and butlerReset is \(butlerReset)")
+                //print("Butler count is ready to set a new sound to \(self.userSelectedSound.progressiveDescription()) because butlerCount is \(butlerCount) and butlerReset is \(butlerReset)")
                 self.progressiveSound = self.progressiveSound.progressiveDescription()
                 butlerCount = 0
                 butlerReset = randomProgressiveInterval
@@ -55,7 +55,7 @@ class ButlerTimer: NSObject {
             return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.bedTimeValue.rawValue) as? Double
         }
         set {
-            print("userBedTime was set... oldValue = \(self.userBedTime), and newValue = \(newValue!)")
+            //print("userBedTime was set... oldValue = \(self.userBedTime), and newValue = \(newValue!)")
             NSUserDefaults.standardUserDefaults().setDouble(newValue!, forKey: UserDefaultKeys.bedTimeValue.rawValue)
             NSUserDefaults.standardUserDefaults().synchronize()
             NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.userPreferenceChanged.rawValue, object: self)
@@ -91,44 +91,51 @@ class ButlerTimer: NSObject {
         }
     }
     
+    var userCalendar: NSCalendar {
+        let calendar = NSCalendar.currentCalendar()
+        calendar.timeZone = NSTimeZone.localTimeZone()
+        return calendar
+    }
+    
     /// Calculates the start date based on the current user value
     var startDate: NSDate {
         
-        let calendar = NSCalendar.currentCalendar()
         let startOfDay = startOfDayForSlider(self.userStartTime!)
         // Convert seconds to int, we are sure we will not exceed max int value as we only have 86,000 seconds or less
         // TO DO: check if seconds FROM GTM is the right way to handle calculations for multizone Apps
-        let seconds = Int(self.userStartTime!) + NSTimeZone.systemTimeZone().secondsFromGMT
-        return calendar.dateByAddingUnit(NSCalendarUnit.Second, value: seconds, toDate: startOfDay, options: NSCalendarOptions.MatchFirst)!
+        let seconds = Int(self.userStartTime!) //+ NSTimeZone.localTimeZone().secondsFromGMT
+        return userCalendar.dateByAddingUnit(NSCalendarUnit.Second, value: seconds, toDate: startOfDay, options: NSCalendarOptions.MatchFirst)!
     }
     
     /// Gets today's date
     var currentDate: NSDate {
-        let currentLocalTime = NSDate()
-        let localTimeZone = NSTimeZone.systemTimeZone()
+        /*
+        let currentLocalDateComp = userCalendar.componentsInTimeZone(NSTimeZone.localTimeZone(), fromDate: NSDate())
+        let currentLocalDate = currentLocalDateComp.date!
+        let localTimeZone = NSTimeZone.localTimeZone()
         let secondsFromGTM = NSTimeInterval.init(localTimeZone.secondsFromGMT)
-        let resultDate = NSDate(timeInterval: secondsFromGTM, sinceDate: currentLocalTime)
-        
+        let resultDate = NSDate(timeInterval: secondsFromGTM, sinceDate: currentLocalDate)
+        print("Today is \(resultDate) and the time zone is \(NSTimeZone.localTimeZone())")
         return resultDate
+        */
+        return NSDate()
     }
     
     /// Calculates the end date based on the current user value
     var bedDate: NSDate {
-        let calendar = NSCalendar.currentCalendar()
         let startOfDay = startOfDayForSlider(self.userBedTime!)
         // Convert seconds to int, we are sure we will not exceed max int value as we only have 86,000 seconds or less
-        let seconds = Int(self.userBedTime!) + NSTimeZone.systemTimeZone().secondsFromGMT
-        return calendar.dateByAddingUnit(NSCalendarUnit.Second, value: seconds, toDate: startOfDay, options: NSCalendarOptions.MatchFirst)!
+        let seconds = Int(self.userBedTime!) //+ NSTimeZone.systemTimeZone().secondsFromGMT
+        return userCalendar.dateByAddingUnit(NSCalendarUnit.Second, value: seconds, toDate: startOfDay, options: NSCalendarOptions.MatchFirst)!
         
     }
     
     func startOfDayForSlider(seconds: Double) -> NSDate {
-        let calendar = NSCalendar.currentCalendar()
         
         // 1. Calculate midnight of today and tomorrow
-        let startOfToday = calendar.startOfDayForDate(self.currentDate)
-        let startOfTomorrow = calendar.startOfDayForDate(calendar.dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: self.currentDate, options: NSCalendarOptions.MatchFirst)!)
-        let startOfYesterday = calendar.startOfDayForDate(calendar.dateByAddingUnit(NSCalendarUnit.Day, value: -1, toDate: self.currentDate, options: NSCalendarOptions.MatchFirst)!)
+        let startOfToday = userCalendar.startOfDayForDate(self.currentDate)
+        let startOfTomorrow = userCalendar.startOfDayForDate(userCalendar.dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: self.currentDate, options: NSCalendarOptions.MatchFirst)!)
+        let startOfYesterday = userCalendar.startOfDayForDate(userCalendar.dateByAddingUnit(NSCalendarUnit.Day, value: -1, toDate: self.currentDate, options: NSCalendarOptions.MatchFirst)!)
         
         // 2. Determine if current date is position to the left or right of the sliders to
         // Rule 1: If current time is position at the left side (43200.00...86400.00) then we should use startOfToday for any slider value on the range 43200.00...86400.00 AND startOfTomorrow for any slider value between 0.00...43200.00
@@ -217,11 +224,10 @@ class ButlerTimer: NSObject {
             setNewTimer(newInterval)
         } else {
             //the date will be after the interval so we calculate a new interval for tomorrow
-            let calendar = NSCalendar.currentCalendar()
             let components = NSDateComponents()
             components.day = 1
             components.second = Int(newInterval)
-            let theNewDate = calendar.dateByAddingComponents(components, toDate: self.startDate, options: NSCalendarOptions.MatchFirst)
+            let theNewDate = userCalendar.dateByAddingComponents(components, toDate: self.startDate, options: NSCalendarOptions.MatchFirst)
             newInterval = theNewDate!.timeIntervalSinceDate(self.currentDate)
             setNewTimer(newInterval)
             // finally we make sure that the sound is not muted anymore
@@ -285,7 +291,7 @@ class ButlerTimer: NSObject {
             // Format 3: offset but range with 00:00 in the middle
             let convertedValue = convertToSeconds(ratio: newValue)
             self.userStartTime = convertedValue
-            print("Ratio is: \(newValue), New user start time is: \(convertedValue)")
+            //print("Ratio is: \(newValue), New user start time is: \(convertedValue)")
         case NotificationKeys.endSliderChanged.rawValue:
             // Format 1: no offset
             //let convertedValue = newValue > 0.5 ? newValue * 86400 : (newValue - 0.080) * 86400
@@ -298,7 +304,7 @@ class ButlerTimer: NSObject {
             let convertedValue = convertToSeconds(ratio: newValue - 0.08)
             
             self.userBedTime = convertedValue
-            print("Ratio is: \(newValue), New user bed time is: \(convertedValue)")
+            //print("Ratio is: \(newValue), New user bed time is: \(convertedValue)")
         default:
             break;
             }

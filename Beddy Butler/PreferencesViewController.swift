@@ -26,9 +26,32 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
     @IBOutlet weak var iconImageView: NSImageView!
     
     @IBOutlet weak var progressiveButton: NSButton!
-    
+
     var userSelectedSound: String? {
         return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.selectedSound.rawValue) as? String
+    }
+    
+    var userStartTime: Double? {
+        return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.startTimeValue.rawValue) as? Double
+    }
+    
+    var userBedTime: Double? {
+        return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.bedTimeValue.rawValue) as? Double
+    }
+    
+    var userStartDate: String {
+        let date = NSDate().addSecondsToLocalStartDate(userStartTime!)
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss"
+        
+        return dateFormatter.stringFromDate(date)
+    }
+    
+    var userBedDate: String {
+        let date = NSDate().addSecondsToLocalStartDate(userBedTime!)
+        let dateFormatter = NSDateFormatter()
+        return dateFormatter.stringFromDate(date)
+
     }
     
     //MARK: View Main Events
@@ -71,13 +94,7 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         let bedSlider = NSImage(named: SliderKeys.BedSlider.rawValue)
         bedSlider
         
-        var userStartTime: Double? {
-            return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.startTimeValue.rawValue) as? Double
-        }
-        
-        var userBedTime: Double? {
-            return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.bedTimeValue.rawValue) as? Double
-        }
+
         
         // Format with no offset:
         //let startconvertedValue = newValue < 0.5 ? newValue * 86400 : (newValue + 0.080) * 86400

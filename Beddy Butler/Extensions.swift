@@ -26,4 +26,27 @@ extension NSDate {
         let randomInterval = minimum + NSTimeInterval(randomOffset)
         return NSDate(timeIntervalSince1970: randomInterval)
     }
+    
+    /// Returns the date offset from GMT to show local date and time
+    var localDate: NSDate {
+        let localTimeZone = NSTimeZone.localTimeZone()
+        let secondsFromGTM = NSTimeInterval.init(localTimeZone.secondsFromGMT)
+        let resultDate = NSDate(timeInterval: secondsFromGTM, sinceDate: self)
+        print("Today is \(resultDate) and the time zone is \(NSTimeZone.localTimeZone())")
+        return resultDate
+    }
+    
+    var localStartOfDay: NSDate {
+        let calendar = NSCalendar.currentCalendar()
+        let localTimeZone = NSTimeZone.localTimeZone()
+        calendar.timeZone = localTimeZone
+        let secondsFromGTM = NSTimeInterval.init(localTimeZone.secondsFromGMT)
+        let startOfToday = calendar.startOfDayForDate(self.localDate)
+        let resultDate = NSDate(timeInterval: secondsFromGTM, sinceDate: startOfToday)
+        return resultDate
+    }
+    
+    func addSecondsToLocalStartDate(seconds: Double) -> NSDate {
+        return NSDate(timeInterval: NSTimeInterval.init(seconds), sinceDate: localStartOfDay)
+    }
 }
