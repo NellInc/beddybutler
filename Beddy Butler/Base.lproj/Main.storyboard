@@ -449,10 +449,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="bedTimeFormatter" destination="XGz-KF-dff" id="rnH-sg-Xy1"/>
                         <outlet property="doubleSliderHandler" destination="H7B-36-gSj" id="byq-oc-049"/>
                         <outlet property="endTimeTextValue" destination="txJ-dy-GqU" id="Qdf-C8-fj4"/>
                         <outlet property="iconImageView" destination="LWM-5h-azi" id="LYk-iQ-6rj"/>
                         <outlet property="progressiveButton" destination="1DP-7L-Jfh" id="cx9-te-4Jv"/>
+                        <outlet property="startTimeFormatter" destination="rSR-F9-2z7" id="gFs-0f-vLD"/>
                         <outlet property="startTimeTextValue" destination="Twh-Ep-Mud" id="RAw-Mo-wew"/>
                         <outlet property="userDefaults" destination="45n-s1-uBZ" id="toQ-9g-rdm"/>
                     </connections>

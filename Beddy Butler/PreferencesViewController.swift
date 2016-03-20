@@ -27,6 +27,12 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
     
     @IBOutlet weak var progressiveButton: NSButton!
 
+    @IBOutlet weak var bedTimeFormatter: NSDateFormatter!
+    
+    @IBOutlet weak var startTimeFormatter: NSDateFormatter!
+    
+    
+    
     var userSelectedSound: String? {
         return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.selectedSound.rawValue) as? String
     }
@@ -54,6 +60,13 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
 
     }
     
+    var displayTimeZoneName: String {
+        let knowTimeZones = NSTimeZone.knownTimeZoneNames()
+        
+        return knowTimeZones.filter{ $0.containsString("London") }.first!
+        
+    }
+    
     //MARK: View Main Events
     
     override func viewDidLoad() {
@@ -69,6 +82,10 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         // load tracking area for progressive tooltip
         let progressiveButtonTrackingArea = NSTrackingArea(rect: progressiveButton.bounds, options: [NSTrackingAreaOptions.ActiveInKeyWindow, NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
         progressiveButton.addTrackingArea(progressiveButtonTrackingArea)
+        
+        // The labels that display the slider buttons contain full date-time values but only display the time part to the user. Because we are not using these values for any calculations, but only for displaying to the user, we need to set the time zone to always be in London
+        bedTimeFormatter.timeZone = NSTimeZone(name: self.displayTimeZoneName)
+        startTimeFormatter.timeZone = NSTimeZone(name: self.displayTimeZoneName)
 
     }
     
