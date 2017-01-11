@@ -14,7 +14,7 @@ class ButlerTimer: NSObject {
     //MARK: Properties
     
     var numberOfRepeats = 5
-    var timer: NSTimer?
+    var timer: Timer?
     /// the audio player that will be used in the play sound action
     var audioPlayer: AudioPlayer
     let butlerImage = NSImage(named: "Butler")
@@ -34,55 +34,55 @@ class ButlerTimer: NSObject {
     }
     
     // TO DO: use this variable to remember the value before the progressive feature changes the value so that we can put it back to what it was
-    var progressiveSound: AudioPlayer.AudioFiles = AudioPlayer.AudioFiles.Shy
+    var progressiveSound: AudioPlayer.AudioFiles = AudioPlayer.AudioFiles.shy
     
     //MARK: Computed properties
     
     //MARK: User Properties
     var userStartTime: Double? {
         get {
-            return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.startTimeValue.rawValue) as? Double
+            return UserDefaults.standard.object(forKey: UserDefaultKeys.startTimeValue.rawValue) as? Double
         }
         set {
-            NSUserDefaults.standardUserDefaults().setDouble(newValue!, forKey: UserDefaultKeys.startTimeValue.rawValue)
-            NSUserDefaults.standardUserDefaults().synchronize()
-            NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.userPreferenceChanged.rawValue, object: self)
+            UserDefaults.standard.set(newValue!, forKey: UserDefaultKeys.startTimeValue.rawValue)
+            UserDefaults.standard.synchronize()
+            NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKeys.userPreferenceChanged.rawValue), object: self)
         }
     }
     
     var userBedTime: Double? {
         get {
-            return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.bedTimeValue.rawValue) as? Double
+            return UserDefaults.standard.object(forKey: UserDefaultKeys.bedTimeValue.rawValue) as? Double
         }
         set {
             //print("userBedTime was set... oldValue = \(self.userBedTime), and newValue = \(newValue!)")
-            NSUserDefaults.standardUserDefaults().setDouble(newValue!, forKey: UserDefaultKeys.bedTimeValue.rawValue)
-            NSUserDefaults.standardUserDefaults().synchronize()
-            NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.userPreferenceChanged.rawValue, object: self)
+            UserDefaults.standard.set(newValue!, forKey: UserDefaultKeys.bedTimeValue.rawValue)
+            UserDefaults.standard.synchronize()
+            NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKeys.userPreferenceChanged.rawValue), object: self)
         }
     }
     
     var userMuteSound: Bool? {
         set {
-            NSUserDefaults.standardUserDefaults().setValue(newValue, forKey: UserDefaultKeys.isMuted.rawValue)
+            UserDefaults.standard.setValue(newValue, forKey: UserDefaultKeys.isMuted.rawValue)
         }
         get {
-            return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.isMuted.rawValue) as? Bool
+            return UserDefaults.standard.object(forKey: UserDefaultKeys.isMuted.rawValue) as? Bool
         }
     }
     
     var userProgressiveButler: Bool? {
-        return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.progressive.rawValue) as? Bool
+        return UserDefaults.standard.object(forKey: UserDefaultKeys.progressive.rawValue) as? Bool
     }
     
     ///TODO: Delete Temporary frequency variable
     var userSelectedFrequency: Double? {
-        return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.frequency.rawValue) as? Double
+        return UserDefaults.standard.object(forKey: UserDefaultKeys.frequency.rawValue) as? Double
     }
     
     var userSelectedSound: AudioPlayer.AudioFiles {
         get {
-            if let audioFile = NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.selectedSound.rawValue) as? String {
+            if let audioFile = UserDefaults.standard.object(forKey: UserDefaultKeys.selectedSound.rawValue) as? String {
                 return AudioPlayer.AudioFiles(stringValue: audioFile)
         
             } else {
@@ -91,24 +91,24 @@ class ButlerTimer: NSObject {
         }
     }
     
-    var userCalendar: NSCalendar {
-        let calendar = NSCalendar.currentCalendar()
-        calendar.timeZone = NSTimeZone.localTimeZone()
+    var userCalendar: Calendar {
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone.autoupdatingCurrent
         return calendar
     }
     
     /// Calculates the start date based on the current user value
-    var startDate: NSDate {
+    var startDate: Date {
         
         let startOfDay = startOfDayForSlider(self.userStartTime!)
         // Convert seconds to int, we are sure we will not exceed max int value as we only have 86,000 seconds or less
         // TO DO: check if seconds FROM GTM is the right way to handle calculations for multizone Apps
         let seconds = Int(self.userStartTime!) //+ NSTimeZone.localTimeZone().secondsFromGMT
-        return userCalendar.dateByAddingUnit(NSCalendarUnit.Second, value: seconds, toDate: startOfDay, options: NSCalendarOptions.MatchFirst)!
+        return (userCalendar as NSCalendar).date(byAdding: NSCalendar.Unit.second, value: seconds, to: startOfDay, options: NSCalendar.Options.matchFirst)!
     }
     
     /// Gets today's date
-    var currentDate: NSDate {
+    var currentDate: Date {
         /*
         let currentLocalDateComp = userCalendar.componentsInTimeZone(NSTimeZone.localTimeZone(), fromDate: NSDate())
         let currentLocalDate = currentLocalDateComp.date!
@@ -118,30 +118,30 @@ class ButlerTimer: NSObject {
         print("Today is \(resultDate) and the time zone is \(NSTimeZone.localTimeZone())")
         return resultDate
         */
-        return NSDate()
+        return Date()
     }
     
     /// Calculates the end date based on the current user value
-    var bedDate: NSDate {
+    var bedDate: Date {
         let startOfDay = startOfDayForSlider(self.userBedTime!)
         // Convert seconds to int, we are sure we will not exceed max int value as we only have 86,000 seconds or less
         let seconds = Int(self.userBedTime!) //+ NSTimeZone.systemTimeZone().secondsFromGMT
-        return userCalendar.dateByAddingUnit(NSCalendarUnit.Second, value: seconds, toDate: startOfDay, options: NSCalendarOptions.MatchFirst)!
+        return (userCalendar as NSCalendar).date(byAdding: NSCalendar.Unit.second, value: seconds, to: startOfDay, options: NSCalendar.Options.matchFirst)!
         
     }
     
-    func startOfDayForSlider(seconds: Double) -> NSDate {
+    func startOfDayForSlider(_ seconds: Double) -> Date {
         
         // 1. Calculate midnight of today and tomorrow
-        let startOfToday = userCalendar.startOfDayForDate(self.currentDate)
-        let startOfTomorrow = userCalendar.startOfDayForDate(userCalendar.dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: self.currentDate, options: NSCalendarOptions.MatchFirst)!)
-        let startOfYesterday = userCalendar.startOfDayForDate(userCalendar.dateByAddingUnit(NSCalendarUnit.Day, value: -1, toDate: self.currentDate, options: NSCalendarOptions.MatchFirst)!)
+        let startOfToday = userCalendar.startOfDay(for: self.currentDate)
+        let startOfTomorrow = userCalendar.startOfDay(for: (userCalendar as NSCalendar).date(byAdding: NSCalendar.Unit.day, value: 1, to: self.currentDate, options: NSCalendar.Options.matchFirst)!)
+        let startOfYesterday = userCalendar.startOfDay(for: (userCalendar as NSCalendar).date(byAdding: NSCalendar.Unit.day, value: -1, to: self.currentDate, options: NSCalendar.Options.matchFirst)!)
         
         // 2. Determine if current date is position to the left or right of the sliders to
         // Rule 1: If current time is position at the left side (43200.00...86400.00) then we should use startOfToday for any slider value on the range 43200.00...86400.00 AND startOfTomorrow for any slider value between 0.00...43200.00
         // Rule 2: Else: current time position is to the right side (0.00...43200.00) then we should use startOfYesterday for any slider value on the range 43200.00...86400.00 AND startOfToday for any slider value between 0.00...43200.00
         
-        let secondsOfToday = self.currentDate.timeIntervalSinceDate(startOfToday)
+        let secondsOfToday = self.currentDate.timeIntervalSince(startOfToday)
         if secondsOfToday > 43200.0 { // Rule 1 Apply (use startOfToday and startOfTomorrow)
             return seconds > 43200.0 ? startOfToday : startOfTomorrow
         } else { // Rule 2 Apply (use startOfYesterday and StartOfToday)
@@ -160,19 +160,19 @@ class ButlerTimer: NSObject {
         // set the correct sound for the progressive feature
         self.progressiveSound = self.userSelectedSound
         // Register observers to recalculate the timer
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "calculateNewTimer", name: NotificationKeys.userPreferenceChanged.rawValue , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ButlerTimer.calculateNewTimer), name: NSNotification.Name(rawValue: NotificationKeys.userPreferenceChanged.rawValue) , object: nil)
         
-         NSNotificationCenter.defaultCenter().addObserver(self, selector: "validateUserTimeValue", name: NSUserDefaultsDidChangeNotification , object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(ButlerTimer.validateUserTimeValue), name: UserDefaults.didChangeNotification , object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUserTimeValue:", name: NotificationKeys.startSliderChanged.rawValue , object: nil)
-         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUserTimeValue:", name: NotificationKeys.endSliderChanged.rawValue , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ButlerTimer.updateUserTimeValue(_:)), name: NSNotification.Name(rawValue: NotificationKeys.startSliderChanged.rawValue) , object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(ButlerTimer.updateUserTimeValue(_:)), name: NSNotification.Name(rawValue: NotificationKeys.endSliderChanged.rawValue) , object: nil)
         
        
     }
     
     deinit {
         timer?.invalidate()
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
 
     // MARK: Timer methods
@@ -185,7 +185,7 @@ class ButlerTimer: NSObject {
         //AppDelegate.statusItem?.image = butlerImage
         if !userMuteSound! {
             if userProgressiveButler == true {
-                self.butlerCount++
+                self.butlerCount += 1
                 self.audioPlayer.playFile(self.progressiveSound)
                 result = "[PROGRESSIVE] Sound played: \(progressiveSound), Current time is: \(currentDate), Set Start Date: \(startDate), Set Bed Date: \(bedDate), Time between plays (frequency): \(userSelectedFrequency!) \n"
             } else {
@@ -214,21 +214,21 @@ class ButlerTimer: NSObject {
         }
         
         var newInterval = randomInterval
-        let dateAfterInterval = NSDate(timeInterval: randomInterval, sinceDate: self.currentDate)
+        let dateAfterInterval = Date(timeInterval: randomInterval, since: self.currentDate)
         //Analyse interval:
         // 1. If Now + interval or Now alone are before start time (date), create interval from now until after start date + (5-20min)
-        if self.startDate.isGreaterThan(dateAfterInterval) {
-            newInterval = self.startDate.timeIntervalSinceDate(self.currentDate) + newInterval
+        if (self.startDate as NSDate).isGreaterThan(dateAfterInterval) {
+            newInterval = self.startDate.timeIntervalSince(self.currentDate) + newInterval
             setNewTimer(newInterval)
-        } else if dateAfterInterval.isGreaterThan(self.startDate) && self.bedDate.isGreaterThan(dateAfterInterval) {
+        } else if (dateAfterInterval as NSDate).isGreaterThan(self.startDate) && (self.bedDate as NSDate).isGreaterThan(dateAfterInterval) {
             setNewTimer(newInterval)
         } else {
             //the date will be after the interval so we calculate a new interval for tomorrow
-            let components = NSDateComponents()
+            var components = DateComponents()
             components.day = 1
             components.second = Int(newInterval)
-            let theNewDate = userCalendar.dateByAddingComponents(components, toDate: self.startDate, options: NSCalendarOptions.MatchFirst)
-            newInterval = theNewDate!.timeIntervalSinceDate(self.currentDate)
+            let theNewDate = (userCalendar as NSCalendar).date(byAdding: components, to: self.startDate, options: NSCalendar.Options.matchFirst)
+            newInterval = theNewDate!.timeIntervalSince(self.currentDate)
             setNewTimer(newInterval)
             // finally we make sure that the sound is not muted anymore
             self.userMuteSound = false
@@ -238,10 +238,10 @@ class ButlerTimer: NSObject {
     }
     
     /// Invalidates the current timer and sets a new timer using the specified interval
-    func setNewTimer(timeInterval: NSTimeInterval) {
+    func setNewTimer(_ timeInterval: TimeInterval) {
         // Shcedule timer with the initial value
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(timeInterval, target: self, selector: "playSound", userInfo: nil, repeats: false)
-        NSRunLoop.currentRunLoop().addTimer(self.timer!, forMode: NSRunLoopCommonModes)
+        self.timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(ButlerTimer.playSound), userInfo: nil, repeats: false)
+        RunLoop.current.add(self.timer!, forMode: RunLoopMode.commonModes)
         //TODO: Remove log entry
         NSLog("Timer created for interval: \(timeInterval)")
     }
@@ -254,7 +254,7 @@ class ButlerTimer: NSObject {
      ref: http://stackoverflow.com/questions/3420581/how-to-select-range-of-values-when-using-arc4random
      ref: https://en.wikipedia.org/wiki/Fisher–Yates_shuffle#Modulo_bias
      */
-    var randomInterval: NSTimeInterval {
+    var randomInterval: TimeInterval {
         
         var randomStart: UInt32
         var randomEnd: UInt32
@@ -268,7 +268,7 @@ class ButlerTimer: NSObject {
         }
         
         let source = arc4random_uniform(randomEnd) // should return a random number between 0 and 900
-        return NSTimeInterval(source + randomStart) // adding 300 will ensure that it will always be from 300 to 1200
+        return TimeInterval(source + randomStart) // adding 300 will ensure that it will always be from 300 to 1200
 
     }
     
@@ -278,7 +278,7 @@ class ButlerTimer: NSObject {
     }
     
     //MARK: Ratio handling
-    func updateUserTimeValue(notification: NSNotification) {
+    func updateUserTimeValue(_ notification: Notification) {
         if let newValue = notification.object as? Double {
         switch notification.name {
         case NotificationKeys.startSliderChanged.rawValue:
@@ -338,35 +338,35 @@ class ButlerTimer: NSObject {
     }
     
     // TODO: Remove test interval -
-    var testInteval: NSTimeInterval {
-        return NSTimeInterval(arc4random_uniform(100))
+    var testInteval: TimeInterval {
+        return TimeInterval(arc4random_uniform(100))
     }
     
     //TODO: Remove log file and logging functionality -
-    func writeToLogFile(message: String){
+    func writeToLogFile(_ message: String){
         //Create file manager instance
-        let fileManager = NSFileManager()
+        let fileManager = FileManager()
         
-        let URLs = fileManager.URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask)
+        let URLs = fileManager.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)
         
         
         let documentURL = URLs[0]
-        let fileURL = documentURL.URLByAppendingPathComponent("BeddyButlerLog.txt")
+        let fileURL = documentURL.appendingPathComponent("BeddyButlerLog.txt")
         
-        let data = message.dataUsingEncoding(NSUTF8StringEncoding)
+        let data = message.data(using: String.Encoding.utf8)
 
         //if !fileManager.fileExistsAtPath(fileURL) {
         do {
-            if !fileManager.fileExistsAtPath(fileURL.path!) {
+            if !fileManager.fileExists(atPath: fileURL.path) {
                 
-                if !fileManager.createFileAtPath(fileURL.path!, contents: data , attributes: nil) {
+                if !fileManager.createFile(atPath: fileURL.path, contents: data , attributes: nil) {
                     NSLog("File not created: \(fileURL.absoluteString)")
                 }
             }
             
-            let handle: NSFileHandle = try NSFileHandle(forWritingToURL: fileURL)
-            handle.truncateFileAtOffset(handle.seekToEndOfFile())
-            handle.writeData(data!)
+            let handle: FileHandle = try FileHandle(forWritingTo: fileURL)
+            handle.truncateFile(atOffset: handle.seekToEndOfFile())
+            handle.write(data!)
             handle.closeFile()
             
         }

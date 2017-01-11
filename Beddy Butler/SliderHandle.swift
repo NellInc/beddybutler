@@ -11,7 +11,7 @@ import Cocoa
 class SliderHandle: NSObject {
     
     //MARK: Types
-    typealias SliderValue = (value: CGFloat) -> CGFloat
+    typealias SliderValue = (_ value: CGFloat) -> CGFloat
     typealias SliderValueChanged  = [String: CGFloat]
     
     //MARK: Properties
@@ -29,9 +29,9 @@ class SliderHandle: NSObject {
         didSet {
             if self.name == SliderKeys.StartHandler.rawValue {
                 //TODO: Move variables
-                NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.startSliderChanged.rawValue, object: self._curRatio)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKeys.startSliderChanged.rawValue), object: self._curRatio)
             } else {
-                NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.endSliderChanged.rawValue, object: self._curRatio)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKeys.endSliderChanged.rawValue), object: self._curRatio)
             }
         }
     }
@@ -39,7 +39,7 @@ class SliderHandle: NSObject {
         get {
             var value = self._curRatio
             if let theCurrentValue = sliderValue {
-                value = theCurrentValue(value: value)
+                value = theCurrentValue(value)
             }
             return value
         }
@@ -51,7 +51,7 @@ class SliderHandle: NSObject {
 
     var handleView: NSView
         
-    required init(name: String, image: NSImage, ratio: CGFloat, sliderValue: SliderValue, sliderValueChanged: SliderValue) {
+    required init(name: String, image: NSImage, ratio: CGFloat, sliderValue: @escaping SliderValue, sliderValueChanged: @escaping SliderValue) {
             self.name = name
             self.handleImage = image
             self.sliderValue = sliderValue
@@ -86,10 +86,10 @@ class SliderHandle: NSObject {
 //        
 //    }
     
-    func ratioForValue(value: CGFloat) -> CGFloat {
+    func ratioForValue(_ value: CGFloat) -> CGFloat {
         var ratio = value
         if let theChangedValue = self.sliderValueChanged {
-            ratio = theChangedValue(value: ratio)
+            ratio = theChangedValue(ratio)
         }
         return ratio
     }

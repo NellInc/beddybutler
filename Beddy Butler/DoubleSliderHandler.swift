@@ -11,7 +11,7 @@ import Cocoa
 class DoubleSliderHandler: NSView {
     
     //MARK: Types
-    typealias SliderValue = (value: CGFloat) -> CGFloat
+    typealias SliderValue = (_ value: CGFloat) -> CGFloat
     //typealias SliderValueChanged  = (handle: [String:CGFloat]) -> Void
     typealias SliderValueChanged  = [String:CGFloat]
     
@@ -28,7 +28,7 @@ class DoubleSliderHandler: NSView {
     let sliderHandleWidth = CGFloat(20)
     let sliderHandleHeight = CGFloat(40)
     let sliderBarHeight = CGFloat(2)
-    let sliderBarColor = NSColor.lightGrayColor()
+    let sliderBarColor = NSColor.lightGray
     let dynamicViewTag = 102
     let staticViewTag = 101
     
@@ -108,7 +108,7 @@ class DoubleSliderHandler: NSView {
     
     //MARK: Handle methods
     
-    func addHandle(name: String, image: NSImage, iniRatio: CGFloat, sliderValue: SliderValue, sliderValueChanged: SliderValue) {
+    func addHandle(_ name: String, image: NSImage, iniRatio: CGFloat, sliderValue: SliderValue, sliderValueChanged: SliderValue) {
         
         let sliderHandle: SliderHandle = SliderHandle(name: name, image: image, ratio: iniRatio, sliderValue: sliderValue, sliderValueChanged: sliderValueChanged)
         
@@ -138,8 +138,8 @@ class DoubleSliderHandler: NSView {
     }
     
     //MARK: Mouse Events
-    override func mouseDown(theEvent: NSEvent) {
-        let mouseDownPoint =  self.convertPoint(theEvent.locationInWindow, fromView: nil)
+    override func mouseDown(with theEvent: NSEvent) {
+        let mouseDownPoint =  self.convert(theEvent.locationInWindow, from: nil)
         
         for view in self.subviews {
             if view.tag == dynamicViewTag {
@@ -167,12 +167,12 @@ class DoubleSliderHandler: NSView {
         }
     }
     
-    override func mouseDragged(theEvent: NSEvent) {
+    override func mouseDragged(with theEvent: NSEvent) {
         if self.activeHandleView == nil {
-            return super.mouseDragged(theEvent)
+            return super.mouseDragged(with: theEvent)
         }
         
-        let mouseDownPoint =  self.convertPoint(theEvent.locationInWindow, fromView: nil)
+        let mouseDownPoint =  self.convert(theEvent.locationInWindow, from: nil)
         
         let left = self.activeBoundary![0]
         let right = self.activeBoundary![1]
@@ -217,7 +217,7 @@ class DoubleSliderHandler: NSView {
         
     }
     
-    override func mouseUp(theEvent: NSEvent) {
+    override func mouseUp(with theEvent: NSEvent) {
         self.activeHandle = nil
         self.activeHandleView = nil
         self.activeBoundary = nil
@@ -225,7 +225,7 @@ class DoubleSliderHandler: NSView {
     
     //MARK: Other methods
     
-    func boundaryForView(view: NSView) -> [CGFloat] {
+    func boundaryForView(_ view: NSView) -> [CGFloat] {
         var boundary = [CGFloat]()
         
         var min: CGFloat = 0
@@ -249,15 +249,15 @@ class DoubleSliderHandler: NSView {
             }
         }
         
-        boundary.insert(min, atIndex: 0)
-        boundary.insert(max, atIndex: 1)
+        boundary.insert(min, at: 0)
+        boundary.insert(max, at: 1)
         
         return boundary
     
     }
     
     //MARK: notification update
-    func updateValues(notification: NSNotification) {
+    func updateValues(_ notification: Notification) {
         if let updateObject = notification.object as? (String, CGFloat) {
             
             let key = updateObject.0

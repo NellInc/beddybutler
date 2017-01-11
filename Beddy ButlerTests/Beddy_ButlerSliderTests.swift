@@ -9,6 +9,30 @@
 import Cocoa
 import XCTest
 @testable import Beddy_Butler
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class Beddy_ButlerSliderTests: XCTestCase {
     
@@ -29,7 +53,7 @@ class Beddy_ButlerSliderTests: XCTestCase {
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
         
        
-        preferencesViewController = storyboard.instantiateControllerWithIdentifier("Preferences Storyboard") as? PreferencesViewController
+        preferencesViewController = storyboard.instantiateController(withIdentifier: "Preferences Storyboard") as? PreferencesViewController
         let _ = preferencesViewController?.view
     }
     
@@ -67,7 +91,7 @@ class Beddy_ButlerSliderTests: XCTestCase {
     /// Values between 0 and 43200 should render a converted value between 0.5 and 1
     func testSliderValuesAbove43200() {
 
-        func calculateRatio(value:Double) -> Double {
+        func calculateRatio(_ value:Double) -> Double {
             return ( value * 0.5 / 43200.0 ) + 0.5
         }
         
@@ -82,7 +106,7 @@ class Beddy_ButlerSliderTests: XCTestCase {
     /// Values between 43200 and 86400
     func testSliderValuesBelow43200() {
  
-        func calculateRatio(value:Double) -> Double {
+        func calculateRatio(_ value:Double) -> Double {
             return ( value * 0.5 / 43200.0 ) - 0.5
         }
         
@@ -100,7 +124,7 @@ class Beddy_ButlerSliderTests: XCTestCase {
     /// Values between 0 and 0.5 should render a converted value between 0.5 and 1
     func testSliderValuesFromRatioBelow() {
         
-        func calculateRatio(value:Double) -> Double {
+        func calculateRatio(_ value:Double) -> Double {
             return ( value * 43200.0 / 0.5 ) + 43200
         }
         
@@ -118,7 +142,7 @@ class Beddy_ButlerSliderTests: XCTestCase {
     /// Values between 0.5 and 1 should render converted values between 0 and 43200
     func testSliverValuesFromRatioAbove() {
         
-        func calculateRatio(value:Double) -> Double {
+        func calculateRatio(_ value:Double) -> Double {
             return ( value * 43200.0 / 0.5 ) - 43200
         }
         
@@ -138,7 +162,7 @@ class Beddy_ButlerSliderTests: XCTestCase {
 
     
     func testSliderBidirectionalValueConvertion() {
-        func convertToRatio(seconds: Double) -> Double {
+        func convertToRatio(_ seconds: Double) -> Double {
             let lowerRange = 0.0...43200.0
             if lowerRange.contains(seconds) {
                 return ( seconds * 0.5 / 43200.0 ) + 0.5
@@ -146,7 +170,7 @@ class Beddy_ButlerSliderTests: XCTestCase {
                 return ( seconds * 0.5 / 43200.0 ) - 0.5
             }
         }
-        func convertToSeconds(value: Double) -> Double {
+        func convertToSeconds(_ value: Double) -> Double {
             let lowerRange = 0...0.5
             if lowerRange.contains(value) {
                 let value =  ( value * 43200.0 / 0.5 ) + 43200
@@ -201,7 +225,7 @@ class Beddy_ButlerSliderTests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock() {
+        self.measure() {
             // Put the code you want to measure the time of here.
         }
     }

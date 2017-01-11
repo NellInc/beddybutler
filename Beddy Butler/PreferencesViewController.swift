@@ -27,43 +27,43 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
     
     @IBOutlet weak var progressiveButton: NSButton!
 
-    @IBOutlet weak var bedTimeFormatter: NSDateFormatter!
+    @IBOutlet weak var bedTimeFormatter: DateFormatter!
     
-    @IBOutlet weak var startTimeFormatter: NSDateFormatter!
+    @IBOutlet weak var startTimeFormatter: DateFormatter!
     
     
     
     var userSelectedSound: String? {
-        return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.selectedSound.rawValue) as? String
+        return UserDefaults.standard.object(forKey: UserDefaultKeys.selectedSound.rawValue) as? String
     }
     
     var userStartTime: Double? {
-        return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.startTimeValue.rawValue) as? Double
+        return UserDefaults.standard.object(forKey: UserDefaultKeys.startTimeValue.rawValue) as? Double
     }
     
     var userBedTime: Double? {
-        return NSUserDefaults.standardUserDefaults().objectForKey(UserDefaultKeys.bedTimeValue.rawValue) as? Double
+        return UserDefaults.standard.object(forKey: UserDefaultKeys.bedTimeValue.rawValue) as? Double
     }
     
     var userStartDate: String {
-        let date = NSDate().addSecondsToLocalStartDate(userStartTime!)
-        let dateFormatter = NSDateFormatter()
+        let date = Date().addSecondsToLocalStartDate(userStartTime!)
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss"
         
-        return dateFormatter.stringFromDate(date)
+        return dateFormatter.string(from: date)
     }
     
     var userBedDate: String {
-        let date = NSDate().addSecondsToLocalStartDate(userBedTime!)
-        let dateFormatter = NSDateFormatter()
-        return dateFormatter.stringFromDate(date)
+        let date = Date().addSecondsToLocalStartDate(userBedTime!)
+        let dateFormatter = DateFormatter()
+        return dateFormatter.string(from: date)
 
     }
     
     var displayTimeZoneName: String {
-        let knowTimeZones = NSTimeZone.knownTimeZoneNames()
+        let knowTimeZones = TimeZone.knownTimeZoneIdentifiers
         
-        return knowTimeZones.filter{ $0.containsString("London") }.first!
+        return knowTimeZones.filter{ $0.contains("London") }.first!
         
     }
     
@@ -80,12 +80,12 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         loadSelectedImage(self.userSelectedSound!)
         
         // load tracking area for progressive tooltip
-        let progressiveButtonTrackingArea = NSTrackingArea(rect: progressiveButton.bounds, options: [NSTrackingAreaOptions.ActiveInKeyWindow, NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
+        let progressiveButtonTrackingArea = NSTrackingArea(rect: progressiveButton.bounds, options: [NSTrackingAreaOptions.activeInKeyWindow, NSTrackingAreaOptions.mouseEnteredAndExited], owner: self, userInfo: nil)
         progressiveButton.addTrackingArea(progressiveButtonTrackingArea)
         
         // The labels that display the slider buttons contain full date-time values but only display the time part to the user. Because we are not using these values for any calculations, but only for displaying to the user, we need to set the time zone to always be in London
-        bedTimeFormatter.timeZone = NSTimeZone(name: self.displayTimeZoneName)
-        startTimeFormatter.timeZone = NSTimeZone(name: self.displayTimeZoneName)
+        bedTimeFormatter.timeZone = TimeZone(identifier: self.displayTimeZoneName)
+        startTimeFormatter.timeZone = TimeZone(identifier: self.displayTimeZoneName)
 
     }
     
@@ -140,7 +140,7 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
     }
     
     //// Because offset is 0.08, we need to use a scale of 0...0.92. if we split this in two parts, each will have 0.46 for its calculations
-    func convertToRatio(seconds: Double) -> Double {
+    func convertToRatio(_ seconds: Double) -> Double {
         let rangeOnRight = 0.0...43200.0
         if rangeOnRight.contains(seconds) {
             return ( ( seconds * 0.46 / 43200.0 ) + 0.46 ).roundToPlaces(3)
@@ -153,18 +153,18 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
     //MARK: View Controller Actions
     
     /// If the user clicks on any of the preview buttons, its audio file will play for them.
-    @IBAction func previewAudio(sender: AnyObject) {
+    @IBAction func previewAudio(_ sender: AnyObject) {
         
         if let button: NSButton = sender as? NSButton {
             
             if let identifier = button.identifier {
                 switch identifier {
                 case "Preview Shy":
-                    audioPlayer.playFile(AudioPlayer.AudioFiles.Shy)
+                    audioPlayer.playFile(AudioPlayer.AudioFiles.shy)
                 case "Preview Insistent":
-                    audioPlayer.playFile(AudioPlayer.AudioFiles.Insistent)
+                    audioPlayer.playFile(AudioPlayer.AudioFiles.insistent)
                 case "Preview Zombie":
-                    audioPlayer.playFile(AudioPlayer.AudioFiles.Zombie)
+                    audioPlayer.playFile(AudioPlayer.AudioFiles.zombie)
                 default:
                     break
                 }
@@ -174,12 +174,12 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
     
     var canPerformSegue = false
     
-    @IBAction func performProgressiveToolTipSegue(sender: AnyObject) {
+    @IBAction func performProgressiveToolTipSegue(_ sender: AnyObject) {
         self.canPerformSegue = true
-        performSegueWithIdentifier("progressiveSegue", sender: sender)
+        performSegue(withIdentifier: "progressiveSegue", sender: sender)
         self.canPerformSegue = false
     }
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "progressiveSegue" {
             return canPerformSegue
         }
@@ -187,27 +187,27 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
     }
     
     /// Used to verify if the mouse enters the tracking area of the progressive button. If it does, the seague to the tooltip will be triggered
-    override func mouseEntered(theEvent:NSEvent){
-        if CGRectContainsPoint(self.progressiveButton.frame, theEvent.locationInWindow) {
+    override func mouseEntered(with theEvent:NSEvent){
+        if self.progressiveButton.frame.contains(theEvent.locationInWindow) {
             performProgressiveToolTipSegue(self)
         }
     }
     
     /// Once the mouse exits the tracking area of the progressive button, the view controller dismisses any presented children.
-    override func mouseExited(theEvent:NSEvent){
+    override func mouseExited(with theEvent:NSEvent){
         self.presentedViewControllers?.forEach { self.dismissViewController($0) }
     }
     
     
-    @IBAction func changedRadioSelection(sender: NSMatrix) {
+    @IBAction func changedRadioSelection(_ sender: NSMatrix) {
        loadSelectedImage(sender.selectedCell()!.title)
     }
     
-    @IBAction func changedPreference(sender: AnyObject) {
-         NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.userPreferenceChanged.rawValue, object: self)
+    @IBAction func changedPreference(_ sender: AnyObject) {
+         NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKeys.userPreferenceChanged.rawValue), object: self)
     }
     
-    @IBAction func changeRunStartup(sender: AnyObject) {
+    @IBAction func changeRunStartup(_ sender: AnyObject) {
         
         if let theButton = sender as? NSButton {
             let runStartup = Bool(theButton.integerValue)
@@ -224,7 +224,7 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
     
     // MARK: Other methods
     
-    func loadSelectedImage(currentValue: String) {
+    func loadSelectedImage(_ currentValue: String) {
         switch currentValue {
         case "Shy":
             self.iconImageView.image = NSImage(named: "ShyIcon")

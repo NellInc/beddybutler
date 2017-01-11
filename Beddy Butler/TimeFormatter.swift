@@ -8,10 +8,10 @@
 
 import Cocoa
 
-class TimeFormatter: NSFormatter {
+class TimeFormatter: Formatter {
     
     
-    override func stringForObjectValue(obj: AnyObject) -> String? {
+    override func string(for obj: Any?) -> String? {
         
         let doubleTime = obj as! Double
         
