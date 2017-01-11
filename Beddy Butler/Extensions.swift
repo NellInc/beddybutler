@@ -50,3 +50,10 @@ extension Date {
         return Date(timeInterval: TimeInterval.init(seconds), since: localStartOfDay)
     }
 }
+
+extension Notification.Name {
+    static let userPreferenceChanged = Notification.Name("userPreferenceChanged") // Used to notify the ButlerTimer that it should recalculate a timer
+    static let startSliderChanged = Notification.Name("startSliderChanged") // Used to notify the end slider that it should change to a valid position
+    static let endSliderChanged = Notification.Name("endSliderChanged") // Used to notify the start slider that it should changed to a valid position
+    static let terminateApp = Notification.Name("terminateApp")
+}
