@@ -29,9 +29,9 @@ class SliderHandle: NSObject {
         didSet {
             if self.name == SliderKeys.StartHandler.rawValue {
                 //TODO: Move variables
-                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKeys.startSliderChanged.rawValue), object: self._curRatio)
+                NotificationCenter.default.post(name: .startSliderChanged, object: self._curRatio)
             } else {
-                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKeys.endSliderChanged.rawValue), object: self._curRatio)
+                NotificationCenter.default.post(name: .endSliderChanged, object: self._curRatio)
             }
         }
     }

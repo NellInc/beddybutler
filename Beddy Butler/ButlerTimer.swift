@@ -46,7 +46,7 @@ class ButlerTimer: NSObject {
         set {
             UserDefaults.standard.set(newValue!, forKey: UserDefaultKeys.startTimeValue.rawValue)
             UserDefaults.standard.synchronize()
-            NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKeys.userPreferenceChanged.rawValue), object: self)
+            NotificationCenter.default.post(name: .userPreferenceChanged, object: self)
         }
     }
     
@@ -58,7 +58,7 @@ class ButlerTimer: NSObject {
             //print("userBedTime was set... oldValue = \(self.userBedTime), and newValue = \(newValue!)")
             UserDefaults.standard.set(newValue!, forKey: UserDefaultKeys.bedTimeValue.rawValue)
             UserDefaults.standard.synchronize()
-            NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKeys.userPreferenceChanged.rawValue), object: self)
+            NotificationCenter.default.post(name: .userPreferenceChanged, object: self)
         }
     }
     
@@ -160,12 +160,12 @@ class ButlerTimer: NSObject {
         // set the correct sound for the progressive feature
         self.progressiveSound = self.userSelectedSound
         // Register observers to recalculate the timer
-        NotificationCenter.default.addObserver(self, selector: #selector(ButlerTimer.calculateNewTimer), name: NSNotification.Name(rawValue: NotificationKeys.userPreferenceChanged.rawValue) , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ButlerTimer.calculateNewTimer), name: .userPreferenceChanged , object: nil)
         
          NotificationCenter.default.addObserver(self, selector: #selector(ButlerTimer.validateUserTimeValue), name: UserDefaults.didChangeNotification , object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(ButlerTimer.updateUserTimeValue(_:)), name: NSNotification.Name(rawValue: NotificationKeys.startSliderChanged.rawValue) , object: nil)
-         NotificationCenter.default.addObserver(self, selector: #selector(ButlerTimer.updateUserTimeValue(_:)), name: NSNotification.Name(rawValue: NotificationKeys.endSliderChanged.rawValue) , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ButlerTimer.updateUserTimeValue(_:)), name: .startSliderChanged , object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(ButlerTimer.updateUserTimeValue(_:)), name: .endSliderChanged , object: nil)
         
        
     }
@@ -281,7 +281,7 @@ class ButlerTimer: NSObject {
     func updateUserTimeValue(_ notification: Notification) {
         if let newValue = notification.object as? Double {
         switch notification.name {
-        case NotificationKeys.startSliderChanged.rawValue:
+        case .startSliderChanged:
             // Format 1: no offset
             //let convertedValue = newValue < 0.5 ? newValue * 86400 : (newValue + 0.080) * 86400
             
@@ -292,7 +292,7 @@ class ButlerTimer: NSObject {
             let convertedValue = convertToSeconds(ratio: newValue)
             self.userStartTime = convertedValue
             //print("Ratio is: \(newValue), New user start time is: \(convertedValue)")
-        case NotificationKeys.endSliderChanged.rawValue:
+        case .endSliderChanged:
             // Format 1: no offset
             //let convertedValue = newValue > 0.5 ? newValue * 86400 : (newValue - 0.080) * 86400
             

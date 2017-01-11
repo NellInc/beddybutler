@@ -84,7 +84,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSTimeZone.resetSystemTimeZone()
         //let testTimeZone =  NSTimeZone(name: testTimeZoneName)!
         //NSTimeZone.setDefaultTimeZone(testTimeZone)
-        NSTimeZone.setDefaultTimeZone(TimeZone.current)
+        NSTimeZone.default = TimeZone.current
+        //swift2: NSTimeZone.setDefaultTimeZone(TimeZone.current)
         print("time zone at start is \(TimeZone.autoupdatingCurrent), local time is \(Date().localDate)")
         
         //create a new ButlerTimer
@@ -103,7 +104,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         if startedAtLogin {
-            DistributedNotificationCenter.default().post(name: "terminateApp", object: Bundle.main.bundleIdentifier)
+            DistributedNotificationCenter.default().post(name: .terminateApp, object: Bundle.main.bundleIdentifier)
         }
         
         
@@ -134,9 +135,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func registerUserDefaultValues() {
         
         for key in UserDefaultKeys.allValues {
-            
-            let registerValue = ({ self.sharedUserDefaults.set($0, forKey: $1) })
-            
+
+            let registerValue = ({ (value: Any, key: String) in self.sharedUserDefaults.set(value, forKey: key) })
+
             switch key {
             case .startTimeValue:
                    let theKey = sharedUserDefaults.object(forKey: key.rawValue) as? Double

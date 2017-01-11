@@ -94,7 +94,7 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         // Removes self from all notifications that are observing
     }
 
-    override var representedObject: AnyObject? {
+    override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
             
@@ -109,10 +109,8 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         
         let startSlider = NSImage(named: SliderKeys.StartSlider.rawValue)
         let bedSlider = NSImage(named: SliderKeys.BedSlider.rawValue)
-        bedSlider
         
-
-        
+    
         // Format with no offset:
         //let startconvertedValue = newValue < 0.5 ? newValue * 86400 : (newValue + 0.080) * 86400
         //let bedconvertedValue = newValue > 0.5 ? newValue * 86400 : (newValue - 0.080) * 86400
@@ -204,13 +202,14 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
     }
     
     @IBAction func changedPreference(_ sender: AnyObject) {
-         NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationKeys.userPreferenceChanged.rawValue), object: self)
+         NotificationCenter.default.post(name: .userPreferenceChanged, object: self)
     }
     
     @IBAction func changeRunStartup(_ sender: AnyObject) {
         
         if let theButton = sender as? NSButton {
-            let runStartup = Bool(theButton.integerValue)
+            
+            let runStartup = theButton.intValue != 0
             let loginItems = LoginItems()
                     // Turn on launch at login
             if runStartup {
