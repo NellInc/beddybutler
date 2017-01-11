@@ -108,7 +108,7 @@ class DoubleSliderHandler: NSView {
     
     //MARK: Handle methods
     
-    func addHandle(_ name: String, image: NSImage, iniRatio: CGFloat, sliderValue: SliderValue, sliderValueChanged: SliderValue) {
+    func addHandle(_ name: String, image: NSImage, iniRatio: CGFloat, sliderValue: @escaping SliderValue, sliderValueChanged: @escaping SliderValue) {
         
         let sliderHandle: SliderHandle = SliderHandle(name: name, image: image, ratio: iniRatio, sliderValue: sliderValue, sliderValueChanged: sliderValueChanged)
         

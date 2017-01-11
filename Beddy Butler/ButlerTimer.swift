@@ -281,7 +281,7 @@ class ButlerTimer: NSObject {
     func updateUserTimeValue(_ notification: Notification) {
         if let newValue = notification.object as? Double {
         switch notification.name {
-        case .startSliderChanged:
+        case Notification.Name.endSliderChanged:
             // Format 1: no offset
             //let convertedValue = newValue < 0.5 ? newValue * 86400 : (newValue + 0.080) * 86400
             
@@ -292,7 +292,7 @@ class ButlerTimer: NSObject {
             let convertedValue = convertToSeconds(ratio: newValue)
             self.userStartTime = convertedValue
             //print("Ratio is: \(newValue), New user start time is: \(convertedValue)")
-        case .endSliderChanged:
+        case Notification.Name.endSliderChanged:
             // Format 1: no offset
             //let convertedValue = newValue > 0.5 ? newValue * 86400 : (newValue - 0.080) * 86400
             
