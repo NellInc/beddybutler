@@ -84,7 +84,7 @@ class Beddy_ButlerSliderTests: XCTestCase {
     func testStartSliderChange3() {
         doubleSliderHandler?.handles[SliderKeys.StartHandler.rawValue]?.curValue = 0.9
         doubleSliderHandler?.handles[SliderKeys.BedHandler.rawValue]?.curValue = 0.7
-        Swift.print(doubleSliderHandler?.handles[SliderKeys.BedHandler.rawValue]?.curValue)
+        Swift.print(doubleSliderHandler?.handles[SliderKeys.BedHandler.rawValue]?.curValue ?? 10)
         XCTAssertTrue(doubleSliderHandler?.handles[SliderKeys.BedHandler.rawValue]?.curValue == ( (0.9 - 0.7)/2 + 0.9 ), "start time updates to < than end time if we set end time < than start time")
     }
     
@@ -131,11 +131,12 @@ class Beddy_ButlerSliderTests: XCTestCase {
         let secondsInterval = 43200.0...86400.0
         //let interval = 0...0.5
         
-        for var i = 0.0; i <= 0.5; i = i + 0.01 {
+        var i = 0.0
+        while i <= 0.5 {
             let converted = calculateRatio(Double(i))
-             print("original is: \(i), converted is: \(converted)")
+            print("original is: \(i), converted is: \(converted)")
             XCTAssertTrue(secondsInterval.contains(converted))
-            
+            i = i + 0.01
         }
     }
     
@@ -149,14 +150,13 @@ class Beddy_ButlerSliderTests: XCTestCase {
         let secondsInterval = 0.0...43200.0
         //let interval = 0.5...1
         
-        for var i = 0.5; i <= 1.0; i = i + 0.01 {
+        var i = 0.5
+        while i <= 1.0 {
             let converted = calculateRatio(Double(i))
             print("original is: \(i), converted is: \(converted)")
             XCTAssertTrue(secondsInterval.contains(converted))
-            
+            i = i + 0.01
         }
-        
-        
     }
     
 

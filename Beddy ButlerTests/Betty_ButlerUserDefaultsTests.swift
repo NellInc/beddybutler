@@ -64,7 +64,7 @@ class Betty_ButlerUserDefaultsTests: XCTestCase {
     }
     
     func testValueForKeyrunStartupValue() {
-        let value: AnyObject? = UserDefaults.standard.object(forKey: UserDefaultKeys.runStartup.rawValue)
+        let value = UserDefaults.standard.object(forKey: UserDefaultKeys.runStartup.rawValue)
         XCTAssert(value is Bool, "User stored preference for run at startup value can be accessed")
          NSLog("The value is: \(value as! Bool)")
     }

@@ -309,7 +309,7 @@ class Beddy_ButlerTimerTests: XCTestCase {
         
         for _ in 0...100 {
             print(randomProgressiveInterval)
-            randomProgressiveInterval == 2 ? occurrences2++ : occurrences3++
+            randomProgressiveInterval == 2 ? (occurrences2 += 1) : (occurrences3 += 1)
             XCTAssert(randomProgressiveInterval >= 2 && randomProgressiveInterval <= 3)
         }
         
