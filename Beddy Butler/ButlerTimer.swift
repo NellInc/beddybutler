@@ -279,9 +279,9 @@ class ButlerTimer: NSObject {
     
     //MARK: Ratio handling
     func updateUserTimeValue(_ notification: Notification) {
-        if let newValue = notification.object as? Double {
+        if let newValue = notification.object as? NSNumber {
         switch notification.name {
-        case Notification.Name.endSliderChanged:
+        case Notification.Name.startSliderChanged:
             // Format 1: no offset
             //let convertedValue = newValue < 0.5 ? newValue * 86400 : (newValue + 0.080) * 86400
             
@@ -289,7 +289,7 @@ class ButlerTimer: NSObject {
             //let convertedValue = newValue * 86400 / 0.92
             
             // Format 3: offset but range with 00:00 in the middle
-            let convertedValue = convertToSeconds(ratio: newValue)
+            let convertedValue = convertToSeconds(ratio: newValue.doubleValue)
             self.userStartTime = convertedValue
             //print("Ratio is: \(newValue), New user start time is: \(convertedValue)")
         case Notification.Name.endSliderChanged:
@@ -301,7 +301,7 @@ class ButlerTimer: NSObject {
             
             // Format 3: offset but range with 0:00 in the middle
             
-            let convertedValue = convertToSeconds(ratio: newValue - 0.08)
+            let convertedValue = convertToSeconds(ratio: newValue.doubleValue - 0.08)
             
             self.userBedTime = convertedValue
             //print("Ratio is: \(newValue), New user bed time is: \(convertedValue)")
