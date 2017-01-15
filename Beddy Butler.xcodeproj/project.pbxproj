@@ -10,7 +10,6 @@
 		2D076B6F1BA57F5B0052047C /* DoubleSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D076B6E1BA57F5B0052047C /* DoubleSliderView.swift */; };
 		2D20F5B81B84CF3F00FE7EFC /* ButlerTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D20F5B71B84CF3F00FE7EFC /* ButlerTimer.swift */; };
 		2D28669E1BA994CB00E2B35F /* DoubleSliderCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D28669D1BA994CB00E2B35F /* DoubleSliderCellView.swift */; };
-		2D2D56F21B9CD68C00705495 /* NotificationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2D56F11B9CD68C00705495 /* NotificationKeys.swift */; };
 		2D30884B1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D30884A1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift */; };
 		2D4183E21C67823A005E2FE3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4183E11C67823A005E2FE3 /* Extensions.swift */; };
 		2D4183E31C6782B5005E2FE3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4183E11C67823A005E2FE3 /* Extensions.swift */; };
@@ -139,7 +138,6 @@
 		2D076B6E1BA57F5B0052047C /* DoubleSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DoubleSliderView.swift; path = "Beddy Butler/DoubleSliderView.swift"; sourceTree = "<group>"; };
 		2D20F5B71B84CF3F00FE7EFC /* ButlerTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButlerTimer.swift; sourceTree = "<group>"; };
 		2D28669D1BA994CB00E2B35F /* DoubleSliderCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DoubleSliderCellView.swift; path = "Beddy Butler/DoubleSliderCellView.swift"; sourceTree = "<group>"; };
-		2D2D56F11B9CD68C00705495 /* NotificationKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationKeys.swift; sourceTree = "<group>"; };
 		2D30884A1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Betty_ButlerUserDefaultsTests.swift; sourceTree = "<group>"; };
 		2D4183E11C67823A005E2FE3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2D45EB801BB7F61F00FCEAC2 /* DoubleSliderHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleSliderHandler.swift; sourceTree = "<group>"; };
@@ -391,7 +389,6 @@
 				2D20F5B71B84CF3F00FE7EFC /* ButlerTimer.swift */,
 				2D45EB811BB7F61F00FCEAC2 /* SliderHandle.swift */,
 				2D4B84841B87230F00735187 /* UserDefaultKeys.swift */,
-				2D2D56F11B9CD68C00705495 /* NotificationKeys.swift */,
 				2DAF9DE81BBD57B20021FD0D /* SliderKeys.swift */,
 				2DA6062B1BDA2ADD0042F859 /* LoginItems.swift */,
 				2D4183E11C67823A005E2FE3 /* Extensions.swift */,
@@ -534,7 +531,7 @@
 				TargetAttributes = {
 					2DC766F81B78D25F00866072 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = BBYYCBH7EW;
+						DevelopmentTeam = 64LV943Y52;
 						LastSwiftMigration = 0820;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
@@ -709,7 +706,6 @@
 				2D9B85361B836944002795F8 /* AudioPlayer.swift in Sources */,
 				2DC767011B78D25F00866072 /* PreferencesViewController.swift in Sources */,
 				2D076B6F1BA57F5B0052047C /* DoubleSliderView.swift in Sources */,
-				2D2D56F21B9CD68C00705495 /* NotificationKeys.swift in Sources */,
 				2D6082C11BC669EB00FFF44C /* AboutViewController.swift in Sources */,
 				2D4183E21C67823A005E2FE3 /* Extensions.swift in Sources */,
 				2D45EB831BB7F61F00FCEAC2 /* SliderHandle.swift in Sources */,
@@ -850,7 +846,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = BBYYCBH7EW;
+				DEVELOPMENT_TEAM = 64LV943Y52;
 				INFOPLIST_FILE = "Beddy Butler/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -871,7 +867,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = BBYYCBH7EW;
+				DEVELOPMENT_TEAM = 64LV943Y52;
 				INFOPLIST_FILE = "Beddy Butler/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
