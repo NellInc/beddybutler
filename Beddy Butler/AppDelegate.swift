@@ -160,6 +160,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             case .progressive:
                 let theKey = sharedUserDefaults.object(forKey: key.rawValue) as? Bool
                 if theKey == nil { registerValue(false, key.rawValue) }
+            case .log:
+                let theKey = sharedUserDefaults.object(forKey: key.rawValue) as? [Date: String]
+                if theKey == nil { registerValue([Date: String](), key.rawValue) }
             }
         
         }

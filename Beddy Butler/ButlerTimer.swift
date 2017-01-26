@@ -200,7 +200,7 @@ class ButlerTimer: NSObject {
             result = "Muted by user: \(userSelectedSound), Current time is: \(currentDate), Set Start Date: \(startDate), Set Bed Date: \(bedDate), Time between plays (frequency): \(userSelectedFrequency!) \n"
            
         }
-        writeToLogFile(result)
+        //writeToLog(result)
         NSLog(result)
         
         calculateNewTimer()
@@ -343,38 +343,13 @@ class ButlerTimer: NSObject {
     }
     
     //TODO: Remove log file and logging functionality -
-    func writeToLogFile(_ message: String){
-        //Create file manager instance
-        let fileManager = FileManager()
-        
-        let URLs = fileManager.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)
-        
-        
-        let documentURL = URLs[0]
-        let fileURL = documentURL.appendingPathComponent("BeddyButlerLog.txt")
-        
-        let data = message.data(using: String.Encoding.utf8)
-
-        //if !fileManager.fileExistsAtPath(fileURL) {
-        do {
-            if !fileManager.fileExists(atPath: fileURL.path) {
-                
-                if !fileManager.createFile(atPath: fileURL.path, contents: data , attributes: nil) {
-                    NSLog("File not created: \(fileURL.absoluteString)")
-                }
-            }
-            
-            let handle: FileHandle = try FileHandle(forWritingTo: fileURL)
-            handle.truncateFile(atOffset: handle.seekToEndOfFile())
-            handle.write(data!)
-            handle.closeFile()
-            
-        }
-        catch {
-            NSLog("Error writing to file: \(error)")
-        }
-
-    }
+//    func writeToLog(_ message: String){
+//        if let log = UserDefaults.standard.dictionary(forKey: UserDefaultKeys.log.rawValue) {
+//            var theNewLog = log
+//            theNewLog["\(Date())"] = message
+//            UserDefaults.standard.setValue(theNewLog, forKey: UserDefaultKeys.log.rawValue)
+//        }
+//    }
     
 }
 
