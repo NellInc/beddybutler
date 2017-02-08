@@ -9,14 +9,38 @@
 import Cocoa
 import XCTest
 @testable import Beddy_Butler
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class Beddy_ButlerTimerTests: XCTestCase {
    
     var butlerTimer = ButlerTimer()
     
-    let calendar = NSCalendar.currentCalendar()
-    var startOfDay: NSDate {
-        return calendar.startOfDayForDate(NSDate())
+    let calendar = Calendar.current
+    var startOfDay: Date {
+        return calendar.startOfDay(for: Date())
     }
 
     override func setUp() {
@@ -30,17 +54,17 @@ class Beddy_ButlerTimerTests: XCTestCase {
     }
     
     func testTimeZone(){
-        let currentLocalTime = NSDate()
+        let currentLocalTime = Date()
         
-        let sourceTimeZone = NSTimeZone(abbreviation: "UTC")
-        let triggerTimeZone = NSTimeZone.systemTimeZone()
+        let sourceTimeZone = TimeZone(abbreviation: "UTC")
+        let triggerTimeZone = TimeZone.current
         
-        let sourceGTMOffset = sourceTimeZone?.secondsFromGMTForDate(currentLocalTime)
-        let triggerGTMOffset = triggerTimeZone.secondsFromGMTForDate(currentLocalTime)
+        let sourceGTMOffset = sourceTimeZone?.secondsFromGMT(for: currentLocalTime)
+        let triggerGTMOffset = triggerTimeZone.secondsFromGMT(for: currentLocalTime)
         
         let interval = triggerGTMOffset - sourceGTMOffset!
         
-        let finalDate = NSDate(timeInterval: NSTimeInterval.init(interval), sinceDate: currentLocalTime)
+        let finalDate = Date(timeInterval: TimeInterval.init(interval), since: currentLocalTime)
         
         Swift.print("Current local time: \(currentLocalTime)")
         Swift.print("Source Time Zone (GTM): \(sourceTimeZone)")
@@ -55,16 +79,16 @@ class Beddy_ButlerTimerTests: XCTestCase {
     
     func testDate() {
         
-        let localTimeZone = NSTimeZone.systemTimeZone()
-        let secondsFromGTM = NSTimeInterval.init(localTimeZone.secondsFromGMT)
-        let resultDate = NSDate(timeInterval: secondsFromGTM, sinceDate: NSDate())
+        let localTimeZone = TimeZone.current
+        let secondsFromGTM = TimeInterval.init(localTimeZone.secondsFromGMT())
+        let resultDate = Date(timeInterval: secondsFromGTM, since: Date())
 
-        Swift.print("Original: \(NSDate()), New: \(resultDate)")
+        Swift.print("Original: \(Date()), New: \(resultDate)")
         
     }
     
     func testInterval() {
-        let theDate = NSDate()
+        let theDate = Date()
         NSLog("Interval: \(theDate)")
         XCTAssertTrue(theDate.timeIntervalSince1970 > 1, "test")
     }
@@ -74,14 +98,14 @@ class Beddy_ButlerTimerTests: XCTestCase {
         let theDate = butlerTimer.startDate
         NSLog("Now: \(startOfDay)")
         NSLog("The date: \(theDate)")
-        XCTAssertTrue(theDate.timeIntervalSinceDate(startOfDay) > 0, "the start date should be around now")
+        XCTAssertTrue(theDate.timeIntervalSince(startOfDay) > 0, "the start date should be around now")
     }
     
     func testEndDateInitialises() {
         let theDate = butlerTimer.bedDate
         NSLog("Now: \(startOfDay)")
         NSLog("The date: \(theDate)")
-        XCTAssertTrue(theDate.timeIntervalSinceDate(startOfDay) > 0, "the start date should be around now")
+        XCTAssertTrue(theDate.timeIntervalSince(startOfDay) > 0, "the start date should be around now")
     }
     
     
@@ -106,12 +130,12 @@ class Beddy_ButlerTimerTests: XCTestCase {
     /// Butler timer should update start time after user updates start time
     func testUpdateStartTime() {
         // Initially change the user setting so that it's different that what we will use for testing
-        NSUserDefaults.standardUserDefaults().setValue(50000, forKey: UserDefaultKeys.startTimeValue.rawValue)
+        UserDefaults.standard.setValue(50000, forKey: UserDefaultKeys.startTimeValue.rawValue)
         let newButlerTimer = ButlerTimer()
         // read the current value from ButlerTimer
         let currentStartDate = newButlerTimer.startDate
         // emulate a new value set by the user
-        NSUserDefaults.standardUserDefaults().setValue(65000, forKey: UserDefaultKeys.startTimeValue.rawValue)
+        UserDefaults.standard.setValue(65000, forKey: UserDefaultKeys.startTimeValue.rawValue)
         //TO DO: do we need to send a notification for start slider changed?
         //NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.startSliderChanged.rawValue, object: StartSliderView())
         NSLog("previous date: \(currentStartDate) new date: \(newButlerTimer.startDate)")
@@ -124,12 +148,12 @@ class Beddy_ButlerTimerTests: XCTestCase {
     /// Butler timer should update end time after user updates end time
     func testUpdateEndTime() {
         // Initially change the user setting so that it's different that what we will use for testing
-        NSUserDefaults.standardUserDefaults().setValue(67000, forKey: UserDefaultKeys.bedTimeValue.rawValue)
+        UserDefaults.standard.setValue(67000, forKey: UserDefaultKeys.bedTimeValue.rawValue)
         let newButlerTimer = ButlerTimer()
         // read the current value from ButlerTimer
         let currentEndDate = newButlerTimer.bedDate
         // emulate a new value set by the user
-        NSUserDefaults.standardUserDefaults().setValue(72000, forKey: UserDefaultKeys.bedTimeValue.rawValue)
+        UserDefaults.standard.setValue(72000, forKey: UserDefaultKeys.bedTimeValue.rawValue)
         //TO DO: do we need to send a notification for end slider changed?
         //NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.endSliderChanged.rawValue, object: StartSliderView())
         NSLog("previous date: \(currentEndDate) new date: \(newButlerTimer.bedDate)")
@@ -149,31 +173,31 @@ class Beddy_ButlerTimerTests: XCTestCase {
         let theButlerTimer = ButlerTimer()
         
         //Make a date before the current start date
-        let calendar = NSCalendar.currentCalendar()
-        _ = calendar.startOfDayForDate(NSDate())
+        let calendar = Calendar.current
+        _ = calendar.startOfDay(for: Date())
         
-        let currentDate = NSDate()
+        let currentDate = Date()
         
         theButlerTimer.calculateNewTimer()
         
         let dateAfterInterval = theButlerTimer.timer?.fireDate
-        NSLog("Timer interval: \(theButlerTimer.timer!.fireDate.timeIntervalSinceDate(currentDate))")
+        NSLog("Timer interval: \(theButlerTimer.timer!.fireDate.timeIntervalSince(currentDate))")
         NSLog("Simulated current date: \(currentDate)")
         NSLog("date after Inverval: \(dateAfterInterval)")
         NSLog("start date: \(theButlerTimer.startDate)")
-        XCTAssertTrue(dateAfterInterval!.isGreaterThan(theButlerTimer.startDate), "When calculating timer before startDate, timer should execute after startDate")
+        XCTAssertTrue((dateAfterInterval! as NSDate).isGreaterThan(theButlerTimer.startDate), "When calculating timer before startDate, timer should execute after startDate")
         
-        if theButlerTimer.bedDate.isGreaterThan(currentDate) {
-            XCTAssertTrue(theButlerTimer.bedDate.isGreaterThan(dateAfterInterval), "When calculating timer before endDate, timer should execute before endDate")
+        if (theButlerTimer.bedDate as NSDate).isGreaterThan(currentDate) {
+            XCTAssertTrue((theButlerTimer.bedDate as NSDate).isGreaterThan(dateAfterInterval), "When calculating timer before endDate, timer should execute before endDate")
         } else
         {
-             XCTAssertTrue(dateAfterInterval!.isGreaterThan(theButlerTimer.bedDate), "When calculating timer after startDate, timer should execute after today's bedDate")
-            let components = NSDateComponents()
+             XCTAssertTrue((dateAfterInterval! as NSDate).isGreaterThan(theButlerTimer.bedDate), "When calculating timer after startDate, timer should execute after today's bedDate")
+            var components = DateComponents()
             components.day = 1
-            let tomorrowsStartDate = calendar.dateByAddingComponents(components, toDate: theButlerTimer.startDate, options: NSCalendarOptions.MatchFirst)
-             let tomorrowsEndDate = calendar.dateByAddingComponents(components, toDate: theButlerTimer.bedDate, options: NSCalendarOptions.MatchFirst)
-             XCTAssertTrue(dateAfterInterval!.isGreaterThan(tomorrowsStartDate), "When calculating timer after startDate, timer should execute after startDate of next day and before enddate of next day")
-             XCTAssertTrue(tomorrowsEndDate!.isGreaterThan(dateAfterInterval), "When calculating timer after startDate, timer should execute after startDate of next day and before enddate of next day")
+            let tomorrowsStartDate = (calendar as NSCalendar).date(byAdding: components, to: theButlerTimer.startDate, options: NSCalendar.Options.matchFirst)
+             let tomorrowsEndDate = (calendar as NSCalendar).date(byAdding: components, to: theButlerTimer.bedDate, options: NSCalendar.Options.matchFirst)
+             XCTAssertTrue((dateAfterInterval! as NSDate).isGreaterThan(tomorrowsStartDate), "When calculating timer after startDate, timer should execute after startDate of next day and before enddate of next day")
+             XCTAssertTrue((tomorrowsEndDate! as NSDate).isGreaterThan(dateAfterInterval), "When calculating timer after startDate, timer should execute after startDate of next day and before enddate of next day")
 
             
         }
@@ -194,21 +218,21 @@ class Beddy_ButlerTimerTests: XCTestCase {
     func testButlerText() {
         
         //Create file manager instance
-        let fileManager = NSFileManager()
+        let fileManager = FileManager()
         
-        let URLs = fileManager.URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask)
+        let URLs = fileManager.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)
         
         
         let documentURL = URLs[0]
-        let fileURL = documentURL.URLByAppendingPathComponent("textFile.txt")
+        let fileURL = documentURL.appendingPathComponent("textFile.txt")
         
         // NSApplication.ur
     
-            let data = "hola 2".dataUsingEncoding(NSUTF8StringEncoding)
+            let data = "hola 2".data(using: String.Encoding.utf8)
             
             //let data = try NSPropertyListSerialization.dataWithPropertyList(plistDictionary, format: NSPropertyListFormat.XMLFormat_v1_0, options: NSPropertyListWriteOptions.init())
-            XCTAssert(data!.length > 0)
-            fileManager.createFileAtPath(fileURL.path!, contents: data, attributes: nil)
+            XCTAssert(data!.count > 0)
+            fileManager.createFile(atPath: fileURL.path, contents: data, attributes: nil)
         
     }
 
@@ -217,12 +241,12 @@ class Beddy_ButlerTimerTests: XCTestCase {
         var isAlreadyRunning = false
         var isActive = false
 
-        let running = NSWorkspace.sharedWorkspace().runningApplications
+        let running = NSWorkspace.shared().runningApplications
 
         for app in running {
             if app.bundleIdentifier == "com.nellwatson.Beddy-Butler" {
                 isAlreadyRunning = true
-                isActive = NSApp.active
+                isActive = NSApp.isActive
             }
 
         }
@@ -238,32 +262,32 @@ class Beddy_ButlerTimerTests: XCTestCase {
         let message = "Hi"
         
         //Create file manager instance
-        let fileManager = NSFileManager()
+        let fileManager = FileManager()
         
-        let path = NSString(string: NSBundle.mainBundle().bundlePath).stringByDeletingLastPathComponent
-        let reviewedPath = NSString(string: path).stringByDeletingLastPathComponent
-        let reviewedPath2 = NSString(string: reviewedPath).stringByDeletingLastPathComponent
-        let reviewedPath3 = NSString(string: reviewedPath2).stringByDeletingLastPathComponent
-        let reviewedPath4 = NSString(string: reviewedPath3).stringByAppendingPathComponent("Resources")
+        let path = NSString(string: Bundle.main.bundlePath).deletingLastPathComponent
+        let reviewedPath = NSString(string: path).deletingLastPathComponent
+        let reviewedPath2 = NSString(string: reviewedPath).deletingLastPathComponent
+        let reviewedPath3 = NSString(string: reviewedPath2).deletingLastPathComponent
+        let reviewedPath4 = NSString(string: reviewedPath3).appendingPathComponent("Resources")
         
-        let newURL = NSURL(string: reviewedPath4)
+        let newURL = URL(string: reviewedPath4)
         
-        let fileURL = newURL!.URLByAppendingPathComponent("BeddyButlerLog.txt")
+        let fileURL = newURL!.appendingPathComponent("BeddyButlerLog.txt")
         
-        let data = message.dataUsingEncoding(NSUTF8StringEncoding)
+        let data = message.data(using: String.Encoding.utf8)
         
         //if !fileManager.fileExistsAtPath(fileURL) {
         do {
-            if !fileManager.fileExistsAtPath(fileURL.path!) {
+            if !fileManager.fileExists(atPath: fileURL.path) {
                 
-                if !fileManager.createFileAtPath(fileURL.path!, contents: data , attributes: nil) {
+                if !fileManager.createFile(atPath: fileURL.path, contents: data , attributes: nil) {
                     NSLog("File not created: \(fileURL.absoluteString)")
                 }
             }
             
-            let handle: NSFileHandle = try NSFileHandle(forWritingToURL: fileURL)
-            handle.truncateFileAtOffset(handle.seekToEndOfFile())
-            handle.writeData(data!)
+            let handle: FileHandle = try FileHandle(forWritingTo: fileURL)
+            handle.truncateFile(atOffset: handle.seekToEndOfFile())
+            handle.write(data!)
             handle.closeFile()
             
         }
@@ -285,7 +309,7 @@ class Beddy_ButlerTimerTests: XCTestCase {
         
         for _ in 0...100 {
             print(randomProgressiveInterval)
-            randomProgressiveInterval == 2 ? occurrences2++ : occurrences3++
+            randomProgressiveInterval == 2 ? (occurrences2 += 1) : (occurrences3 += 1)
             XCTAssert(randomProgressiveInterval >= 2 && randomProgressiveInterval <= 3)
         }
         
@@ -294,8 +318,8 @@ class Beddy_ButlerTimerTests: XCTestCase {
     }
     
     func testShowLocalTimes () {
-        print("Local date: \(NSDate().localDate)")
-        print("Local start of day: \(NSDate().localStartOfDay)")
+        print("Local date: \(Date().localDate)")
+        print("Local start of day: \(Date().localStartOfDay)")
     }
 
 

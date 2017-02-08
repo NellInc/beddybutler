@@ -8,9 +8,9 @@
 
 import Cocoa
 
-class RandomnessFormatter: NSFormatter {
+class RandomnessFormatter: Formatter {
     
-    override func stringForObjectValue(obj: AnyObject) -> String? {
+    override func string(for obj: Any?) -> String? {
         
         let number = obj as! Double
         let secondNumber = (number * 0.7) + number
@@ -30,10 +30,8 @@ class RandomnessFormatter: NSFormatter {
         return stringForm
         
     }
-    
-    
-    override func getObjectValue(obj: AutoreleasingUnsafeMutablePointer<AnyObject?>, forString string: String, errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>) -> Bool {
-        
+
+    override func getObjectValue(_ obj: AutoreleasingUnsafeMutablePointer<AnyObject?>?, for string: String, errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
         
         //var intResult: Int
         //var scanner: NSScanner

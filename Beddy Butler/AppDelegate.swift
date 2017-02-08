@@ -8,6 +8,30 @@
 
 import Cocoa
 import ServiceManagement
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -20,11 +44,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var preferencesController: PreferencesViewController?
     
-    var sharedUserDefaults: NSUserDefaults {
-        return NSUserDefaults.standardUserDefaults()
+    var sharedUserDefaults: UserDefaults {
+        return UserDefaults.standard
     }
     
-    func applicationDidBecomeActive(notification: NSNotification) {
+    func applicationDidBecomeActive(_ notification: Notification) {
         if let theButlerTimer = butlerTimer {
             theButlerTimer.calculateNewTimer()
         } else {
@@ -32,12 +56,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Make a status bar that has variable length
         // (as opposed to being a standard square size)
         
         // -1 to indicate "variable length"
-        AppDelegate.statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(20)
+        AppDelegate.statusItem = NSStatusBar.system().statusItem(withLength: 20)
         
         // Set the text that appears in the menu bar
         //AppDelegate.statusItem!.title = "Beddy Butler"
@@ -60,8 +84,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSTimeZone.resetSystemTimeZone()
         //let testTimeZone =  NSTimeZone(name: testTimeZoneName)!
         //NSTimeZone.setDefaultTimeZone(testTimeZone)
-        NSTimeZone.setDefaultTimeZone(NSTimeZone.systemTimeZone())
-        print("time zone at start is \(NSTimeZone.localTimeZone()), local time is \(NSDate().localDate)")
+        NSTimeZone.default = TimeZone.current
+        //swift2: NSTimeZone.setDefaultTimeZone(TimeZone.current)
+        print("time zone at start is \(TimeZone.autoupdatingCurrent), local time is \(Date().localDate)")
         
         //create a new ButlerTimer
         self.butlerTimer = ButlerTimer()
@@ -71,7 +96,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         //determine if helper app is running
         var startedAtLogin = false
-        let apps = NSWorkspace.sharedWorkspace().runningApplications
+        let apps = NSWorkspace.shared().runningApplications
         for app in apps {
             if app.bundleIdentifier == "com.nellwatson.BeddyButlerHelperApp" {
                 startedAtLogin = true
@@ -79,7 +104,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         if startedAtLogin {
-            NSDistributedNotificationCenter.defaultCenter().postNotificationName("terminateApp", object: NSBundle.mainBundle().bundleIdentifier)
+            DistributedNotificationCenter.default().post(name: .terminateApp, object: Bundle.main.bundleIdentifier)
         }
         
         
@@ -88,20 +113,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     var testTimeZoneName: String {
-        let knowTimeZones = NSTimeZone.knownTimeZoneNames()
+        let knowTimeZones = TimeZone.knownTimeZoneIdentifiers
         
-        return knowTimeZones.filter{ $0.containsString("Krasnoyarsk") }.first!
+        return knowTimeZones.filter{ $0.contains("Krasnoyarsk") }.first!
         
     }
 
-    func applicationWillTerminate(aNotification: NSNotification) {
+    func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
         self.butlerTimer = nil
         deRegisterFromNotifications()
     }
     
-    @IBAction func quit(sender: AnyObject) {
-        NSApplication.sharedApplication().terminate(nil)
+    @IBAction func quit(_ sender: AnyObject) {
+        NSApplication.shared().terminate(nil)
     }
     
     
@@ -110,31 +135,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func registerUserDefaultValues() {
         
         for key in UserDefaultKeys.allValues {
-            
-            let registerValue = ({ self.sharedUserDefaults.setObject($0, forKey: $1) })
-            
+
+            let registerValue = ({ (value: Any, key: String) in self.sharedUserDefaults.set(value, forKey: key) })
+
             switch key {
             case .startTimeValue:
-                   let theKey = sharedUserDefaults.objectForKey(key.rawValue) as? Double
+                   let theKey = sharedUserDefaults.object(forKey: key.rawValue) as? Double
                    if theKey == nil || theKey < 0.0 || theKey > 86400.0 { registerValue(75000.00, key.rawValue) }
             case .bedTimeValue:
-                let theKey = sharedUserDefaults.objectForKey(key.rawValue) as? Double
+                let theKey = sharedUserDefaults.object(forKey: key.rawValue) as? Double
                 if theKey == nil || theKey > 84600.00 || theKey < 0.0 { registerValue(84600.00, key.rawValue) }
             case .selectedSound:
-                let theKey = sharedUserDefaults.objectForKey(key.rawValue) as? String
-                if theKey == nil { registerValue(AudioPlayer.AudioFiles.Shy.description(), key.rawValue) }
+                let theKey = sharedUserDefaults.object(forKey: key.rawValue) as? String
+                if theKey == nil { registerValue(AudioPlayer.AudioFiles.shy.description(), key.rawValue) }
             case .runStartup:
-                let theKey = sharedUserDefaults.objectForKey(key.rawValue) as? Bool
+                let theKey = sharedUserDefaults.object(forKey: key.rawValue) as? Bool
                 if theKey == nil { registerValue(false, key.rawValue) }
             case .frequency:
-                let theKey = sharedUserDefaults.objectForKey(key.rawValue) as? Double
+                let theKey = sharedUserDefaults.object(forKey: key.rawValue) as? Double
                 if theKey == nil { registerValue(5.00, key.rawValue) }
             case .isMuted:
-                let theKey = sharedUserDefaults.objectForKey(key.rawValue) as? Double
+                let theKey = sharedUserDefaults.object(forKey: key.rawValue) as? Double
                 if theKey == nil { registerValue(false, key.rawValue) }
             case .progressive:
-                let theKey = sharedUserDefaults.objectForKey(key.rawValue) as? Bool
+                let theKey = sharedUserDefaults.object(forKey: key.rawValue) as? Bool
                 if theKey == nil { registerValue(false, key.rawValue) }
+            case .log:
+                let theKey = sharedUserDefaults.object(forKey: key.rawValue) as? [Date: String]
+                if theKey == nil { registerValue([Date: String](), key.rawValue) }
             }
         
         }
@@ -144,13 +172,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     /// Beddy Butler should get notifified when it goes to sleep to handle the current timer
-    func receiveSleepNotification(notification: NSNotification) {
+    func receiveSleepNotification(_ notification: Notification) {
         NSLog("Sleep nottification received: \(notification.name)")
         self.butlerTimer?.timer?.invalidate()
     }
     
     /// Beddy Butler should get notified when the PC wakes up from sleep so it can restart its timer
-    func receiveWakeNotification(notification: NSNotification) {
+    func receiveWakeNotification(_ notification: Notification) {
         NSLog("Wake nottification received: \(notification.name)")
         NSTimeZone.resetSystemTimeZone()
         self.butlerTimer?.calculateNewTimer()
@@ -160,12 +188,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //These notifications are filed on NSWorkspace's notification center, not the default
         // notification center. You will not receive sleep/wake notifications if you file
         //with the default notification center.
-        NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self, selector: "receiveSleepNotification:", name: NSWorkspaceWillSleepNotification, object: nil)
-        NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self, selector: "receiveWakeNotification:", name: NSWorkspaceDidWakeNotification, object: nil)
+        NSWorkspace.shared().notificationCenter.addObserver(self, selector: #selector(AppDelegate.receiveSleepNotification(_:)), name: NSNotification.Name.NSWorkspaceWillSleep, object: nil)
+        NSWorkspace.shared().notificationCenter.addObserver(self, selector: #selector(AppDelegate.receiveWakeNotification(_:)), name: NSNotification.Name.NSWorkspaceDidWake, object: nil)
     }
     
     func deRegisterFromNotifications() {
-        NSWorkspace.sharedWorkspace().notificationCenter.removeObserver(self)
+        NSWorkspace.shared().notificationCenter.removeObserver(self)
     }
     
     

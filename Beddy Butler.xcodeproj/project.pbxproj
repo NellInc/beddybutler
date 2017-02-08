@@ -3,14 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2D076B6F1BA57F5B0052047C /* DoubleSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D076B6E1BA57F5B0052047C /* DoubleSliderView.swift */; };
 		2D20F5B81B84CF3F00FE7EFC /* ButlerTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D20F5B71B84CF3F00FE7EFC /* ButlerTimer.swift */; };
 		2D28669E1BA994CB00E2B35F /* DoubleSliderCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D28669D1BA994CB00E2B35F /* DoubleSliderCellView.swift */; };
-		2D2D56F21B9CD68C00705495 /* NotificationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2D56F11B9CD68C00705495 /* NotificationKeys.swift */; };
 		2D30884B1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D30884A1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift */; };
 		2D4183E21C67823A005E2FE3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4183E11C67823A005E2FE3 /* Extensions.swift */; };
 		2D4183E31C6782B5005E2FE3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4183E11C67823A005E2FE3 /* Extensions.swift */; };
@@ -139,7 +138,6 @@
 		2D076B6E1BA57F5B0052047C /* DoubleSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DoubleSliderView.swift; path = "Beddy Butler/DoubleSliderView.swift"; sourceTree = "<group>"; };
 		2D20F5B71B84CF3F00FE7EFC /* ButlerTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButlerTimer.swift; sourceTree = "<group>"; };
 		2D28669D1BA994CB00E2B35F /* DoubleSliderCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DoubleSliderCellView.swift; path = "Beddy Butler/DoubleSliderCellView.swift"; sourceTree = "<group>"; };
-		2D2D56F11B9CD68C00705495 /* NotificationKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationKeys.swift; sourceTree = "<group>"; };
 		2D30884A1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Betty_ButlerUserDefaultsTests.swift; sourceTree = "<group>"; };
 		2D4183E11C67823A005E2FE3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2D45EB801BB7F61F00FCEAC2 /* DoubleSliderHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleSliderHandler.swift; sourceTree = "<group>"; };
@@ -391,7 +389,6 @@
 				2D20F5B71B84CF3F00FE7EFC /* ButlerTimer.swift */,
 				2D45EB811BB7F61F00FCEAC2 /* SliderHandle.swift */,
 				2D4B84841B87230F00735187 /* UserDefaultKeys.swift */,
-				2D2D56F11B9CD68C00705495 /* NotificationKeys.swift */,
 				2DAF9DE81BBD57B20021FD0D /* SliderKeys.swift */,
 				2DA6062B1BDA2ADD0042F859 /* LoginItems.swift */,
 				2D4183E11C67823A005E2FE3 /* Extensions.swift */,
@@ -529,26 +526,28 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "David Garces";
 				TargetAttributes = {
 					2DC766F81B78D25F00866072 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 64LV943Y52;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
 					2DC7670A1B78D25F00866072 = {
 						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 0820;
 						TestTargetID = 2DC766F81B78D25F00866072;
 					};
 				};
 			};
 			buildConfigurationList = 2DC766F41B78D25F00866072 /* Build configuration list for PBXProject "Beddy Butler" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -707,7 +706,6 @@
 				2D9B85361B836944002795F8 /* AudioPlayer.swift in Sources */,
 				2DC767011B78D25F00866072 /* PreferencesViewController.swift in Sources */,
 				2D076B6F1BA57F5B0052047C /* DoubleSliderView.swift in Sources */,
-				2D2D56F21B9CD68C00705495 /* NotificationKeys.swift in Sources */,
 				2D6082C11BC669EB00FFF44C /* AboutViewController.swift in Sources */,
 				2D4183E21C67823A005E2FE3 /* Extensions.swift in Sources */,
 				2D45EB831BB7F61F00FCEAC2 /* SliderHandle.swift in Sources */,
@@ -766,8 +764,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -811,8 +811,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -832,6 +834,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -840,17 +843,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconWhite;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Beddy Butler/Beddy Butler.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = BBYYCBH7EW;
 				INFOPLIST_FILE = "Beddy Butler/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nellwatson.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -859,16 +866,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconWhite;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Beddy Butler/Beddy Butler.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = BBYYCBH7EW;
 				INFOPLIST_FILE = "Beddy Butler/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nellwatson.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -889,6 +900,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "be.quantacorp.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Beddy Butler.app/Contents/MacOS/Beddy Butler";
 			};
 			name = Debug;
@@ -906,6 +918,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "be.quantacorp.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Beddy Butler.app/Contents/MacOS/Beddy Butler";
 			};
 			name = Release;

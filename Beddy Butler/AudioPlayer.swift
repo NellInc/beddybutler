@@ -11,58 +11,58 @@ class AudioPlayer {
     
     
     var audioPlayer: AVAudioPlayer?
-    var soundFileURL: NSURL?
-    let urls = NSBundle.mainBundle().URLsForResourcesWithExtension("mp3", subdirectory: nil)
+    var soundFileURL: URL?
+    let urls = Bundle.main.urls(forResourcesWithExtension: "mp3", subdirectory: nil)
     
     
     enum AudioFiles {
-        case Insistent, Shy, Zombie
+        case insistent, shy, zombie
         
         init (stringValue: String) {
             switch stringValue {
                 case "Insistent":
-                    self = .Insistent
+                    self = .insistent
                 case "Shy":
-                    self = .Shy
+                    self = .shy
                 case "Zombie":
-                    self = .Zombie
+                    self = .zombie
             default:
-                    self = .Shy
+                    self = .shy
             }
         }
         
         func description() -> String {
             switch self  {
-            case .Insistent:
+            case .insistent:
                 return "Insistent"
-            case .Shy:
+            case .shy:
                 return "Shy"
-            case .Zombie:
+            case .zombie:
                 return "Zombie"
             }
         }
         
         func progressiveDescription() -> AudioFiles {
             switch self {
-            case .Shy:
-                return .Insistent
+            case .shy:
+                return .insistent
             default:
-                return .Zombie
+                return .zombie
             }
         }
     }
     
     /// Plays the audio file for the given file name: AudioFiles.Shy, AudioFiles.Insistent or AudioFiles.Zombie
-    func playFile(file: AudioFiles) {
+    func playFile(_ file: AudioFiles) {
         
-        let filteredURLs = urls?.filter { $0.absoluteString.containsString(file.description()) }
+        let filteredURLs = urls?.filter { $0.absoluteString.contains(file.description()) }
         
         // Select a random file from the list
         let randomIndex = Int(arc4random_uniform(UInt32(filteredURLs!.count)))
 
         // play the file
         do {
-            try audioPlayer = AVAudioPlayer(contentsOfURL: filteredURLs![randomIndex])
+            try audioPlayer = AVAudioPlayer(contentsOf: filteredURLs![randomIndex])
             audioPlayer?.play()
         } catch {
             NSLog("File could not be played")

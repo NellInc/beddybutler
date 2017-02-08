@@ -8,6 +8,30 @@
 
 import XCTest
 @testable import Beddy_Butler
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l >= r
+  default:
+    return !(lhs < rhs)
+  }
+}
+
 
 class Beddy_ButlerAudioTests: XCTestCase {
     
@@ -27,56 +51,56 @@ class Beddy_ButlerAudioTests: XCTestCase {
     }
     
     func testInsistentAudioFileName() {
-        audioFile = AudioPlayer.AudioFiles.Insistent
+        audioFile = AudioPlayer.AudioFiles.insistent
         XCTAssertEqual(audioFile!.description(), "Insistent", "test insistent audio file name")
     }
     
     func testShyAudioFileName() {
-        audioFile = AudioPlayer.AudioFiles.Shy
+        audioFile = AudioPlayer.AudioFiles.shy
         XCTAssertEqual(audioFile!.description(), "Shy", "test shy audio file name")
     }
     
     func testZombieAudioFileName() {
-        audioFile = AudioPlayer.AudioFiles.Zombie
+        audioFile = AudioPlayer.AudioFiles.zombie
         XCTAssertEqual(audioFile!.description(), "Zombie", "test zombie audio file name")
     }
     
     func testInsistentAudioFileExistsandPlays() {
-        player.playFile(AudioPlayer.AudioFiles.Insistent)
+        player.playFile(AudioPlayer.AudioFiles.insistent)
         // In Swift 2.0 you will be able to throw an error and test that error doesn't from from
     }
     
     func testShyAudioFileExistsandPlays() {
-        player.playFile(AudioPlayer.AudioFiles.Shy)
+        player.playFile(AudioPlayer.AudioFiles.shy)
         // In Swift 2.0 you will be able to throw an error and test that error doesn't from from
     }
     
     func testZombieAudioFileExistsandPlays() {
-        player.playFile(AudioPlayer.AudioFiles.Zombie)
+        player.playFile(AudioPlayer.AudioFiles.zombie)
         // In Swift 2.0 you will be able to throw an error and test that error doesn't from from
     }
     
     func testEnumeratesAudioFiles() {
-        let urls = NSBundle.mainBundle().URLsForResourcesWithExtension("mp3", subdirectory: nil)
+        let urls = Bundle.main.urls(forResourcesWithExtension: "mp3", subdirectory: nil)
         XCTAssert(urls?.count >= 50)
         
     }
     
     func testEnumerateZombieFiles() {
-        let urls = NSBundle.mainBundle().URLsForResourcesWithExtension("mp3", subdirectory: nil)
-        let zombieURLs = urls?.filter { $0.absoluteString.containsString("Zombie") }
+        let urls = Bundle.main.urls(forResourcesWithExtension: "mp3", subdirectory: nil)
+        let zombieURLs = urls?.filter { $0.absoluteString.contains("Zombie") }
         XCTAssert(zombieURLs?.count >= 50)
     }
     
     func testEnumerateShyFiles() {
-        let urls = NSBundle.mainBundle().URLsForResourcesWithExtension("mp3", subdirectory: nil)
-        let shyURLs = urls?.filter { $0.absoluteString.containsString("Shy") }
+        let urls = Bundle.main.urls(forResourcesWithExtension: "mp3", subdirectory: nil)
+        let shyURLs = urls?.filter { $0.absoluteString.contains("Shy") }
         XCTAssert(shyURLs?.count >= 15)
     }
     
     func testEnumerateInsistentFiles() {
-        let urls = NSBundle.mainBundle().URLsForResourcesWithExtension("mp3", subdirectory: nil)
-        let insistentURLs = urls?.filter { $0.absoluteString.containsString("Insistent") }
+        let urls = Bundle.main.urls(forResourcesWithExtension: "mp3", subdirectory: nil)
+        let insistentURLs = urls?.filter { $0.absoluteString.contains("Insistent") }
         XCTAssert(insistentURLs?.count >= 15)
     }
 

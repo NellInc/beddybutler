@@ -23,7 +23,7 @@ class AboutViewController: NSViewController {
     }
     
     var versionInfo: String {
-        let dictionary = NSBundle.mainBundle().infoDictionary
+        let dictionary = Bundle.main.infoDictionary
         if let version = dictionary!["CFBundleShortVersionString"] as? String {
             if let build = dictionary!["CFBundleVersion"] as? String {
                 return "\(version) (Build \(build))"

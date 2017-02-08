@@ -10,43 +10,50 @@ import Foundation
 
 extension Double {
     /// Rounds the double to decimal places value
-    func roundToPlaces(places:Int) -> Double {
+    func roundToPlaces(_ places:Int) -> Double {
         let divisor = pow(10.0, Double(places))
-        return round(self * divisor) / divisor
+        return (self * divisor).rounded() / divisor
     }
 }
 
-extension NSDate {
-    class func randomTimeBetweenDates(lhs: NSDate, _ rhs: NSDate) -> NSDate {
+extension Date {
+    static func randomTimeBetweenDates(_ lhs: Date, _ rhs: Date) -> Date {
         let lhsInterval = lhs.timeIntervalSince1970
         let rhsInterval = rhs.timeIntervalSince1970
         let difference = fabs(rhsInterval - lhsInterval)
         let randomOffset = arc4random_uniform(UInt32(difference))
         let minimum = min(lhsInterval, rhsInterval)
-        let randomInterval = minimum + NSTimeInterval(randomOffset)
-        return NSDate(timeIntervalSince1970: randomInterval)
+        let randomInterval = minimum + TimeInterval(randomOffset)
+        return Date(timeIntervalSince1970: randomInterval)
     }
     
     /// Returns the date offset from GMT to show local date and time
-    var localDate: NSDate {
-        let localTimeZone = NSTimeZone.localTimeZone()
-        let secondsFromGTM = NSTimeInterval.init(localTimeZone.secondsFromGMT)
-        let resultDate = NSDate(timeInterval: secondsFromGTM, sinceDate: self)
-        print("Today is \(resultDate) and the time zone is \(NSTimeZone.localTimeZone())")
+    var localDate: Date {
+        let localTimeZone = TimeZone.autoupdatingCurrent
+        let secondsFromGTM = TimeInterval.init(localTimeZone.secondsFromGMT())
+        let resultDate = Date(timeInterval: secondsFromGTM, since: self)
+        print("Today is \(resultDate) and the time zone is \(TimeZone.autoupdatingCurrent)")
         return resultDate
     }
     
-    var localStartOfDay: NSDate {
-        let calendar = NSCalendar.currentCalendar()
-        let localTimeZone = NSTimeZone.localTimeZone()
+    var localStartOfDay: Date {
+        var calendar = Calendar.current
+        let localTimeZone = TimeZone.autoupdatingCurrent
         calendar.timeZone = localTimeZone
-        let secondsFromGTM = NSTimeInterval.init(localTimeZone.secondsFromGMT)
-        let startOfToday = calendar.startOfDayForDate(self.localDate)
-        let resultDate = NSDate(timeInterval: secondsFromGTM, sinceDate: startOfToday)
+        let secondsFromGTM = TimeInterval.init(localTimeZone.secondsFromGMT())
+        let startOfToday = calendar.startOfDay(for: self.localDate)
+        let resultDate = Date(timeInterval: secondsFromGTM, since: startOfToday)
         return resultDate
     }
     
-    func addSecondsToLocalStartDate(seconds: Double) -> NSDate {
-        return NSDate(timeInterval: NSTimeInterval.init(seconds), sinceDate: localStartOfDay)
+    func addSecondsToLocalStartDate(_ seconds: Double) -> Date {
+        return Date(timeInterval: TimeInterval.init(seconds), since: localStartOfDay)
     }
+}
+
+extension Notification.Name {
+    static let userPreferenceChanged = Notification.Name("userPreferenceChanged") // Used to notify the ButlerTimer that it should recalculate a timer
+    static let startSliderChanged = Notification.Name("startSliderChanged") // Used to notify the end slider that it should change to a valid position
+    static let endSliderChanged = Notification.Name("endSliderChanged") // Used to notify the start slider that it should changed to a valid position
+    static let terminateApp = Notification.Name("terminateApp")
 }
