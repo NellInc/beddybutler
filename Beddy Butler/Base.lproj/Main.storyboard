@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,6 +27,13 @@
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="C1n-eF-rec"/>
                                                 <segue destination="vVG-17-Gue" kind="modal" id="wrJ-vh-np4"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Give us your feedback" id="H3S-rd-gQu">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="1hj-aK-IPS"/>
+                                                <segue destination="96l-Pb-LDO" kind="modal" id="vze-Zl-thr"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="fdg-7d-XMJ"/>
@@ -59,6 +66,89 @@
                 <userDefaultsController id="lQB-tK-Eio"/>
             </objects>
             <point key="canvasLocation" x="27" y="-99"/>
+        </scene>
+        <!--Feedback-->
+        <scene sceneID="t0b-XO-9A5">
+            <objects>
+                <viewController title="Feedback" showSeguePresentationStyle="single" id="96l-Pb-LDO" sceneMemberID="viewController">
+                    <view key="view" id="aj6-oO-hFM">
+                        <rect key="frame" x="0.0" y="0.0" width="603" height="394"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="Uqd-8r-ndo">
+                                <rect key="frame" x="19" y="10" width="182" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="178" id="Nbd-f5-hSS"/>
+                                    <constraint firstAttribute="height" constant="30" id="TlN-jy-j3z"/>
+                                </constraints>
+                                <buttonCell key="cell" type="check" title="Include activity data" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="uNh-uZ-m6I">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="TJB-n8-C1o">
+                                <rect key="frame" x="18" y="340" width="567" height="34"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="ge8-VK-jqJ">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">We'd love to hear what do thing about the App. Please write your comments in the form below. By clicking 'Send with Main' your default Mail client will open and be ready to send.</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cck-31-7BY">
+                                <rect key="frame" x="20" y="58" width="563" height="274"/>
+                                <clipView key="contentView" id="zkY-sC-KFr">
+                                    <rect key="frame" x="1" y="1" width="561" height="272"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView fieldEditor="YES" usesFontPanel="YES" usesInspectorBar="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dataDetection="YES" textReplacement="YES" spellingCorrection="YES" grammarChecking="YES" smartInsertDelete="YES" id="ee7-Y1-elp">
+                                            <rect key="frame" x="0.0" y="0.0" width="561" height="272"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="minSize" width="561" height="272"/>
+                                            <size key="maxSize" width="561" height="10000000"/>
+                                            <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        </textView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="r3P-7I-4aO">
+                                    <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="ilo-ZG-3Mu">
+                                    <rect key="frame" x="546" y="1" width="16" height="272"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hdQ-am-B1d">
+                                <rect key="frame" x="459" y="9" width="129" height="32"/>
+                                <buttonCell key="cell" type="push" title="Send with Mail" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ek0-GC-HLr">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="TJB-n8-C1o" firstAttribute="top" secondItem="aj6-oO-hFM" secondAttribute="top" constant="20" id="1C2-eC-Eqv"/>
+                            <constraint firstItem="cck-31-7BY" firstAttribute="width" secondItem="TJB-n8-C1o" secondAttribute="width" id="BAv-Sh-A9w"/>
+                            <constraint firstItem="cck-31-7BY" firstAttribute="trailing" secondItem="TJB-n8-C1o" secondAttribute="trailing" id="CVZ-lw-cBj"/>
+                            <constraint firstItem="Uqd-8r-ndo" firstAttribute="leading" secondItem="ee7-Y1-elp" secondAttribute="leading" id="D4b-St-LIp"/>
+                            <constraint firstItem="cck-31-7BY" firstAttribute="top" secondItem="TJB-n8-C1o" secondAttribute="bottom" constant="8" id="GeW-w4-FGq"/>
+                            <constraint firstAttribute="bottom" secondItem="cck-31-7BY" secondAttribute="bottom" constant="58" id="IHa-dd-ZuV"/>
+                            <constraint firstItem="cck-31-7BY" firstAttribute="centerX" secondItem="aj6-oO-hFM" secondAttribute="centerX" id="JlS-Fi-Ycl"/>
+                            <constraint firstItem="cck-31-7BY" firstAttribute="leading" secondItem="TJB-n8-C1o" secondAttribute="leading" id="Onx-lI-9Y1"/>
+                            <constraint firstAttribute="trailing" secondItem="TJB-n8-C1o" secondAttribute="trailing" constant="20" id="dWN-oJ-ZPN"/>
+                            <constraint firstItem="Uqd-8r-ndo" firstAttribute="centerY" secondItem="hdQ-am-B1d" secondAttribute="centerY" id="heJ-Ds-QII"/>
+                            <constraint firstAttribute="bottom" secondItem="hdQ-am-B1d" secondAttribute="bottom" constant="16" id="qVl-sD-Dyi"/>
+                            <constraint firstItem="hdQ-am-B1d" firstAttribute="trailing" secondItem="ee7-Y1-elp" secondAttribute="trailing" id="vDn-1t-1u5"/>
+                            <constraint firstItem="TJB-n8-C1o" firstAttribute="leading" secondItem="aj6-oO-hFM" secondAttribute="leading" constant="20" id="vRT-Z9-Fbo"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="l9v-LK-hHI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="922" y="22"/>
         </scene>
         <!--About-->
         <scene sceneID="cTy-rG-yJD">
