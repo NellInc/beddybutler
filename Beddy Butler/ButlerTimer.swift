@@ -12,7 +12,7 @@ import Cocoa
 class ButlerTimer: NSObject {
     
     //MARK: Properties
-    
+
     var numberOfRepeats = 5
     var timer: Timer?
     /// the audio player that will be used in the play sound action
@@ -343,13 +343,50 @@ class ButlerTimer: NSObject {
     }
     
     //TODO: Remove log file and logging functionality -
-//    func writeToLog(_ message: String){
-//        if let log = UserDefaults.standard.dictionary(forKey: UserDefaultKeys.log.rawValue) {
-//            var theNewLog = log
-//            theNewLog["\(Date())"] = message
-//            UserDefaults.standard.setValue(theNewLog, forKey: UserDefaultKeys.log.rawValue)
-//        }
-//    }
+    func writeToLog(_ message: String){
+        if var log = UserDefaults.standard.object(forKey: UserDefaultKeys.log.rawValue) as? Log {
+            let logEntry = LogEntry(date: Date(), message: message)
+            log.append(logEntry)
+        }
+        //UserDefaults.standard.setValue(theNewLog, forKey: UserDefaultKeys.log.rawValue)
+    }
+    
+    
+    /// Retains the top 100 entries of the log and removes the rest
+    ///
+    /// - Parameter log: log dictionary
+    /// - Returns: returns a cleaned log
+    func cleanUpLog(log: Log) -> Log {
+        if log.count >= 100 {
+            // leave recent 100 entries
+            var newLog = log.sorted(by: { $0.0.date > $0.1.date })
+            let range = 100...(log.count - 1)
+            newLog.removeSubrange(range)
+            return newLog
+        } else {
+            return oldLogEntries(log: log)
+        }
+    }
+    
+    
+    /// Removes entries older than 100 days from the log
+    ///
+    /// - Parameter log: log
+    /// - Returns: a new dictionary containing entries that are newer than 100 days ago
+    func oldLogEntries(log: Log) -> Log {
+        let oldDate = Calendar.current.date(byAdding: .day, value: -100, to: Date())!
+        if log.contains(where: { $0.date < oldDate }) {
+            return log.filter({ $0.date > oldDate } )
+        } else {
+           return log
+        }
+        
+    }
+    
+    func writeLogToFile(log: Log) -> String {
+        return log.map({ "\($0.date) - \($0.message)" }).joined(separator: " - ")
+    }
+    
     
 }
 

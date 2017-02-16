@@ -109,6 +109,7 @@
 		2D5ECA7C1C26F034005C9E1A /* 20151210 - Nell Watson - Zombie.53.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5ECA211C26F034005C9E1A /* 20151210 - Nell Watson - Zombie.53.mp3 */; };
 		2D5ECA7D1C26F034005C9E1A /* 20151210 - Nell Watson - Zombie.54.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D5ECA221C26F034005C9E1A /* 20151210 - Nell Watson - Zombie.54.mp3 */; };
 		2D6082C11BC669EB00FFF44C /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6082C01BC669EB00FFF44C /* AboutViewController.swift */; };
+		2D91C4A31E4CC9D400CBC7AD /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D91C4A21E4CC9D400CBC7AD /* FeedbackViewController.swift */; };
 		2D9B85331B83678F002795F8 /* Beddy_ButlerAudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9B85321B83678F002795F8 /* Beddy_ButlerAudioTests.swift */; };
 		2D9B85361B836944002795F8 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9B85351B836944002795F8 /* AudioPlayer.swift */; };
 		2DA4DC3E1C9320400003BF1C /* TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA4DC3D1C9320400003BF1C /* TimeFormatter.swift */; };
@@ -236,6 +237,7 @@
 		2D5ECA211C26F034005C9E1A /* 20151210 - Nell Watson - Zombie.53.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "20151210 - Nell Watson - Zombie.53.mp3"; path = "Sounds/20151210 - Nell Watson - Zombie.53.mp3"; sourceTree = "<group>"; };
 		2D5ECA221C26F034005C9E1A /* 20151210 - Nell Watson - Zombie.54.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "20151210 - Nell Watson - Zombie.54.mp3"; path = "Sounds/20151210 - Nell Watson - Zombie.54.mp3"; sourceTree = "<group>"; };
 		2D6082C01BC669EB00FFF44C /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		2D91C4A21E4CC9D400CBC7AD /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		2D9B85321B83678F002795F8 /* Beddy_ButlerAudioTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beddy_ButlerAudioTests.swift; sourceTree = "<group>"; };
 		2D9B85351B836944002795F8 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		2DA4DC3D1C9320400003BF1C /* TimeFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeFormatter.swift; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 			children = (
 				2DC767001B78D25F00866072 /* PreferencesViewController.swift */,
 				2D6082C01BC669EB00FFF44C /* AboutViewController.swift */,
+				2D91C4A21E4CC9D400CBC7AD /* FeedbackViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -699,6 +702,7 @@
 			files = (
 				2D45EB821BB7F61F00FCEAC2 /* DoubleSliderHandler.swift in Sources */,
 				2D4B84851B87230F00735187 /* UserDefaultKeys.swift in Sources */,
+				2D91C4A31E4CC9D400CBC7AD /* FeedbackViewController.swift in Sources */,
 				2DAF9DE91BBD57B20021FD0D /* SliderKeys.swift in Sources */,
 				2D20F5B81B84CF3F00FE7EFC /* ButlerTimer.swift in Sources */,
 				2D28669E1BA994CB00E2B35F /* DoubleSliderCellView.swift in Sources */,

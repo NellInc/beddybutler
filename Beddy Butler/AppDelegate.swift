@@ -8,30 +8,9 @@
 
 import Cocoa
 import ServiceManagement
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
 
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
-fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
-}
-
+typealias Log = [LogEntry]
+typealias LogEntry = (date: Date, message: String)
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -141,10 +120,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             switch key {
             case .startTimeValue:
                    let theKey = sharedUserDefaults.object(forKey: key.rawValue) as? Double
-                   if theKey == nil || theKey < 0.0 || theKey > 86400.0 { registerValue(75000.00, key.rawValue) }
+                   if theKey == nil || theKey! < 0.0 || theKey! > 86400.0 { registerValue(75000.00, key.rawValue) }
             case .bedTimeValue:
                 let theKey = sharedUserDefaults.object(forKey: key.rawValue) as? Double
-                if theKey == nil || theKey > 84600.00 || theKey < 0.0 { registerValue(84600.00, key.rawValue) }
+                if theKey == nil || theKey! > 84600.00 || theKey! < 0.0 { registerValue(84600.00, key.rawValue) }
             case .selectedSound:
                 let theKey = sharedUserDefaults.object(forKey: key.rawValue) as? String
                 if theKey == nil { registerValue(AudioPlayer.AudioFiles.shy.description(), key.rawValue) }
@@ -161,8 +140,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 let theKey = sharedUserDefaults.object(forKey: key.rawValue) as? Bool
                 if theKey == nil { registerValue(false, key.rawValue) }
             case .log:
-                let theKey = sharedUserDefaults.object(forKey: key.rawValue) as? [Date: String]
-                if theKey == nil { registerValue([Date: String](), key.rawValue) }
+                // provisionally used to delete old type
+                if (sharedUserDefaults.object(forKey: key.rawValue) as? [Date: String]) != nil {
+                    self.sharedUserDefaults.removeObject(forKey: key.rawValue)
+                }
+                
+                let theKey = sharedUserDefaults.object(forKey: key.rawValue) as? Log
+                if theKey == nil { registerValue(Log(), key.rawValue) }
             }
         
         }

@@ -9,33 +9,12 @@
 import Cocoa
 import XCTest
 @testable import Beddy_Butler
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
-fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
-}
-
 
 class Beddy_ButlerTimerTests: XCTestCase {
    
+    typealias Log = [LogEntry]
+    typealias LogEntry = (date: Date, message: String)
+
     var butlerTimer = ButlerTimer()
     
     let calendar = Calendar.current
@@ -209,7 +188,7 @@ class Beddy_ButlerTimerTests: XCTestCase {
     
     func testTimer1Initialises() {
         NSLog("The timer 1 is: \(butlerTimer.timer)")
-        XCTAssertTrue(butlerTimer.timer?.timeInterval > 0, "Timer1 should be initialized")
+        XCTAssertTrue(butlerTimer.timer!.timeInterval > 0.0, "Timer1 should be initialized")
     }
     
    
@@ -320,6 +299,34 @@ class Beddy_ButlerTimerTests: XCTestCase {
     func testShowLocalTimes () {
         print("Local date: \(Date().localDate)")
         print("Local start of day: \(Date().localStartOfDay)")
+    }
+    
+    func testLogCleansOld() {
+        var log = Log()
+        let daysAgo = Calendar.current.date(byAdding: .day, value: -130, to: Date())!
+        let validDate = Calendar.current.date(byAdding: .day, value: -100, to: Date())!
+        for item in 0...120 {
+            let date = Calendar.current.date(byAdding: .day, value: item, to: daysAgo)!
+            log.append(LogEntry(date: date, message: "Test"))
+            
+        }
+        
+        XCTAssert(log.count > 100, "Log not formed correctly")
+        
+        let newLog = butlerTimer.cleanUpLog(log: log)
+        
+        XCTAssert(newLog.count <= 100 , "Log was not cleaned")
+        
+        let newLog2 = butlerTimer.oldLogEntries(log: log)
+        
+        XCTAssert(!newLog2.contains(where: { $0.date < validDate }), "Log contains dates older than 100 days" )
+        
+        
+        for item in log.sorted(by: {$0.0.date > $0.1.date }) {
+            print("\(item.date), \(item.message)")
+        }
+        
+        //print(butlerTimer.writeLogToFile(log: newLog2))
     }
 
 

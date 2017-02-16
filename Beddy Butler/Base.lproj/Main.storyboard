@@ -70,7 +70,7 @@
         <!--Feedback-->
         <scene sceneID="t0b-XO-9A5">
             <objects>
-                <viewController title="Feedback" showSeguePresentationStyle="single" id="96l-Pb-LDO" sceneMemberID="viewController">
+                <viewController title="Feedback" showSeguePresentationStyle="single" id="96l-Pb-LDO" customClass="FeedbackViewController" customModule="Beddy_Butler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="aj6-oO-hFM">
                         <rect key="frame" x="0.0" y="0.0" width="603" height="394"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -106,8 +106,11 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="minSize" width="561" height="272"/>
-                                            <size key="maxSize" width="561" height="10000000"/>
+                                            <size key="maxSize" width="563" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="96l-Pb-LDO" id="Nop-y3-SJP"/>
+                                            </connections>
                                         </textView>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -123,10 +126,13 @@
                             </scrollView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hdQ-am-B1d">
                                 <rect key="frame" x="459" y="9" width="129" height="32"/>
-                                <buttonCell key="cell" type="push" title="Send with Mail" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ek0-GC-HLr">
+                                <buttonCell key="cell" type="push" title="Send with Mail" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ek0-GC-HLr">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="sendEmail:" target="96l-Pb-LDO" id="0OR-ua-aB1"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -145,6 +151,11 @@
                             <constraint firstItem="TJB-n8-C1o" firstAttribute="leading" secondItem="aj6-oO-hFM" secondAttribute="leading" constant="20" id="vRT-Z9-Fbo"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="feedbackTextView" destination="ee7-Y1-elp" id="mNb-v8-M3x"/>
+                        <outlet property="includeActivityButton" destination="Uqd-8r-ndo" id="2IQ-MB-x3g"/>
+                        <outlet property="sendEmailButton" destination="hdQ-am-B1d" id="ZSy-xr-haH"/>
+                    </connections>
                 </viewController>
                 <customObject id="l9v-LK-hHI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
