@@ -197,7 +197,7 @@
 //    }
 //    
 //    override func mouseDown(theEvent: NSEvent) {
-//        //NSLog("Mouse down in slider! current values are lo: \(self.doubleLoValue()) and hi: \(self.doubleHiValue())")
+//        //ButlerTimer.writeToLog("Mouse down in slider! current values are lo: \(self.doubleLoValue()) and hi: \(self.doubleHiValue())")
 //        super.mouseDown(theEvent)
 //    }
 //    

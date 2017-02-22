@@ -32,7 +32,7 @@ extension Date {
         let localTimeZone = TimeZone.autoupdatingCurrent
         let secondsFromGTM = TimeInterval.init(localTimeZone.secondsFromGMT())
         let resultDate = Date(timeInterval: secondsFromGTM, since: self)
-        print("Today is \(resultDate) and the time zone is \(TimeZone.autoupdatingCurrent)")
+        //print("Today is \(resultDate) and the time zone is \(TimeZone.autoupdatingCurrent)")
         return resultDate
     }
     

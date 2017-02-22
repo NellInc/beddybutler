@@ -10,7 +10,6 @@ import Cocoa
 import ServiceManagement
 
 typealias Log = [LogEntry]
-typealias LogEntry = (date: Date, message: String)
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -25,6 +24,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var sharedUserDefaults: UserDefaults {
         return UserDefaults.standard
+    }
+    
+    static var userDefaultsLog: Log? {
+        if let data = UserDefaults.standard.data(forKey: UserDefaultKeys.log.rawValue),
+            let log = NSKeyedUnarchiver.unarchiveObject(with: data) as? [LogEntry] {
+            return log
+        } else {
+            return nil
+        }
+        
     }
     
     func applicationDidBecomeActive(_ notification: Notification) {
@@ -65,11 +74,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //NSTimeZone.setDefaultTimeZone(testTimeZone)
         NSTimeZone.default = TimeZone.current
         //swift2: NSTimeZone.setDefaultTimeZone(TimeZone.current)
-        print("time zone at start is \(TimeZone.autoupdatingCurrent), local time is \(Date().localDate)")
+        ButlerTimer.writeToLog("time zone at start is \(TimeZone.autoupdatingCurrent), local time is \(Date().localDate), the start of the day is \(Date().localStartOfDay)")
         
         //create a new ButlerTimer
         self.butlerTimer = ButlerTimer()
-        
+
         //register for Notifications
         registerForNotitications()
         
@@ -140,13 +149,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 let theKey = sharedUserDefaults.object(forKey: key.rawValue) as? Bool
                 if theKey == nil { registerValue(false, key.rawValue) }
             case .log:
-                // provisionally used to delete old type
-                if (sharedUserDefaults.object(forKey: key.rawValue) as? [Date: String]) != nil {
-                    self.sharedUserDefaults.removeObject(forKey: key.rawValue)
-                }
+//                // provisionally used to delete old type
+//                if (sharedUserDefaults.object(forKey: key.rawValue) as? [Date: String]) != nil {
+//                    self.sharedUserDefaults.removeObject(forKey: key.rawValue)
+//                }
                 
-                let theKey = sharedUserDefaults.object(forKey: key.rawValue) as? Log
-                if theKey == nil { registerValue(Log(), key.rawValue) }
+                if AppDelegate.userDefaultsLog == nil {
+                    let emptyLog = [Log]()
+                    let encodedData = NSKeyedArchiver.archivedData(withRootObject: emptyLog)
+                    registerValue(encodedData, key.rawValue)
+                }
             }
         
         }
@@ -157,13 +169,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     /// Beddy Butler should get notifified when it goes to sleep to handle the current timer
     func receiveSleepNotification(_ notification: Notification) {
-        NSLog("Sleep nottification received: \(notification.name)")
+        ButlerTimer.writeToLog("Sleep nottification received: \(notification.name)")
         self.butlerTimer?.timer?.invalidate()
     }
     
     /// Beddy Butler should get notified when the PC wakes up from sleep so it can restart its timer
     func receiveWakeNotification(_ notification: Notification) {
-        NSLog("Wake nottification received: \(notification.name)")
+        ButlerTimer.writeToLog("Wake nottification received: \(notification.name)")
         NSTimeZone.resetSystemTimeZone()
         self.butlerTimer?.calculateNewTimer()
     }

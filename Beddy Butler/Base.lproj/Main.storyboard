@@ -101,12 +101,12 @@
                                     <rect key="frame" x="1" y="1" width="561" height="272"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView fieldEditor="YES" usesFontPanel="YES" usesInspectorBar="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dataDetection="YES" textReplacement="YES" spellingCorrection="YES" grammarChecking="YES" smartInsertDelete="YES" id="ee7-Y1-elp">
+                                        <textView fieldEditor="YES" usesFontPanel="YES" usesInspectorBar="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" allowsImageEditing="YES" usesRuler="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dataDetection="YES" textReplacement="YES" spellingCorrection="YES" grammarChecking="YES" smartInsertDelete="YES" id="ee7-Y1-elp">
                                             <rect key="frame" x="0.0" y="0.0" width="561" height="272"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="minSize" width="561" height="272"/>
-                                            <size key="maxSize" width="563" height="10000000"/>
+                                            <size key="maxSize" width="1000" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <connections>
                                                 <outlet property="delegate" destination="96l-Pb-LDO" id="Nop-y3-SJP"/>

@@ -65,7 +65,7 @@ class AudioPlayer {
             try audioPlayer = AVAudioPlayer(contentsOf: filteredURLs![randomIndex])
             audioPlayer?.play()
         } catch {
-            NSLog("File could not be played")
+            ButlerTimer.writeToLog("File could not be played")
         }
         
     }

@@ -88,7 +88,7 @@ class LoginItems: NSObject {
 //            }
 //        } catch {
 //            let resultMessage = "Error while deleting the plist file"
-//            NSLog(resultMessage)
+//            ButlerTimer.writeToLog(resultMessage)
 //        }
 //    }
 //    
@@ -128,7 +128,7 @@ class LoginItems: NSObject {
 //        } catch {
 //            let resultMessage = "Error while creating agent file"
 //            
-//            NSLog(resultMessage)
+//            ButlerTimer.writeToLog(resultMessage)
 //        }
 //    }
     

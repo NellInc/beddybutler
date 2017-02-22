@@ -201,7 +201,7 @@ class ButlerTimer: NSObject {
            
         }
         //writeToLog(result)
-        NSLog(result)
+        ButlerTimer.writeToLog(result)
         
         calculateNewTimer()
         //AppDelegate.statusItem?.image = previousImage
@@ -243,7 +243,7 @@ class ButlerTimer: NSObject {
         self.timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(ButlerTimer.playSound), userInfo: nil, repeats: false)
         RunLoop.current.add(self.timer!, forMode: RunLoopMode.commonModes)
         //TODO: Remove log entry
-        NSLog("Timer created for interval: \(timeInterval)")
+        ButlerTimer.writeToLog("Timer created for interval: \(timeInterval)")
     }
 
     /**
@@ -342,21 +342,31 @@ class ButlerTimer: NSObject {
         return TimeInterval(arc4random_uniform(100))
     }
     
-    //TODO: Remove log file and logging functionality -
-    func writeToLog(_ message: String){
-        if var log = UserDefaults.standard.object(forKey: UserDefaultKeys.log.rawValue) as? Log {
+    // MARK: Log
+
+    static func writeToLog(_ message: String){
+        print(message)
+ 
+        if var log = AppDelegate.userDefaultsLog {
             let logEntry = LogEntry(date: Date(), message: message)
             log.append(logEntry)
+            saveUserDefaults(log: log)
         }
-        //UserDefaults.standard.setValue(theNewLog, forKey: UserDefaultKeys.log.rawValue)
+        
     }
     
+    static func saveUserDefaults(log: Log) {
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: log)
+        UserDefaults.standard.set(encodedData, forKey: UserDefaultKeys.log.rawValue)
+    }
+    
+
     
     /// Retains the top 100 entries of the log and removes the rest
     ///
     /// - Parameter log: log dictionary
     /// - Returns: returns a cleaned log
-    func cleanUpLog(log: Log) -> Log {
+    static func cleanUpLog(log: Log) -> Log {
         if log.count >= 100 {
             // leave recent 100 entries
             var newLog = log.sorted(by: { $0.0.date > $0.1.date })
@@ -373,7 +383,7 @@ class ButlerTimer: NSObject {
     ///
     /// - Parameter log: log
     /// - Returns: a new dictionary containing entries that are newer than 100 days ago
-    func oldLogEntries(log: Log) -> Log {
+    static func oldLogEntries(log: Log) -> Log {
         let oldDate = Calendar.current.date(byAdding: .day, value: -100, to: Date())!
         if log.contains(where: { $0.date < oldDate }) {
             return log.filter({ $0.date > oldDate } )
@@ -383,7 +393,7 @@ class ButlerTimer: NSObject {
         
     }
     
-    func writeLogToFile(log: Log) -> String {
+    static func writeLogToFile(log: Log) -> String {
         return log.map({ "\($0.date) - \($0.message)" }).joined(separator: " - ")
     }
     
