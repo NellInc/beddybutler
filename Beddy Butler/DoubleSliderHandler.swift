@@ -197,7 +197,7 @@ class DoubleSliderHandler: NSView {
         self.activeHandle?.curValue = ratio
         let difference = abs((self.activeHandle?.curValue)! - self.lastValue!)
         //TO DO: slidervaluechanged check
-        if Float(difference) > FLT_EPSILON && self.sliderValueChanged != nil {
+        if Float(difference) > .ulpOfOne && self.sliderValueChanged != nil {
             self.lastValue = self.activeHandle?.curValue
             
             for key in self.handles {
@@ -205,7 +205,7 @@ class DoubleSliderHandler: NSView {
                 let oldValue = self.values[key.0]
                 let curValue = handle.1.curValue
                 
-                if Float(abs(curValue - oldValue!)) > FLT_EPSILON {
+                if Float(abs(curValue - oldValue!)) > .ulpOfOne {
                     // VALUE CHANGED
                     self.values[handle.0] = handle.1.curValue
                 }
@@ -278,7 +278,7 @@ class DoubleSliderHandler: NSView {
             ratio = max(ratio!,minRatio)
             ratio = min(ratio!, maxRatio)
             
-            if Float(abs(ratio! - (handle?.curValue)!)) > FLT_EPSILON {
+            if Float(abs(ratio! - (handle?.curValue)!)) > .ulpOfOne {
                 handle?.curValue = ratio!
                 let newX = slidableWidth * ratio!
                  handle?.handleView.frame = NSMakeRect(newX - handle!.handleView.frame.size.width * 0.5, handle!.handleView.frame.origin.y, handle!.handleView.frame.size.width, handle!.handleView.frame.size.height)

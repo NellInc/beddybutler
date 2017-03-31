@@ -49,16 +49,19 @@ class FeedbackViewController: NSViewController, NSTextViewDelegate {
         var separated: String?
         
         let mailService = NSSharingService(named: NSSharingServiceNameComposeEmail)
-        mailService?.recipients = ["david_garces@icloud.com"]
+        mailService?.recipients = ["BeddyButler@nellwatson.com"]
         mailService?.subject = "Beddy Butler feedback"
         
         if let log = AppDelegate.userDefaultsLog {
             separated = log.map({ "\($0.date) - \($0.message)" }).joined(separator: " \n")
+            let osVersion = "OS \(ProcessInfo.processInfo.operatingSystemVersionString) \n"
+            separated = "\(osVersion) \(separated ?? "")"
             if log.count == 0 { logHeading = "\nLog record empty\n" }
         }else {
             logHeading = "\nNo Log record present in App\n"
         }
         
+
         // temp data
         
 //        let testURL = Bundle.main.resourceURL?.appendingPathComponent("data.txt")
