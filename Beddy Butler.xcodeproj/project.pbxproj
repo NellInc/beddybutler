@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2D076B6F1BA57F5B0052047C /* DoubleSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D076B6E1BA57F5B0052047C /* DoubleSliderView.swift */; };
+		2D16499E1E91743E00343D56 /* FeedbackTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D16499D1E91743E00343D56 /* FeedbackTextView.swift */; };
 		2D20F5B81B84CF3F00FE7EFC /* ButlerTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D20F5B71B84CF3F00FE7EFC /* ButlerTimer.swift */; };
 		2D28669E1BA994CB00E2B35F /* DoubleSliderCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D28669D1BA994CB00E2B35F /* DoubleSliderCellView.swift */; };
 		2D30884B1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D30884A1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift */; };
@@ -138,6 +139,7 @@
 
 /* Begin PBXFileReference section */
 		2D076B6E1BA57F5B0052047C /* DoubleSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DoubleSliderView.swift; path = "Beddy Butler/DoubleSliderView.swift"; sourceTree = "<group>"; };
+		2D16499D1E91743E00343D56 /* FeedbackTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackTextView.swift; sourceTree = "<group>"; };
 		2D20F5B71B84CF3F00FE7EFC /* ButlerTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButlerTimer.swift; sourceTree = "<group>"; };
 		2D28669D1BA994CB00E2B35F /* DoubleSliderCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DoubleSliderCellView.swift; path = "Beddy Butler/DoubleSliderCellView.swift"; sourceTree = "<group>"; };
 		2D30884A1B83878E0015E1A0 /* Betty_ButlerUserDefaultsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Betty_ButlerUserDefaultsTests.swift; sourceTree = "<group>"; };
@@ -472,6 +474,7 @@
 				2DD2B24D1B91F6D1006318E8 /* FrequencySlider.swift */,
 				2DD2B24B1B91E26B006318E8 /* RandomnessFormatter.swift */,
 				2DA4DC3D1C9320400003BF1C /* TimeFormatter.swift */,
+				2D16499D1E91743E00343D56 /* FeedbackTextView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -705,6 +708,7 @@
 			files = (
 				2D45EB821BB7F61F00FCEAC2 /* DoubleSliderHandler.swift in Sources */,
 				2D4B84851B87230F00735187 /* UserDefaultKeys.swift in Sources */,
+				2D16499E1E91743E00343D56 /* FeedbackTextView.swift in Sources */,
 				2D91C4A31E4CC9D400CBC7AD /* FeedbackViewController.swift in Sources */,
 				2DAF9DE91BBD57B20021FD0D /* SliderKeys.swift in Sources */,
 				2D20F5B81B84CF3F00FE7EFC /* ButlerTimer.swift in Sources */,

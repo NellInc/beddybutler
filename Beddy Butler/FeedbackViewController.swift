@@ -11,8 +11,8 @@ import Cocoa
 class FeedbackViewController: NSViewController, NSTextViewDelegate {
 
     @IBOutlet weak var includeActivityButton: NSButton!
-    @IBOutlet var feedbackTextView: NSTextView!
     @IBOutlet weak var sendEmailButton: NSButton!
+    @IBOutlet var feedbackTextView: NSTextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,40 +40,6 @@ class FeedbackViewController: NSViewController, NSTextViewDelegate {
 //        return false
 //        
 //    }
-    
-//    override func changeFont(_ sender: Any?) {
-//        let fontManager = sender as! NSFontManager
-//        if feedbackTextView.selectedRange().length > 0 {
-//            let theFont = fontManager.convert((feedbackTextView.textStorage?.font)!)
-//            feedbackTextView.textStorage?.setAttributes([NSFontAttributeName: theFont], range: feedbackTextView.selectedRange())
-//        }
-//    }
-//    
-//    override func changeColor(_ sender: Any?) {
-//        let fontManager = sender as! NSFontManager
-////        if feedbackTextView.selectedRange().length > 0 {
-////            let theFont = fontManager.convert((feedbackTextView.textStorage?.font)!)
-////            feedbackTextView.textStorage?.setAttributes([NSForegroundColorAttributeName: theFont.color], range: feedbackTextView.selectedRange())
-////        }
-//    }
-    
-    //override changeattri
-    
-    func changeAttributes(sender: AnyObject) {
-        var newAttributes = sender.convertAttributes([String : AnyObject]())
-        newAttributes["NSForegroundColorAttributeName"] = newAttributes["NSColor"]
-        newAttributes["NSUnderlineStyleAttributeName"] = newAttributes["NSUnderline"]
-        newAttributes["NSStrikethroughStyleAttributeName"] = newAttributes["NSStrikethrough"]
-        newAttributes["NSUnderlineColorAttributeName"] = newAttributes["NSUnderlineColor"]
-        newAttributes["NSStrikethroughColorAttributeName"] = newAttributes["NSStrikethroughColor"]
-        
-        print(newAttributes)
-        
-        if feedbackTextView.selectedRange().length>0 {
-            feedbackTextView.textStorage?.addAttributes(newAttributes, range: feedbackTextView.selectedRange())
-        }
-    }
-    
     func textDidChange(_ notification: Notification) {
         if !sendEmailButton.isEnabled && feedbackTextView.attributedString().string.characters.count > 20 {
             sendEmailButton.isEnabled = true
@@ -99,29 +65,6 @@ class FeedbackViewController: NSViewController, NSTextViewDelegate {
         }else {
             logHeading = "\nNo Log record present in App\n"
         }
-        
-
-        // temp data
-        
-//        let testURL = Bundle.main.resourceURL?.appendingPathComponent("data.txt")
-//        
-//        
-//        var log = Log()
-//        let daysAgo = Calendar.current.date(byAdding: .day, value: -120, to: Date())!
-//        for var item in 0...120 {
-//            let date = Calendar.current.date(byAdding: .day, value: item, to: daysAgo)!
-//            log.append(LogEntry(date: date, message: "Test \n"))
-//        }
-        
-        
-        
-       
-//        let separated = (dictionary.flatMap({ (key, value) -> String in
-//            return "\(key) - \(value)"
-//        }) as Array).joined(separator: "\n")
-//        
-       //var result =  NSKeyedArchiver.archiveRootObject(dictionary, toFile: (testURL?.absoluteString)!)
-        //var data = NSKeyedArchiver.archivedData(withRootObject: dictionary)
         
         //append line break to attributed string between log and message
         

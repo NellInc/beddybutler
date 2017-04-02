@@ -33,7 +33,7 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="1hj-aK-IPS"/>
-                                                <segue destination="96l-Pb-LDO" kind="modal" id="vze-Zl-thr"/>
+                                                <segue destination="96l-Pb-LDO" kind="show" id="vze-Zl-thr"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="fdg-7d-XMJ"/>
@@ -101,7 +101,7 @@
                                     <rect key="frame" x="1" y="1" width="561" height="272"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView usesFontPanel="YES" usesInspectorBar="YES" findStyle="panel" continuousSpellChecking="YES" allowsDocumentBackgroundColorChange="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dataDetection="YES" textReplacement="YES" spellingCorrection="YES" grammarChecking="YES" smartInsertDelete="YES" id="ee7-Y1-elp">
+                                        <textView usesFontPanel="YES" usesInspectorBar="YES" findStyle="panel" continuousSpellChecking="YES" allowsDocumentBackgroundColorChange="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dataDetection="YES" textReplacement="YES" spellingCorrection="YES" grammarChecking="YES" smartInsertDelete="YES" id="ee7-Y1-elp" customClass="FeedbackTextView" customModule="Beddy_Butler" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="561" height="272"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
