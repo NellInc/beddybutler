@@ -19,20 +19,59 @@ class FeedbackViewController: NSViewController, NSTextViewDelegate {
         // Do view setup here.
         sendEmailButton.isEnabled = false
         
+        //feedbackTextView.usesFontPanel = true
+        //let fontManager = NSFontManager.shared()
+        //fontManager.target = self
+        
     }
     
-    func textView(_ textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+//    func textView(_ textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+//        
+//        if commandSelector == #selector(insertNewline(_:)) {
+//            textView.insertNewlineIgnoringFieldEditor(self)
+//            return true
+//        } else if commandSelector == #selector(insertTab(_:)) {
+//            textView.insertTabIgnoringFieldEditor(self)
+//            return true
+//        } //else if commandSelector == #selector(changeColor(_:)) {
+//            //textView.setTextColor(NSFontPanel.colo, range: <#T##NSRange#>)
+//        //}
+//        
+//        return false
+//        
+//    }
+    
+//    override func changeFont(_ sender: Any?) {
+//        let fontManager = sender as! NSFontManager
+//        if feedbackTextView.selectedRange().length > 0 {
+//            let theFont = fontManager.convert((feedbackTextView.textStorage?.font)!)
+//            feedbackTextView.textStorage?.setAttributes([NSFontAttributeName: theFont], range: feedbackTextView.selectedRange())
+//        }
+//    }
+//    
+//    override func changeColor(_ sender: Any?) {
+//        let fontManager = sender as! NSFontManager
+////        if feedbackTextView.selectedRange().length > 0 {
+////            let theFont = fontManager.convert((feedbackTextView.textStorage?.font)!)
+////            feedbackTextView.textStorage?.setAttributes([NSForegroundColorAttributeName: theFont.color], range: feedbackTextView.selectedRange())
+////        }
+//    }
+    
+    //override changeattri
+    
+    func changeAttributes(sender: AnyObject) {
+        var newAttributes = sender.convertAttributes([String : AnyObject]())
+        newAttributes["NSForegroundColorAttributeName"] = newAttributes["NSColor"]
+        newAttributes["NSUnderlineStyleAttributeName"] = newAttributes["NSUnderline"]
+        newAttributes["NSStrikethroughStyleAttributeName"] = newAttributes["NSStrikethrough"]
+        newAttributes["NSUnderlineColorAttributeName"] = newAttributes["NSUnderlineColor"]
+        newAttributes["NSStrikethroughColorAttributeName"] = newAttributes["NSStrikethroughColor"]
         
-        if commandSelector == #selector(insertNewline(_:)) {
-            textView.insertNewlineIgnoringFieldEditor(self)
-            return true
-        } else if commandSelector == #selector(insertTab(_:)) {
-            textView.insertTabIgnoringFieldEditor(self)
-            return true
+        print(newAttributes)
+        
+        if feedbackTextView.selectedRange().length>0 {
+            feedbackTextView.textStorage?.addAttributes(newAttributes, range: feedbackTextView.selectedRange())
         }
-        
-        return false
-        
     }
     
     func textDidChange(_ notification: Notification) {
