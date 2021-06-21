@@ -1,4 +1,4 @@
-# Beddy Buttler
+# Beddy Butler
 
 Beddy Buttler is a small menu bar app for OSX. It is designed to help you go to bed at a specified time. 
 
